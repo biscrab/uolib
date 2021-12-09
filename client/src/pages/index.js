@@ -1,0 +1,7 @@
+export {default as Admin} from './Admin'
+export {default as Login} from './Login'
+export {default as Main} from './Main'
+export {default as Novel} from './Novel'
+export {default as Setting} from './Setting'
+export {default as SignUp} from './SignUp'
+export {default as Write} from './Write'
