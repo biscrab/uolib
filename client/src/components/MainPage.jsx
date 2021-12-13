@@ -1,24 +1,39 @@
+import { NavLink } from 'react-router-dom';
 import * as S from '../styled/Main'
 
 const MainPage = () => {
 
-    const contestList = [{title: "test", author: "이상운", tag: [1, 2]}];
-    const bestList = [];
+    const contestList = [{title: "test", author: "이상운", tag: [1, 2]},
+                        {title: "test", author: "이상운", tag: [1, 2]},
+                        {title: "test", author: "이상운", tag: [1, 2]},
+                        {title: "test", author: "이상운", tag: [1, 2]},
+                        {title: "test", author: "이상운", tag: [1, 2]},
+                        {title: "test", author: "이상운", tag: [1, 2]},];
+    const bestList = [{title: "test", author: "이상운", tag: [1, 2]},
+                        {title: "test", author: "이상운", tag: [1, 2]},
+                        {title: "test", author: "이상운", tag: [1, 2]},
+                        {title: "test", author: "이상운", tag: [1, 2]},
+                        {title: "test", author: "이상운", tag: [1, 2]},
+                        {title: "test", author: "이상운", tag: [1, 2]},];
 
     const Book = ({item}) => {
         return(
             <S.Book>
-                <S.BookCover src={"https://image.novelpia.com/imagebox/cover/c1139a1358f8c808ab9ba0ce30d2eed5_17876_ori.thumb"}/>
+                <NavLink to={`/novel/${item.id}`}>
+                    <S.BookCover src={"https://image.novelpia.com/imagebox/cover/c1139a1358f8c808ab9ba0ce30d2eed5_17876_ori.thumb"}/>
+                </NavLink>
                 <S.BookInfo>
                     <S.BookInfoDiv>
-                        <S.BookTittle>{item.title}</S.BookTittle>
+                        <NavLink to={`/novel/${item.id}`}>
+                            <S.BookTittle>{item.title}</S.BookTittle>
+                        </NavLink>
                         <S.BookAuthor>{item.author}</S.BookAuthor>
                     </S.BookInfoDiv>
                     <S.BookTagDiv>
                         {item.tag.map(
                             item => {
                                 return(
-                                    <S.Tag>#{item}#123</S.Tag>
+                                    <S.Tag>#{item}</S.Tag>
                                 )
                             }
                         )}    
@@ -40,6 +55,8 @@ const MainPage = () => {
     }
 
     return(
+        <>
+        <S.Banner color="skyblue" /> 
         <S.Body>
             <S.Title>공모전 Best</S.Title>
             <S.Border>
@@ -50,6 +67,7 @@ const MainPage = () => {
                 <List lists={bestList}/>
             </S.Border>
         </S.Body>
+        </>
     )
 }
 
