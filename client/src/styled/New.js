@@ -58,6 +58,10 @@ export const InputDiv = styled.div`
     }
 `
 
+export const SelectDiv = styled.div`
+
+`
+
 export const SampleBookCover = styled.div`
 
 `

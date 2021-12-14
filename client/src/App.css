@@ -1,5 +1,6 @@
 body, html{
   font-family: 'Noto Sans KR', sans-serif;
+  width: 100%;
 }
 
 body{
@@ -13,4 +14,5 @@ a{
 
 button{
   outline: 0;
+  cursor: pointer;
 }

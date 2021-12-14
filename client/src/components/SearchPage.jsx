@@ -1,10 +1,16 @@
+import { useParams } from 'react-router-dom'
 import * as S from '../styled/Search'
 
 const SearchPage = () => {
 
+    const params = useParams();
+
+    const lists = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명"}]
+
     return(
         <S.Body>
             <S.Search placeholder="소설제목, 태그, 검색어, 작가를 입력해주세요."/>
+            <S.ResultSpan>'' 검색결과 입니다.</S.ResultSpan>
             <S.SearchTypeDiv>
                 <S.SearchType>소설검색</S.SearchType>
                 <S.SearchType>해시태그</S.SearchType>
@@ -25,7 +31,27 @@ const SearchPage = () => {
                 </div>
             </S.Result>
             <S.List>
-
+                {lists.map(
+                    i => {
+                        return(
+                            <S.Book>
+                                <S.BookCover src={i.image}/>
+                                <S.BookInfo>    
+                                    <b>{i.title}</b>
+                                    <S.Explane>{i.explane}</S.Explane>
+                                    <S.Info>
+                                        <img src="https://novelpia.com/img/new/icon/count_view.png"/>
+                                        104.3K명     
+                                        <img src="https://novelpia.com/img/new/icon/count_book.png"/>
+                                        515회차     
+                                        <img src="https://novelpia.com/img/new/icon/count_like.png"/>
+                                        8.0K회
+                                    </S.Info>
+                                </S.BookInfo>
+                            </S.Book>
+                        )
+                    }
+                )}
             </S.List>
         </S.Body>
     )

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import * as S from '../styled/Novel'
 import queryString from 'query-string'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const NovelPage = () => {
@@ -10,8 +10,10 @@ const NovelPage = () => {
     const [lists, setLists] = useState([{tittle: "test"}]);
     const [notices, setNotices] = useState([]);
     const [pages, setPages] = useState([]);
+    const [page, setPage] = useState([]);
 
     const location = useLocation();
+    const params = useParams();
     const query = queryString.parse(location.search);
     
     useEffect(()=>{
@@ -129,7 +131,7 @@ const NovelPage = () => {
                 {pages.map(
                     item => {
                         return(
-                            <S.Page bgcolor={item === book.count ? "royalblue" : "#eee"} color={item === book.count ? "white" : "black"}>
+                            <S.Page bgcolor={item === page ? "royalblue" : "#eee"} color={item === page ? "white" : "black"}>
                             {item}
                             </S.Page>
                         )

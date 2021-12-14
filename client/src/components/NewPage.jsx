@@ -19,6 +19,16 @@ const NewPage = () => {
                         <span>작품부제</span>
                         <input />
                     </S.InputDiv>
+                    <S.SelectDiv>
+                        <span>연재요일</span>
+                        <input type="checkbox" />
+                        <input type="checkbox" />
+                        <input type="checkbox" />
+                        <input type="checkbox" />
+                        <input type="checkbox" />
+                        <input type="checkbox" />
+                        <input type="checkbox" />
+                    </S.SelectDiv>
                     <S.InputDiv>
                         <span>줄거리</span>
                         <textarea />
