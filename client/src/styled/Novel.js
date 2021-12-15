@@ -117,18 +117,15 @@ export const ListBorder = styled.ul`
     margin: 0;
     padding: 0;
     list-style: none;
-    li{
-        border-bottom: 1px solid #eee;
-        div{
-            border-left: 2px solid #eee;
-        }
-    }
 `
 
 export const Round = styled.li`
-    border-bottom: 1px solid #eee;
     width: 100%;
     cursor: pointer;
+    border-bottom: 1px solid #eee;
+    :hover{
+        background: #fafafa
+    }
 `
 
 export const RoundDiv = styled.div`

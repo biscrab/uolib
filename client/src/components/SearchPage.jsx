@@ -41,11 +41,11 @@ const SearchPage = () => {
                                     <S.Explane>{i.explane}</S.Explane>
                                     <S.Info>
                                         <img src="https://novelpia.com/img/new/icon/count_view.png"/>
-                                        104.3K명     
+                                        <span>104.3K명</span>
                                         <img src="https://novelpia.com/img/new/icon/count_book.png"/>
-                                        515회차     
+                                        <span>515회차</span>
                                         <img src="https://novelpia.com/img/new/icon/count_like.png"/>
-                                        8.0K회
+                                        <span>8.0K회</span>
                                     </S.Info>
                                 </S.BookInfo>
                             </S.Book>

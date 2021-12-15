@@ -85,9 +85,15 @@ export const Explane = styled.span`
 
 export const Info = styled.div`
     display: flex;
+    align-items: center;
+    font-size: 13px;
+    span{
+        margin-right: 5px;
+    }
     img{
-        width: 15px;
-        height: 15px;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
     }
 `
 
