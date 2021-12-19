@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import * as S from '../styled/Search'
 
 const SearchPage = () => {
@@ -35,9 +35,13 @@ const SearchPage = () => {
                     i => {
                         return(
                             <S.Book>
-                                <S.BookCover src={i.image}/>
+                                <NavLink to="/novel">
+                                    <S.BookCover src={i.image}/>
+                                </NavLink>
                                 <S.BookInfo>    
-                                    <b>{i.title}</b>
+                                    <NavLink to="/novel">
+                                        <b>{i.title}</b>
+                                    </NavLink>
                                     <S.Explane>{i.explane}</S.Explane>
                                     <S.Info>
                                         <img src="https://novelpia.com/img/new/icon/count_view.png"/>

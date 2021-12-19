@@ -24,6 +24,7 @@ function App() {
         <Route exact path= "/search" element={<P.Search />}/>
         <Route exact path="/contest" element={<P.Contest />}/>
         <Route exact path="/mypage" element={<P.MyPage />}/>
+        <Route exact path="/top100" element={<P.Top100/>}/>
       </Routes>
       <Footer />
     </>

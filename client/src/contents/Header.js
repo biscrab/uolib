@@ -12,13 +12,23 @@ const Header = () => {
                 </NavLink>
                 </S.LogoDiv>
                 <S.PathDiv>
-                    <b>공모전</b>
-                    <b>자유연재</b>
-                    <b>TOP100</b>
-                    <b>내서재</b>
+                    <NavLink to="/contest">
+                        <b>공모전</b>
+                    </NavLink>
+                    <NavLink to="/free">
+                        <b>자유연재</b>
+                    </NavLink>
+                    <NavLink to="/top100">
+                        <b>TOP100</b>
+                    </NavLink>
+                    <NavLink to="/mybook">
+                        <b>내서재</b>
+                    </NavLink>
                 </S.PathDiv>
                 <S.MenuDiv>
+                    <NavLink to="/alarm">
                     <img src="https://image.novelpia.com/img/new/menu/alarm.png"/>
+                    </NavLink>
                     <NavLink to="/search">
                         <img src="https://image.novelpia.com/img/new/menu/search.png"/>
                     </NavLink>

@@ -70,14 +70,15 @@ export const InfoBorder = styled.div`
         vertical-align: middle;
         border-style: none;
         margin-right: 5px;
-        height: 16px;
-        width: 16px;
+        height: 14px;
+        width: 14px;
+        transform: translateY(10%);
     }
 `
 
 export const Tittle = styled.h1`
     margin: 0;
-    font-size: 32px;
+    font-size: 23px;
 `
 
 export const AuthorDiv = styled.div`
