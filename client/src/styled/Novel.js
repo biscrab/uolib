@@ -31,6 +31,18 @@ export const InfoDiv = styled.div`
     box-sizing: border-box;
 `
 
+export const Explane = styled.div`
+
+`
+
+export const TagDiv = styled.div`
+
+`
+
+export const Tag = styled.div`
+    border-radius
+`
+
 export const TopInfo = styled.div`
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `
@@ -56,7 +68,7 @@ export const InfoBorder = styled.div`
     font-weight: 600;
     text-indent: initial;
     border-spacing: 2px;
-    font-size: 16px;
+    font-size: 14px;
 
     span{
         margin-right: 15px;
@@ -74,6 +86,10 @@ export const InfoBorder = styled.div`
         width: 14px;
         transform: translateY(10%);
     }
+`
+export const Day = styled.span`
+    color: #5232dd;
+    padding-right: 5px;
 `
 
 export const Tittle = styled.h1`
@@ -103,9 +119,14 @@ export const Name = styled.span`
 `
 
 export const ListTittle = styled.h1`
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 25px;
     color: #333;
+`
+
+export const ListDiv = styled.div`
+    width: 100%;
 `
 
 export const List = styled.div`
@@ -143,6 +164,21 @@ export const RLeft = styled.div`
     flex-direction: column;
 `
 
+export const TittleDiv = styled.div`
+    display: flex;
+    align-items: flex-end;
+`
+
+export const Price = styled.div`
+    font-size: 11px;
+    background: ${props => props.color};
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    text-shadow: 0.5px 0.5px black;
+    margin-right: 5px;
+`
+
 export const RDate = styled.span`
     font-size: 13px;
     font-weight: bold;
@@ -154,14 +190,27 @@ export const RInfo = styled.div`
 `
 
 export const RTittle = styled.b`
-    font-size: 20px;
+    font-size: 18px;
+`
+
+export const AuthorBorder = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    margin-left: 50px;
 `
 
 export const Support = styled.div`
     display: flex;
     flex-direction: column;
-    width: 600px;
-    margin-left: 50px;
+`
+
+export const OtherBookList = styled.ul`
+
+`
+
+export const OtherBook = styled.li`
+
 `
 
 export const SupportDiv = styled.div`
@@ -173,8 +222,8 @@ export const SupportDiv = styled.div`
 export const SupportButton = styled.button`
     background-color: #291c58;
     color: white;
-    height: 50px;
-    font-size: 18px;
+    height: 45px;
+    font-size: 16px;
     font-weight: bold;
     width: 100%;
     border: 0;
@@ -199,4 +248,18 @@ export const Page = styled.button`
 
 export const Notice = styled.li`
     background-color: #feffe5;
+`
+
+export const CommentList = styled.ul`
+    height: 1000px;
+`
+
+export const CommentTittle = styled.h2`
+    border-bottom: 2px solid black;
+    padding-bottom: 15px;
+    font-size: 22px;
+`
+
+export const Comment = styled.li`
+
 `

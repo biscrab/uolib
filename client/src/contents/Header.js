@@ -32,7 +32,9 @@ const Header = () => {
                     <NavLink to="/search">
                         <img src="https://image.novelpia.com/img/new/menu/search.png"/>
                     </NavLink>
-                    <img src="https://image.novelpia.com/img/new/menu/list.png"/>
+                    <S.Menu>
+                        <img src="https://image.novelpia.com/img/new/menu/list.png"/>
+                    </S.Menu>
                 </S.MenuDiv>
             </S.HeaderDiv>
         </S.Header>

@@ -49,3 +49,12 @@ export const MenuDiv = styled.div`
         cursor: pointer;
     }
 `
+
+export const Menu = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+export const MenuModal = styled.div`
+    position: absolute;
+`
