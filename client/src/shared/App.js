@@ -29,6 +29,8 @@ function App() {
         <Route exact path="/mybook" element={<P.MyBook />}/>
         <Route exact path="/mybook/:type" element={<P.MyBook />}/>
         <Route exact path="/top100" element={<P.Top100/>}/>
+        <Route exact path="/login" element={<P.Login />} />
+        <Route exact path="/signup" element={<P.SignUp />} />
       </Routes>
       <Footer />
     </>

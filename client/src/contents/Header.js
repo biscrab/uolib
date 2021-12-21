@@ -13,14 +13,8 @@ const Header = () => {
     useEffect(()=>{
         $("html").click(function(e){
             if(!$(".menu").has(e.target).length){
-                if(onMenu){
-                    $(".menumodal").animate({opacity: 0, height: 0}, 1000);
-                    setTimeout(() => {setOnMenu(false)}, 1000)
-                }
-                else{
-                    setOnMenu(true);
-                    $(".menumodal").animate(from{opacity: 0, height: 0}, 1000);
-                }
+                $(".menumodal").animate({opacity: 0, height: 0}, 1000);
+                setTimeout(() => {setOnMenu(false)}, 1000)
             }
         })
     })

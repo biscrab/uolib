@@ -67,10 +67,18 @@ export const MenuModal = styled.ul`
     width: 250px;
     margin-top: 60px;
     padding: 10px 0px;
-`
 
-export const MenuImgDiv = styled.li`
+    animation-duration: 1s;
+    animation-name: slide;
 
+    @keyframes slide{
+        from{
+            opacity: 0;
+            height: 0;
+        }to{
+            opacity: 1;
+        }
+    }
 `
 
 export const MenuLi = styled.li`
@@ -87,5 +95,15 @@ export const MenuLi = styled.li`
         border-radius: 50%;
         height: 40px;
         width: 40px;
+    }
+    animation-duration: 1s;
+    animation-name: slide;
+
+    @keyframes slide{
+        from{
+            opacity: 0;
+        }to{
+            opacity: 1;
+        }
     }
 `
