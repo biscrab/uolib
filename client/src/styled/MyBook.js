@@ -5,20 +5,19 @@ export const Body = styled.div`
     margin-top: 80px;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 1200px;
+    width: 1100px;
 `
 
 export const SelectDiv = styled.div`
     width: 100%;
     display: flex;
-    font-size: 20px;
-    font-weight: bold;
 `
 
 export const Select = styled.div`
     cursor: pointer;
-    width: 25%;
-    height: 60px;
+    font-weight: bold;
+    width: calc(1100px/4);
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,12 +1,19 @@
-import * as  S from '../styled/Search'
+import * as S from '../styled/Search'
 import { NavLink } from 'react-router-dom';
 
-const FreePage = () => {
-
+const SerializePage = () => {
     const lists = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명"}];
 
     return(
+        <>
+        <S.Banner />
         <S.Body>
+            <S.SearchTypeDiv>
+                <S.SearchType>소설검색</S.SearchType>
+                <S.SearchType>해시태그</S.SearchType>
+                <S.SearchType>작가검색</S.SearchType>
+                <S.SearchType>작가검색</S.SearchType>
+            </S.SearchTypeDiv>
             <S.Result>
                 <b>총 0개의 작품</b>
                 <div>
@@ -49,7 +56,8 @@ const FreePage = () => {
             )}
         </S.List>
     </S.Body>
+    </>
     )
 }
 
-export default FreePage
+export default SerializePage

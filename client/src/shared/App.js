@@ -21,10 +21,13 @@ function App() {
         <Route exact path="/novel/:id" element={<P.Novel />}/>
         <Route exact path="/new" element={<P.New />}/>
         <Route exact path="/search/:type/:keyword/:page" element={<P.Search />} />
+        <Route exact path="/search/:type/:keyword" element={<P.Search />} />
         <Route exact path= "/search" element={<P.Search />}/>
-        <Route exact path="/free" element={<P.Free/>}/>
-        <Route exact path="/contest" element={<P.Contest />}/>
+        <Route exact path="/free" element={<P.Serialize/>}/>
+        <Route exact path="/plus" element={<P.Serialize/>}/>
+        <Route exact path="/readers" element={<P.Readers />}/>
         <Route exact path="/mybook" element={<P.MyBook />}/>
+        <Route exact path="/mybook/:type" element={<P.MyBook />}/>
         <Route exact path="/top100" element={<P.Top100/>}/>
       </Routes>
       <Footer />

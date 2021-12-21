@@ -1,10 +1,17 @@
 import styled from 'styled-components'
 
+export const Banner = styled.div`
+    width: 100%;
+    height: 150px;
+    background-color: #eee;
+`
+
 export const Body = styled.div`
     width: 1200px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    margin-top: 50px;
 `
 
 export const Search = styled.input`
@@ -15,7 +22,6 @@ export const Search = styled.input`
     height: 50px;
     padding: 0px 10px;
     box-sizing: border-box;
-    margin-top: 30px;
     margin-bottom: 30px;
     font-size: 17px;
     font-weight: bold;
@@ -28,7 +34,7 @@ export const SearchTypeDiv = styled.div`
 `
 
 export const SearchType = styled.div`
-    width: 33.3%;
+    width: 100%;
     border: 1px solid #eee;
     border-bottom: 1px solid black;
     display: flex;

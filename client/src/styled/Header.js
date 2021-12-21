@@ -29,14 +29,16 @@ export const Logo = styled.img`
 `
 
 export const PathDiv = styled.div`
-    font-size: 18px;
     color: #333;
     display: flex;
     justify-content: space-around;
     width: 500px;
-    b{
-        cursor: pointer;
-    }
+`
+
+export const Path = styled.b`
+    font-size: 18px;
+    cursor: pointer;
+    color: ${props => props.path ? "#5a35cd" : ""};
 `
 
 export const MenuDiv = styled.div`
@@ -53,8 +55,37 @@ export const MenuDiv = styled.div`
 export const Menu = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
 `
 
-export const MenuModal = styled.div`
+export const MenuModal = styled.ul`
     position: absolute;
+    background-color: white;
+    border: 1px solid #333;
+    list-style: none;
+    z-index: 999;
+    width: 250px;
+    margin-top: 60px;
+    padding: 10px 0px;
+`
+
+export const MenuImgDiv = styled.li`
+
+`
+
+export const MenuLi = styled.li`
+    width: 100%;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    img{
+        vertical-align: middle;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+    }
 `
