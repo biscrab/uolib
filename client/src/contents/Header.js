@@ -17,6 +17,13 @@ const Header = () => {
                 setTimeout(() => {setOnMenu(false)}, 1000)
             }
         })
+
+        $(".menuicon").click(function(e){
+            if(!onMenu){
+                setOnMenu(true);
+                $(".menumodal").animate({opacity: +0.1, height: +0.35}, 1000);
+            }
+        })
     })
 
     return(
@@ -52,7 +59,7 @@ const Header = () => {
                         <img src="https://image.novelpia.com/img/new/menu/search.png"/>
                     </NavLink>
                     <S.Menu className='menu'>
-                        <img onClick={()=>setOnMenu(true)} src="https://image.novelpia.com/img/new/menu/list.png"/>
+                        <img className='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
                         {onMenu ?
                         <S.MenuModal className='menumodal'>
                             <S.MenuLi>

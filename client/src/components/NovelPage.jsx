@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import * as S from '../styled/Novel'
 import queryString from 'query-string'
-import { useLocation, useParams } from 'react-router-dom'
+import { NavLink, useLocation, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const NovelPage = () => {
@@ -114,6 +114,7 @@ const NovelPage = () => {
                     <>
                     {lists.map(i => {
                         return(
+                            <NavLink to={`/viewer/${1}`}>
                             <S.Round>
                                 <S.RoundDiv>
                                     <S.RLeft>
@@ -130,6 +131,7 @@ const NovelPage = () => {
                                     <S.RDate>10월 10일</S.RDate>
                                 </S.RoundDiv>
                             </S.Round>
+                            </NavLink>
                         )
                     })}
                     </>

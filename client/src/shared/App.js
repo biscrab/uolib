@@ -31,6 +31,7 @@ function App() {
         <Route exact path="/top100" element={<P.Top100/>}/>
         <Route exact path="/login" element={<P.Login />} />
         <Route exact path="/signup" element={<P.SignUp />} />
+        <Route exact path="/write" element={<P.Write />} />
       </Routes>
       <Footer />
     </>

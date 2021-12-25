@@ -13,7 +13,11 @@ export const SelectDiv = styled.div`
     display: flex;
 `
 
-export const Select = styled.div`
+interface Props {
+    selected: boolean;
+}
+
+export const Select = styled.div<Props>`
     cursor: pointer;
     font-weight: bold;
     width: calc(1100px/4);

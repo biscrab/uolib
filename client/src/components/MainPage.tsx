@@ -3,20 +3,30 @@ import * as S from '../styled/Main'
 
 const MainPage = () => {
 
-    const contestList = [{title: "test", author: "이상운", tag: [1, 2]},
-                        {title: "test", author: "이상운", tag: [1, 2]},
-                        {title: "test", author: "이상운", tag: [1, 2]},
-                        {title: "test", author: "이상운", tag: [1, 2]},
-                        {title: "test", author: "이상운", tag: [1, 2]},
-                        {title: "test", author: "이상운", tag: [1, 2]},];
-    const bestList = [{title: "test", author: "이상운", tag: [1, 2]},
-                        {title: "test", author: "이상운", tag: [1, 2]},
-                        {title: "test", author: "이상운", tag: [1, 2]},
-                        {title: "test", author: "이상운", tag: [1, 2]},
-                        {title: "test", author: "이상운", tag: [1, 2]},
-                        {title: "test", author: "이상운", tag: [1, 2]},];
+    const contestList: BookInterface[] = [
+                        {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},
+                        {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},
+                        {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},
+                        {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},
+                        {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},
+                        {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},];
 
-    const Book = ({item}) => {
+    const bestList: BookInterface[] = [
+                        {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},
+                        {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},
+                        {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},
+                        {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},
+                        {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},
+                        {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},];
+    
+    interface BookInterface {
+        id: number,
+        title: string,
+        author: string,
+        tag: string[];
+    }
+
+    function Book(item: BookInterface){
         return(
             <S.Book>
                 <NavLink to={`/novel/${item.id}`}>
@@ -31,7 +41,7 @@ const MainPage = () => {
                     </S.BookInfoDiv>
                     <S.BookTagDiv>
                         {item.tag.map(
-                            item => {
+                            (item: string) => {
                                 return(
                                     <S.Tag>#{item}</S.Tag>
                                 )
@@ -43,11 +53,11 @@ const MainPage = () => {
         )
     }
 
-    const List = ({lists}) => {
+    function List(lists: BookInterface[]) {
         const list = lists.map(
-            item => {
+            i => {
                 return(
-                    <Book item={item}/>
+                    <Book item={{id: 1, title: "test", author: "이상운", tag: ["1", "2"]}}/>
                 )
             }
         )

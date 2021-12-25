@@ -29,7 +29,7 @@ export const Border = styled.div`
 //책
 export const Book = styled.div`
     display: flex;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 `
 
 export const BookCover = styled.img`
@@ -39,9 +39,9 @@ export const BookCover = styled.img`
 `
 
 export const BookInfo = styled.div`
-    padding-left: 20px;
-    padding-right: 15px;
-    width: 235px;
+    padding-left: 15px;
+    padding-right: 20px;
+    width: 230px;
 `
 
 export const BookInfoDiv = styled.div`

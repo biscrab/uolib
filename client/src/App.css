@@ -16,3 +16,12 @@ button{
   outline: 0;
   cursor: pointer;
 }
+
+input, textarea {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+ul{
+  list-style: none;
+  padding: 0;
+}

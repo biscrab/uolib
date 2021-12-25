@@ -35,7 +35,7 @@ export const PathDiv = styled.div`
     width: 500px;
 `
 
-export const Path = styled.b`
+export const Path = styled.b<{path: boolean}>`
     font-size: 18px;
     cursor: pointer;
     color: ${props => props.path ? "#5a35cd" : ""};
@@ -67,18 +67,8 @@ export const MenuModal = styled.ul`
     width: 250px;
     margin-top: 60px;
     padding: 10px 0px;
-
-    animation-duration: 1s;
-    animation-name: slide;
-
-    @keyframes slide{
-        from{
-            opacity: 0;
-            height: 0;
-        }to{
-            opacity: 1;
-        }
-    }
+    height: 350px;
+    overflow-y: scroll;
 `
 
 export const MenuLi = styled.li`

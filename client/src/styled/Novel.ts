@@ -241,7 +241,12 @@ export const PDiv = styled.div`
     justify-content: center;
 `
 
-export const Page = styled.button`
+interface PageProps{
+    bgcolor: string,
+    color: string
+}
+
+export const Page = styled.button<PageProps>`
     background-color: ${props => props.bgcolor};
     color: ${props => props.color};
 `
