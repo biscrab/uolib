@@ -99,6 +99,12 @@ const ViewerPage = () => {
             123
         </div>
         </S.Body>
+        <S.Bottom>
+            <div>
+                <span>이전화</span>
+                <span>다음화</span>
+            </div>
+        </S.Bottom>
         </>
     )
 }

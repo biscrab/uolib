@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Header = styled.div`
     width: 100%;
-    padding: 20px;
+    padding: 20px 0px;
     box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px 0px;
     position: fixed;
     top: 0;
@@ -88,12 +88,17 @@ export const SettingButton = styled.button<ButtonProps>`
 
 export const Bottom = styled.div`
     position: fixed;
+    background: white;
     bottom: 0;
-    width: 1000px;
+    width: 100%;
+    padding: 20px 0px;
+    box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px 0px;
     div{
         width: 1000px;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
+        display: flex;
+        justify-content: space-between;
     }
 `

@@ -1,3 +1,4 @@
+import { NavLink, useParams } from 'react-router-dom';
 import * as S from '../styled/Readers'
 
 type RowType = {
@@ -26,36 +27,57 @@ const ReadersPage = () => {
 
     ]
 
+    const params = useParams();
+
     return(
         <S.Body>
             <S.SelectDiv>
-                <S.Select selected={false}>전체</S.Select>
-                <S.Select selected={false}>리뷰</S.Select>
-                <S.Select selected={false}>팬아트</S.Select>
-                <S.Select selected={false}>명예의전당</S.Select>
-            </S.SelectDiv>
+                <NavLink to="/readers/comunity">
+                <S.Select selected={params.type === "comunity"}>커뮤니티</S.Select>
+                </NavLink>
+                <NavLink to="/readers/fanart">
+                    <S.Select selected={params.type === "fanart"}>팬아트</S.Select>
+                </NavLink>
+                <NavLink to="/readers/hall_of_fame">
+                    <S.Select selected={params.type === "hall_of_fame"}>명예의전당</S.Select>
+                </NavLink>
+           </S.SelectDiv>
+           {params.type === "comunity" ?
             <S.List>
-            <S.Row>
-                <S.Number id={1}></S.Number>
-                <S.Title id={1}></S.Title>
-                <S.Author id={1}></S.Author>
-                <S.View id={1}></S.View>
-                <S.Like id={1}></S.Like>
+            <S.Row idx={1}>
+                <S.Number idx={1}></S.Number>
+                <S.Title idx={1}></S.Title>
+                <S.Author idx={1}></S.Author>
+                <S.View idx={1}></S.View>
+                <S.Like idx={1}></S.Like>
             </S.Row>
                 {list.map(
                     (i, index) => {
                         return(
-                            <S.Row>
-                                <S.Number id={index%2}>{i.number}</S.Number>
-                                <S.Title id={index%2}>{i.title}</S.Title>
-                                <S.Author id={index%2}>{i.author}</S.Author>
-                                <S.View id={index%2}>{i.view}</S.View>
-                                <S.Like id={index%2}>{i.like}</S.Like>
+                            <S.Row idx={index%2}>
+                                <S.Number idx={index%2}>{i.number}</S.Number>
+                                <S.Title idx={index%2}>{i.title}</S.Title>
+                                <S.Author idx={index%2}>{i.author}</S.Author>
+                                <S.View idx={index%2}>{i.view}</S.View>
+                                <S.Like idx={index%2}>{i.like}</S.Like>
                             </S.Row>
                         )
                     }
                 )}
             </S.List>
+            :
+            <></>
+            }
+            {params.type === "fanart" ?
+            <S.FanArtList>
+
+            </S.FanArtList>    
+            :
+            <></>
+            }
+            {params.type 
+
+            }
         </S.Body>
     )
 }

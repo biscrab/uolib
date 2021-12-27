@@ -13,6 +13,9 @@ export const Body = styled.div`
 export const SelectDiv = styled.div`
     width: 100%;
     display: flex;
+    a{
+        width: 100%;
+    }
 `
 
 interface SelectProps{
@@ -28,40 +31,64 @@ export const Select = styled.div<SelectProps>`
     justify-content: center;
     align-items: center;
     border: ${props => props.selected ? "1px solid #555" : "1px solid #eee"};
-    border-bottom: ${props => props.selected ? "none" : "1px solid #555"};
+    border-bottom: ${props => props.selected ? "none" : "2px solid #555"};
 `
 
 export const List = styled.ul`
+    margin: 0;
+    width: 100%;
+    border: 1px solid #dee2e6;
+`
 
+export const FanArtList = styled.div`
+    display: flex;
+    flex-wrap: wrap;
 `
 
 interface IndexProps{
-    id: number,
+    idx: number,
 }
 
-export const Row = styled.li`
+export const Row = styled.li<IndexProps>`
     width: 100%;
-    border-bottom: 1px solid #aaa;
+    cursor: pointer;
+    border-top: 1px solid #dee2e6;
+    span{
+        box-sizing: border-box;
+        padding: 0.5rem 0.75rem; 
+    }
+    background: ${props => props.idx ? "#f9f9f9" : "white"};
 `
 
 export const Number = styled.span<IndexProps>`
-    background: ${props => props.id ? "black" : "white"};
+    height: 100%;
+    color: #737c85;
+    font-size: 14px;
+    background: ${props => props.idx ? "#eaeaea" : "#fafafa"};
+`
+
+export const Type = styled.span`
+
 `
 
 export const Title = styled.span<IndexProps>`
-    background: ${props => props.id ? "black" : "white"};
+    width: 100%;
+    height: 100%;
 `
 
 export const Author = styled.span<IndexProps>`
-    background: ${props => props.id ? "black" : "white"};
+    width: 100px;
+    height: 100%;
 `
 
 export const View = styled.span<IndexProps>`
-    background: ${props => props.id ? "black" : "white"};
+    width: 70px;
+    height: 100%;
 `
 
 export const Like = styled.span<IndexProps>`
-    background: ${props => props.id ? "black" : "white"};
+    width: 70px;
+    height: 100%;
 `
 
 export const CommentList = styled.ul`

@@ -31,6 +31,9 @@ export const SearchTypeDiv = styled.div`
     height: 50px;
     width: 100%;
     display: flex;
+    a{
+        width: 100%;
+    }
 `
 
 export const CategoryDiv = styled.ul`
@@ -49,12 +52,13 @@ interface SelectedProps{
 export const Category = styled.li<SelectedProps>`
     padding: 10px;
     font-size: 14px;
-    color: ${props => props.selected ? "white" : ""}
+    color: ${props => props.selected ? "white" : ""};
     background-color: ${props => props.selected ? "#5a35cd" : ""}
 `
 
 export const SearchType = styled.div<SelectedProps>`
     width: 100%;
+    height: 50px;
     border: 1px solid #eee;
     border-bottom: 1px solid black;
     display: flex;

@@ -7,6 +7,27 @@ export const Body = styled.div`
     transform: translateX(-50%);
     margin-top: 50px;
     display: flex;
+    flex-direction: column;
+`
+
+export const NameDiv = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+`
+
+export const BodyDiv = styled.div`
+    display: flex;
+`
+
+export const Profile = styled.img`
+    border-radius: 50%;
+    right: 10px;
+    top: -10px;
+    position: absolute;
+    height: 80px;
+    width: 80px;
 `
 
 export const Info = styled.div`

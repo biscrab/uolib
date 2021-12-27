@@ -1,14 +1,48 @@
+import { NavLink, useParams } from 'react-router-dom'
 import * as S from '../styled/Alarm'
 
+type AlarmType = {
+    title: string,
+    contents: string,
+    id: string
+}
+
 const AlarmPage = () => {
+    
+    const params = useParams();
+    const lists: AlarmType[] = [{title: "123", contents: "string", id: "1"}];
+
     return(
         <S.Body>
             <S.SelectDiv>
-                <S.Select selected>댓글알림</S.Select>
-                <S.Select selected>구독알림</S.Select>
-                <S.Select selected>시스템알림</S.Select>
-                <S.Select selected>이벤트알림</S.Select>
+                <NavLink to="/alarm/comment">
+                    <S.Select selected={params.type==="comment"}>댓글알림</S.Select>
+                </NavLink>
+                <NavLink to="/alarm/subscribe">
+                    <S.Select selected={params.type==="subscribe"}>구독알림</S.Select>
+                </NavLink>
+                <NavLink to="/alarm/system">
+                    <S.Select selected={params.type==="system"}>시스템알림</S.Select>
+                </NavLink>
+                <NavLink to="/alarm/event">
+                    <S.Select selected={params.type==="event"}>이벤트알림</S.Select>
+                </NavLink>
             </S.SelectDiv>
+            <S.List>
+                {lists.map(i => {
+                    return(
+                        <S.Alarm>
+                            <img src="https://novelpia.com/img/new/menu/alarm.png"/>
+                            <div>
+                            {i.title}
+                            <S.AlarmContents>
+                            {i.contents}
+                            </S.AlarmContents>
+                            </div>
+                        </S.Alarm>
+                    )
+                })}
+            </S.List>
         </S.Body>
     )
 }

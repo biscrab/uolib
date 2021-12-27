@@ -9,7 +9,7 @@ export const Body = styled.div`
 `
 
 export const Banner = styled.div`
-    height: 600px;
+    height: 550px;
     width: 100%;
     background-color: ${props => props.color};
     display: flex;
@@ -18,6 +18,7 @@ export const Banner = styled.div`
 `
 
 export const Title = styled.h2`
+    margin-bottom: 30px;
 `
 
 export const Border = styled.div`
@@ -33,8 +34,8 @@ export const Book = styled.div`
 `
 
 export const BookCover = styled.img`
-    height: 190px;
-    width: 130px;
+    height: 200px;
+    width: 140px;
     border-radius: 5px;
 `
 

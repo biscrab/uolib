@@ -1,11 +1,18 @@
 import * as S from '../styled/Search'
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useLocation, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const SerializePage = () => {
 
     const lists = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명"}];
     const clist = ["공모전", "판타지", "현대", "라이트노벨", "하렘", "일상", "중세", "TS", "전생", "로맨스", "먼치킨", "아카데미", "SF", "드라마", "코미디", "이세계", "순애", "빙의", "남성향", "몸으로하는스포츠"]
     const params = useParams();
+    const location = useLocation();
+    const plus = location.pathname.includes("/plus")
+
+    useEffect(()=>{
+        console.log("공모전" === params.category);
+    })
 
     const Category = () => {
         return(
@@ -13,7 +20,9 @@ const SerializePage = () => {
             {clist.map(
                 i => {
                     return(
-                        <S.Category selected={i === params.category}>{i}</S.Category>
+                        <NavLink to={`/${plus ? "plus" : "free"}/${params.type? params.type : "all"}/${i}`}>
+                            <S.Category selected={i === params.category}>{i}</S.Category>
+                        </NavLink>
                     )
                 }
             )}

@@ -11,6 +11,9 @@ export const Body = styled.div`
 export const SelectDiv = styled.div`
     width: 100%;
     display: flex;
+    a{
+        width: 100%;
+    }
 `
 
 interface SelectProps{
@@ -29,11 +32,24 @@ export const Select = styled.div<SelectProps>`
     border-bottom: ${props => props.selected ? "none" : "1px solid #555"};
 `
 
+export const List = styled.ul`
+    padding: 0;
+    margin: 0;
+`
+
 export const Alarm = styled.div`
     display: flex;
-    justify-content: center;
+    margin: 10px;
     width: 100%;
     border: 2px solid #eee;
+`
+
+export const AlarmContents = styled.div`
+    background: #eee;
+    padding: 5px;
+    border-radius: 3px;
+    width: 100%;
+    box-sizing: border-box;
 `
 
 export const Delete = styled.div`
