@@ -33,7 +33,27 @@ export const SearchTypeDiv = styled.div`
     display: flex;
 `
 
-export const SearchType = styled.div`
+export const CategoryDiv = styled.ul`
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    border-bottom: 1px solid #eee;
+    margin: 0;
+    overflow-x: auto;
+`
+
+interface SelectedProps{
+    selected: boolean
+}
+
+export const Category = styled.li<SelectedProps>`
+    padding: 10px;
+    font-size: 14px;
+    color: ${props => props.selected ? "white" : ""}
+    background-color: ${props => props.selected ? "#5a35cd" : ""}
+`
+
+export const SearchType = styled.div<SelectedProps>`
     width: 100%;
     border: 1px solid #eee;
     border-bottom: 1px solid black;
@@ -41,6 +61,8 @@ export const SearchType = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    border: ${props => props.selected ? "1px solid black" : ""};
+    border-bottom: ${props => props.selected ? "none" : "1px solid black"};
 `
 
 export const ResultSpan = styled.div`
@@ -50,9 +72,11 @@ export const ResultSpan = styled.div`
 
 export const Result = styled.div`
     margin-top: 30px;
+    padding-bottom: 5px;
     display: flex;
     justify-content: space-between;
     color: #333;
+    border-bottom: 2px solid #333;
     div{
         display: flex;
         b{
@@ -66,7 +90,6 @@ export const List  = styled.ul`
     padding: 0;
     margin: 0;
     margin-top: 10px;
-    border-top: 2px solid #333;
     height: 1000px;
     list-style: none;
 `

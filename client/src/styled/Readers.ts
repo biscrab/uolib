@@ -35,24 +35,33 @@ export const List = styled.ul`
 
 `
 
+interface IndexProps{
+    id: number,
+}
+
 export const Row = styled.li`
-
+    width: 100%;
+    border-bottom: 1px solid #aaa;
 `
 
-export const Number = styled.div`
-
+export const Number = styled.span<IndexProps>`
+    background: ${props => props.id ? "black" : "white"};
 `
 
-export const Title = styled.div`
-
+export const Title = styled.span<IndexProps>`
+    background: ${props => props.id ? "black" : "white"};
 `
 
-export const View = styled.span`
-
+export const Author = styled.span<IndexProps>`
+    background: ${props => props.id ? "black" : "white"};
 `
 
-export const Like = styled.span`
+export const View = styled.span<IndexProps>`
+    background: ${props => props.id ? "black" : "white"};
+`
 
+export const Like = styled.span<IndexProps>`
+    background: ${props => props.id ? "black" : "white"};
 `
 
 export const CommentList = styled.ul`

@@ -59,7 +59,19 @@ export const InputDiv = styled.div`
 `
 
 export const SelectDiv = styled.div`
+    display: flex;
+    align-items: center;
+`
 
+export const Select = styled.div`
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    font-size: 5px;
+    cursor: pointer;
+    span{
+        margin-bottom: 2.5px;
+    }
 `
 
 export const SampleBookCover = styled.div`

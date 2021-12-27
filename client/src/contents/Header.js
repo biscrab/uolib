@@ -35,9 +35,6 @@ const Header = () => {
                 </NavLink>
                 </S.LogoDiv>
                 <S.PathDiv>
-                    <NavLink to="/readers">
-                        <S.Path path={location.pathname.includes("/readers")}>독자마당</S.Path>
-                    </NavLink>
                     <NavLink to="/free">
                         <S.Path path={location.pathname.includes("/free")}>자유연재</S.Path>
                     </NavLink>
@@ -46,6 +43,9 @@ const Header = () => {
                     </NavLink>
                     <NavLink to="/top100">
                         <S.Path path={location.pathname.includes("/top100")}>TOP100</S.Path>
+                    </NavLink>
+                    <NavLink to="/readers">
+                        <S.Path path={location.pathname.includes("/readers")}>독자마당</S.Path>
                     </NavLink>
                     <NavLink to="/mybook">
                         <S.Path path={location.pathname.includes("/mybook")}>내서재</S.Path>

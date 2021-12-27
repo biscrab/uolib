@@ -21,13 +21,34 @@ const NewPage = () => {
                     </S.InputDiv>
                     <S.SelectDiv>
                         <span>연재요일</span>
+                        <S.Select>
                         <input type="checkbox" />
+                        <span>월</span>
+                        </S.Select>
+                        <S.Select>
                         <input type="checkbox" />
+                        <span>화</span>
+                        </S.Select>
+                        <S.Select>
                         <input type="checkbox" />
+                        <span>수</span>
+                        </S.Select>
+                        <S.Select>
                         <input type="checkbox" />
+                        <span>목</span>
+                        </S.Select>
+                        <S.Select>
                         <input type="checkbox" />
+                        <span>금</span>
+                        </S.Select>
+                        <S.Select>
                         <input type="checkbox" />
+                        <span>토</span>
+                        </S.Select>
+                        <S.Select>
                         <input type="checkbox" />
+                        <span>일</span>
+                        </S.Select>
                     </S.SelectDiv>
                     <S.InputDiv>
                         <span>줄거리</span>

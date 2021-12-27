@@ -1,6 +1,47 @@
 import { NavLink } from 'react-router-dom';
 import * as S from '../styled/Main'
 
+type BookInterface = {
+    id: number,
+    title: string,
+    author: string,
+    tag: string[];
+}
+
+const List: React.FC<{lists: BookInterface[]}> = ({lists}) => {
+    return(
+        <>
+        {lists.map(
+            item => {
+                return(
+            <S.Book>
+                <NavLink to={`/novel/${item.id}`}>
+                    <S.BookCover src={"https://image.novelpia.com/imagebox/cover/c1139a1358f8c808ab9ba0ce30d2eed5_17876_ori.thumb"}/>
+                </NavLink>
+                <S.BookInfo>
+                    <S.BookInfoDiv>
+                        <NavLink to={`/novel/${item.id}`}>
+                            <S.BookTittle>{item.title}</S.BookTittle>
+                        </NavLink>
+                        <S.BookAuthor>{item.author}</S.BookAuthor>
+                    </S.BookInfoDiv>
+                    <S.BookTagDiv>
+                        {item.tag.map(
+                            i => {
+                                return(
+                                    <S.Tag>#{i}</S.Tag>
+                                )
+                            }
+                        )}    
+                    </S.BookTagDiv>
+                </S.BookInfo>
+            </S.Book>
+            )
+            })}
+        </>
+    )
+}
+
 const MainPage = () => {
 
     const contestList: BookInterface[] = [
@@ -18,51 +59,6 @@ const MainPage = () => {
                         {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},
                         {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},
                         {id: 1, title: "test", author: "이상운", tag: ["1", "2"]},];
-    
-    interface BookInterface {
-        id: number,
-        title: string,
-        author: string,
-        tag: string[];
-    }
-
-    function Book(item: BookInterface){
-        return(
-            <S.Book>
-                <NavLink to={`/novel/${item.id}`}>
-                    <S.BookCover src={"https://image.novelpia.com/imagebox/cover/c1139a1358f8c808ab9ba0ce30d2eed5_17876_ori.thumb"}/>
-                </NavLink>
-                <S.BookInfo>
-                    <S.BookInfoDiv>
-                        <NavLink to={`/novel/${item.id}`}>
-                            <S.BookTittle>{item.title}</S.BookTittle>
-                        </NavLink>
-                        <S.BookAuthor>{item.author}</S.BookAuthor>
-                    </S.BookInfoDiv>
-                    <S.BookTagDiv>
-                        {item.tag.map(
-                            (item: string) => {
-                                return(
-                                    <S.Tag>#{item}</S.Tag>
-                                )
-                            }
-                        )}    
-                    </S.BookTagDiv>
-                </S.BookInfo>
-            </S.Book>
-        )
-    }
-
-    function List(lists: BookInterface[]) {
-        const list = lists.map(
-            i => {
-                return(
-                    <Book item={{id: 1, title: "test", author: "이상운", tag: ["1", "2"]}}/>
-                )
-            }
-        )
-        return list
-    }
 
     return(
         <>

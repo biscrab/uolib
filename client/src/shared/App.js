@@ -15,7 +15,11 @@ function App() {
 
   return (
     <>
+      {!location.pathname.includes("/viewer") ?
       <Header />
+      :
+      <></>
+      }
       <Routes>
         <Route exact path="/" element={<P.Main />}/>
         <Route exact path="/novel/:id" element={<P.Novel />}/>
@@ -23,7 +27,11 @@ function App() {
         <Route exact path="/search/:type/:keyword/:page" element={<P.Search />} />
         <Route exact path="/search/:type/:keyword" element={<P.Search />} />
         <Route exact path= "/search" element={<P.Search />}/>
+        <Route exact path="/free/:type/:category" element={<P.Serialize/>}/>
+        <Route exact path="/free/:type" element={<P.Serialize/>}/>
         <Route exact path="/free" element={<P.Serialize/>}/>
+        <Route exact path="/plus/:type/:category" element={<P.Serialize/>}/>
+        <Route exact path="/plus/:type" element={<P.Serialize/>}/>
         <Route exact path="/plus" element={<P.Serialize/>}/>
         <Route exact path="/readers" element={<P.Readers />}/>
         <Route exact path="/mybook" element={<P.MyBook />}/>
@@ -32,6 +40,10 @@ function App() {
         <Route exact path="/login" element={<P.Login />} />
         <Route exact path="/signup" element={<P.SignUp />} />
         <Route exact path="/write" element={<P.Write />} />
+        <Route exact path="/alarm" element={<P.Alarm />} />
+        <Route exact path="/viewer/:id/:list" element={<P.Viewer />} />
+        <Route exact path="/viewer/:id" element={<P.Viewer />} />
+        <Route exact path="/user/:id" element={<P.User />} />
       </Routes>
       <Footer />
     </>
