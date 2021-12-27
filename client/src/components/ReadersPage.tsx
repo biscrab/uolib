@@ -83,26 +83,3 @@ const ReadersPage = () => {
 }
 
 export default ReadersPage
-
-/*            <S.List>
-            <S.Row>
-                <S.Number id={1}></S.Number>
-                <S.Title id={1}></S.Title>
-                <S.Author id={1}></S.Author>
-                <S.View id={1}></S.View>
-                <S.Like id={1}></S.Like>
-            </S.Row>
-                {list.map(
-                    (i, index) => {
-                        return(
-                            <S.Row>
-                                <S.Number id={index%2}>{i.number}</S.Number>
-                                <S.Title id={index%2}>{i.title}</S.Title>
-                                <S.Author id={index%2}>{i.author}</S.Author>
-                                <S.View id={index%2}>{i.view}</S.View>
-                                <S.Like id={index%2}>{i.like}</S.Like>
-                            </S.Row>
-                        )
-                    }
-                )}
-            </S.List> */

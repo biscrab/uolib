@@ -42,7 +42,7 @@ export const BookCover = styled.img`
 export const BookInfo = styled.div`
     padding-left: 15px;
     padding-right: 20px;
-    width: 230px;
+    width: 220px;
 `
 
 export const BookInfoDiv = styled.div`

@@ -35,6 +35,7 @@ export const Select = styled.div<SelectProps>`
 `
 
 export const List = styled.ul`
+    list-style: none;
     margin: 0;
     width: 100%;
     border: 1px solid #dee2e6;

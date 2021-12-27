@@ -1,13 +1,16 @@
 import '../App.css';
 import {Route, Routes, useLocation, useNavigate} from 'react-router-dom'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as P from  '../pages'
 import Header from '../contents/Header'
 import Footer from '../contents/Footer'
+import * as S from '../styled/App'
 
 function App() {
 
   const location = useLocation();
+
+  const [loading, setLoading] = useState();
 
   useEffect(()=>{
     window.scroll(0, 0);
@@ -38,6 +41,7 @@ function App() {
         <Route exact path="/readers/view/:id" element={<P.ReadersView />}/>
         <Route exact path="/mybook" element={<P.MyBook />}/>
         <Route exact path="/mybook/:type" element={<P.MyBook />}/>
+        <Route exact path="/top100/:type" element={<P.Top100/>}/>
         <Route exact path="/top100" element={<P.Top100/>}/>
         <Route exact path="/login" element={<P.Login />} />
         <Route exact path="/signup" element={<P.SignUp />} />
@@ -47,9 +51,17 @@ function App() {
         <Route exact path="/viewer/:id/:list" element={<P.Viewer />} />
         <Route exact path="/viewer/:id" element={<P.Viewer />} />
         <Route exact path="/user/:id" element={<P.User />} />
+        <Route exact path="/plus_shop" element={<P.PlusShop/>}/>
         <Route exact path="*" element={<P.Main />}/>
       </Routes>
       <Footer />
+      {loading ?
+      <S.LoadingBackground>
+
+      </S.LoadingBackground>
+      :
+      <></>
+      }
     </>
   );
 }

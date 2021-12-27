@@ -30,17 +30,17 @@ const SearchPage = () => {
             :
             <></>
             }
-            <S.SearchTypeDiv>
-                <NavLink to={`/search/novel`}>
-                <S.SearchType selected={params.type === "novel" || !params.type}>소설검색</S.SearchType>
+            <S.SelectDiv>
+                <NavLink to={`/search/novel${params.keyword ? `/${params.keyword}` : ""}`}>
+                <S.Select selected={params.type === "novel" || !params.type}>소설검색</S.Select>
                 </NavLink>
-                <NavLink to={`/search/tag`}>
-                <S.SearchType selected={params.type === "tag"}>해시태그</S.SearchType>
+                <NavLink to={`/search/tag${params.keyword ? `/${params.keyword}` : ""}`}>
+                <S.Select selected={params.type === "tag"}>해시태그</S.Select>
                 </NavLink>
-                <NavLink to={`/search/author`}>
-                <S.SearchType selected={params.type === "author"}>작가검색</S.SearchType>
+                <NavLink to={`/search/author${params.keyword ? `/${params.keyword}` : ""}`}>
+                <S.Select selected={params.type === "author"}>작가검색</S.Select>
                 </NavLink>
-            </S.SearchTypeDiv>
+            </S.SelectDiv>
             {params.keyword ?
             <>
             <S.Result>

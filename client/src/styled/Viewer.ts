@@ -41,6 +41,10 @@ export const Body = styled.div`
     }
 ` 
 
+export const AuthorsWords = styled.div`
+    background: #eee;
+`
+
 export const Setting = styled.div`
     display: flex;
     flex-direction: column;

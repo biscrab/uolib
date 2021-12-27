@@ -1,4 +1,4 @@
-import * as S from '../styled/Login'
+import * as S from '../styled/Account'
 import logo from '../images/logo.png'
 
 const LoginPage = () => {

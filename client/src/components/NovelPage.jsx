@@ -161,6 +161,8 @@ const NovelPage = () => {
                         </S.SupporterList>
                     </S.SupportDiv>
                 </S.Support>
+                {novel.other ?
+                <>
                 <S.ListTittle>작가의 다른 작품</S.ListTittle>
                 <S.OtherBookList>
                     {novel.other.map(
@@ -175,6 +177,12 @@ const NovelPage = () => {
                         }
                     )}
                 </S.OtherBookList>
+                </>
+                :
+                <>
+                <S.ListTittle>추천작품</S.ListTittle>
+                </>
+                }
             </S.AuthorBorder>
             </S.Border>
             <S.PDiv>

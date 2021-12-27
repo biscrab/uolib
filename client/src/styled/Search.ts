@@ -27,7 +27,7 @@ export const Search = styled.input`
     font-weight: bold;
 `
 
-export const SearchTypeDiv = styled.div`
+export const SelectDiv = styled.div`
     height: 50px;
     width: 100%;
     display: flex;
@@ -50,17 +50,18 @@ interface SelectedProps{
 }
 
 export const Category = styled.li<SelectedProps>`
+    list-style: none;
     padding: 10px;
     font-size: 14px;
     color: ${props => props.selected ? "white" : ""};
-    background-color: ${props => props.selected ? "#5a35cd" : ""}
+    background-color: ${props => props.selected ? "#5a35cd" : ""};
 `
 
-export const SearchType = styled.div<SelectedProps>`
+export const Select = styled.div<SelectedProps>`
     width: 100%;
     height: 50px;
     border: 1px solid #eee;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid black;
     display: flex;
     align-items: center;
     justify-content: center;

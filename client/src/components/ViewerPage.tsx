@@ -98,6 +98,7 @@ const ViewerPage = () => {
         <div>
             123
         </div>
+        ,author's words
         </S.Body>
         <S.Bottom>
             <div>

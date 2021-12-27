@@ -15,6 +15,7 @@ a{
 button{
   outline: 0;
   cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 input, textarea {
@@ -22,6 +23,5 @@ input, textarea {
 }
 
 ul{
-  list-style: none;
   padding: 0;
 }
