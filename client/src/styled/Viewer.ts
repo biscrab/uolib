@@ -1,13 +1,17 @@
 import styled from 'styled-components'
 
-export const Header = styled.div`
+type DarkProps = {
+    dark: boolean
+}
+
+export const Header = styled.div<DarkProps>`
     width: 100%;
     padding: 20px 0px;
     box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px 0px;
     position: fixed;
     top: 0;
     z-index: 9999;
-    background: white;
+    background: ${props => props.dark ? "#35363a" : "white"};
     span{
         cursor: pointer;
     }
@@ -22,13 +26,14 @@ export const HeaderDiv = styled.div`
     align-items: center;
 `
 
-export const Body = styled.div`
+export const Body = styled.div<DarkProps>`
     margin-top: 50px;
     width: 1000px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    color: ${props => props.dark ? "white" : ""};
     flex-direction: column;
     img{
         width: 400px;
@@ -41,8 +46,8 @@ export const Body = styled.div`
     }
 ` 
 
-export const AuthorsWords = styled.div`
-    background: #eee;
+export const AuthorsWords = styled.div<DarkProps>`
+    background: ${props => props.dark ? "#35363a" : "#eee"};
 `
 
 export const Setting = styled.div`
@@ -90,9 +95,9 @@ export const SettingButton = styled.button<ButtonProps>`
     border-radius: 3px;
 `
 
-export const Bottom = styled.div`
+export const Bottom = styled.div<DarkProps>`
     position: fixed;
-    background: white;
+    background: ${props => props.dark ? "#35363a" : "white"};
     bottom: 0;
     width: 100%;
     padding: 20px 0px;

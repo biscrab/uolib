@@ -14,6 +14,9 @@ function App() {
 
   useEffect(()=>{
     window.scroll(0, 0);
+    if(!location.pathname.includes("/viewer")){
+      document.body.style.backgroundColor = "white";
+    }
   },[location.pathname])
 
   return (

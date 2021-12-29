@@ -1,16 +1,31 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom';
 import * as S from '../styled/Viewer'
+import $ from 'jquery'
 
 const ViewerPage = () => {
 
     const [onSetting, setOnSetting] = useState(false);
+    const [darkmode, setDarkmode] = useState(true);
     const params = useParams();
     const novel : number = 1;
 
+    useEffect(()=>{
+        if(darkmode){
+            document.body.style.backgroundColor="black";
+        }
+        else{
+            document.body.style.backgroundColor="white";
+        }
+    },[darkmode])
+
+    useEffect(()=>{
+        
+    })
+
     return(
         <>
-        <S.Header>
+        <S.Header dark={darkmode}>
             <S.HeaderDiv>
                 <NavLink to={`/novel/${novel}`}>
                     <i className="fas fa-home"></i>
@@ -93,14 +108,16 @@ const ViewerPage = () => {
                 </S.Setting>
             </S.HeaderDiv>
         </S.Header>
-        <S.Body>
+        <S.Body dark={darkmode}>
         <img src="https://image.novelpia.com/imagebox/cover/389dc063c0e465e5a7f7e3f3ac04bddd_130337_ori.file"/>
         <div>
             123
         </div>
-        ,author's words
+        <S.AuthorsWords dark={darkmode}>
+            
+        </S.AuthorsWords>
         </S.Body>
-        <S.Bottom>
+        <S.Bottom dark={darkmode}>
             <div>
                 <span>이전화</span>
                 <span>다음화</span>
