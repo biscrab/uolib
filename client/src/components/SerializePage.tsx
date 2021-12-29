@@ -32,13 +32,21 @@ const SerializePage = () => {
 
     return(
         <>
-        <S.Banner />
+        <S.Banner background="#eee"/>
         <S.Body>
             <S.SelectDiv>
-                <S.Select selected={params.type === "/"}>전체</S.Select>
+                <NavLink to={`/${plus ? "plus" : "free"}/all`}>
+                <S.Select selected={params.type === "all" || !params.type}>전체</S.Select>
+                </NavLink>
+                <NavLink to={`/${plus ? "plus" : "free"}/all`}>
                 <S.Select selected={params.type === "/"}>독점</S.Select>
+                </NavLink>
+                <NavLink to={`/${plus ? "plus" : "free"}/all`}>
                 <S.Select selected={params.type === "/"}>신작</S.Select>
+                </NavLink>
+                <NavLink to={`/${plus ? "plus" : "free"}/all`}>
                 <S.Select selected={params.type === "/"}>완결</S.Select>
+                </NavLink>
             </S.SelectDiv>
             <S.Result>
                 <b>총 0개의 작품</b>

@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 
-export const Banner = styled.div`
+type BannerProps = {
+    background: string
+}
+
+export const Banner = styled.div<BannerProps>`
     width: 100%;
     height: 150px;
-    background-color: #eee;
+    background-color: ${props => props.background};
 `
 
 export const Body = styled.div`
@@ -65,9 +69,10 @@ export const Select = styled.div<SelectedProps>`
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
     cursor: pointer;
     border: ${props => props.selected ? "1px solid black" : ""};
-    border-bottom: ${props => props.selected ? "none" : "1px solid black"};
+    border-bottom: ${props => props.selected ? "none" : "2px solid black"};
 `
 
 export const ResultSpan = styled.div`
@@ -86,6 +91,7 @@ export const Result = styled.div`
         display: flex;
         b{
             margin-right: 15px;
+            font-size: 14px;
             cursor: pointer;
         }
     }

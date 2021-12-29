@@ -1,6 +1,10 @@
+import { useState } from 'react'
 import * as S from '../styled/PlusShop'
 
 const PlusShopPage = () => {
+
+    const [onPayment, setOnPayment] = useState(true);
+
     return(
         <>
         <S.Banner />
@@ -26,6 +30,23 @@ const PlusShopPage = () => {
                 </ul>
             </S.Guidance>
         </S.Body>
+        {onPayment ?
+            <S.Background>
+                <S.Payment>
+                    <S.PaymentHead>
+                    <h2>결제</h2>
+                    </S.PaymentHead>
+                    <S.PriceDiv>
+                        1000원
+                    </S.PriceDiv>
+                    <S.MethodDiv>
+
+                    </S.MethodDiv>
+                </S.Payment>
+            </S.Background>
+            :
+            <></>
+        }
         </>
     )
 }

@@ -16,7 +16,7 @@ const AlarmPage = () => {
         <S.Body>
             <S.SelectDiv>
                 <NavLink to="/alarm/comment">
-                    <S.Select selected={params.type==="comment"}>댓글알림</S.Select>
+                    <S.Select selected={params.type==="comment" || !params.type}>댓글알림</S.Select>
                 </NavLink>
                 <NavLink to="/alarm/subscribe">
                     <S.Select selected={params.type==="subscribe"}>구독알림</S.Select>
@@ -31,6 +31,7 @@ const AlarmPage = () => {
             <S.List>
                 {lists.map(i => {
                     return(
+                        <NavLink to="/novel/1">
                         <S.Alarm>
                             <img src="https://novelpia.com/img/new/menu/alarm.png"/>
                             <div>
@@ -40,6 +41,7 @@ const AlarmPage = () => {
                             </S.AlarmContents>
                             </div>
                         </S.Alarm>
+                        </NavLink>
                     )
                 })}
             </S.List>

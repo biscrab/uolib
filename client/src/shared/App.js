@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import {Route, Routes, useLocation, useNavigate} from 'react-router-dom'
 import { useEffect, useState } from 'react';
@@ -5,12 +6,18 @@ import * as P from  '../pages'
 import Header from '../contents/Header'
 import Footer from '../contents/Footer'
 import * as S from '../styled/App'
+import axios from 'axios';
 
 function App() {
 
   const location = useLocation();
 
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(()=>{
+    axios.get('https://michinjin.herokuapp.com/notice/1')
+      
+  },[])
 
   useEffect(()=>{
     window.scroll(0, 0);
@@ -60,7 +67,10 @@ function App() {
       <Footer />
       {loading ?
       <S.LoadingBackground>
-
+      <div class="spinner-border text-secondary" style={{width: "4rem", height: "4rem"}} role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <S.LoadingText>로딩중...</S.LoadingText>
       </S.LoadingBackground>
       :
       <></>

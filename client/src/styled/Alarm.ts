@@ -33,13 +33,12 @@ export const Select = styled.div<SelectProps>`
 `
 
 export const List = styled.ul`
-    padding: 0;
+    padding: 10px;
     margin: 0;
 `
 
 export const Alarm = styled.div`
     display: flex;
-    margin: 10px;
     width: 100%;
     border: 2px solid #eee;
 `

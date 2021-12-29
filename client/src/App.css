@@ -12,6 +12,10 @@ a{
   color: inherit;
 }
 
+a:hover{
+  color: inherit;
+}
+
 button{
   outline: 0;
   cursor: pointer;
