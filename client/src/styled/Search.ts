@@ -130,14 +130,17 @@ export const TagList = styled.li`
     }
 `
 
-export const Tag = styled.li`
+export const Tag = styled.div`
+    color: #000;
     border: 2px solid #333;
-    border-radius: 12.5px;
-    height: 25px;
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-    font-size: 15px;
+    border-radius: 20px;
+    padding: 1px 8px;
+    line-height: 20px;
+    float: left;
+    margin: 3px 2px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 12px;
 `
 
 export const Book = styled.li`

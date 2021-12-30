@@ -7,6 +7,12 @@ const PlusShopPage = () => {
 
     return(
         <>
+        <S.ShopDiv>
+            <div>
+            <span>맴버십</span>
+            <span>코인</span>
+            </div>
+        </S.ShopDiv>
         <S.Banner />
         <S.Body>
             <S.Tittle>유라이브 PLUS 요금제</S.Tittle>

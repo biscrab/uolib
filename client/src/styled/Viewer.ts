@@ -12,6 +12,7 @@ export const Header = styled.div<DarkProps>`
     top: 0;
     z-index: 9999;
     background: ${props => props.dark ? "#35363a" : "white"};
+    color: ${props => props.dark ? "white" : ""};
     span{
         cursor: pointer;
     }
@@ -27,7 +28,7 @@ export const HeaderDiv = styled.div`
 `
 
 export const Body = styled.div<DarkProps>`
-    margin-top: 50px;
+    margin: 100px 0px;
     width: 1000px;
     position: relative;
     left: 50%;
@@ -35,6 +36,7 @@ export const Body = styled.div<DarkProps>`
     display: flex;
     color: ${props => props.dark ? "white" : ""};
     flex-direction: column;
+    user-select: none;
     img{
         width: 400px;
         position: relative;
@@ -48,6 +50,16 @@ export const Body = styled.div<DarkProps>`
 
 export const AuthorsWords = styled.div<DarkProps>`
     background: ${props => props.dark ? "#35363a" : "#eee"};
+`
+
+export const NextButton = styled.button`
+    margin-top: 30px;
+    background-color: #eee;
+    border: 0;
+    padding: 10px 0px;
+    font-size: 18px;
+    border: 1px solid darkgray;
+    border-radius: 3px;
 `
 
 export const Setting = styled.div`
@@ -98,6 +110,7 @@ export const SettingButton = styled.button<ButtonProps>`
 export const Bottom = styled.div<DarkProps>`
     position: fixed;
     background: ${props => props.dark ? "#35363a" : "white"};
+    color: ${props => props.dark ? "white" : ""};
     bottom: 0;
     width: 100%;
     padding: 20px 0px;

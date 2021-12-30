@@ -51,6 +51,9 @@ const Header = () => {
                     </NavLink>
                 </S.PathDiv>
                 <S.MenuDiv>
+                    <NavLink to="/plus_shop">
+                    <img src="https://image.novelpia.com/img/new/menu/point.png?ver=3" />
+                    </NavLink>
                     <NavLink to="/alarm">
                     <img src="https://image.novelpia.com/img/new/menu/alarm.png"/>
                     </NavLink>
@@ -63,6 +66,7 @@ const Header = () => {
                         <S.MenuModal className='menumodal'>
                             <S.MenuLi>
                                 <img src="https://phinf.pstatic.net/contact/20210430_217/1619765233604XypyT_PNG/avatar_profile.png"/>
+                                <b>이름</b>
                             </S.MenuLi>
                             <S.MenuLi>신규 소설등록</S.MenuLi>
                             <S.MenuLi>내 작품 관리</S.MenuLi>

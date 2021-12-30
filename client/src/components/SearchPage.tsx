@@ -9,7 +9,7 @@ const SearchPage = () => {
     const navigate = useNavigate();
 
     const plus = location.pathname.includes("/plus");
-    const [keyword, setKeyword] = useState("");
+    const [keyword, setKeyword] = useState(params.keyword);
 
     const lists = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명"}]
 

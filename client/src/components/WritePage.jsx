@@ -19,6 +19,13 @@ const WritePage = () => {
         console.log(text.current);
     };
 
+    const toBold = () => {
+    }
+
+    useEffect(()=>{
+        //toBold();
+    })
+
     useEffect(()=>{
         $("html").click(function(e){
             if(!$(".emenu").has(e.target).length){
@@ -61,7 +68,8 @@ const WritePage = () => {
                     }
                     </S.SettingButton>
                 </S.SettingDiv>
-                <ContentEditable className="text" html={text.current} onBlur={handleBlur} onChange={handleChange} />
+                <ContentEditable className="text" contenteditable="true" html={text.current} onBlur={handleBlur} onChange={handleChange}>
+                </ContentEditable>
             </S.TextDiv>
             <S.RTittle>
                 <b>작가후기</b>

@@ -1,5 +1,27 @@
 import styled from 'styled-components'
 
+export const ShopDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #704bfa;
+    color: white;
+    padding: 10px 0px;
+    font-size: 18px;
+    div{
+        width: 500px;
+        display: flex;
+        justify-content: space-between;
+    }
+    span{
+        cursor: pointer;
+    }
+`
+
 export const Banner = styled.div`
     height: 250px;
     background: #eee;

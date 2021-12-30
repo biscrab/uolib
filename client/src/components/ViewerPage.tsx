@@ -6,7 +6,8 @@ import $ from 'jquery'
 const ViewerPage = () => {
 
     const [onSetting, setOnSetting] = useState(false);
-    const [darkmode, setDarkmode] = useState(true);
+    const [darkmode, setDarkmode] = useState(false);
+    const [onInterface, setOnInterface] = useState(false);
     const params = useParams();
     const novel : number = 1;
 
@@ -20,12 +21,13 @@ const ViewerPage = () => {
     },[darkmode])
 
     useEffect(()=>{
-        
+        $('html').click(function(e){if(!$(".interface").has(e.target).length)setOnInterface(!onInterface)})
     })
 
     return(
         <>
-        <S.Header dark={darkmode}>
+        {onInterface ?
+        <S.Header dark={darkmode} className='interface'>
             <S.HeaderDiv>
                 <NavLink to={`/novel/${novel}`}>
                     <i className="fas fa-home"></i>
@@ -108,6 +110,9 @@ const ViewerPage = () => {
                 </S.Setting>
             </S.HeaderDiv>
         </S.Header>
+        :
+        <></>
+        }
         <S.Body dark={darkmode}>
         <img src="https://image.novelpia.com/imagebox/cover/389dc063c0e465e5a7f7e3f3ac04bddd_130337_ori.file"/>
         <div>
@@ -116,13 +121,18 @@ const ViewerPage = () => {
         <S.AuthorsWords dark={darkmode}>
             
         </S.AuthorsWords>
+        <S.NextButton>다음 화</S.NextButton>
         </S.Body>
-        <S.Bottom dark={darkmode}>
+        {onInterface ?
+        <S.Bottom dark={darkmode} className='interface'>
             <div>
                 <span>이전화</span>
                 <span>다음화</span>
             </div>
         </S.Bottom>
+        :
+        <></>
+        }
         </>
     )
 }
