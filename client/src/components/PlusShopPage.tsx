@@ -3,18 +3,36 @@ import * as S from '../styled/PlusShop'
 
 const PlusShopPage = () => {
 
-    const [onPayment, setOnPayment] = useState(true);
+    const [onPayment, setOnPayment] = useState(false);
 
     return(
         <>
         <S.Banner />
         <S.Body>
-            <h2>유라이브 PLUS 요금제</h2>
+            <S.Tittle>유라이브 PLUS 요금제</S.Tittle>
             <S.MemberShipDiv>
-                <S.MemberShip></S.MemberShip>
-                <S.MemberShip></S.MemberShip>
-                <S.MemberShip></S.MemberShip>
+                <S.MemberShip>
+                    <h4>멤버십</h4>
+                    <div>
+                    <input type="checkbox"/>
+                    <span>아래의 결제 안내사항에 동의합니다.</span>
+                    </div>
+                    <button>결제하기</button>
+                </S.MemberShip>
+                <S.MemberShip>
+                    <h4>멤버십</h4>
+                    <input type="checkbox"/>
+                    <span>아래의 결제 안내사항에 동의합니다.</span>
+                    <button>결제하기</button>
+                </S.MemberShip>
+                <S.MemberShip>
+                    <h4>멤버십</h4>
+                    <input type="checkbox"/>
+                    <span>아래의 결제 안내사항에 동의합니다.</span>
+                    <button>결제하기</button>
+                </S.MemberShip>
             </S.MemberShipDiv>
+            <h2>멤버십 해택</h2>
             <S.Guidance>
                 <h2>결제상품 이용 안내</h2>
                 <ul>

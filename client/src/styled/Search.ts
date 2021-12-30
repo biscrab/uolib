@@ -16,6 +16,9 @@ export const Body = styled.div`
     left: 50%;
     transform: translateX(-50%);
     margin-top: 50px;
+    @media screen and (max-width: 1200px){
+        width: 100%;
+    }
 `
 
 export const Search = styled.input`
@@ -65,14 +68,15 @@ export const Select = styled.div<SelectedProps>`
     width: 100%;
     height: 50px;
     border: 1px solid #eee;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #333;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    white-space: nowrap;
     cursor: pointer;
-    border: ${props => props.selected ? "1px solid black" : ""};
-    border-bottom: ${props => props.selected ? "none" : "2px solid black"};
+    border: ${props => props.selected ? "1px solid #333" : ""};
+    border-bottom: ${props => props.selected ? "none" : "1px solid #333"};
 `
 
 export const ResultSpan = styled.div`
@@ -100,9 +104,40 @@ export const Result = styled.div`
 export const List  = styled.ul`
     padding: 0;
     margin: 0;
-    margin-top: 10px;
     height: 1000px;
     list-style: none;
+    width: 25%;
+`
+
+export const TagListDiv = styled.ul`    
+    width: 100%;
+    margin-top: 50px;
+`
+
+export const TagList = styled.li`
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+    b{
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+    ul{
+        list-style: none;
+        margin-top: 10px;
+    }
+`
+
+export const Tag = styled.li`
+    border: 2px solid #333;
+    border-radius: 12.5px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    font-size: 15px;
 `
 
 export const Book = styled.li`

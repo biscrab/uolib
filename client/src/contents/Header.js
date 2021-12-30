@@ -21,7 +21,6 @@ const Header = () => {
         $(".menuicon").click(function(e){
             if(!onMenu){
                 setOnMenu(true);
-                $(".menumodal").animate({opacity: +0.1, height: +0.35}, 1000);
             }
         })
     })

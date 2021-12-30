@@ -33,6 +33,7 @@ export const List = styled.ul`
     padding: 0;
     margin: 0;
     height: 1000px;
+    margin-top: 10px;
 `
 
 export const Book = styled.li`

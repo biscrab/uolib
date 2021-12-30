@@ -18,6 +18,10 @@ export const HeaderDiv = styled.div`
     justify-content: space-between;
     height: 100%;
     width: 1240px;
+    @media screen and (max-width: 1240px){
+        width: 100%;
+        padding: 0px 20px;
+    }
 `
 
 export const LogoDiv = styled.div`
@@ -25,7 +29,8 @@ export const LogoDiv = styled.div`
 `
 
 export const Logo = styled.img`
-    width: 130px;
+    width: 150px;
+    padding-right: 10px;
 `
 
 export const PathDiv = styled.div`
@@ -43,8 +48,8 @@ export const Path = styled.b<{path: boolean}>`
 
 export const MenuDiv = styled.div`
     display: flex;
-    width: 200px;
-    justify-content: space-around;
+    width: 160px;
+    justify-content: space-between;
 
     img{
         height: 50px;
@@ -68,7 +73,7 @@ export const MenuModal = styled.ul`
     margin-top: 60px;
     padding: 10px 0px;
     height: 350px;
-    overflow-y: scroll;
+    overflow-y: auto;
 `
 
 export const MenuLi = styled.li`

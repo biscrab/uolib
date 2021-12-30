@@ -34,16 +34,23 @@ export const Select = styled.div<SelectProps>`
     border-bottom: ${props => props.selected ? "none" : "2px solid #555"};
 `
 
-export const List = styled.ul`
+export const List = styled.table`
     list-style: none;
     margin: 0;
     width: 100%;
-    border: 1px solid #dee2e6;
+    height: 1000px;
 `
 
-export const FanArtList = styled.div`
+export const FanArtList = styled.ul`
     display: flex;
     flex-wrap: wrap;
+    height: 1000px;
+    list-style: none;
+`
+
+export const HallOfFameList = styled.ul`
+    height: 1000px;
+    list-style: none;
 `
 
 interface IndexProps{
@@ -53,7 +60,8 @@ interface IndexProps{
 export const Row = styled.li<IndexProps>`
     width: 100%;
     cursor: pointer;
-    border-top: 1px solid #dee2e6;
+    border: 1px solid #dee2e6;
+    border-bottom: 0;
     span{
         box-sizing: border-box;
         padding: 0.5rem 0.75rem; 
@@ -61,33 +69,33 @@ export const Row = styled.li<IndexProps>`
     background: ${props => props.idx ? "#f9f9f9" : "white"};
 `
 
-export const Number = styled.span<IndexProps>`
+export const Number = styled.tr<IndexProps>`
     height: 100%;
     color: #737c85;
     font-size: 14px;
     background: ${props => props.idx ? "#eaeaea" : "#fafafa"};
 `
 
-export const Type = styled.span`
+export const Type = styled.tr`
 
 `
 
-export const Title = styled.span<IndexProps>`
+export const Title = styled.tr<IndexProps>`
     width: 100%;
     height: 100%;
 `
 
-export const Author = styled.span<IndexProps>`
+export const Author = styled.tr<IndexProps>`
     width: 100px;
     height: 100%;
 `
 
-export const View = styled.span<IndexProps>`
+export const View = styled.tr<IndexProps>`
     width: 70px;
     height: 100%;
 `
 
-export const Like = styled.span<IndexProps>`
+export const Like = styled.tr<IndexProps>`
     width: 70px;
     height: 100%;
 `

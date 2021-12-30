@@ -75,8 +75,11 @@ const ReadersPage = () => {
             :
             <></>
             }
-            {params.type 
-
+            {params.type === "hall_of_fame" ?
+            <S.HallOfFameList>
+            </S.HallOfFameList>
+            :
+            <></>
             }
         </S.Body>
     )

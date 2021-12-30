@@ -30,6 +30,8 @@ const SearchPage = () => {
             :
             <></>
             }
+            {params.keyword ?
+            <>
             <S.SelectDiv>
                 <NavLink to={`/search/novel${params.keyword ? `/${params.keyword}` : ""}`}>
                 <S.Select selected={params.type === "novel" || !params.type}>소설검색</S.Select>
@@ -41,8 +43,6 @@ const SearchPage = () => {
                 <S.Select selected={params.type === "author"}>작가검색</S.Select>
                 </NavLink>
             </S.SelectDiv>
-            {params.keyword ?
-            <>
             <S.Result>
                 <b>총 0개의 작품</b>
                 <div>
@@ -86,7 +86,14 @@ const SearchPage = () => {
             </S.List>
             </>
             :
-            <></>
+            <S.TagListDiv>
+                <S.TagList>
+                    <b>인기 태그</b>
+                    <ul>
+                        <S.Tag>1</S.Tag>
+                    </ul>
+                </S.TagList>
+            </S.TagListDiv>
             }
         </S.Body>
     )

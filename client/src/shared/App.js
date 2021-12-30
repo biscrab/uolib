@@ -6,18 +6,12 @@ import * as P from  '../pages'
 import Header from '../contents/Header'
 import Footer from '../contents/Footer'
 import * as S from '../styled/App'
-import axios from 'axios';
 
 function App() {
 
   const location = useLocation();
 
   const [loading, setLoading] = useState(false);
-
-  useEffect(()=>{
-    axios.get('https://michinjin.herokuapp.com/notice/1')
-      
-  },[])
 
   useEffect(()=>{
     window.scroll(0, 0);
@@ -36,10 +30,8 @@ function App() {
       <Routes>
         <Route exact path="/novel/:id" element={<P.Novel />}/>
         <Route exact path="/new" element={<P.New />}/>
-        <Route exact path="/search/:type/:keyword/:page" element={<P.Search />} />
-        <Route exact path="/search/:type/:keyword" element={<P.Search />} />
-        <Route exact path="/search/:type" element={<P.Search />} />
-        <Route exact path="/search" element={<P.Search />}/>
+        <Route exact path="/search/:type/:order/:page/:keyword" element={<P.Search />} />
+        <Route exact path="/search" element={<P.Search />} />
         <Route exact path="/free/:type/:category" element={<P.Serialize/>}/>
         <Route exact path="/free/:type" element={<P.Serialize/>}/>
         <Route exact path="/free" element={<P.Serialize/>}/>
@@ -62,6 +54,7 @@ function App() {
         <Route exact path="/viewer/:id" element={<P.Viewer />} />
         <Route exact path="/user/:id" element={<P.User />} />
         <Route exact path="/plus_shop" element={<P.PlusShop/>}/>
+        <Route exact path="/useredit" element={<P.UserEdit />}/>
         <Route exact path="*" element={<P.Main />}/>
       </Routes>
       <Footer />

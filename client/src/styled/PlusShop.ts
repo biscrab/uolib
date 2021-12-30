@@ -13,6 +13,11 @@ export const Body = styled.div`
     width: 1200px;
 `
 
+export const Tittle = styled.h2`
+    font-weight: bold;
+    margin-bottom: 30px;
+`
+
 export const MemberShipDiv = styled.div`
     display: flex;
     width: 100%;
@@ -23,6 +28,20 @@ export const MemberShip = styled.div`
     border: 2px solid #704bfa;
     width: 30%;
     height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div{
+        display: flex;
+    }
+    input{
+        margin-right: 10px;
+    }
+    button{
+        border: 0;
+        background: #704bfa;
+        color: white;
+    }
 `
 
 export const Guidance = styled.div`

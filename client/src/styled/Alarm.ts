@@ -29,18 +29,24 @@ export const Select = styled.div<SelectProps>`
     justify-content: center;
     align-items: center;
     border: ${props => props.selected ? "1px solid #555" : "1px solid #eee"};
-    border-bottom: ${props => props.selected ? "none" : "1px solid #555"};
+    border-bottom: ${props => props.selected ? "none" : "2px solid #555"};
 `
 
 export const List = styled.ul`
     padding: 10px;
+    height: 1000px;
     margin: 0;
+    margin-top: 20px;
 `
 
 export const Alarm = styled.div`
     display: flex;
+    padding: 10px;
     width: 100%;
     border: 2px solid #eee;
+    b{
+        margin-bottom: 10px;
+    }
 `
 
 export const AlarmContents = styled.div`

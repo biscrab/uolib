@@ -6,6 +6,10 @@ export const Body = styled.div`
     left: 50%;
     transform: translateX(-50%);
     max-width: 1200px;
+    @media screen and (max-width: 1200px) {
+        width: 100%;
+        padding: 0px 20px;
+    }
 `
 
 export const Banner = styled.div`
@@ -17,8 +21,9 @@ export const Banner = styled.div`
     justify-content: center;
 `
 
-export const Title = styled.h2`
+export const Title = styled.h3`
     margin-bottom: 30px;
+    font-weight: bold;
 `
 
 export const Border = styled.div`
@@ -31,18 +36,25 @@ export const Border = styled.div`
 export const Book = styled.div`
     display: flex;
     margin-bottom: 50px;
+    @media screen and (max-width: 1200px) {
+        width:100%;
+    }
 `
 
 export const BookCover = styled.img`
     height: 200px;
     width: 140px;
     border-radius: 5px;
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
 `
 
 export const BookInfo = styled.div`
     padding-left: 15px;
     padding-right: 20px;
-    width: 220px;
+    width: 260px;
+    @media screen and (max-width: 1200px) {
+        width: 100%;
+    }
 `
 
 export const BookInfoDiv = styled.div`

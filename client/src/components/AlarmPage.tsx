@@ -35,7 +35,7 @@ const AlarmPage = () => {
                         <S.Alarm>
                             <img src="https://novelpia.com/img/new/menu/alarm.png"/>
                             <div>
-                            {i.title}
+                            <b>{i.title}</b>
                             <S.AlarmContents>
                             {i.contents}
                             </S.AlarmContents>

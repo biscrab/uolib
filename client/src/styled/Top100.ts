@@ -33,7 +33,7 @@ export const Select = styled.div<SelectProps>`
     justify-content: center;
     cursor: pointer;
     border: ${props => props.selected ? "1px solid black" : ""};
-    border-bottom: ${props => props.selected ? "none" : "1px solid black"};
+    border-bottom: ${props => props.selected ? "none" : "2px solid black"};
 `
 
 export const List = styled.div`
