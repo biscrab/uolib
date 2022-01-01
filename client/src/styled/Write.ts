@@ -129,7 +129,7 @@ interface SettingProps{
 }
 
 export const Setting = styled.button<SettingProps>`
-    background: ${props => props.selected ? "#f8f9fa" : "white"};
+    background: ${props => props.selected ? "#e9ecef" : "white"};
     display: flex;
     justify-content: center;
     align-items: center;

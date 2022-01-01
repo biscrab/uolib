@@ -5,7 +5,7 @@ import $ from 'jquery'
 
 const WritePage = () => {
 
-    const [onBold, setOnBold] = useState(false);
+    const [on, setOn] = useState({bold: false, italic: false, underline: false});
     const [onImage, setOnImage] = useState(false);
     const [onEMenu, setOnEMenu] = useState(false);
 
@@ -19,19 +19,32 @@ const WritePage = () => {
         console.log(text.current);
     };
 
-    const toBold = () => {
+    const change = (i) => {
+        document.execCommand(i, false, null);
+        switch(i){
+            case "bold" :
+                setOn({...on, bold: !on.bold});
+                break;
+            case "italic" :
+                setOn({...on, italic: !on.italic});
+                break;
+            case "underline" :
+                setOn({...on, underline: !on.underline});
+                break;
+        }
+        $(".text").focus();
     }
 
     useEffect(()=>{
-        //toBold();
-    })
+
+    },[text.current])
 
     useEffect(()=>{
         $("html").click(function(e){
             if(!$(".emenu").has(e.target).length){
                 setOnEMenu(false);
             }
-        })   
+        })  
     })
 
     return(
@@ -48,10 +61,12 @@ const WritePage = () => {
             </S.SelectDiv>
             <S.TextDiv>
                 <S.SettingDiv>
-                    <S.Setting selected={onBold} onClick={()=>setOnBold(!onBold)}><i class="fas fa-bold"></i></S.Setting>
+
+                    <S.Setting onClick={()=>change("bold")} selected={on.bold}><i class="fas fa-bold"></i></S.Setting>
                     <S.Setting onClick={()=>setOnImage(true)}><i class="far fa-image fa-lg"></i></S.Setting>
-                    <S.Setting><i class="fas fa-italic"></i></S.Setting>
-                    <S.Setting><i class="fas fa-underline"></i></S.Setting>
+                    <S.Setting onClick={()=>change("italic")} selected={on.italic}><i class="fas fa-italic"></i></S.Setting>
+                    <S.Setting onClick={()=>change("underline")} selected={on.underline}><i class="fas fa-underline"></i></S.Setting>
+
                     <S.SettingButton>
                     <S.Setting onClick={()=>setOnEMenu(!onEMenu)}>
                         <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24" x="0"/></g><g><g><polygon points="19,9 20.25,6.25 23,5 20.25,3.75 19,1 17.75,3.75 15,5 17.75,6.25"/><polygon points="19,15 17.75,17.75 15,19 17.75,20.25 19,23 20.25,20.25 23,19 20.25,17.75"/><path d="M11.5,9.5L9,4L6.5,9.5L1,12l5.5,2.5L9,20l2.5-5.5L17,12L11.5,9.5z M9.99,12.99L9,15.17l-0.99-2.18L5.83,12l2.18-0.99 L9,8.83l0.99,2.18L12.17,12L9.99,12.99z"/></g></g></svg>
@@ -68,8 +83,8 @@ const WritePage = () => {
                     }
                     </S.SettingButton>
                 </S.SettingDiv>
-                <ContentEditable className="text" contenteditable="true" html={text.current} onBlur={handleBlur} onChange={handleChange}>
-                </ContentEditable>
+                <div className="text" role="textbox" aria-multiline="true" spellcheck="true" autocorrect="true" contenteditable="true" html={text.current} onBlur={handleBlur} onChange={handleChange}>
+                </div>
             </S.TextDiv>
             <S.RTittle>
                 <b>작가후기</b>
