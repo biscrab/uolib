@@ -27,14 +27,18 @@ const PlusShopPage = () => {
                 </S.MemberShip>
                 <S.MemberShip>
                     <h4>멤버십</h4>
+                    <div>
                     <input type="checkbox"/>
                     <span>아래의 결제 안내사항에 동의합니다.</span>
+                    </div>
                     <button>결제하기</button>
                 </S.MemberShip>
                 <S.MemberShip>
                     <h4>멤버십</h4>
+                    <div>
                     <input type="checkbox"/>
                     <span>아래의 결제 안내사항에 동의합니다.</span>
+                    </div>
                     <button>결제하기</button>
                 </S.MemberShip>
             </S.MemberShipDiv>

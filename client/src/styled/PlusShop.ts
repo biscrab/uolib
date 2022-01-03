@@ -55,6 +55,7 @@ export const MemberShip = styled.div`
     align-items: center;
     div{
         display: flex;
+        align-items: center;
     }
     input{
         margin-right: 10px;

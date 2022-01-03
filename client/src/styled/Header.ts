@@ -29,8 +29,8 @@ export const LogoDiv = styled.div`
 `
 
 export const Logo = styled.img`
-    width: 150px;
-    padding-right: 10px;
+    width: 160px;
+    padding-right: 30px;
 `
 
 export const PathDiv = styled.div`
@@ -48,7 +48,7 @@ export const Path = styled.b<{path: boolean}>`
 
 export const MenuDiv = styled.div`
     display: flex;
-    width: 160px;
+    width: 200px;
     justify-content: space-between;
 
     img{

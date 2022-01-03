@@ -58,6 +58,7 @@ export const Info = styled.div`
     display: flex;
     align-items: center;
     font-size: 13px;
+    width: 100%;
     span{
         margin-right: 5px;
     }
