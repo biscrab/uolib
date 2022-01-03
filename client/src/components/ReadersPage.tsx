@@ -76,8 +76,28 @@ const ReadersPage = () => {
             <></>
             }
             {params.type === "hall_of_fame" ?
+            <>
+            <S.HallOfFame>
+            <h2>명예의 전당</h2>
             <S.HallOfFameList>
+                <S.HallOfFameDiv>
+                    <div>
+
+                    </div>
+                </S.HallOfFameDiv>
+                <S.HallOfFameDiv>
+                    <div>
+
+                    </div>
+                </S.HallOfFameDiv>
+                <S.HallOfFameDiv>
+                    <div>
+                        
+                    </div>                    
+                </S.HallOfFameDiv>
             </S.HallOfFameList>
+            </S.HallOfFame>
+            </>
             :
             <></>
             }

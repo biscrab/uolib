@@ -47,23 +47,35 @@ export const MemberShipDiv = styled.div`
 `
 
 export const MemberShip = styled.div`
-    border: 2px solid #704bfa;
+    border: 3px solid #704bfa;
     width: 30%;
     height: 250px;
     display: flex;
+    box-sizing: border-box;
+    padding: 20px;
     flex-direction: column;
     align-items: center;
+    h4{
+        font-weight: bold;
+    }
     div{
         display: flex;
         align-items: center;
+        width: 100%;
+        font-size: 15px;
+        color: #333;
     }
     input{
-        margin-right: 10px;
+        margin-right: 5px;
     }
     button{
         border: 0;
         background: #704bfa;
         color: white;
+        width: 100%;
+        padding: 5px 0px;
+        font-size: 18px;
+        border-radius: 3px;
     }
 `
 
@@ -90,27 +102,38 @@ export const Background = styled.div`
 
 export const Payment = styled.div`
     background-color: white;
-    padding: 30px;
-    width: 400px;
-    height: 500px;
+    padding: 20px;
+    width: 500px;
+    height: 400px;
     box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
 `
 
 export const PaymentHead = styled.div`
     display: flex;
     justify-content: space-between;
+    border-bottom: 2px solid #333;
+    svg{
+        cursor: pointer;
+    }
 `
 
 export const PriceDiv = styled.div`
-    border: 2px solid #5a35cd;
+    border: 1px solid gray;
+    background: #eee;
     width: 100%;
-    padding: 0px 10px;
+    padding: 15px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
 `
 
 export const MethodDiv = styled.div`
     display: flex;
     flex-wrap: wrap;
+    margin-top: 20px;
     div{
-        border: 2px solid black;
+        width: 33.3%;
+        height: 80px;
+        border: 1px solid gray;
     }
 `

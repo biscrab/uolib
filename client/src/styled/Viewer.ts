@@ -24,11 +24,13 @@ export const HeaderDiv = styled.div`
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    justify-content: space-between;
     align-items: center;
 `
 
 export const Body = styled.div<DarkProps>`
-    margin: 100px 0px;
+    margin-top: 30px;
+    margin-bottom: 100px;
     width: 1000px;
     position: relative;
     left: 50%;

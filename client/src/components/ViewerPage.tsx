@@ -7,7 +7,7 @@ const ViewerPage = () => {
 
     const [onSetting, setOnSetting] = useState(false);
     const [darkmode, setDarkmode] = useState(false);
-    const [onInterface, setOnInterface] = useState(false);
+    const [onInterface, setOnInterface] = useState(true);
     const params = useParams();
     const novel : number = 1;
 
@@ -30,7 +30,7 @@ const ViewerPage = () => {
         <S.Header dark={darkmode} className='interface'>
             <S.HeaderDiv>
                 <NavLink to={`/novel/${novel}`}>
-                    <i className="fas fa-home"></i>
+                    <i className="fas fa-home fa-lg"></i>
                 </NavLink>
                 <span>123</span>
                 <S.Setting>

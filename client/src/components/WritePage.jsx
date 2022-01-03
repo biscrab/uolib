@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
 import * as S from '../styled/Write'
-import ContentEditable from 'react-contenteditable'
 import $ from 'jquery'
 
 const WritePage = () => {
@@ -13,6 +12,7 @@ const WritePage = () => {
 
     const handleChange = evt => {
         text.current = evt.target.value;
+        console.log(text)
     };
     
     const handleBlur = () => {
@@ -21,6 +21,8 @@ const WritePage = () => {
 
     const change = (i) => {
         document.execCommand(i, false, null);
+        console.log(text.current);
+        /*
         switch(i){
             case "bold" :
                 setOn({...on, bold: !on.bold});
@@ -31,7 +33,7 @@ const WritePage = () => {
             case "underline" :
                 setOn({...on, underline: !on.underline});
                 break;
-        }
+        }*/
         $(".text").focus();
     }
 

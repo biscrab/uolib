@@ -48,9 +48,34 @@ export const FanArtList = styled.ul`
     list-style: none;
 `
 
+export const HallOfFame = styled.div`
+    margin-top: 50px;
+    margin-bottom: 80px;
+    h2{
+        margin-bottom: 50px;
+        text-align: center;
+        font-weight: bold;
+    }
+`
+
 export const HallOfFameList = styled.ul`
-    height: 1000px;
+    height: 800px;
     list-style: none;
+    display: flex;
+    justify-content: space-between;
+`
+
+export const HallOfFameDiv = styled.li`
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.3);
+    height: 800px;
+    width: 32%;
+    border-radius: 10px;
+    padding: 10px;
+    div{
+        background-color: #eee;
+        border-radius: 20px;
+        padding: 20px;
+    }
 `
 
 interface IndexProps{
@@ -62,6 +87,7 @@ export const Row = styled.li<IndexProps>`
     cursor: pointer;
     border: 1px solid #dee2e6;
     border-bottom: 0;
+    display: flex;
     span{
         box-sizing: border-box;
         padding: 0.5rem 0.75rem; 
@@ -73,6 +99,8 @@ export const Number = styled.tr<IndexProps>`
     height: 100%;
     color: #737c85;
     font-size: 14px;
+    width: 80px;
+    text-align: center;
     background: ${props => props.idx ? "#eaeaea" : "#fafafa"};
 `
 
