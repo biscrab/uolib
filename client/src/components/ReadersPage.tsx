@@ -33,7 +33,7 @@ const ReadersPage = () => {
         <S.Body>
             <S.SelectDiv>
                 <NavLink to="/readers/comunity">
-                <S.Select selected={params.type === "comunity"}>커뮤니티</S.Select>
+                <S.Select selected={params.type === "comunity" || !params.type}>커뮤니티</S.Select>
                 </NavLink>
                 <NavLink to="/readers/fanart">
                     <S.Select selected={params.type === "fanart"}>팬아트</S.Select>
@@ -42,15 +42,15 @@ const ReadersPage = () => {
                     <S.Select selected={params.type === "hall_of_fame"}>명예의전당</S.Select>
                 </NavLink>
            </S.SelectDiv>
-           {params.type === "comunity" ?
+           {params.type === "comunity" || !params.type ?
             <S.List>
-            <S.Row idx={1}>
-                <S.Number idx={1}></S.Number>
-                <S.Title idx={1}></S.Title>
-                <S.Author idx={1}></S.Author>
-                <S.View idx={1}></S.View>
-                <S.Like idx={1}></S.Like>
-            </S.Row>
+            <S.TRow idx={1}>
+                <S.TNumber idx={1}>번호</S.TNumber>
+                <S.TTitle idx={1}>제목</S.TTitle>
+                <S.TAuthor idx={1}>작가</S.TAuthor>
+                <S.TView idx={1}>조회수</S.TView>
+                <S.TLike idx={1}>좋아요</S.TLike>
+            </S.TRow>
                 {list.map(
                     (i, index) => {
                         return(

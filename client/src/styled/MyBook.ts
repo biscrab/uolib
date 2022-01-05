@@ -26,14 +26,14 @@ export const Select = styled.div<Props>`
     justify-content: center;
     align-items: center;
     border: ${props => props.selected ? "1px solid #555" : "1px solid #eee"};
-    border-bottom: ${props => props.selected ? "none" : "2px solid #555"};
+    border-bottom: ${props => props.selected ? "none" : "1px solid #555"};
 `
 
 export const List = styled.ul`
     padding: 0;
     margin: 0;
     height: 1000px;
-    margin-top: 10px;
+    margin-top: 30px;
 `
 
 export const Book = styled.li`

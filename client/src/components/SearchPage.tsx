@@ -93,6 +93,24 @@ const SearchPage = () => {
                         <S.Tag>1</S.Tag>
                     </ul>
                 </S.TagList>
+                <S.TagList>
+                    <b>인기 태그</b>
+                    <ul>
+                        <S.Tag>1</S.Tag>
+                    </ul>
+                </S.TagList>
+                <S.TagList>
+                    <b>인기 태그</b>
+                    <ul>
+                        <S.Tag>1</S.Tag>
+                    </ul>
+                </S.TagList>
+                <S.TagList>
+                    <b>인기 태그</b>
+                    <ul>
+                        <S.Tag>1</S.Tag>
+                    </ul>
+                </S.TagList>
             </S.TagListDiv>
             }
         </S.Body>

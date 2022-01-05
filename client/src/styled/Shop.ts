@@ -81,11 +81,15 @@ export const MemberShip = styled.div`
 
 export const Guidance = styled.div`
     width: 100%;
+    margin-bottom: 100px;
     border: 1px solid #ddd;
     padding: 30px 50px;
     background: #f6f6f6;
     box-sizing: border-box;
     list-style: inside;
+    h3{
+        margin-bottom: 20px;
+    }
 `
 
 export const Background = styled.div`
@@ -136,4 +140,7 @@ export const MethodDiv = styled.div`
         height: 80px;
         border: 1px solid gray;
     }
+`
+
+export const CoinDiv = styled.div`
 `

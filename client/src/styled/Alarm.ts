@@ -29,7 +29,7 @@ export const Select = styled.div<SelectProps>`
     justify-content: center;
     align-items: center;
     border: ${props => props.selected ? "1px solid #555" : "1px solid #eee"};
-    border-bottom: ${props => props.selected ? "none" : "2px solid #555"};
+    border-bottom: ${props => props.selected ? "none" : "1px solid #555"};
 `
 
 export const List = styled.ul`

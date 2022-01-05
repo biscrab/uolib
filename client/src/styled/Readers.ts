@@ -31,7 +31,7 @@ export const Select = styled.div<SelectProps>`
     justify-content: center;
     align-items: center;
     border: ${props => props.selected ? "1px solid #555" : "1px solid #eee"};
-    border-bottom: ${props => props.selected ? "none" : "2px solid #555"};
+    border-bottom: ${props => props.selected ? "none" : "1px solid #555"};
 `
 
 export const List = styled.table`
@@ -39,6 +39,9 @@ export const List = styled.table`
     margin: 0;
     width: 100%;
     height: 1000px;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #555;
+    margin-top: 50px;
 `
 
 export const FanArtList = styled.ul`
@@ -84,6 +87,7 @@ interface IndexProps{
 
 export const Row = styled.li<IndexProps>`
     width: 100%;
+    height: 35px;
     cursor: pointer;
     border: 1px solid #dee2e6;
     border-bottom: 0;
@@ -93,14 +97,19 @@ export const Row = styled.li<IndexProps>`
         padding: 0.5rem 0.75rem; 
     }
     background: ${props => props.idx ? "#f9f9f9" : "white"};
+    tr{
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+    }
 `
 
 export const Number = styled.tr<IndexProps>`
-    height: 100%;
     color: #737c85;
     font-size: 14px;
     width: 80px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
     background: ${props => props.idx ? "#eaeaea" : "#fafafa"};
 `
 
@@ -111,6 +120,7 @@ export const Type = styled.tr`
 export const Title = styled.tr<IndexProps>`
     width: 100%;
     height: 100%;
+    padding: 0px 10px;
 `
 
 export const Author = styled.tr<IndexProps>`
@@ -124,6 +134,58 @@ export const View = styled.tr<IndexProps>`
 `
 
 export const Like = styled.tr<IndexProps>`
+    width: 70px;
+    height: 100%;
+`
+
+export const TRow = styled.li<IndexProps>`
+    width: 100%;
+    height: 35px;
+    cursor: pointer;
+    border: 1px solid #dee2e6;
+    border-bottom: 0;
+    display: flex;
+    span{
+        box-sizing: border-box;
+        padding: 0.5rem 0.75rem; 
+    }
+    background: #dee2e6;
+    tr{
+        display: flex;
+        align-items: center;
+    }
+`
+
+export const TNumber = styled.tr<IndexProps>`
+    color: #737c85;
+    font-size: 14px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    background: #dee2e6;
+`
+
+export const TType = styled.tr`
+
+`
+
+export const TTitle = styled.tr<IndexProps>`
+    width: 100%;
+    height: 100%;
+    padding: 0px 10px;
+`
+
+export const TAuthor = styled.tr<IndexProps>`
+    width: 100px;
+    height: 100%;
+`
+
+export const TView = styled.tr<IndexProps>`
+    width: 70px;
+    height: 100%;
+`
+
+export const TLike = styled.tr<IndexProps>`
     width: 70px;
     height: 100%;
 `

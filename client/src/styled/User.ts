@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Body = styled.div`
     width: 1150px;
+    min-height: 1000px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);

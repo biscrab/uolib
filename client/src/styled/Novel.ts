@@ -120,7 +120,7 @@ export const Name = styled.span`
 
 export const ListTittle = styled.h1`
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 25px;
     color: #333;
 `
@@ -267,4 +267,63 @@ export const CommentTittle = styled.h2`
 
 export const Comment = styled.li`
 
+`
+
+export const Background = styled.div`
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+`
+
+export const SupportModal = styled.div`
+    background-color: white;
+    width: 400px;
+    height: 350px;
+`
+
+export const SupportModalHeader = styled.div`
+    padding-bottom: 5px;
+    margin: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+    border-bottom: 2px solid #555;
+
+    svg{
+        cursor: pointer;
+    }
+`
+
+export const SupportModalBody = styled.div`
+    background-color: #eee;
+    padding: 20px;
+    input{
+        padding-left: 10px;
+        outline: 0;
+    }
+`
+
+export const SupportModalWarning = styled.div`
+    padding: 20px;
+    font-size: 14px;
+    color: crimson;
+`
+
+export const SupportModalButtonDiv = styled.div`
+    display: flex;
+    justify-content: end;
+    padding: 20px;
+    button{
+        outline: 0;
+        border: 0;
+        background: royalblue;
+        color: white;
+        padding: 5px 10px;
+    }
 `

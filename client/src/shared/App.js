@@ -53,11 +53,16 @@ function App() {
         <Route exact path="/viewer/:id/:list" element={<P.Viewer />} />
         <Route exact path="/viewer/:id" element={<P.Viewer />} />
         <Route exact path="/user/:id" element={<P.User />} />
-        <Route exact path="/plus_shop" element={<P.PlusShop/>}/>
+        <Route exact path="/plus_shop" element={<P.Shop/>}/>
+        <Route exact path="/coin_shop" element={<P.Shop/>}/>
         <Route exact path="/useredit" element={<P.UserEdit />}/>
         <Route exact path="*" element={<P.Main />}/>
       </Routes>
+      {!location.pathname.includes("/viewer") ?
       <Footer />
+      :
+      <></>
+      }
       {loading ?
       <S.LoadingBackground>
       <div class="spinner-border text-secondary" style={{width: "4rem", height: "4rem"}} role="status">

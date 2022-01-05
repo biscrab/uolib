@@ -33,8 +33,33 @@ export const Body = styled.div`
     padding: 20px;
     border-radius: 5px;
     margin-top: 100px;
+    @media screen and (max-width: 400px) {
+        width: 100%;
+    }
     a{
         width: 100%;
+    }
+    button{
+        width: 100%;
+        border: 0;
+        height: 40px;
+        border-radius: 2px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .google{
+        margin-top: 15px;
+        div{
+            height: 40px;
+            position: absolute;
+        }
+        span{
+            padding-left: 10px;
+            font-weight: bold;
+            width: 100%;
+            font-size: 14px;
+        }
     }
 `
 
@@ -83,26 +108,18 @@ export const EmailDiv = styled.div`
         width: 80px;
         height: 28px;
         margin-left: 5px;
-        font-size: 14px;
+        font-size: 15px;
     }
 `
 
 export const LButton = styled.button`
-    width: 100%;
-    border: 0;
     margin-top: 60px;
     color: white;
     background-color: #5a35cd;
-    height: 40px;
-    border-radius: 2px;
 `
 
 export const SButton = styled.button`
-    width: 100%;
-    border: 0;
     margin-top: 15px;
     color: white;
     background: royalblue;
-    height: 40px;
-    border-radius: 2px;
 `

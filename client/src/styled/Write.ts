@@ -31,11 +31,45 @@ export const SelectDiv = styled.div`
 `
 
 export const Select = styled.div`
-    width: 200px;
+    width: 170px;
     height: 35px;
     background-color: #f8f9fa;
     border: 1px solid rgba(0,0,0,0.15);
     margin: 30px 0px;
+    display: flex;
+    align-items: center;
+    select{
+        background: none;
+        border: 0;
+        height: 100%;
+        width: 100%;
+        outline: 0;
+    }
+    span{
+        height: 34px;
+        width: 34px;
+        background-color: #e9ecef;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    input{
+        width: 135px;
+        border: 0;
+        outline: 0;
+        padding: 0px 5px;
+        font-size: 14px;
+        background: none;
+    }
+    div{
+        width: 140px;
+        height: 100%;
+        background-color: #e9ecef;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+    }
 `
 
 export const TextDiv = styled.div`
@@ -194,7 +228,7 @@ export const ImageHeader = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    h2{
+    h3{
         font-weight: 300;
         margin: 0;
     }
@@ -212,6 +246,9 @@ export const ImageBody = styled.div`
         font-size: 15px;
         margin-bottom: 5px;
     }
+    div{
+        margin-bottom: 20px;
+    }
 `
 
 export const ImageBottom = styled.div`
@@ -223,6 +260,8 @@ export const ImageBottom = styled.div`
         color: white;
         background-color: #007bff;
         border: 1px solid #007bff;
-        padding: 10px;
+        padding: 7px;
+        font-size: 15px;
+        border-radius: 2px;
     }
 `

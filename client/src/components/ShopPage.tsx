@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import * as S from '../styled/PlusShop'
+import * as S from '../styled/Shop'
 
 const PlusShopPage = () => {
 
@@ -44,7 +44,7 @@ const PlusShopPage = () => {
             </S.MemberShipDiv>
             <h2>멤버십 해택</h2>
             <S.Guidance>
-                <h2>결제상품 이용 안내</h2>
+                <h3>결제상품 이용 안내</h3>
                 <ul>
                     <li>모든 상품은 출판물/후원으로 면세항목을 적용 받습니다.</li>
                     <li>이미 구매한 상품을 재차 구매시, 이용 가능 기간이 추가됩니다.</li>

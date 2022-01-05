@@ -111,7 +111,7 @@ export const List  = styled.ul`
 
 export const TagListDiv = styled.ul`    
     width: 100%;
-    margin-top: 50px;
+    height: 1000px;
 `
 
 export const TagList = styled.li`
