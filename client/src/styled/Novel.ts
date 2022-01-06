@@ -94,7 +94,8 @@ export const Day = styled.span`
 
 export const Tittle = styled.h1`
     margin: 0;
-    font-size: 23px;
+    font-weight: bold;
+    font-size: 28px;
 `
 
 export const AuthorDiv = styled.div`
@@ -284,7 +285,6 @@ export const Background = styled.div`
 export const SupportModal = styled.div`
     background-color: white;
     width: 400px;
-    height: 350px;
 `
 
 export const SupportModalHeader = styled.div`
@@ -303,9 +303,20 @@ export const SupportModalHeader = styled.div`
 export const SupportModalBody = styled.div`
     background-color: #eee;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    div{
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+    }
+    span{
+        font-size: 18px;
+    }
     input{
         padding-left: 10px;
         outline: 0;
+        margin-right: 10px;
     }
 `
 
@@ -325,5 +336,6 @@ export const SupportModalButtonDiv = styled.div`
         background: royalblue;
         color: white;
         padding: 5px 10px;
+        border-radius: 3px;
     }
 `

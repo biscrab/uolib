@@ -73,7 +73,11 @@ const WritePage = () => {
                 </S.Select>
                 <S.Select>
                     <span><i class="far fa-clock"></i></span>
-                    <select></select>
+                    <select>
+                        {
+
+                        }
+                    </select>
                 </S.Select>
                 <S.Select>
                     <span><i class="far fa-clock"></i></span>

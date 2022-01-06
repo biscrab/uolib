@@ -3,8 +3,11 @@ import logo from '../images/logo.png'
 import { NavLink, useLocation } from 'react-router-dom'
 import $ from 'jquery'
 import { useEffect, useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
 
 const Header = () => {
+
+    const isMobile = useMediaQuery({ maxWidth: 1240 })
 
     const location = useLocation();
 
@@ -22,6 +25,9 @@ const Header = () => {
             if(!onMenu){
                 setOnMenu(true);
             }
+            else{
+                setOnMenu(false);
+            }
         })
     })
 
@@ -29,10 +35,11 @@ const Header = () => {
         <S.Header>
             <S.HeaderDiv>
                 <S.LogoDiv>
-                <NavLink to="/">
-                    <S.Logo src={logo}/>
-                </NavLink>
+                    <NavLink to="/">
+                        <S.Logo src={logo}/>
+                    </NavLink>
                 </S.LogoDiv>
+                {!isMobile ?
                 <S.PathDiv>
                     <NavLink to="/free">
                         <S.Path path={location.pathname.includes("/free")}>자유연재</S.Path>
@@ -50,6 +57,9 @@ const Header = () => {
                         <S.Path path={location.pathname.includes("/mybook")}>내서재</S.Path>
                     </NavLink>
                 </S.PathDiv>
+                :
+                <></>
+                }
                 <S.MenuDiv>
                     <NavLink to="/plus_shop">
                     <img src="https://image.novelpia.com/img/new/menu/point.png?ver=3" />
@@ -79,6 +89,29 @@ const Header = () => {
                     </S.Menu>
                 </S.MenuDiv>
             </S.HeaderDiv>
+            {isMobile ?
+                <S.MobilePathDiv>
+                <S.PathDiv>
+                    <NavLink to="/free">
+                        <S.Path path={location.pathname.includes("/free")}>자유연재</S.Path>
+                    </NavLink>
+                    <NavLink to="/plus">
+                        <S.Path path={location.pathname.includes("/plus")}>플러스</S.Path>
+                    </NavLink>
+                    <NavLink to="/top100">
+                        <S.Path path={location.pathname.includes("/top100")}>TOP100</S.Path>
+                    </NavLink>
+                    <NavLink to="/readers">
+                        <S.Path path={location.pathname.includes("/readers")}>독자마당</S.Path>
+                    </NavLink>
+                    <NavLink to="/mybook">
+                        <S.Path path={location.pathname.includes("/mybook")}>내서재</S.Path>
+                    </NavLink>
+                </S.PathDiv>
+                </S.MobilePathDiv>
+                :
+                <></>
+                }
         </S.Header>
     )
 }

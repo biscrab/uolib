@@ -6,12 +6,36 @@ import * as P from  '../pages'
 import Header from '../contents/Header'
 import Footer from '../contents/Footer'
 import * as S from '../styled/App'
+import serviceWorker from '../serviceWorker'
 
 function App() {
 
   const location = useLocation();
 
   const [loading, setLoading] = useState(false);
+
+
+  useEffect(()=>{
+    if (Notification && Notification.permission !== "granted") {
+      Notification.requestPermission(function (status) {
+        if (Notification.permission !== status) {
+          Notification.permission = status;
+        }
+      });
+    }
+    if ('serviceWorker' in navigator) { 
+      /*
+      navigator.serviceWorker
+      .register(serviceWorker) 
+      .then(function () { 
+        console.log('서비스 워커 등록');
+       }) */
+       console.log(123);
+    } 
+  },[])
+
+  useEffect(()=>{
+  })
 
   useEffect(()=>{
     window.scroll(0, 0);
@@ -58,7 +82,8 @@ function App() {
         <Route exact path="/useredit" element={<P.UserEdit />}/>
         <Route exact path="*" element={<P.Main />}/>
       </Routes>
-      {!location.pathname.includes("/viewer") ?
+      <button>테스트</button>
+      {!location.pathname.includes("/viewer") && !location.pathname === "/login" && !location.pathname === "/signup" ?
       <Footer />
       :
       <></>

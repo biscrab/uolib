@@ -47,8 +47,20 @@ export const List = styled.table`
 export const FanArtList = styled.ul`
     display: flex;
     flex-wrap: wrap;
-    height: 1000px;
+    height: 2000px;
     list-style: none;
+    margin: 50px 0px;
+`
+
+export const FanArt = styled.div`
+    padding: 10px;
+    width: 20%;
+    height: 350px;
+    img{
+        width: 100%;
+        height: 320px;
+        border-radius: 10px;
+    }
 `
 
 export const HallOfFame = styled.div`
@@ -114,28 +126,32 @@ export const Number = styled.tr<IndexProps>`
 `
 
 export const Type = styled.tr`
-
+    text-align: center;
 `
 
 export const Title = styled.tr<IndexProps>`
     width: 100%;
     height: 100%;
     padding: 0px 10px;
+    text-align: center;
 `
 
 export const Author = styled.tr<IndexProps>`
     width: 100px;
     height: 100%;
+    text-align: center;
 `
 
 export const View = styled.tr<IndexProps>`
     width: 70px;
     height: 100%;
+    text-align: center;
 `
 
 export const Like = styled.tr<IndexProps>`
     width: 70px;
     height: 100%;
+    text-align: center;
 `
 
 export const TRow = styled.li<IndexProps>`
@@ -153,6 +169,7 @@ export const TRow = styled.li<IndexProps>`
     tr{
         display: flex;
         align-items: center;
+        font-size: 14px;
     }
 `
 
@@ -163,31 +180,36 @@ export const TNumber = styled.tr<IndexProps>`
     display: flex;
     justify-content: center;
     background: #dee2e6;
+    text-align: center;
 `
 
 export const TType = styled.tr`
-
+    text-align: center;
 `
 
 export const TTitle = styled.tr<IndexProps>`
     width: 100%;
     height: 100%;
     padding: 0px 10px;
+    text-align: center;
 `
 
 export const TAuthor = styled.tr<IndexProps>`
     width: 100px;
     height: 100%;
+    text-align: center;
 `
 
 export const TView = styled.tr<IndexProps>`
     width: 70px;
     height: 100%;
+    text-align: center;
 `
 
 export const TLike = styled.tr<IndexProps>`
     width: 70px;
     height: 100%;
+    text-align: center;
 `
 
 export const CommentList = styled.ul`

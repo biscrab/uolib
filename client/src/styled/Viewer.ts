@@ -109,6 +109,18 @@ export const SettingButton = styled.button<ButtonProps>`
     border-radius: 3px;
 `
 
+export const CommentInputDiv = styled.textarea`
+
+`
+
+export const CommentList = styled.ul`
+
+`
+
+export const Comment = styled.li`
+
+`
+
 export const Bottom = styled.div<DarkProps>`
     position: fixed;
     background: ${props => props.dark ? "#35363a" : "white"};
@@ -126,3 +138,16 @@ export const Bottom = styled.div<DarkProps>`
         justify-content: space-between;
     }
 `
+
+export const ListBody = styled.div<DarkProps>`
+
+`
+
+export const List = styled.ul`
+    list-style: none;
+`
+
+export const Round = styled.li`
+
+`
+

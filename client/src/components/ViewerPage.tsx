@@ -6,6 +6,7 @@ import $ from 'jquery'
 const ViewerPage = () => {
 
     const [onSetting, setOnSetting] = useState(false);
+    const [onList, setOnList] = useState(false);
     const [darkmode, setDarkmode] = useState(false);
     const [onInterface, setOnInterface] = useState(true);
     const params = useParams();
@@ -33,6 +34,8 @@ const ViewerPage = () => {
                     <i className="fas fa-home fa-lg"></i>
                 </NavLink>
                 <span>123</span>
+                <div>
+                <span>목록</span>
                 <S.Setting>
                 <span onClick={()=>setOnSetting(!onSetting)}><i className="fas fa-cog"></i>설정</span>
                 {onSetting ?
@@ -108,11 +111,18 @@ const ViewerPage = () => {
                     <></>
                 }
                 </S.Setting>
+                </div>
             </S.HeaderDiv>
         </S.Header>
         :
         <></>
         }
+        {onList ?
+        <S.ListBody dark={darkmode}>
+            
+        </S.ListBody>
+        :
+        <>
         <S.Body dark={darkmode}>
         <img src="https://image.novelpia.com/imagebox/cover/389dc063c0e465e5a7f7e3f3ac04bddd_130337_ori.file"/>
         <div>
@@ -132,6 +142,8 @@ const ViewerPage = () => {
         </S.Bottom>
         :
         <></>
+        }
+        </>
         }
         </>
     )

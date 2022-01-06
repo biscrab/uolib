@@ -55,12 +55,14 @@ export const MemberShip = styled.div`
     padding: 20px;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     h4{
         font-weight: bold;
     }
     div{
         display: flex;
         align-items: center;
+        justify-content: center;
         width: 100%;
         font-size: 15px;
         color: #333;

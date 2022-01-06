@@ -2,14 +2,18 @@ import styled from 'styled-components'
 
 export const Header = styled.header`
     width: 100%;
-    height: 80px;
-    border-bottom: 1px solid #eee;
+    min-height: 80px;
     position: fixed;
     top: 0;
     z-index: 999;
     background-color: white;
     display: flex;
     justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 1240px){
+       flex-direction: column;
+    }
+    border-bottom: 1px solid #eee;
 ` 
 
 export const HeaderDiv = styled.div`
@@ -31,6 +35,12 @@ export const LogoDiv = styled.div`
 export const Logo = styled.img`
     width: 160px;
     padding-right: 30px;
+`
+
+export const MobilePathDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
 `
 
 export const PathDiv = styled.div`
@@ -73,6 +83,7 @@ export const MenuModal = styled.ul`
     margin-top: 60px;
     padding: 10px 0px;
     height: 350px;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);
     overflow-y: auto;
 `
 
@@ -90,6 +101,9 @@ export const MenuLi = styled.li`
         border-radius: 50%;
         height: 40px;
         width: 40px;
+    }
+    b{
+        margin-left: 10px;
     }
     animation-duration: 1s;
     animation-name: slide;
