@@ -13,6 +13,13 @@ export const SelectDiv = styled.div`
     display: flex;
 `
 
+export const CountOfBook = styled.div`
+    border-bottom: 2px solid #333;
+    margin-top: 30px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+`
+
 interface Props {
     selected: boolean;
 }
@@ -33,7 +40,6 @@ export const List = styled.ul`
     padding: 0;
     margin: 0;
     height: 1000px;
-    margin-top: 30px;
 `
 
 export const Book = styled.li`

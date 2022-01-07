@@ -142,13 +142,18 @@ export const ListBorder = styled.ul`
     list-style: none;
 `
 
-export const Round = styled.li`
+interface NoticeProps{
+    notice: boolean
+}
+
+export const Round = styled.li<NoticeProps>`
+    background-color: ${props => props.notice ? "#feffe5" : "white"}
     width: 100%;
     cursor: pointer;
     border-bottom: 1px solid #eee;
-    :hover{
+    /*:hover{
         background: #fafafa
-    }
+    }*/
 `
 
 export const RoundDiv = styled.div`
@@ -211,7 +216,7 @@ export const OtherBookList = styled.ul`
 `
 
 export const OtherBook = styled.li`
-
+    display: flex;
 `
 
 export const SupportDiv = styled.div`

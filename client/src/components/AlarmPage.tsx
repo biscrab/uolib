@@ -12,6 +12,15 @@ const AlarmPage = () => {
     const params = useParams();
     const lists: AlarmType[] = [{title: "123", contents: "string", id: "1"}];
 
+    const path = () => {
+        if(params.type === ("comment" || "subscribe")){
+
+        }
+        else if (params.type === "1"){
+
+        }
+    }
+
     return(
         <S.Body>
             <S.SelectDiv>
@@ -31,7 +40,7 @@ const AlarmPage = () => {
             <S.List>
                 {lists.map(i => {
                     return(
-                        <NavLink to="/novel/1">
+                        <NavLink to={`/${path}/${i.id}`}>
                         <S.Alarm>
                             <img src="https://novelpia.com/img/new/menu/alarm.png"/>
                             <div>

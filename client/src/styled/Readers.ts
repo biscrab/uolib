@@ -212,8 +212,47 @@ export const TLike = styled.tr<IndexProps>`
     text-align: center;
 `
 
+export const ViewTitle = styled.h4`
+
+`
+
+export const TypeDiv = styled.div`
+    color: #888;
+    font-size: 13px;
+`
+
+export const ViewBody = styled.div`
+    min-height: 600px;
+    width: 100%;
+`
+
+export const ContentsTitle = styled.div`
+    border-bottom: 1px solid #333;
+`
+
 export const CommentList = styled.ul`
 
+`
+
+export const CommentInputDiv = styled.div`
+    height: 100px;
+    display: flex;
+    margin-bottom: 50px;
+    button{
+        border: 0;
+        outline: 0;
+        height: 100%;
+        width: 150px;
+        background: #343a40;
+        color: white;
+    }
+    textarea{
+        outline: 0;
+        resize: none;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+    }
 `
 
 export const Comment = styled.li`
@@ -222,4 +261,12 @@ export const Comment = styled.li`
     div{
         padding-left: 10px;
     }
+`
+
+export const OtherList = styled.ul`
+    height: 550px;
+`
+
+export const Other = styled.li`
+
 `

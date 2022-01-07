@@ -35,7 +35,7 @@ export const Body = styled.div`
     width: 1200px;
 `
 
-export const Tittle = styled.h2`
+export const Tittle = styled.h3`
     font-weight: bold;
     margin-bottom: 30px;
 `
@@ -44,10 +44,11 @@ export const MemberShipDiv = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-between;
+    margin-bottom: 100px;
 `
 
 export const MemberShip = styled.div`
-    border: 3px solid #704bfa;
+    border: 2px solid #704bfa;
     width: 30%;
     height: 250px;
     display: flex;
@@ -57,7 +58,6 @@ export const MemberShip = styled.div`
     align-items: center;
     justify-content: space-between;
     h4{
-        font-weight: bold;
     }
     div{
         display: flex;
@@ -66,6 +66,7 @@ export const MemberShip = styled.div`
         width: 100%;
         font-size: 15px;
         color: #333;
+        cursor: pointer;
     }
     input{
         margin-right: 5px;
@@ -81,6 +82,13 @@ export const MemberShip = styled.div`
     }
 `
 
+export const MemeberShipExplane = styled.span`
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    padding: 0px 30px;
+`
+
 export const Guidance = styled.div`
     width: 100%;
     margin-bottom: 100px;
@@ -91,6 +99,11 @@ export const Guidance = styled.div`
     list-style: inside;
     h3{
         margin-bottom: 20px;
+    }
+    li{
+        font-size: 14px;
+        padding: 3px 0px;
+        color: #777;
     }
 `
 

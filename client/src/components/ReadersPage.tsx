@@ -73,6 +73,7 @@ const ReadersPage = () => {
                 {list.map(
                     (i, index) => {
                         return(
+                            <NavLink to={`/readers/view/${i.number}`}>
                             <S.Row idx={index%2}>
                                 <S.Number idx={index%2}>{i.number}</S.Number>
                                 <S.Title idx={index%2}>{i.title}</S.Title>
@@ -80,6 +81,7 @@ const ReadersPage = () => {
                                 <S.View idx={index%2}>{i.view}</S.View>
                                 <S.Like idx={index%2}>{i.like}</S.Like>
                             </S.Row>
+                            </NavLink>
                         )
                     }
                 )}

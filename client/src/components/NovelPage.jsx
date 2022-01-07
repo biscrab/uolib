@@ -6,8 +6,8 @@ import axios from 'axios'
 
 const NovelPage = () => {
 
-    const [novel, setNovel] = useState({view: "", tag: [], other: [{title: "1", author: "1"}], notice:[], comment:[]});
-    const [lists, setLists] = useState([{title: "test"}]);
+    const [novel, setNovel] = useState({view: "", tag: [], other: [{title: "1", author: "1", image: "https://image.novelpia.com/imagebox/cover/71ef870f96a30146e548d3c75dfe439e_458688_ori.file"}], notice:[], comment:[]});
+    const [lists, setLists] = useState([{title: "test1", type: "notice", plus: true},{title: "test1", type: "notice"}]);
     const [comments, setComments] = useState([]);
     const [pages, setPages] = useState([]);
     const [page, setPage] = useState([]);
@@ -110,20 +110,18 @@ const NovelPage = () => {
             <S.List>
                 <S.ListTittle>회차리스트</S.ListTittle>
                 <S.ListBorder>
-                    <>
-                    {
-
-                    }
-                    </>
-                    <>
                     {lists.map(i => {
                         return(
                             <NavLink to={`/viewer/${1}`}>
-                            <S.Round>
+                            <S.Round notice={i.type == "notice"}>
                                 <S.RoundDiv>
                                     <S.RLeft>
                                         <S.TittleDiv>
+                                            {i.plus ?
+                                            <S.Price color={"#5232dd"}>PLUS</S.Price>
+                                            :
                                             <S.Price color={"#166d95"}>무료</S.Price>
+                                            }
                                             <S.RTittle>{i.title}</S.RTittle>
                                         </S.TittleDiv>
                                         <S.RInfo>
@@ -138,7 +136,6 @@ const NovelPage = () => {
                             </NavLink>
                         )
                     })}
-                    </>
                 </S.ListBorder>
             </S.List>
             <S.CommentTittle>댓글</S.CommentTittle>
@@ -166,8 +163,10 @@ const NovelPage = () => {
                     </S.SupportDiv>
                 </S.Support>
                 {novel.other ?
-                <>
                 <S.ListTittle>작가의 다른 작품</S.ListTittle>
+                :
+                <S.ListTittle>추천작품</S.ListTittle>
+                }
                 <S.OtherBookList>
                     {novel.other.map(
                         item => {
@@ -181,12 +180,6 @@ const NovelPage = () => {
                         }
                     )}
                 </S.OtherBookList>
-                </>
-                :
-                <>
-                <S.ListTittle>추천작품</S.ListTittle>
-                </>
-                }
             </S.AuthorBorder>
             </S.Border>
             <S.PDiv>

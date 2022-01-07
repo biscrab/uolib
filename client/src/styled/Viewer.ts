@@ -28,6 +28,10 @@ export const HeaderDiv = styled.div`
     align-items: center;
 `
 
+export const RightDiv = styled.div`
+    display: flex;
+`
+
 export const Body = styled.div<DarkProps>`
     margin-top: 30px;
     margin-bottom: 100px;
@@ -137,6 +141,9 @@ export const Bottom = styled.div<DarkProps>`
         display: flex;
         justify-content: space-between;
     }
+    span{
+        cursor: pointer;
+    }
 `
 
 export const ListBody = styled.div<DarkProps>`
@@ -151,3 +158,18 @@ export const Round = styled.li`
 
 `
 
+export const Background = styled.div`
+    position: fixed;
+    background: rgba(255, 255, 255, 0.8);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+export const PlusModal = styled.div`
+
+`

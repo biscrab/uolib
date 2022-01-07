@@ -34,6 +34,9 @@ const MyBookPage = () => {
                     <S.Select selected={params.type==="last_view"}>최근 본 작품</S.Select>
                 </NavLink>
             </S.SelectDiv>
+            <S.CountOfBook>
+                총 0개의 작품
+            </S.CountOfBook>
             <S.List>
                 {lists.map(
                     i => {

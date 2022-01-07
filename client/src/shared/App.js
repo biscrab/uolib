@@ -6,7 +6,6 @@ import * as P from  '../pages'
 import Header from '../contents/Header'
 import Footer from '../contents/Footer'
 import * as S from '../styled/App'
-import serviceWorker from '../serviceWorker'
 
 function App() {
 
