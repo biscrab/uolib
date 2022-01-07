@@ -44,19 +44,33 @@ export const List = styled.div`
 export const Book = styled.div`
     width: 19%;
     margin: 0.5%;
-    margin-top: 1%;
+    margin-top: 2%;
     border-bottom: 1px solid #eee;
     padding-bottom: 20px;
+    b{
+        margin-top: 6px;
+    }
     a{
         display: flex;
         flex-direction: column;
     }
     img{
         width: 100%;
-        border-radius: 10px;
+        border-radius: 0px 10px 10px 10px;
     }
     span{
         font-size: 13px;
         color: dimgray;
+    }
+    div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: rgba(0, 0, 0, 0.5);
+        font-size: 13px;
     }
 `

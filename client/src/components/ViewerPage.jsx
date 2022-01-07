@@ -149,7 +149,11 @@ const ViewerPage = () => {
         <>
         {!isPlus ?
         <S.Background>
-
+            <S.PlusModal>
+                <img src="https://novelpia.com/img/new/plus/plus_viewer.png"/>
+                <span>PLUS 멤버십 가입이<br />필요한 회차 입니다.</span>
+                <button>PLUS 가입</button>
+            </S.PlusModal>
         </S.Background>
         :
         <></>

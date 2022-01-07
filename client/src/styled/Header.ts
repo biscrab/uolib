@@ -24,7 +24,7 @@ export const HeaderDiv = styled.div`
     width: 1240px;
     @media screen and (max-width: 1240px){
         width: 100%;
-        padding: 0px 20px;
+        padding: 5px 20px;
     }
 `
 
@@ -40,6 +40,7 @@ export const Logo = styled.img`
 export const MobilePathDiv = styled.div`
     display: flex;
     justify-content: center;
+    width: 100%;
     padding: 10px 0px;
 `
 
@@ -48,6 +49,9 @@ export const PathDiv = styled.div`
     display: flex;
     justify-content: space-around;
     width: 500px;
+    @media screen and (max-width: 500px){
+        width: 100%;
+    }
 `
 
 export const Path = styled.b<{path: boolean}>`

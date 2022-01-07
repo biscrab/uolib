@@ -46,6 +46,10 @@ const ReadersPage = () => {
 
     ]
 
+    const rlist : any[] = [
+        {name: "1", amount: 1}
+    ]
+
     const params = useParams();
 
     return(
@@ -110,19 +114,34 @@ const ReadersPage = () => {
             <h2>명예의 전당</h2>
             <S.HallOfFameList>
                 <S.HallOfFameDiv>
-                    <div>
-
-                    </div>
+                    <div>소장랭킹</div>
+                    <table>
+                       {rlist.map(
+                           (i, index) => {
+                               return(
+                                   <S.Ranking>
+                                       <S.Rank>{index+1}위</S.Rank>
+                                       <NavLink to={`/user/${i.id}`}>
+                                            <S.Name>{i.name}</S.Name>
+                                       </NavLink>
+                                       <S.Amount>{i.amount}</S.Amount>
+                                   </S.Ranking>
+                               )
+                           }
+                       )} 
+                    </table>
                 </S.HallOfFameDiv>
                 <S.HallOfFameDiv>
-                    <div>
-
-                    </div>
-                </S.HallOfFameDiv>
-                <S.HallOfFameDiv>
-                    <div>
+                    <div>후원랭킹</div>
+                    <ul>
                         
-                    </div>                    
+                    </ul>
+                </S.HallOfFameDiv>
+                <S.HallOfFameDiv>
+                    <div>이모티콘 보유 랭킹</div>  
+                    <ul>
+                        
+                    </ul>                 
                 </S.HallOfFameDiv>
             </S.HallOfFameList>
             </S.HallOfFame>

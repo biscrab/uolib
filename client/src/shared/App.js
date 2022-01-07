@@ -82,7 +82,7 @@ function App() {
         <Route exact path="*" element={<P.Main />}/>
       </Routes>
       <button>테스트</button>
-      {!location.pathname.includes("/viewer") && !location.pathname === "/login" && !location.pathname === "/signup" ?
+      {!location.pathname.includes("/viewer") && location.pathname !== "/login" && !location.pathname !== "/signup" ?
       <Footer />
       :
       <></>

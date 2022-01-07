@@ -1,6 +1,7 @@
 body, html{
   font-family: 'Noto Sans KR', sans-serif;
   width: 100%;
+  overflow-x: hidden;
 }
 
 body{

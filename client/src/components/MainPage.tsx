@@ -62,7 +62,18 @@ const MainPage = () => {
 
     return(
         <>
-        <S.Banner color="skyblue" /> 
+        <S.BannerDiv>
+                <S.NavWrap>
+                    <div>test</div>
+                    <div>test</div>
+                </S.NavWrap>
+            <S.Banner color="#1c0426">
+                <img src="https://novelpia.com/img/new/banner/main_banner_pc_20220104.jpg"/>
+            </S.Banner> 
+            <S.Banner color="#1c0426">
+                <img src="https://novelpia.com/img/new/banner/main_banner_pc_20220104.jpg"/>
+            </S.Banner> 
+        </S.BannerDiv>
         <S.Body>
             <S.Title>공모전 Best</S.Title>
             <S.Border>

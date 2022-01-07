@@ -12,13 +12,50 @@ export const Body = styled.div`
     }
 `
 
-export const Banner = styled.div`
-    height: 550px;
+export const BannerDiv = styled.div`
+    position: relative;
     width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;   
+`
+
+export const Banner = styled.div`
+    width: 100%;
+    box-sizing: inherit;
     background-color: ${props => props.color};
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media screen and (max-width: 885px){
+        img{
+            width: 100%;
+        }
+    }
+`
+
+export const NavWrap = styled.div`
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1240px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    div{
+        background-color: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 35px;
+    }
 `
 
 export const Title = styled.h3`

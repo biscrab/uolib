@@ -171,5 +171,25 @@ export const Background = styled.div`
 `
 
 export const PlusModal = styled.div`
-
+    background-color: white;
+    padding: 10px;
+    height: 300px;
+    width: 350px;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    img{
+        width: 100px;
+    }
+    button{
+        width: 100%;
+        padding: 8px;
+        border: 0;
+        border-radius: 20px;
+        background-color: #5232dd;
+        color: white;
+    }
 `

@@ -88,9 +88,31 @@ export const HallOfFameDiv = styled.li`
     padding: 10px;
     div{
         background-color: #eee;
-        border-radius: 20px;
-        padding: 20px;
+        border-radius: 30px;
+        padding: 15px;
+        text-align: center;
+        font-size: 18px;
     }
+`
+
+export const Ranking = styled.tr`
+    width: 100%;
+    padding: 10px 0px;
+    display: flex;
+`
+
+export const Rank = styled.td`
+    text-align: center;
+    width: 80px;
+`
+
+export const Name = styled.td`
+    width: 100%;
+`
+
+export const Amount = styled.td`
+    text-align: center;
+    width: 40px;
 `
 
 interface IndexProps{
