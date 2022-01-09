@@ -100,6 +100,8 @@ const ReadersPage = () => {
                         return(
                             <S.FanArt>
                                 <img src={i.image}/>
+                                <b>제목</b>
+                                <span>저자</span>
                             </S.FanArt>
                         )
                     }

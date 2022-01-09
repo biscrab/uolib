@@ -56,10 +56,21 @@ export const FanArt = styled.div`
     padding: 10px;
     width: 20%;
     height: 350px;
+    display: flex;
+    flex-direction: column;
     img{
         width: 100%;
         height: 320px;
         border-radius: 10px;
+        cursor: pointer;
+    }
+    b{
+        margin-top: 10px;
+        font-size: 17px;
+    }
+    span{
+        font-size: 13px;
+        color: #888;
     }
 `
 

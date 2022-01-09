@@ -125,9 +125,9 @@ const NovelPage = () => {
                                             <S.RTittle>{i.title}</S.RTittle>
                                         </S.TittleDiv>
                                         <S.RInfo>
-                                            3000
-                                            400
-                                            1
+                                        <span><i class="fas fa-user"></i>3000</span>
+                                        <span><i class="fas fa-comment-alt"></i>400</span>
+                                        <span><i class="fas fa-thumbs-up"></i>1</span>
                                         </S.RInfo>
                                     </S.RLeft>
                                     <S.RDate>10월 10일</S.RDate>

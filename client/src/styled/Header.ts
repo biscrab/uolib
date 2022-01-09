@@ -54,6 +54,16 @@ export const PathDiv = styled.div`
     }
 `
 
+export const IsAlarm = styled.em`
+    background-color: #7632ff;
+    width: 9px;
+    height: 9px;
+    border-radius: 9px;
+    position: absolute;
+    margin-top: 13px;
+    margin-left: 86px;
+`
+
 export const Path = styled.b<{path: boolean}>`
     font-size: 18px;
     cursor: pointer;
@@ -66,7 +76,7 @@ export const MenuDiv = styled.div`
     justify-content: space-between;
 
     img{
-        height: 50px;
+        width: 45px;
         cursor: pointer;
     }
 `
@@ -118,5 +128,22 @@ export const MenuLi = styled.li`
         }to{
             opacity: 1;
         }
+    }
+    background-color: ${props => props.color};
+`
+
+export const Logout = styled.div`
+    padding: 10px;
+    background-color: #eee;
+    display: flex;
+    justify-content: end;
+    button{
+        height: 25px;
+        padding: 0px 15px;
+        border-radius: 12.5px;
+        border: 1px solid #aaa;
+        color: #222;
+        background-color: white;
+        font-size: 13px;
     }
 `

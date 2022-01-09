@@ -13,6 +13,8 @@ const Header = () => {
 
     const [onMenu, setOnMenu] = useState(false);
 
+    const [isAlarm, setIsAlarm] = useState(false);
+
     useEffect(()=>{
         $("html").click(function(e){
             if(!$(".menu").has(e.target).length){
@@ -31,6 +33,28 @@ const Header = () => {
         })
     })
 
+    const Path = () => {
+        return(
+            <S.PathDiv>
+                <NavLink to="/free">
+                    <S.Path path={location.pathname.includes("/free")}>자유연재</S.Path>
+                </NavLink>
+                <NavLink to="/plus">
+                    <S.Path path={location.pathname.includes("/plus")}>플러스</S.Path>
+                </NavLink>
+                <NavLink to="/top100">
+                    <S.Path path={location.pathname.includes("/top100")}>TOP100</S.Path>
+                </NavLink>
+                <NavLink to="/readers">
+                    <S.Path path={location.pathname.includes("/readers")}>독자마당</S.Path>
+                </NavLink>
+                <NavLink to="/mybook">
+                    <S.Path path={location.pathname.includes("/mybook")}>내서재</S.Path>
+                </NavLink>
+            </S.PathDiv>
+        )
+    }
+
     return(
         <S.Header>
             <S.HeaderDiv>
@@ -40,23 +64,7 @@ const Header = () => {
                     </NavLink>
                 </S.LogoDiv>
                 {!isMobile ?
-                <S.PathDiv>
-                    <NavLink to="/free">
-                        <S.Path path={location.pathname.includes("/free")}>자유연재</S.Path>
-                    </NavLink>
-                    <NavLink to="/plus">
-                        <S.Path path={location.pathname.includes("/plus")}>플러스</S.Path>
-                    </NavLink>
-                    <NavLink to="/top100">
-                        <S.Path path={location.pathname.includes("/top100")}>TOP100</S.Path>
-                    </NavLink>
-                    <NavLink to="/readers">
-                        <S.Path path={location.pathname.includes("/readers")}>독자마당</S.Path>
-                    </NavLink>
-                    <NavLink to="/mybook">
-                        <S.Path path={location.pathname.includes("/mybook")}>내서재</S.Path>
-                    </NavLink>
-                </S.PathDiv>
+                <Path />
                 :
                 <></>
                 }
@@ -67,6 +75,11 @@ const Header = () => {
                     <NavLink to="/alarm">
                     <img src="https://image.novelpia.com/img/new/menu/alarm.png"/>
                     </NavLink>
+                    {isAlarm ?
+                        <S.IsAlarm />
+                        :
+                        <></>
+                    }
                     <NavLink to="/search">
                         <img src="https://image.novelpia.com/img/new/menu/search.png"/>
                     </NavLink>
@@ -82,6 +95,9 @@ const Header = () => {
                             <S.MenuLi>내 작품 관리</S.MenuLi>
                             <S.MenuLi>유저 정보 설정/수정</S.MenuLi>
                             <S.MenuLi>이모티콘 뽑기</S.MenuLi>
+                            <S.Logout>
+                                <button>로그아웃</button>
+                            </S.Logout>
                         </S.MenuModal>
                         :
                         <></>
@@ -91,23 +107,7 @@ const Header = () => {
             </S.HeaderDiv>
             {isMobile ?
                 <S.MobilePathDiv>
-                <S.PathDiv>
-                    <NavLink to="/free">
-                        <S.Path path={location.pathname.includes("/free")}>자유연재</S.Path>
-                    </NavLink>
-                    <NavLink to="/plus">
-                        <S.Path path={location.pathname.includes("/plus")}>플러스</S.Path>
-                    </NavLink>
-                    <NavLink to="/top100">
-                        <S.Path path={location.pathname.includes("/top100")}>TOP100</S.Path>
-                    </NavLink>
-                    <NavLink to="/readers">
-                        <S.Path path={location.pathname.includes("/readers")}>독자마당</S.Path>
-                    </NavLink>
-                    <NavLink to="/mybook">
-                        <S.Path path={location.pathname.includes("/mybook")}>내서재</S.Path>
-                    </NavLink>
-                </S.PathDiv>
+                    <Path />
                 </S.MobilePathDiv>
                 :
                 <></>

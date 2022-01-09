@@ -158,7 +158,7 @@ export const Round = styled.li<NoticeProps>`
 
 export const RoundDiv = styled.div`
     width: 100%;
-    padding: 10px 20px;
+    padding: 10px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -191,8 +191,15 @@ export const RDate = styled.span`
 `
 
 export const RInfo = styled.div`
-    color: darkgray;
+    margin-top: 5px;
+    color: #888;
     font-size: 11px;
+    i{
+        margin-right: 3px;
+    }
+    span{
+        margin-right: 5px;
+    }
 `
 
 export const RTittle = styled.b`
