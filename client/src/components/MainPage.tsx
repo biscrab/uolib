@@ -36,6 +36,7 @@ const List: React.FC<{lists: BookType[]}> = ({lists}) => {
                             i => {
                                 return(
                                     <S.Tag>#{i}</S.Tag>
+                                     
                                 )
                             }
                         )}    
@@ -68,7 +69,6 @@ const MainPage = () => {
 
     const BannerList: BannerType[] = [
         {image: "https://novelpia.com/img/new/banner/main_banner_pc_20220104.jpg", color: "#1c0426"},
-        {image: "https://novelpia.com/img/new/banner/main_banner_pc_211214.jpg", color: "rgb(65, 17, 33)"}
     ]
 
     const PrevBanner = () => {
@@ -94,8 +94,8 @@ const MainPage = () => {
             {BannerList.map(
                 i => {
                     return(
-                        <S.Banner color={i.color}>
-                            <img src={i.image}/>
+                        <S.Banner color={"#1c0426"}>
+                            <img src={"https://novelpia.com/img/new/banner/main_banner_pc_20220104.jpg"}/>
                         </S.Banner> 
                     )
                 }

@@ -50,6 +50,15 @@ const MyBookPage = () => {
                                     <b>{i.title}</b>
                                 </NavLink>
                                 <S.Explane>{i.explane}</S.Explane>
+                                <S.TagDiv>
+                                {i.tag.map(
+                                    tag => {
+                                        return(
+                                            <span>#{tag}</span>
+                                        )
+                                    }
+                                )}
+                                </S.TagDiv>
                                 <S.Info>
                                     <img src="https://novelpia.com/img/new/icon/count_view.png"/>
                                     <span>104.3K명</span>

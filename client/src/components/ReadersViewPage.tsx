@@ -7,8 +7,13 @@ const ReadersViewPage = () => {
             <S.TypeDiv>
                 1.2
             </S.TypeDiv>
+            <S.WriterDiv>
+                
+            </S.WriterDiv>
             <S.ViewBody>
-                게시물에 댓글이 없습니다.
+                <S.NovelDiv>
+                    <img src="https://novelpia.com/imagebox/cover/7ad0832dde9ad51cff4c5ece918416f2_27396_ori.file"/>
+                </S.NovelDiv>
             </S.ViewBody>
             <S.ContentsTitle>게시물 댓글 (0)</S.ContentsTitle>
             <S.CommentList>

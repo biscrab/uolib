@@ -45,16 +45,18 @@ export const Alarm = styled.div`
     width: 100%;
     border: 2px solid #eee;
     b{
+        font-size: 15px;
         margin-bottom: 10px;
     }
 `
 
 export const AlarmContents = styled.div`
     background: #eee;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 3px;
     width: 100%;
     box-sizing: border-box;
+    font-size: 14px;
 `
 
 export const Delete = styled.div`

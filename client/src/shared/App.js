@@ -6,6 +6,9 @@ import * as P from  '../pages'
 import Header from '../contents/Header'
 import Footer from '../contents/Footer'
 import * as S from '../styled/App'
+import React from 'react';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 
 function App() {
 
@@ -45,6 +48,8 @@ function App() {
 
   return (
     <>
+      <React.StrictMode> 
+      <Provider>
       {!location.pathname.includes("/viewer") ?
       <Header />
       :
@@ -78,11 +83,12 @@ function App() {
         <Route exact path="/user/:id" element={<P.User />} />
         <Route exact path="/plus_shop" element={<P.Shop/>}/>
         <Route exact path="/coin_shop" element={<P.Shop/>}/>
+        <Route exact path="/emoticon_shop" element={<P.Shop/>}/>
         <Route exact path="/useredit" element={<P.UserEdit />}/>
         <Route exact path="*" element={<P.Main />}/>
       </Routes>
       <button>테스트</button>
-      {!location.pathname.includes("/viewer") && location.pathname !== "/login" && !location.pathname !== "/signup" ?
+      {!location.pathname.includes("/viewer") && location.pathname !== "/login" && location.pathname !== "/signup" ?
       <Footer />
       :
       <></>
@@ -97,6 +103,8 @@ function App() {
       :
       <></>
       }
+      </Provider>
+    </React.StrictMode>
     </>
   );
 }

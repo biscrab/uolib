@@ -67,6 +67,12 @@ const ReadersPage = () => {
            </S.SelectDiv>
            {params.type === "comunity" || !params.type ?
             <S.List>
+            <S.CommunityPathDiv>
+                <S.CommunityPath>전체</S.CommunityPath>
+                <S.CommunityPath>공모전리뷰</S.CommunityPath>
+                <S.CommunityPath>작품리뷰</S.CommunityPath>
+                <S.CommunityPath>작품홍보</S.CommunityPath>
+            </S.CommunityPathDiv>
             <S.TRow idx={1}>
                 <S.TNumber idx={1}>번호</S.TNumber>
                 <S.TTitle idx={1}>제목</S.TTitle>
@@ -99,7 +105,9 @@ const ReadersPage = () => {
                     i => {
                         return(
                             <S.FanArt>
-                                <img src={i.image}/>
+                                <div>
+                                    <img src={i.image}/>
+                                </div>
                                 <b>제목</b>
                                 <span>저자</span>
                             </S.FanArt>

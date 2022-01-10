@@ -16,22 +16,21 @@ const WritePage = () => {
     };
     
     const handleBlur = () => {
-        console.log(text.current);
     };
 
     const change = (i) => {
         document.execCommand(i, false, null);
-        console.log(text.current);
         /*
+        console.log(c);
         switch(i){
             case "bold" :
-                setOn({...on, bold: !on.bold});
+                setOn({...on, bold: c});
                 break;
             case "italic" :
-                setOn({...on, italic: !on.italic});
+                setOn({...on, italic: c});
                 break;
             case "underline" :
-                setOn({...on, underline: !on.underline});
+                setOn({...on, underline: c});
                 break;
         }*/
         $(".text").focus();
@@ -39,20 +38,25 @@ const WritePage = () => {
 
     const [imgUrl, setImgUrl] = useState("");
 
-    const InsertPicture = () => {
-
+    const InsertPicture = (img) => {
+        document.execCommand("insertImage", false, img);
     }
 
     useEffect(()=>{
+        console.log(document.execCommand("underline", false, null));
+    },[])
 
+    useEffect(()=>{
+        setOn({...on, bold: document.queryCommandState("bold")})
     },[text.current])
 
     useEffect(()=>{
+        /*
         $("html").click(function(e){
             if(!$(".emenu").has(e.target).length){
                 setOnEMenu(false);
             }
-        })  
+        })  */
     })
 
     return(
@@ -88,9 +92,13 @@ const WritePage = () => {
                     <input type="checkbox" />
                 </S.Select>
             </S.SelectDiv>
+            <S.RoundDiv>
+                <select></select>
+                <button>임시저장</button>
+            </S.RoundDiv>
             <S.TextDiv>
                 <S.SettingDiv>                        
-                    <S.Setting onClick={()=>change("bold")} selected={on.bold}><i class="fas fa-bold"></i></S.Setting>
+                    <S.Setting onClick={()=>change("bold")} selected={document.queryCommandState("bold")}><i class="fas fa-bold"></i></S.Setting>
                     <S.Setting onClick={()=>change("italic")} selected={on.italic}><i class="fas fa-italic"></i></S.Setting>
                     <S.Setting onClick={()=>change("underline")} selected={on.underline}><i class="fas fa-underline"></i></S.Setting>
                     <S.SettingButton>
@@ -98,21 +106,26 @@ const WritePage = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24" x="0"/></g><g><g><polygon points="19,9 20.25,6.25 23,5 20.25,3.75 19,1 17.75,3.75 15,5 17.75,6.25"/><polygon points="19,15 17.75,17.75 15,19 17.75,20.25 19,23 20.25,20.25 23,19 20.25,17.75"/><path d="M11.5,9.5L9,4L6.5,9.5L1,12l5.5,2.5L9,20l2.5-5.5L17,12L11.5,9.5z M9.99,12.99L9,15.17l-0.99-2.18L5.83,12l2.18-0.99 L9,8.83l0.99,2.18L12.17,12L9.99,12.99z"/></g></g></svg>
                     </S.Setting>
                     {onEMenu ?
-                    <S.SettingSelectDiv class='emenu'>
-                        <S.SettingSelect>테스트</S.SettingSelect>
-                        <S.SettingSelect>테스트</S.SettingSelect>
-                        <S.SettingSelect>테스트</S.SettingSelect>
-                        <S.SettingSelect>테스트</S.SettingSelect>
-                    </S.SettingSelectDiv>
+                    <S.EffectSelectDiv class='emenu'>
+                        <S.EffectSelect>
+                        <span style={{
+                        background: "linear-gradient(to right, #00d9ff, #d53afc)", 
+                        color: "transparent",
+                        webkitBackgroundClip: "text"}}>테스트</span>
+                        </S.EffectSelect>
+                        <S.SmokyEffect><span>테스트</span></S.SmokyEffect>
+                        <S.NeonEffect>테스트</S.NeonEffect>
+                        <S.GritchyEffect><span>테스트</span></S.GritchyEffect><span></span>
+                    </S.EffectSelectDiv>
                     :
                     <></>
                     }
                     </S.SettingButton>
                     <S.Setting onClick={()=>setOnImage(true)}><i class="far fa-image fa-lg"></i></S.Setting>
-                    <S.Setting><i class="fas fa-undo-alt"></i></S.Setting>
-                    <S.Setting><i class="fas fa-redo-alt"></i></S.Setting>  
+                    <S.Setting onClick={()=>change("undo")}><i class="fas fa-undo-alt"></i></S.Setting>
+                    <S.Setting onClick={()=>change("redo")}><i class="fas fa-redo-alt"></i></S.Setting>  
                 </S.SettingDiv>
-                <div className="text" role="textbox" aria-multiline="true" spellcheck="true" autocorrect="true" contenteditable="true" html={text.current} onBlur={handleBlur} onChange={handleChange}>
+                <div className="text" id="text" role="textbox" aria-multiline="true" spellcheck="true" autocorrect="true" contenteditable="true" html={text.current} onBlur={handleBlur} onChange={handleChange}>
                 </div>
             </S.TextDiv>
             <S.RTittle>
@@ -138,14 +151,14 @@ const WritePage = () => {
                 </S.ImageHeader>
                 <S.ImageBody>
                     <div>
-                    <span>파일 선택</span>
-                    <input type="file" onChange={(e)=>setImgUrl(e.target.value)} value={imgUrl}/>
+                        <span>파일 선택</span>
+                        <input type="file" value={imgUrl}/>
                     </div>
-                    <span>사진 URL</span>
-                    <input />
+                        <span onChange={(e)=>setImgUrl(e.target.value)} value={imgUrl}>사진 URL</span>
+                        <input />
                 </S.ImageBody>
                 <S.ImageBottom>
-                    <button onClick={()=>InsertPicture()}>그림 삽입</button>
+                    <button onClick={()=>InsertPicture(imgUrl)}>그림 삽입</button>
                 </S.ImageBottom>
             </S.ImageDiv>
         </S.Background>

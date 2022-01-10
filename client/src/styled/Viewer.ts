@@ -55,7 +55,8 @@ export const Body = styled.div<DarkProps>`
 ` 
 
 export const AuthorsWords = styled.div<DarkProps>`
-    background: ${props => props.dark ? "#35363a" : "#eee"};
+    background: ${props => props.dark ? "#35363a" : "#f2f2f2"};
+    padding: 5px 10px;
 `
 
 export const NextButton = styled.button`
@@ -143,6 +144,7 @@ export const Bottom = styled.div<DarkProps>`
     }
     span{
         cursor: pointer;
+        font-size: 16px;
     }
 `
 

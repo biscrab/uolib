@@ -39,9 +39,16 @@ export const List = styled.table`
     margin: 0;
     width: 100%;
     height: 1000px;
-    border-top: 1px solid #555;
     border-bottom: 1px solid #555;
-    margin-top: 50px;
+    margin-top: 30px;
+`
+
+export const CommunityPathDiv = styled.div`
+    display: flex;
+`
+
+export const CommunityPath = styled.span`
+    padding: 10px;
 `
 
 export const FanArtList = styled.ul`
@@ -54,16 +61,25 @@ export const FanArtList = styled.ul`
 
 export const FanArt = styled.div`
     padding: 10px;
-    width: 20%;
-    height: 350px;
+    width: 25%;
     display: flex;
     flex-direction: column;
     img{
-        width: 100%;
-        height: 320px;
-        border-radius: 10px;
-        cursor: pointer;
+        :hover {
+            transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+        }
+        transition: all 0.3s ease-in-out;
+        vertical-align: middle;
+        border-style: none;
+        object-fit: cover;
     }
+    div{
+    overflow: hidden;
+    width: 100%;
+    height: 380px;
+    border-radius: 10px;
+    }   
     b{
         margin-top: 10px;
         font-size: 17px;
@@ -92,7 +108,7 @@ export const HallOfFameList = styled.ul`
 `
 
 export const HallOfFameDiv = styled.li`
-    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
     height: 800px;
     width: 32%;
     border-radius: 10px;
@@ -100,9 +116,10 @@ export const HallOfFameDiv = styled.li`
     div{
         background-color: #eee;
         border-radius: 30px;
-        padding: 15px;
+        padding: 10px;
         text-align: center;
-        font-size: 18px;
+        font-size: 20px;
+        font-weight: bold;
     }
 `
 
@@ -194,6 +211,7 @@ export const TRow = styled.li<IndexProps>`
     border: 1px solid #dee2e6;
     border-bottom: 0;
     display: flex;
+    border-top: 1px solid #555;
     span{
         box-sizing: border-box;
         padding: 0.5rem 0.75rem; 
@@ -245,22 +263,47 @@ export const TLike = styled.tr<IndexProps>`
     text-align: center;
 `
 
-export const ViewTitle = styled.h4`
-
+export const ViewTitle = styled.h3`
+    margin: 0;
 `
 
 export const TypeDiv = styled.div`
     color: #888;
     font-size: 13px;
+    margin-top: 2.5px;
+`
+
+export const WriterDiv = styled.div`
+    text-align: left;
+    padding: 10px 20px 10px 10px;
+    font-size: 12px;
+    background-color: #e9ecef;
+    margin-bottom: 10px;
 `
 
 export const ViewBody = styled.div`
-    min-height: 600px;
+    min-height: 1000px;
     width: 100%;
+`
+
+export const NovelDiv = styled.div`
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+
+    img{
+        height: 190px;
+        width: 130px;
+        box-shadow: 1px 1px 5px #999;
+        border-radius: 10px;
+    }
 `
 
 export const ContentsTitle = styled.div`
     border-bottom: 1px solid #333;
+    font-size: 15px;
+    padding: 5px;
 `
 
 export const CommentList = styled.ul`
@@ -278,6 +321,8 @@ export const CommentInputDiv = styled.div`
         width: 150px;
         background: #343a40;
         color: white;
+        font-size: 20px;
+        font-weight: 500;
     }
     textarea{
         outline: 0;

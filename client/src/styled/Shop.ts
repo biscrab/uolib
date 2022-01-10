@@ -23,8 +23,17 @@ export const ShopDiv = styled.div`
 `
 
 export const Banner = styled.div`
-    height: 250px;
-    background: #eee;
+    background-color: #C0C0BD;
+    box-sizing: border-box;
+    display: block;
+    div{
+        width: 100%;
+        margin: auto;
+        height: 300px;
+        max-width: 3000px;
+        background-size: auto 200px;
+        background: url(https://novelpia.com/img/new/plus/v2/banner_20211223_plus_pc.png) no-repeat center;
+    }
 `
 
 export const Body = styled.div`
@@ -89,6 +98,10 @@ export const MemeberShipExplane = styled.span`
     padding: 0px 30px;
 `
 
+export const GuidanceTitle = styled.h2`
+    margin-bottom: 20px;
+`
+
 export const Guidance = styled.div`
     width: 100%;
     margin-bottom: 100px;
@@ -137,8 +150,8 @@ export const PaymentHead = styled.div`
 `
 
 export const PriceDiv = styled.div`
-    border: 1px solid gray;
-    background: #eee;
+    border: 1px solid #f1f1f1;
+    background: #f9f9f9;
     width: 100%;
     padding: 15px;
     margin-top: 20px;
@@ -151,9 +164,20 @@ export const MethodDiv = styled.div`
     flex-wrap: wrap;
     margin-top: 20px;
     div{
+        cursor: pointer;
         width: 33.3%;
         height: 80px;
-        border: 1px solid gray;
+        border: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    span{
+        margin-top: 5px;
     }
 `
 

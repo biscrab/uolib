@@ -301,7 +301,7 @@ export const SupportModal = styled.div`
 
 export const SupportModalHeader = styled.div`
     padding-bottom: 5px;
-    margin: 20px 10px;
+    margin: 20px 15px;
     display: flex;
     justify-content: space-between;
     color: #333;
@@ -329,6 +329,7 @@ export const SupportModalBody = styled.div`
         padding-left: 10px;
         outline: 0;
         margin-right: 10px;
+        font-size: 15px;
     }
 `
 

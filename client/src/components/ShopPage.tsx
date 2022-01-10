@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom';
 import * as S from '../styled/Shop'
 
 const PlusShopPage = () => {
@@ -10,11 +11,20 @@ const PlusShopPage = () => {
         <>
         <S.ShopDiv>
             <div>
-            <span>맴버십</span>
-            <span>코인</span>
+            <NavLink to="/plus_shop">
+                <span>맴버십</span>
+            </NavLink>
+            <NavLink to="/coin_shop">
+                <span>코인</span>
+            </NavLink>
+            <NavLink to="emoticon_shop">
+                <span>이모티콘</span>
+            </NavLink>
             </div>
         </S.ShopDiv>
-        <S.Banner />
+        <S.Banner>
+            <div />
+        </S.Banner>
         <S.Body>
             <S.Tittle>유라이브 PLUS 요금제</S.Tittle>
             <S.MemberShipDiv>
@@ -46,7 +56,7 @@ const PlusShopPage = () => {
                     <button onClick={() => setOnPayment(true)}>결제하기</button>
                 </S.MemberShip>
             </S.MemberShipDiv>
-            <h2>멤버십 해택</h2>
+            <S.GuidanceTitle>멤버십 해택</S.GuidanceTitle>
             <S.Guidance>
                 <h3>결제상품 이용 안내</h3>
                 <ul>
@@ -73,8 +83,14 @@ const PlusShopPage = () => {
                         1000원
                     </S.PriceDiv>
                     <S.MethodDiv>
-                        <div></div>
-                        <div></div>
+                        <div>
+                            <img src="https://novelpia.com/img/new/plus/v2/paylogo_card.png"/>
+                            <span>신용카드</span>
+                        </div>
+                        <div>
+                            <img src="https://novelpia.com/img/new/plus/v2/paylogo_naverpay.png"/>
+                            <span>네이버 페이</span>
+                        </div>
                         <div></div>
                     </S.MethodDiv>
                 </S.Payment>

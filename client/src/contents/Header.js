@@ -96,7 +96,7 @@ const Header = () => {
                             <S.MenuLi>유저 정보 설정/수정</S.MenuLi>
                             <S.MenuLi>이모티콘 뽑기</S.MenuLi>
                             <S.Logout>
-                                <button>로그아웃</button>
+                                <button><i class="fas fa-sign-out-alt"></i>로그아웃</button>
                             </S.Logout>
                         </S.MenuModal>
                         :

@@ -61,6 +61,10 @@ const NovelPage = () => {
             
     },[])
 
+    const support = () => {
+        
+    }
+
     return(
         <>
         <S.Body>
@@ -202,7 +206,7 @@ const NovelPage = () => {
                         <svg onClick={()=>setOnSupport(false)} xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 0 24 24" width="28px" fill="#333"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
                     </S.SupportModalHeader>
                     <S.SupportModalBody>
-                        <b>현재 보유 코인(1000)</b>
+                        <b>현재 보유 코인 (1000)</b>
                         <div>
                             <input type="number"/>
                             <b>코인</b>
@@ -212,7 +216,7 @@ const NovelPage = () => {
                         후원 목적 이외에 욕설, 식사요청, 연락처공유, 작품내용변경요구, 타 서비스 제휴 요구등의 메세지 입력시 영구 사용정지가 될 수 있습니다.
                     </S.SupportModalWarning>
                     <S.SupportModalButtonDiv>
-                        <button>후원하기</button>
+                        <button onClick={()=>support()}>후원하기</button>
                     </S.SupportModalButtonDiv>
                 </S.SupportModal>
             </S.Background>

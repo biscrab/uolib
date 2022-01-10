@@ -14,8 +14,7 @@ export const Body = styled.div`
 
 export const BannerDiv = styled.div`
     position: relative;
-    width: 100%;
-    height: 100%;
+    left: 0;
     z-index: 1;
     display: flex;
     transition-property: transform;
@@ -23,13 +22,12 @@ export const BannerDiv = styled.div`
 `
 
 export const Banner = styled.div`
-    width: 100%;
+    width: 6144px;
     box-sizing: inherit;
     background-color: ${props => props.color};
     display: flex;
     align-items: center;
     justify-content: center;
-
     @media screen and (max-width: 885px){
         img{
             width: 100%;
@@ -125,6 +123,8 @@ export const BookTagDiv = styled.div`
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+    word-spacing: 5px;
+    text-overflow: ellipsis;
 `
 
 export const Tag = styled.span`
@@ -132,5 +132,8 @@ export const Tag = styled.span`
     font-size: 13px;
     white-space: nowrap;
     cursor: pointer;
-    margin-right: 5px;
+    :after{
+        content: " ";
+        letter-spacing: -5px;
+    }
 `

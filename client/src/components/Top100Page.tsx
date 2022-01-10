@@ -136,9 +136,11 @@ const Top100Page = () => {
                 (i, index) => {
                     return(
                         <S.Book>
-                            <div>{index + 1}</div>
+                            <S.Rank>{index + 1}</S.Rank>
                             <NavLink to="/novel/1">
-                            <img src={i.image}/>
+                            <S.BookImgDiv>
+                                <img src={i.image}/>  
+                            </S.BookImgDiv>
                             <b>{i.title}</b>
                                 <NavLink to="/user/1">
                                     <span>{i.author}</span>

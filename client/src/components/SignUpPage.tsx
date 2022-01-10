@@ -14,7 +14,7 @@ const SignUpPage = () => {
                     <S.Input placeholder='인증번호'/>
                     <button>인증</button>
                     </S.EmailDiv>
-                    <S.Input placeholder='비밀번호' type="password"/>
+                    <S.Input placeholder='비밀번호 (7~25)' type="password"/>
                     <S.Input placeholder='비밀번호 확인' type="password"/>
                     <S.LButton>로그인</S.LButton>
                     <S.SButton>회원가입</S.SButton>

@@ -28,14 +28,13 @@ export const Tittle = styled.input`
 export const SelectDiv = styled.div`
     display: flex;
     justify-content: space-between;
+    margin-top: 30px;
 `
-
 export const Select = styled.div`
     width: 170px;
     height: 35px;
     background-color: #f8f9fa;
     border: 1px solid rgba(0,0,0,0.15);
-    margin: 30px 0px;
     display: flex;
     align-items: center;
     select{
@@ -69,6 +68,42 @@ export const Select = styled.div`
         justify-content: center;
         align-items: center;
         font-size: 14px;
+    }
+`
+
+export const RoundDiv = styled.div`
+    display: flex;
+    align-items: end;
+    width: 100%;
+    margin: 30px 0px;
+
+    select{
+        height: 40px;
+        background: none;
+        border: 0;
+        width: 400px;
+        outline: 0;
+        margin-right: 10px;
+        background-color: #f8f9fa;
+        border: 1px solid rgba(0,0,0,0.15);
+    }
+
+    button{
+        font-size: 17px;
+        display: inline-block;
+        font-weight: 600;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 0.75rem 0.75rem;
+        width: 200px;
+        height: 40px;
+        font-size: .875rem;
+        line-height: 1.25;
+        border-radius: 2px;
+        transition: all .15s ease-in-out;
     }
 `
 
@@ -159,7 +194,7 @@ export const SettingDiv = styled.div`
 `
 
 interface SettingProps{
-    selected?: boolean
+    selected: boolean
 }
 
 export const Setting = styled.button<SettingProps>`
@@ -184,7 +219,7 @@ export const SettingButton = styled.div`
     flex-direction: column;
 `
 
-export const SettingSelectDiv = styled.div`
+export const EffectSelectDiv = styled.div`
     background: white;
     display: flex;
     flex-direction: column;
@@ -196,14 +231,93 @@ export const SettingSelectDiv = styled.div`
     :last-child{
         border-bottom: 0;
     }
+
+    div{
+        padding: 5px 10px;
+        width: 100px;
+        font-size: 15px;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+    }
 `
 
-export const SettingSelect = styled.div`
+export const EffectSelect = styled.div`
     padding: 5px 10px;
     width: 100px;
     font-size: 15px;
     border-bottom: 1px solid #eee;
     cursor: pointer;
+`
+
+export const SmokyEffect = styled.div`
+span {
+  display: inline-block;
+  text-shadow: 0 0 0 whitesmoke;
+  animation: smoky 5s 3s both;
+}
+
+span:nth-child(even){
+ :hover{
+  animation-name: smoky-mirror;
+ }
+}
+
+@keyframes smoky {
+  60% {
+    text-shadow: 0 0 40px whitesmoke;
+  }
+  to {
+    transform:
+      translate3d(15rem,-8rem,0)
+      rotate(-40deg)
+      skewX(70deg)
+      scale(1.5);
+    text-shadow: 0 0 20px whitesmoke;
+    opacity: 0;
+  }
+}
+
+@keyframes smoky-mirror {
+  60% {
+    text-shadow: 0 0 40px whitesmoke; }
+  to {
+    transform:
+      translate3d(18rem,-8rem,0)
+      rotate(-40deg) 
+      skewX(-70deg)
+      scale(2);
+     text-shadow: 0 0 20px whitesmoke;
+    opacity: 0;
+  }
+}
+
+@for $item from 1 through 21 {
+  span:nth-of-type(#{$item}){ 
+    animation-delay: #{(3 + ($item/10))}s; 
+  }
+} 
+`
+
+export const NeonEffect = styled.div`
+  --interval: 1s;
+  display: block;
+  text-shadow: 
+    0 0 10px var(azure),
+    0 0 20px var(aqua),
+    0 0 40px var(dodgerblue),
+    0 0 80px var(blue);
+  will-change: filter, color;
+  filter: saturate(60%);
+  animation: flicker steps(100) var(--interval) 1s infinite;
+`
+
+export const GritchyEffect = styled.div`
+span{
+  text-align: center;
+  color: transparent;
+  text-shadow: 0px 0px 3px #eee, 5px 5px 2px teal, -5px -2px 2px maroon;
+  overflow: hidden;
+}
 `
 
 export const Background = styled.div`
@@ -242,9 +356,12 @@ export const ImageBody = styled.div`
     padding: 20px;
     display: flex;
     flex-direction: column;
+    input{
+        margin-top: 5px;
+    }
     span{
         font-size: 15px;
-        margin-bottom: 5px;
+        //margin-bottom: 5px;
     }
     div{
         margin-bottom: 20px;

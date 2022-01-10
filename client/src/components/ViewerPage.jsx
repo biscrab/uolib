@@ -9,7 +9,7 @@ const ViewerPage = () => {
     const [onList, setOnList] = useState(false);
     const [darkmode, setDarkmode] = useState(false);
     const [onInterface, setOnInterface] = useState(true);
-    const [isPlus, setIsPlus] = useState(false);
+    const [isPlus, setIsPlus] = useState(true);
     const params = useParams();
     const novel = 1;
 
@@ -137,8 +137,8 @@ const ViewerPage = () => {
         {onInterface ?
         <S.Bottom dark={darkmode} className='interface'>
             <div>
-                <span><i class="fas fa-chevron-left"></i>이전화</span>
-                <span>다음화<i class="fas fa-chevron-right"></i></span>
+                <span><i class="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
+                <span>다음화<i class="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
             </div>
         </S.Bottom>
         :

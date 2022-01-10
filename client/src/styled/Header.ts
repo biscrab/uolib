@@ -56,7 +56,7 @@ export const PathDiv = styled.div`
 
 export const IsAlarm = styled.em`
     background-color: #7632ff;
-    width: 9px;
+    width: 9 px;
     height: 9px;
     border-radius: 9px;
     position: absolute;
@@ -145,5 +145,8 @@ export const Logout = styled.div`
         color: #222;
         background-color: white;
         font-size: 13px;
+    }
+    i{
+        margin-right: 3px;
     }
 `

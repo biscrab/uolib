@@ -52,6 +52,23 @@ export const BookInfo = styled.div`
     margin-left: 30px;
     display: flex;
     flex-direction: column;
+    b{
+        font-size: 20px;
+    }
+`
+
+export const TagDiv = styled.div`
+    display: flex;
+    span{
+        color: #5032df;
+        border: 2px solid #5032df;
+        border-radius: 20px;
+        padding: 3px 10px;
+        line-height: 20px;
+        user-select: none;
+        font-size: 14px;
+        font-weight: 600;
+    }
 `
 
 export const Explane = styled.span`
@@ -79,6 +96,7 @@ export const BookCover = styled.img`
     border-radius: 10px;
     width: 100px;
     height: 150px;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.3);
 `
 
 export const Tittle = styled.b`
