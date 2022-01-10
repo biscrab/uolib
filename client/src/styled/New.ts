@@ -22,6 +22,7 @@ export const Body = styled.div`
 
 export const BodyBorder = styled.div`
     display: flex;
+    margin-top: 10px;
 `
 
 export const ButtonDiv = styled.div`
@@ -36,6 +37,9 @@ export const BodyInput = styled.div`
 export const BodyDiv = styled.div`
     display: flex;
     flex-direction: column;
+    span{
+        margin-bottom: 5px;
+    }
 `
 
 export const InputDiv = styled.div`
@@ -56,11 +60,24 @@ export const InputDiv = styled.div`
         height: 200px;
         resize: none;
     }
+    span{
+        margin-bottom: 5px;
+    }
+`
+
+export const ImgInputDiv = styled.div`
+    span{
+        margin-bottom: 5px;
+    }
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 `
 
 export const SelectDiv = styled.div`
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
 `
 
 export const Select = styled.div`
@@ -69,6 +86,9 @@ export const Select = styled.div`
     margin-left: 10px;
     font-size: 5px;
     cursor: pointer;
+    input{
+        margin-right: 2.5px;
+    }
     span{
         margin-bottom: 2.5px;
     }

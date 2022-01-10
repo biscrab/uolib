@@ -53,7 +53,7 @@ export const BookInfo = styled.div`
     display: flex;
     flex-direction: column;
     b{
-        font-size: 20px;
+        font-size: 22px;
     }
 `
 
@@ -68,26 +68,30 @@ export const TagDiv = styled.div`
         user-select: none;
         font-size: 14px;
         font-weight: 600;
+        margin-right: 5px;
     }
 `
 
 export const Explane = styled.span`
     color: dimgray;
-    padding: 10px 0px;
     height: 100%;
+    width: 100%;
+    font-size: 13px;
 `
 
 export const Info = styled.div`
     display: flex;
     align-items: center;
-    font-size: 13px;
+    font-size: 15px;
     width: 100%;
+    padding: 15px 0px;
+    font-weight: bold;
     span{
         margin-right: 5px;
     }
     img{
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         margin-right: 5px;
     }
 `

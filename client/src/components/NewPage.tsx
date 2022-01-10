@@ -54,6 +54,10 @@ const NewPage = () => {
                         <span>줄거리</span>
                         <textarea />
                     </S.InputDiv>
+                    <S.ImgInputDiv>
+                        <span>북커버</span>
+                        <input type="file"/>
+                    </S.ImgInputDiv>
                     <S.SampleBookCover>
                         <span>샘플 북커버 이미지:</span>
                         <S.SampleList>

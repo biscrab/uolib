@@ -9,13 +9,13 @@ import * as S from '../styled/App'
 import React from 'react';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+import axios from 'axios';
 
 function App() {
 
   const location = useLocation();
 
   const [loading, setLoading] = useState(false);
-
 
   useEffect(()=>{
     if (Notification && Notification.permission !== "granted") {
@@ -37,19 +37,21 @@ function App() {
   },[])
 
   useEffect(()=>{
-  })
-
-  useEffect(()=>{
     window.scroll(0, 0);
     if(!location.pathname.includes("/viewer")){
       document.body.style.backgroundColor = "white";
     }
   },[location.pathname])
 
+  let store = createStore(()=>{return 1})
+
+  //베이스 url
+  axios.defaults.baseURL = "";
+
   return (
     <>
       <React.StrictMode> 
-      <Provider>
+      <Provider store={store}>
       {!location.pathname.includes("/viewer") ?
       <Header />
       :

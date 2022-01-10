@@ -14,7 +14,7 @@ type BookInterface = {
 const MyBookPage = () => {
 
     const params = useParams();
-    const lists : BookInterface[] = [{id: 1, title: "test", author: "이상운", explane: "", image: "https://image.novelpia.com/imagebox/cover/18fc3444c07e1ecadd65072b4bd08e28_47837_ori.thumb",tag: ["1", "2"]}];
+    const lists : BookInterface[] = [{id: 1, title: "test", author: "이상운", explane: "123123", image: "https://image.novelpia.com/imagebox/cover/18fc3444c07e1ecadd65072b4bd08e28_47837_ori.thumb",tag: ["1", "2"]}];
 
     const [selected, setSelected] = useState(1);
 
@@ -50,15 +50,6 @@ const MyBookPage = () => {
                                     <b>{i.title}</b>
                                 </NavLink>
                                 <S.Explane>{i.explane}</S.Explane>
-                                <S.TagDiv>
-                                {i.tag.map(
-                                    tag => {
-                                        return(
-                                            <span>#{tag}</span>
-                                        )
-                                    }
-                                )}
-                                </S.TagDiv>
                                 <S.Info>
                                     <img src="https://novelpia.com/img/new/icon/count_view.png"/>
                                     <span>104.3K명</span>
@@ -67,6 +58,17 @@ const MyBookPage = () => {
                                     <img src="https://novelpia.com/img/new/icon/count_like.png"/>
                                     <span>8.0K회</span>
                                 </S.Info>
+                                <S.TagDiv>
+                                {i.tag.map(
+                                    tag => {
+                                        return(
+                                            <NavLink to="/">
+                                            <span>#{tag}</span>
+                                            </NavLink>
+                                        )
+                                    }
+                                )}
+                                </S.TagDiv>
                             </S.BookInfo>
                         </S.Book>
                         )

@@ -182,4 +182,24 @@ export const MethodDiv = styled.div`
 `
 
 export const CoinDiv = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 100px;
+`
+
+export const Coin = styled.div`
+    border: 2px solid #333;
+    width: 49%;
+    margin-bottom: 20px;
+    height: 100px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 15px;
+    img{
+        margin-right: 10px;
+    }
 `

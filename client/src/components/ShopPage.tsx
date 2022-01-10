@@ -1,8 +1,10 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import * as S from '../styled/Shop'
 
 const PlusShopPage = () => {
+
+    const location = useLocation();
 
     const [onPayment, setOnPayment] = useState(false);
     const [onAccept, setOnAccept] = useState([false, false, false]);
@@ -26,6 +28,8 @@ const PlusShopPage = () => {
             <div />
         </S.Banner>
         <S.Body>
+            {location.pathname === "/plus_shop" ?
+            <>
             <S.Tittle>유라이브 PLUS 요금제</S.Tittle>
             <S.MemberShipDiv>
                 <S.MemberShip>
@@ -57,6 +61,75 @@ const PlusShopPage = () => {
                 </S.MemberShip>
             </S.MemberShipDiv>
             <S.GuidanceTitle>멤버십 해택</S.GuidanceTitle>
+            </>
+            :
+            <></>
+            }
+            {location.pathname === "/coin_shop" ?
+                <>
+                <S.Tittle>코인 상품</S.Tittle>
+                <S.CoinDiv>
+                    <S.Coin>
+                        <div>
+                        <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
+                        <span>코인</span>
+                        </div>
+                        <b>원</b>
+                    </S.Coin>
+                    <S.Coin>
+                        <div>
+                        <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
+                        <span>코인</span>
+                        </div>
+                        <b>원</b>
+                    </S.Coin>
+                    <S.Coin>
+                        <div>
+                        <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
+                        <span>코인</span>
+                        </div>
+                        <b>원</b>
+                    </S.Coin>
+                    <S.Coin>
+                        <div>
+                        <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
+                        <span>코인</span>
+                        </div>
+                        <b>원</b>
+                    </S.Coin>
+                    <S.Coin>
+                        <div>
+                        <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
+                        <span>코인</span>
+                        </div>
+                        <b>원</b>
+                    </S.Coin>
+                    <S.Coin>
+                        <div>
+                        <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
+                        <span>코인</span>
+                        </div>
+                        <b>원</b>
+                    </S.Coin>
+                    <S.Coin>
+                        <div>
+                        <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
+                        <span>코인</span>
+                        </div>
+                        <b>원</b>
+                    </S.Coin>
+                    <S.Coin>
+                        <div>
+                        <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
+                        <span>코인</span>
+                        </div>
+                        <b>원</b>
+                    </S.Coin>
+                </S.CoinDiv>
+                </>
+                :
+                <></>
+            }
             <S.Guidance>
                 <h3>결제상품 이용 안내</h3>
                 <ul>
