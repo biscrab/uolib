@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom';
 import * as S from '../styled/MyBook'
+import Book from '../contents/Book'
 
 type BookInterface = {
     id: number,
@@ -38,43 +39,12 @@ const MyBookPage = () => {
                 총 0개의 작품
             </S.CountOfBook>
             <S.List>
-                {lists.map(
-                    i => {
-                        return(
-                            <S.Book>
-                            <NavLink to="/novel">
-                                <S.BookCover src={i.image}/>
-                            </NavLink>
-                            <S.BookInfo>    
-                                <NavLink to="/novel">
-                                    <b>{i.title}</b>
-                                </NavLink>
-                                <S.Explane>{i.explane}</S.Explane>
-                                <S.Info>
-                                    <img src="https://novelpia.com/img/new/icon/count_view.png"/>
-                                    <span>104.3K명</span>
-                                    <img src="https://novelpia.com/img/new/icon/count_book.png"/>
-                                    <span>515회차</span>
-                                    <img src="https://novelpia.com/img/new/icon/count_like.png"/>
-                                    <span>8.0K회</span>
-                                </S.Info>
-                                <S.TagDiv>
-                                {i.tag.map(
-                                    tag => {
-                                        return(
-                                            <NavLink to="/">
-                                            <span>#{tag}</span>
-                                            </NavLink>
-                                        )
-                                    }
-                                )}
-                                </S.TagDiv>
-                            </S.BookInfo>
-                        </S.Book>
-                        )
-                    }
-                )}
+                <Book lists={lists}/>
             </S.List>
+            <S.Support>
+                <div>후원금 정산</div>
+                <ul></ul>
+            </S.Support>
         </S.Body>
     )
 }

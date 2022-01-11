@@ -42,6 +42,22 @@ export const List = styled.ul`
     height: 1000px;
 `
 
+export const Support = styled.div`
+    width: 100%;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    div{
+        width: 100%;
+        color: white;
+        padding: 8px 16px;
+        background-color: #343a40;
+        box-sizing: border-box;
+        border-radius: 8px 8px 0px 0px;
+        font-size: 13px;
+    }
+`
+
 export const Book = styled.li`
     border-bottom: 1px solid #eee;
     display: flex;
@@ -53,7 +69,7 @@ export const BookInfo = styled.div`
     display: flex;
     flex-direction: column;
     b{
-        font-size: 22px;
+        font-size: 20px;
     }
 `
 

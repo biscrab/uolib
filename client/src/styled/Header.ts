@@ -90,26 +90,50 @@ export const Menu = styled.div`
 export const MenuModal = styled.ul`
     position: absolute;
     background-color: white;
-    border: 1px solid #333;
+    border: 1px solid #aaa;
     list-style: none;
     z-index: 999;
     width: 250px;
     margin-top: 60px;
-    padding: 10px 0px;
+    padding: 0px 0px;
     height: 350px;
-    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
+    ::-webkit-scrollbar {
+        width: 10px;
+        position: absolute;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #eee;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #bbb;
+    }
+`
+
+export const MenuWrap = styled.div`
+    border-bottom: 1px solid #f1f1f1;
 `
 
 export const MenuLi = styled.li`
     width: 100%;
-    padding: 5px 15px;
+    padding: 8px 15px;
     box-sizing: border-box;
     font-size: 14px;
     color: #333;
     display: flex;
     align-items: center;
     cursor: pointer;
+    :hover{
+        background-color: #fafafa;
+    }
     img{
         vertical-align: middle;
         border-radius: 50%;
@@ -119,17 +143,16 @@ export const MenuLi = styled.li`
     b{
         margin-left: 10px;
     }
-    animation-duration: 1s;
-    animation-name: slide;
-
-    @keyframes slide{
-        from{
-            opacity: 0;
-        }to{
-            opacity: 1;
-        }
+    button{
+        height: 22px;
+        padding: 0px 12px;
+        border-radius: 12.5px;
+        border: 1px solid #aaa;
+        color: #222;
+        background-color: white;
+        font-size: 13px;
+        margin-left: 10px;
     }
-    background-color: ${props => props.color};
 `
 
 export const Logout = styled.div`

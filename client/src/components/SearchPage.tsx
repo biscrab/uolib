@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom'
 import * as S from '../styled/Search'
+import Book from '../contents/Book'
 
 const SearchPage = () => {
 
@@ -11,7 +12,7 @@ const SearchPage = () => {
     const plus = location.pathname.includes("/plus");
     const [keyword, setKeyword] = useState(params.keyword);
 
-    const lists = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명"}]
+    const lists = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag: ["1"]}]
 
     return(
         <S.Body>
@@ -21,7 +22,7 @@ const SearchPage = () => {
                         navigate(`/search/${params.type}/${keyword}`)
                     }
                     else{
-                        navigate(`/search/novel/${keyword}`)
+                        navigate(`/search/keyword/date/1/${keyword}`)
                     }
                 }
             }}/>
@@ -33,13 +34,13 @@ const SearchPage = () => {
             {params.keyword ?
             <>
             <S.SelectDiv>
-                <NavLink to={`/search/novel${params.keyword ? `/${params.keyword}` : ""}`}>
-                <S.Select selected={params.type === "novel" || !params.type}>소설검색</S.Select>
+                <NavLink to={`/search/keyword/date/1/${params.keyword}`}>
+                <S.Select selected={params.type === "keyword"}>소설검색</S.Select>
                 </NavLink>
-                <NavLink to={`/search/tag${params.keyword ? `/${params.keyword}` : ""}`}>
+                <NavLink to={`/search/tag/date/1/${params.keyword}`}>
                 <S.Select selected={params.type === "tag"}>해시태그</S.Select>
                 </NavLink>
-                <NavLink to={`/search/author${params.keyword ? `/${params.keyword}` : ""}`}>
+                <NavLink to={`/search/author/date/1/${params.keyword}`}>
                 <S.Select selected={params.type === "author"}>작가검색</S.Select>
                 </NavLink>
             </S.SelectDiv>
@@ -58,31 +59,7 @@ const SearchPage = () => {
                 </div>
             </S.Result>
             <S.List>
-                {lists.map(
-                    i => {
-                        return(
-                            <S.Book>
-                                <NavLink to="/novel">
-                                    <S.BookCover src={i.image}/>
-                                </NavLink>
-                                <S.BookInfo>    
-                                    <NavLink to="/novel">
-                                        <b>{i.title}</b>
-                                    </NavLink>
-                                    <S.Explane>{i.explane}</S.Explane>
-                                    <S.Info>
-                                        <img src="https://novelpia.com/img/new/icon/count_view.png"/>
-                                        <span>104.3K명</span>
-                                        <img src="https://novelpia.com/img/new/icon/count_book.png"/>
-                                        <span>515회차</span>
-                                        <img src="https://novelpia.com/img/new/icon/count_like.png"/>
-                                        <span>8.0K회</span>
-                                    </S.Info>
-                                </S.BookInfo>
-                            </S.Book>
-                        )
-                    }
-                )}
+                <Book lists={lists}/>
             </S.List>
             </>
             :

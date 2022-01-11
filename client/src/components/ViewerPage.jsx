@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom';
 import * as S from '../styled/Viewer'
 import $ from 'jquery'
+import {connect} from 'react-redux';
 
 const ViewerPage = () => {
 
@@ -138,6 +139,8 @@ const ViewerPage = () => {
         <S.Bottom dark={darkmode} className='interface'>
             <div>
                 <span><i class="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
+                <span>댓글</span>
+                <span>추천</span>
                 <span>다음화<i class="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
             </div>
         </S.Bottom>

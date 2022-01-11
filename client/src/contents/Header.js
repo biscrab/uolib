@@ -15,6 +15,10 @@ const Header = () => {
 
     const [isAlarm, setIsAlarm] = useState(false);
 
+    const logout = () => {
+
+    }
+
     useEffect(()=>{
         $("html").click(function(e){
             if(!$(".menu").has(e.target).length){
@@ -87,14 +91,33 @@ const Header = () => {
                         <img className='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
                         {onMenu ?
                         <S.MenuModal className='menumodal'>
-                            <S.MenuLi>
-                                <img src="https://phinf.pstatic.net/contact/20210430_217/1619765233604XypyT_PNG/avatar_profile.png"/>
-                                <b>이름</b>
-                            </S.MenuLi>
-                            <S.MenuLi>신규 소설등록</S.MenuLi>
-                            <S.MenuLi>내 작품 관리</S.MenuLi>
-                            <S.MenuLi>유저 정보 설정/수정</S.MenuLi>
-                            <S.MenuLi>이모티콘 뽑기</S.MenuLi>
+                            <S.MenuWrap>
+                                <S.MenuLi>
+                                    <img src="https://phinf.pstatic.net/contact/20210430_217/1619765233604XypyT_PNG/avatar_profile.png"/>
+                                    <b>이름</b>
+                                </S.MenuLi>
+                            </S.MenuWrap>
+                            <S.MenuWrap>
+                                <S.MenuLi>
+                                    코인 0
+                                    <button>충전</button>
+                                </S.MenuLi>
+                            </S.MenuWrap>
+                            <S.MenuWrap>
+                                <S.MenuLi>신규 소설등록</S.MenuLi>
+                                <S.MenuLi>내 작품 관리</S.MenuLi>
+                            </S.MenuWrap>
+                            <S.MenuWrap>
+                                <S.MenuLi>유저 정보 설정/수정</S.MenuLi>
+                            </S.MenuWrap>
+                            <S.MenuWrap>
+                                <S.MenuLi>멤버십 샵</S.MenuLi>
+                                <S.MenuLi>코인 샵</S.MenuLi>
+                                <S.MenuLi>이모티콘 샵</S.MenuLi>
+                            </S.MenuWrap>
+                            <S.MenuWrap>
+                                <S.MenuLi>공지사항</S.MenuLi>
+                            </S.MenuWrap>
                             <S.Logout>
                                 <button><i class="fas fa-sign-out-alt"></i>로그아웃</button>
                             </S.Logout>

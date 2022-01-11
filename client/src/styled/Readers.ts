@@ -263,22 +263,27 @@ export const TLike = styled.tr<IndexProps>`
     text-align: center;
 `
 
-export const ViewTitle = styled.h3`
+export const ViewTitle = styled.h4`
     margin: 0;
 `
 
 export const TypeDiv = styled.div`
     color: #888;
     font-size: 13px;
-    margin-top: 2.5px;
+`
+
+export const Write = styled.div`
+    margin: 15px 0px;
 `
 
 export const WriterDiv = styled.div`
     text-align: left;
-    padding: 10px 20px 10px 10px;
-    font-size: 12px;
+    padding: 7px 10px;
+    font-size: 15px;
     background-color: #e9ecef;
-    margin-bottom: 10px;
+    font-size: 13px;
+    background-color: ${props => props.color};
+    color: ${props => props.color ? "white" : ""};
 `
 
 export const ViewBody = styled.div`
@@ -307,6 +312,10 @@ export const ContentsTitle = styled.div`
 `
 
 export const CommentList = styled.ul`
+
+`
+
+export const EmoticonDiv = styled.div`
 
 `
 

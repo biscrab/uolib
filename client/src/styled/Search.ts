@@ -15,9 +15,10 @@ export const Body = styled.div`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 50px;
+    margin-top: 30px;
     @media screen and (max-width: 1200px){
         width: 100%;
+        padding: 0px 10px;
     }
 `
 
@@ -106,7 +107,6 @@ export const List  = styled.ul`
     margin: 0;
     height: 1000px;
     list-style: none;
-    width: 25%;
 `
 
 export const TagListDiv = styled.ul`    
@@ -141,46 +141,4 @@ export const Tag = styled.div`
     cursor: pointer;
     user-select: none;
     font-size: 12px;
-`
-
-export const Book = styled.li`
-    border-bottom: 1px solid #eee;
-    display: flex;
-    padding: 10px 0px;
-`
-
-export const BookInfo = styled.div`
-    margin-left: 30px;
-    display: flex;
-    flex-direction: column;
-`
-
-export const Explane = styled.span`
-    color: dimgray;
-    padding: 10px 0px;
-    height: 100%;
-`
-
-export const Info = styled.div`
-    display: flex;
-    align-items: center;
-    font-size: 13px;
-    span{
-        margin-right: 5px;
-    }
-    img{
-        width: 10px;
-        height: 10px;
-        margin-right: 5px;
-    }
-`
-
-export const BookCover = styled.img`
-    border-radius: 10px;
-    width: 100px;
-    height: 150px;
-`
-
-export const Tittle = styled.b`
-
 `
