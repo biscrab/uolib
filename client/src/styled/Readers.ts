@@ -47,8 +47,14 @@ export const CommunityPathDiv = styled.div`
     display: flex;
 `
 
-export const CommunityPath = styled.span`
+export const CommunityPath = styled.span<SelectProps>`
     padding: 10px;
+    cursor: pointer;
+    background-color: ${props => props.selected ? "#5d3fdf" : ""};
+    color: ${props => props.selected ? "white" : ""};
+    padding: 5px 8px; 
+    margin-right: 5px;
+    margin-bottom: 10px;
 `
 
 export const FanArtList = styled.ul`
@@ -127,6 +133,7 @@ export const Ranking = styled.tr`
     width: 100%;
     padding: 10px 0px;
     display: flex;
+    font-size: 15px;
 `
 
 export const Rank = styled.td`
@@ -135,7 +142,7 @@ export const Rank = styled.td`
 `
 
 export const Name = styled.td`
-    width: 100%;
+    width: 260px;
 `
 
 export const Amount = styled.td`

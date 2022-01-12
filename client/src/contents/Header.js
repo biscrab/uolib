@@ -49,7 +49,7 @@ const Header = () => {
                 <NavLink to="/top100">
                     <S.Path path={location.pathname.includes("/top100")}>TOP100</S.Path>
                 </NavLink>
-                <NavLink to="/readers">
+                <NavLink to="/readers/comunity/1">
                     <S.Path path={location.pathname.includes("/readers")}>독자마당</S.Path>
                 </NavLink>
                 <NavLink to="/mybook">
@@ -94,7 +94,9 @@ const Header = () => {
                             <S.MenuWrap>
                                 <S.MenuLi>
                                     <img src="https://phinf.pstatic.net/contact/20210430_217/1619765233604XypyT_PNG/avatar_profile.png"/>
-                                    <b>이름</b>
+                                    <NavLink to={`/user/${1}`}>
+                                        <b>이름</b>
+                                    </NavLink>
                                 </S.MenuLi>
                             </S.MenuWrap>
                             <S.MenuWrap>

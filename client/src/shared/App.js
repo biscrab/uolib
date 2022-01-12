@@ -62,13 +62,17 @@ function App() {
         <Route exact path="/new" element={<P.New />}/>
         <Route exact path="/search/:type/:order/:page/:keyword" element={<P.Search />} />
         <Route exact path="/search" element={<P.Search />} />
-        <Route exact path="/free/:type/:category" element={<P.Serialize/>}/>
+        <Route exact path="/free/:type/:order/:page/:category" element={<P.Serialize/>}/>
+        <Route exact path="/free/:type/:order/:page" element={<P.Serialize/>}/>
+        <Route exact path="/free/:type/:order" element={<P.Serialize/>}/>
         <Route exact path="/free/:type" element={<P.Serialize/>}/>
         <Route exact path="/free" element={<P.Serialize/>}/>
-        <Route exact path="/plus/:type/:category" element={<P.Serialize/>}/>
+        <Route exact path="/plus/:type/:order/:page/:category" element={<P.Serialize/>}/>
+        <Route exact path="/plus/:type/:order/:page" element={<P.Serialize/>}/>
+        <Route exact path="/plus/:type/:order" element={<P.Serialize/>}/>
         <Route exact path="/plus/:type" element={<P.Serialize/>}/>
         <Route exact path="/plus" element={<P.Serialize/>}/>
-        <Route exact path="/readers/:type" element={<P.Readers />}/>
+        <Route exact path="/readers/:type/:page" element={<P.Readers />}/>
         <Route exact path="/readers" element={<P.Readers />}/>
         <Route exact path="/readers/view/:id" element={<P.ReadersView />}/>
         <Route exact path="/mybook" element={<P.MyBook />}/>

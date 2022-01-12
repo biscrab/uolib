@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import * as S from '../styled/Novel'
 import queryString from 'query-string'
-import { NavLink, useLocation, useParams } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const NovelPage = () => {
@@ -12,6 +12,7 @@ const NovelPage = () => {
     const [pages, setPages] = useState([]);
     const [page, setPage] = useState([]);
     const [onSupport, setOnSupport] = useState(false);
+    const [price, setPrice] = useState(0);
 
     const location = useLocation();
     const params = useParams();
@@ -61,8 +62,29 @@ const NovelPage = () => {
             
     },[])
 
+    const changePrice = (e) => {
+        setPrice(e.target.value);
+    }
+
+    const navigate = useNavigate();
+
     const support = () => {
-        
+        if(!price){
+            alert("후원금을 설정해 주십쇼.")
+        }
+        else{
+            axios.post(`/support/${params.id}`)
+                .then(res => alert(`후원 되었습니다. (${price}코인)`))
+                .catch(err => {
+                    if(err.status === 400){
+                        alert("후원금이 모자랍니다.")
+                    }
+                    else if(err.status === 401){
+                        alert("로그인을 먼저 해 주세요.");
+                        navigate('/login');
+                    }
+                })
+        }
     }
 
     return(
@@ -208,7 +230,7 @@ const NovelPage = () => {
                     <S.SupportModalBody>
                         <b>현재 보유 코인 (1000)</b>
                         <div>
-                            <input type="number"/>
+                            <input type="number" onChange={(e)=>changePrice(e)} value={price}/>
                             <b>코인</b>
                         </div>
                     </S.SupportModalBody>

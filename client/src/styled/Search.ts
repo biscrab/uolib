@@ -94,10 +94,22 @@ export const Result = styled.div`
     border-bottom: 2px solid #333;
     div{
         display: flex;
-        b{
-            margin-right: 15px;
+        align-items: center;
+        margin-left: 10px;
+        b{  
             font-size: 14px;
             cursor: pointer;
+        }
+        i{
+            color: #ccc;
+            font-size: 1px;
+            display: flex;
+            align-items: center;
+            margin-right: 2.5px;
+            margin-left: 7.5px;
+            height: 10px;
+            width: 10px;
+            transform: translateY(10%);
         }
     }
 `

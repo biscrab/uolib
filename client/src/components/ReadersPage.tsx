@@ -1,4 +1,5 @@
-import { NavLink, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import * as S from '../styled/Readers'
 
 type RowType = {
@@ -52,26 +53,36 @@ const ReadersPage = () => {
 
     const params = useParams();
 
+    const [type, setType] = useState('all')
+
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        if(!params.type){
+            navigate('/readers/comunity/1');
+        }
+    })
+
     return(
         <S.Body>
             <S.SelectDiv>
-                <NavLink to="/readers/comunity">
-                <S.Select selected={params.type === "comunity" || !params.type}>커뮤니티</S.Select>
+                <NavLink to="/readers/comunity/1">
+                <S.Select selected={params.type === "comunity"}>커뮤니티</S.Select>
                 </NavLink>
-                <NavLink to="/readers/fanart">
+                <NavLink to="/readers/fanart/1">
                     <S.Select selected={params.type === "fanart"}>팬아트</S.Select>
                 </NavLink>
-                <NavLink to="/readers/hall_of_fame">
+                <NavLink to="/readers/hall_of_fame/1">
                     <S.Select selected={params.type === "hall_of_fame"}>명예의전당</S.Select>
                 </NavLink>
            </S.SelectDiv>
-           {params.type === "comunity" || !params.type ?
+           {params.type === "comunity" ?
             <S.List>
             <S.CommunityPathDiv>
-                <S.CommunityPath>전체</S.CommunityPath>
-                <S.CommunityPath>공모전리뷰</S.CommunityPath>
-                <S.CommunityPath>작품리뷰</S.CommunityPath>
-                <S.CommunityPath>작품홍보</S.CommunityPath>
+                <S.CommunityPath selected={type === "all"}>전체</S.CommunityPath>
+                <S.CommunityPath selected={type === "contest_review"}>공모전리뷰</S.CommunityPath>
+                <S.CommunityPath selected={type === "review"}>작품리뷰</S.CommunityPath>
+                <S.CommunityPath selected={type === "h"}>작품홍보</S.CommunityPath>
             </S.CommunityPathDiv>
             <S.TRow idx={1}>
                 <S.TNumber idx={1}>번호</S.TNumber>
@@ -124,16 +135,14 @@ const ReadersPage = () => {
             <h2>명예의 전당</h2>
             <S.HallOfFameList>
                 <S.HallOfFameDiv>
-                    <div>소장랭킹</div>
+                    <div>코인랭킹</div>
                     <table>
                        {rlist.map(
                            (i, index) => {
                                return(
                                    <S.Ranking>
                                        <S.Rank>{index+1}위</S.Rank>
-                                       <NavLink to={`/user/${i.id}`}>
-                                            <S.Name>{i.name}</S.Name>
-                                       </NavLink>
+                                            <S.Name><NavLink to={`/user/${i.id}`}>{i.name}</NavLink></S.Name>
                                        <S.Amount>{i.amount}</S.Amount>
                                    </S.Ranking>
                                )
