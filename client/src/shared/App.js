@@ -77,6 +77,7 @@ function App() {
         <Route exact path="/readers/view/:id" element={<P.ReadersView />}/>
         <Route exact path="/mybook" element={<P.MyBook />}/>
         <Route exact path="/mybook/:type" element={<P.MyBook />}/>
+        <Route exact path="/plus_agree" element={<P.PlusAgree />}/>
         <Route exact path="/top100/:type" element={<P.Top100/>}/>
         <Route exact path="/top100" element={<P.Top100/>}/>
         <Route exact path="/login" element={<P.Login />} />

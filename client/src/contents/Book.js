@@ -4,15 +4,17 @@ import { NavLink } from 'react-router-dom'
 const Book = ({i}) => {
     return(
         <S.Book>
-        <NavLink to="/novel">
+        <NavLink to="/novel/1">
             <S.BookCover src={i.image}/>
         </NavLink>
         <S.BookInfo> 
             <S.Title>   
-            <NavLink to="/novel">
+            <NavLink to="/novel/1">
                 <b>{i.title}</b>
             </NavLink>
+            <NavLink to="/user/1">
                 <span>작가</span>
+            </NavLink>
             </S.Title>
             <S.Explane>{i.explane}</S.Explane>
             <S.Info>
