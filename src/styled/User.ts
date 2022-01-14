@@ -58,29 +58,70 @@ export const CardHeader = styled.div`
 `
 
 export const CardBody = styled.div`
-    padding: 10px;
+    padding: 15px;
+    font-size: 14px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    button{
+        padding: 8px 0px;
+        border: 0;
+        color: white;
+        background-color: #007bff;
+    }
+    div{
+        display: flex;
+        button{
+        width: 80px;
+        margin-left: 10px;
+        }
+    }
+    img{
+        margin: 10px 0px;
+        width: 85px;
+        height: 85px;
+    }
+`
+
+export const Input = styled.input`
+    width: 100%;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    outline: 0;
+    padding: 0px 10px;
+    
+    :focus{
+        background-color: white;
+        border-color: #007bff;
+    }
 `
 
 export const EditTittle = styled.div`
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    h4{
+        font-weight: bold;
+        color: #333;
+    }
 `
 
 export const EditDiv = styled.div`
     display: flex;
     justify-content: space-between;
-    height: 800px;
     margin: 30px 0px;
 `
 
-export const EditCard = styled.div`
+export const EditCardDiv = styled.div`
+    display: flex;
+    flex-direction: column;
     width: 32.5%;
+`
+
+export const EditCard = styled.div`
     box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     margin-bottom: 10px;
-    height: 100%;
+    width: 100%;
 `
 
 interface SelectProps{

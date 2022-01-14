@@ -2,6 +2,15 @@ import { NavLink } from 'react-router-dom'
 import * as S from '../styled/Account'
 
 const SignUpPage = () => {
+
+    const certification = () => {
+        
+    }
+
+    const signup = () => {
+
+    }
+
     return(
         <S.Background src="https://i.ytimg.com/vi/_Zm5cUqE7hg/maxresdefault.jpg">
             <S.BackgroundFilter>
