@@ -1,6 +1,15 @@
 import * as S from '../styled/User'
 
 const UserEditPage = () => {
+
+    const Toggle = () => {
+        return(
+            <S.Toggle selected={true}>
+                <div></div>
+            </S.Toggle>
+        )
+    }
+
     return(
         <S.Body>
             <S.EditTittle>
@@ -13,7 +22,9 @@ const UserEditPage = () => {
                 </S.EditCard>
                 <S.EditCard>
                     <S.CardHeader>서비스 이용설정</S.CardHeader>
-                    <S.CardBody></S.CardBody>
+                    <S.CardBody>
+                        <Toggle />
+                    </S.CardBody>
                 </S.EditCard>
                 <S.EditCard>
                     <S.CardHeader>수신알림 동의</S.CardHeader>

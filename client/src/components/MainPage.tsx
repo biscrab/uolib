@@ -102,11 +102,11 @@ const MainPage = () => {
             )}
         </S.BannerDiv>
         <S.Body>
-            <S.Title>공모전 Best</S.Title>
+            <S.Title>플러스 Best</S.Title>
             <S.Border>
                 <List lists={contestList}/>
             </S.Border>
-            <S.Title>Best 인기</S.Title>
+            <S.Title>자유연재 Best</S.Title>
             <S.Border>
                 <List lists={bestList}/>
             </S.Border>

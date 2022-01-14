@@ -82,3 +82,25 @@ export const EditCard = styled.div`
     margin-bottom: 10px;
     height: 100%;
 `
+
+interface SelectProps{
+    selected: boolean
+}
+
+export const Toggle = styled.div<SelectProps>`
+    background-color: ${props => props.selected ? "#5635ce" : "#bdc1c2"};
+    height: 20px;
+    width: 80px;
+    border-radius: 10px;
+    div{
+        background-color: #ffffff;
+        content: '\0020';
+        display: inline-block;
+        position: absolute;
+        top: 2px;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        transition: left 0.25s;
+    }
+`

@@ -16,27 +16,50 @@ export const BookDiv = styled.div`
 
 export const ButtonDiv = styled.div`
     display: flex;
-    align-items: center;
-    margin: 50px 0px;
+    justify-content: center;
+    margin: 100px 0px;
     button{
-    
+        padding: 10px 50px;
+        border-radius: 3px;
+        border: 0;
+        font-size: 25px;
+        background-color: #5232dd;
+        color: white;
     }
 `
 
 export const StandardDiv = styled.div`
-    width: 600px;
+    margin-top: 50px;
+    width: 700px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
-    border-radius: 20px;
-    border: 2px solid #ccc;
     div{
-        
+        width: 150px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border: 7px solid #E8E8E8;
+        border-radius: 26px;
+        background-color: #FAF9F8;
     }
     h1{
         color: #CF2523;
+        font-size: 60px;
+        font-weight: bold;
+    }
+    span{
+        margin: 0px;
+        white-space: nowrap;
+        background-color: #eee;
+        color: #333;
+        padding: 5px 20px;
+        border-radius: 16px;
+        font-size: 14px;
     }
 `
 

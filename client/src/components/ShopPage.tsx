@@ -9,6 +9,28 @@ const PlusShopPage = () => {
     const [onPayment, setOnPayment] = useState(false);
     const [onAccept, setOnAccept] = useState([false, false, false]);
 
+    const ilist = [{name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"}]
+
+    const blist = [{name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"}];
+
     return(
         <>
         <S.ShopDiv>
@@ -19,7 +41,7 @@ const PlusShopPage = () => {
             <NavLink to="/coin_shop">
                 <span>코인</span>
             </NavLink>
-            <NavLink to="emoticon_shop">
+            <NavLink to="/emoticon_shop">
                 <span>이모티콘</span>
             </NavLink>
             </div>
@@ -126,6 +148,41 @@ const PlusShopPage = () => {
                         <b>원</b>
                     </S.Coin>
                 </S.CoinDiv>
+                </>
+                :
+                <></>
+            }
+            {location.pathname === "/emoticon_shop" ?
+                <>
+                <S.Tittle>NEW 이모티콘</S.Tittle>
+                <S.EmoticonDiv>
+                    {ilist.map(
+                        i => {
+                            return(
+                                <S.Emoticon>
+                                    <div>
+                                        <img src={i.image}/>
+                                    </div>
+                                    <span>{i.name}</span>
+                                </S.Emoticon>
+                            )
+                        }
+                    )}
+                </S.EmoticonDiv>
+                <S.Tittle>인기 이모티콘</S.Tittle>
+                <S.BestEmoticonDiv>
+                    {blist.map(
+                        (i, index) => {
+                            return(
+                            <div>
+                                <h3>{index+1}</h3>
+                                <img src={i.image}/>
+                                <span>{i.name}</span>
+                            </div>
+                            );
+                        }
+                    )}
+                </S.BestEmoticonDiv>
                 </>
                 :
                 <></>

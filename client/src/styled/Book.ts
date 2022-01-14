@@ -27,7 +27,7 @@ export const Info = styled.div`
     padding: 15px 0px;
     font-weight: bold;
     span{
-        margin-right: 5px;
+        margin-right: 10px;
     }
     img{
         width: 12px;

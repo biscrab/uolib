@@ -41,6 +41,7 @@ export const List = styled.ul`
 
 export const Alarm = styled.div`
     display: flex;
+    align-items: center;
     padding: 10px;
     width: 100%;
     border: 2px solid #eee;
@@ -52,7 +53,8 @@ export const Alarm = styled.div`
 
 export const AlarmContents = styled.div`
     background: #eee;
-    padding: 5px 10px;
+    margin-top: 2.5px;
+    padding: 2.5px 10px;
     border-radius: 3px;
     width: 100%;
     box-sizing: border-box;

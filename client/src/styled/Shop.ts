@@ -57,9 +57,9 @@ export const MemberShipDiv = styled.div`
 `
 
 export const MemberShip = styled.div`
-    border: 2px solid #704bfa;
+    border: 3px solid #704bfa;
     width: 30%;
-    height: 250px;
+    height: 260px;
     display: flex;
     box-sizing: border-box;
     padding: 20px;
@@ -67,6 +67,7 @@ export const MemberShip = styled.div`
     align-items: center;
     justify-content: space-between;
     h4{
+        font-weight: bold;
     }
     div{
         display: flex;
@@ -201,5 +202,69 @@ export const Coin = styled.div`
     font-size: 15px;
     img{
         margin-right: 10px;
+    }
+`
+
+export const EmoticonDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+`
+
+export const Emoticon = styled.div`
+    width: 170px;
+    text-align: center;
+    margin-bottom: 20px;
+    span{
+       width: 100%;
+    }
+    div{
+        border-radius: 10px;
+        width: 170px;
+        height: 170px;
+        background-color: white;
+        box-shadow: 0 2px 10px 0 rgb(0 0 0 / 6%);
+        padding: 20px;
+        margin-bottom: 10px;
+        img{
+            height: 130px;
+            width: 130px;
+        }
+    }
+`
+
+export const BestEmoticonDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 650px;
+    margin-bottom: 50px;
+    width: 100%;
+    div{
+        height: 130px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        width: 48%;
+        padding: 10px 0px;
+        border-bottom: 1px solid #ddd;
+        margin-right: 4%;
+    }
+    span{
+        font-weight: bold;
+        font-size: 25px;
+    }
+    img{
+        width: 110px;
+        height: 110px;
+        margin-right: 20px;
+    }
+    h3{
+        color: #de4f4f;
+        width: 80px;
+        text-align: center;
+        margin: 0;
+        font-size: 30px;
     }
 `

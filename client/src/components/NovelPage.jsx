@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const NovelPage = () => {
 
-    const [novel, setNovel] = useState({view: "", tag: [], other: [{title: "1", author: "1", image: "https://image.novelpia.com/imagebox/cover/71ef870f96a30146e548d3c75dfe439e_458688_ori.file"}], notice:[], comment:[]});
+    const [novel, setNovel] = useState({view: "", tag: ["1", "2"], other: [{title: "1", author: "1", image: "https://image.novelpia.com/imagebox/cover/71ef870f96a30146e548d3c75dfe439e_458688_ori.file"}], notice:[], comment:[]});
     const [lists, setLists] = useState([{title: "test1", type: "notice", plus: true},{title: "test1", type: "notice"}]);
     const [comments, setComments] = useState([]);
     const [pages, setPages] = useState([]);
@@ -117,18 +117,18 @@ const NovelPage = () => {
                             <span>{novel.view}회</span>
                             </S.InfoBorder>
                         </S.BottomInfoDiv>
+                        <S.Explane>
+                            {novel.explane}
+                        </S.Explane>
+                        <S.TagDiv>
+                            {novel.tag.map(i => {
+                                return(
+                                    <span>#{i}</span>
+                                )
+                            })}
+                        </S.TagDiv>
                     </S.BottomInfo>
                 </S.InfoDiv>
-                <S.Explane>
-
-                </S.Explane>
-                <S.TagDiv>
-                    {novel.tag.map(i => {
-                        return(
-                            <S.Tag></S.Tag>
-                        )
-                    })}
-                </S.TagDiv>
             </S.Info>
             <S.Border>
 

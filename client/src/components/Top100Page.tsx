@@ -1,4 +1,6 @@
-import { NavLink } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
 import * as S from '../styled/Top100'
 
@@ -11,8 +13,15 @@ type BookType = {
 
 const Top100Page = () => {
 
+    const location = useLocation();
     const params = useParams();
-    const lists : BookType[] = [
+
+    useEffect(()=>{
+        axios.get(location.pathname)
+
+    },[])
+
+    const [lists, setLists] = useState([
         {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
         {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
         {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
@@ -113,7 +122,7 @@ const Top100Page = () => {
         {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
         {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
         {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-    ];
+    ]);
 
     return(
         <S.Body>

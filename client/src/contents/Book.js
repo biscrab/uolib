@@ -22,7 +22,7 @@ const Book = ({i}) => {
                 <span>104.3K명</span>
                 <img src="https://novelpia.com/img/new/icon/count_book.png"/>
                 <span>515회차</span>
-                <img src="https://novelpia.com/img/new/icon/count_like.png"/>
+                <img src="	https://image.novelpia.com/img/new/icon/count_good.png"/>
                 <span>8.0K회</span>
             </S.Info>
 
@@ -31,7 +31,7 @@ const Book = ({i}) => {
     )
 }
 
-/*            <S.TagDiv>
+/*           <S.TagDiv>
             {i.tag.map(
                 tag => {
                     return(

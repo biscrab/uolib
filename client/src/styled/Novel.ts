@@ -32,15 +32,27 @@ export const InfoDiv = styled.div`
 `
 
 export const Explane = styled.div`
-
+    line-height: 1.5;
+    color: #333;
+    font-size: .875rem;
+    font-size: 14px;
 `
 
 export const TagDiv = styled.div`
-
-`
-
-export const Tag = styled.div`
-    border-radius
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    span{
+        color: #5032df;
+        border: 2px solid #5032df;
+        border-radius: 20px;
+        padding: 3px 10px;
+        line-height: 20px;
+        user-select: none;
+        font-size: 14px;
+        font-weight: 600;
+        margin-right: 5px;
+    }
 `
 
 export const TopInfo = styled.div`
@@ -120,10 +132,11 @@ export const Name = styled.span`
 `
 
 export const ListTittle = styled.h1`
-    margin-top: 40px;
-    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 8px;
     font-size: 25px;
     color: #333;
+    font-weight: bold;
 `
 
 export const ListDiv = styled.div`

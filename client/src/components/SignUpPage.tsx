@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import * as S from '../styled/Account'
 
 const SignUpPage = () => {
@@ -16,8 +17,10 @@ const SignUpPage = () => {
                     </S.EmailDiv>
                     <S.Input placeholder='비밀번호 (7~25)' type="password"/>
                     <S.Input placeholder='비밀번호 확인' type="password"/>
-                    <S.LButton>로그인</S.LButton>
-                    <S.SButton>회원가입</S.SButton>
+                    <S.LButton>회원가입</S.LButton>
+                    <NavLink to="/login">
+                        <S.SButton>로그인</S.SButton>
+                    </NavLink>
                 </S.Body>
             </S.BackgroundFilter>
         </S.Background>

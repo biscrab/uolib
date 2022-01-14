@@ -5,7 +5,7 @@ import $ from 'jquery'
 import { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
-const Header = () => {
+const Header = (prop) => {
 
     const isMobile = useMediaQuery({ maxWidth: 1240 })
 
@@ -18,6 +18,10 @@ const Header = () => {
     const logout = () => {
 
     }
+
+    useEffect(()=>{
+        console.log(location);
+    },[])
 
     useEffect(()=>{
         $("html").click(function(e){
@@ -44,7 +48,7 @@ const Header = () => {
                     <S.Path path={location.pathname.includes("/free")}>자유연재</S.Path>
                 </NavLink>
                 <NavLink to="/plus">
-                    <S.Path path={location.pathname.includes("/plus")}>플러스</S.Path>
+                    <S.Path path={location.pathname.includes("/plus") && location.pathname !== "/plus_shop" && location.pathname !== "/plus_agree"}>플러스</S.Path>
                 </NavLink>
                 <NavLink to="/top100">
                     <S.Path path={location.pathname.includes("/top100")}>TOP100</S.Path>
@@ -101,24 +105,40 @@ const Header = () => {
                             </S.MenuWrap>
                             <S.MenuWrap>
                                 <S.MenuLi>
-                                    코인 0
-                                    <button>충전</button>
+                                <i class="fas fa-coins"></i>코인 0
+                                    <NavLink to="/coin_shop">
+                                        <button>충전</button>
+                                    </NavLink>
                                 </S.MenuLi>
                             </S.MenuWrap>
                             <S.MenuWrap>
-                                <S.MenuLi>신규 소설등록</S.MenuLi>
-                                <S.MenuLi>내 작품 관리</S.MenuLi>
+                                <NavLink to="/new">
+                                    <S.MenuLi><i class="far fa-edit"></i>신규 소설등록</S.MenuLi>
+                                </NavLink>
+                                <NavLink to="/mybook">
+                                    <S.MenuLi><i class="far fa-folder-open"></i>내 작품 관리</S.MenuLi>
+                                </NavLink>
                             </S.MenuWrap>
                             <S.MenuWrap>
-                                <S.MenuLi>유저 정보 설정/수정</S.MenuLi>
+                                <NavLink to="/useredit">
+                                    <S.MenuLi><i class="far fa-user-circle"></i>유저 정보 설정/수정</S.MenuLi>
+                                </NavLink>
                             </S.MenuWrap>
                             <S.MenuWrap>
-                                <S.MenuLi>멤버십 샵</S.MenuLi>
-                                <S.MenuLi>코인 샵</S.MenuLi>
-                                <S.MenuLi>이모티콘 샵</S.MenuLi>
+                                <NavLink to="/plus_shop">
+                                    <S.MenuLi><i class="far fa-plus-square"></i>플러스 샵</S.MenuLi>
+                                </NavLink>
+                                <NavLink to="/coin_shop">
+                                    <S.MenuLi><i class="fas fa-coins"></i>코인 샵</S.MenuLi>
+                                </NavLink>
+                                <NavLink to="/emoticon_shop">
+                                    <S.MenuLi><i class="far fa-smile-wink"></i>이모티콘 샵</S.MenuLi>
+                                </NavLink>
                             </S.MenuWrap>
                             <S.MenuWrap>
-                                <S.MenuLi>공지사항</S.MenuLi>
+                                <NavLink to="/readers">
+                                    <S.MenuLi><i class="fas fa-bullhorn"></i>공지사항</S.MenuLi>
+                                </NavLink>
                             </S.MenuWrap>
                             <S.Logout>
                                 <button><i class="fas fa-sign-out-alt"></i>로그아웃</button>

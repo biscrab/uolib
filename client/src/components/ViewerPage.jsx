@@ -25,6 +25,10 @@ const ViewerPage = () => {
 
     useEffect(()=>{
         $('html').click(function(e){if(!$(".interface").has(e.target).length)setOnInterface(!onInterface)})
+        /*
+        document.addEventListener('scroll', function() {
+            setOnInterface(false);
+        })*/
     })
 
     return(
@@ -127,21 +131,34 @@ const ViewerPage = () => {
         <>
         <S.Body dark={darkmode}>
         <img src="https://image.novelpia.com/imagebox/cover/389dc063c0e465e5a7f7e3f3ac04bddd_130337_ori.file"/>
-        <div>
+        <S.Text>
             123
-        </div>
+        </S.Text>
+        {novel.authorsword ?
         <S.AuthorsWords dark={darkmode}>
-            
+            <div>작가의 말</div>
         </S.AuthorsWords>
+        :
+        <></>
+        }
         <S.NextButton>다음 화</S.NextButton>
         </S.Body>
         {onInterface ?
         <S.Bottom dark={darkmode} className='interface'>
             <div>
+                {novel.prev ?
                 <span><i class="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
-                <span>댓글</span>
-                <span>추천</span>
+                :
+                <span style={{color: "#ccc"}}><i class="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
+                }
+                <span><i class="far fa-comment-alt" style={{marginRight: "5px"}}></i>댓글</span>
+                <span><i class="far fa-thumbs-up" style={{marginRight: "5px"}}></i>추천</span>
+                <span><i class="far fa-heart" style={{marginRight: "5px"}}></i>선호</span>
+                {novel.next ?
                 <span>다음화<i class="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
+                :
+                <span style={{color: "#ccc"}}>다음화<i class="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
+                }
             </div>
         </S.Bottom>
         :
@@ -154,7 +171,7 @@ const ViewerPage = () => {
         <S.Background>
             <S.PlusModal>
                 <i className="fas fa-home"></i>홈
-                <img src="https://novelpia.com/img/new/plus/plus_viewer.png"/>
+                <img src={`https://uolib.herokuapp.com/bookcover/${params.id}`}/>
                 <span>PLUS 멤버십 가입이<br />필요한 회차 입니다.</span>
                 <button>PLUS 가입</button>
             </S.PlusModal>

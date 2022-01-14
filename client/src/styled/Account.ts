@@ -12,6 +12,7 @@ export const Background = styled.div<BackgroundProps>`
     background-color: #363b3e;
     background-blend-mode: multiply;
     position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
 `
@@ -33,7 +34,6 @@ export const Body = styled.div`
     justify-content: center;
     padding: 20px;
     border-radius: 5px;
-    transform: translateY(-30px);
     @media screen and (max-width: 400px) {
         width: 100%;
     }
@@ -114,7 +114,7 @@ export const EmailDiv = styled.div`
 `
 
 export const LButton = styled.button`
-    margin-top: 60px;
+    margin-top: 50px;
     color: white;
     background-color: #5a35cd;
 `

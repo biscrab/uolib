@@ -5,7 +5,7 @@ export const Body = styled.div`
     margin-top: 80px;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 1300px;
+    max-width: 1250px;
     @media screen and (max-width: 1200px) {
         width: 100%;
         padding: 0px 20px;

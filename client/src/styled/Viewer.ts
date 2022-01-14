@@ -26,6 +26,9 @@ export const HeaderDiv = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media screen and (max-width: 1000){
+        width: 100%;
+    }
 `
 
 export const RightDiv = styled.div`
@@ -49,14 +52,16 @@ export const Body = styled.div<DarkProps>`
         left: 50%;
         transform: translateX(-50%);
     }
-    div{
-        padding: 80px 0px;
-    }
 ` 
+
+export const Text = styled.div`
+    padding: 80px 0px;
+`
 
 export const AuthorsWords = styled.div<DarkProps>`
     background: ${props => props.dark ? "#35363a" : "#f2f2f2"};
-    padding: 5px 10px;
+    padding: 10px;
+    min-height: 200px;
 `
 
 export const NextButton = styled.button`
@@ -140,11 +145,12 @@ export const Bottom = styled.div<DarkProps>`
         left: 50%;
         transform: translateX(-50%);
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
     }
     span{
         cursor: pointer;
         font-size: 16px;
+        font-weight: bold;
     }
 `
 

@@ -100,7 +100,7 @@ export const MenuModal = styled.ul`
     box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
     ::-webkit-scrollbar {
-        width: 10px;
+        width: 6px;
         position: absolute;
     }
 
@@ -109,7 +109,7 @@ export const MenuModal = styled.ul`
     }
 
     ::-webkit-scrollbar-thumb {
-      background: #ccc;
+      background: #ddd;
       border-radius: 5px;
     }
 
@@ -152,6 +152,9 @@ export const MenuLi = styled.li`
         background-color: white;
         font-size: 13px;
         margin-left: 10px;
+    }
+    i{
+        margin-right: 5px;
     }
 `
 
