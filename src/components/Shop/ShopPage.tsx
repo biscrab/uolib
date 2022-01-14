@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom';
-import * as S from '../styled/Shop'
+import * as S from '../../styled/Shop'
 
 const PlusShopPage = () => {
 

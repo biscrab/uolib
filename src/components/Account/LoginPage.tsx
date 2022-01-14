@@ -1,4 +1,4 @@
-import * as S from '../styled/Account'
+import * as S from '../../styled/Account'
 import logo from '../images/logo.png'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'

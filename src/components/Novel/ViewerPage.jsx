@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom';
-import * as S from '../styled/Viewer'
+import * as S from '../../styled/Viewer'
 import $ from 'jquery'
 import {connect} from 'react-redux';
 

@@ -1,5 +1,5 @@
 import { NavLink, useParams } from 'react-router-dom'
-import * as S from '../styled/Alarm'
+import * as S from '../../styled/Alarm'
 
 type AlarmType = {
     title: string,

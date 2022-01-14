@@ -1,5 +1,5 @@
 import React from 'react'
-import NewPage from '../components/NewPage'
+import NewPage from '../components/Novel/NewPage'
 
 const New = () => {
     return(

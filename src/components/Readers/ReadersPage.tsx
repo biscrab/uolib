@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
-import * as S from '../styled/Readers'
+import * as S from '../../styled/Readers'
 
 type RowType = {
     number: number,

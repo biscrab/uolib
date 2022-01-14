@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import * as S from '../styled/Novel'
+import * as S from '../../styled/Novel'
 import queryString from 'query-string'
 import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'

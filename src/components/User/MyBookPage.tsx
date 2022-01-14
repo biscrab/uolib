@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom';
-import * as S from '../styled/MyBook'
-import Book from '../contents/Book'
+import * as S from '../../styled/MyBook'
+import Book from '../../contents/Book'
 
 type BookInterface = {
     id: number,

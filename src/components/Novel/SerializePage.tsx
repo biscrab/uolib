@@ -1,29 +1,30 @@
-import * as S from '../styled/Search'
+import * as S from '../../styled/Search'
 import { NavLink, useLocation, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
-import Book from '../contents/Book'
+import { useEffect, useState } from 'react';
+import Book from '../../contents/Book'
 import axios from 'axios';
 
 const SerializePage = () => {
 
-    const lists = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag:["1"]}];
-    const clist = ["공모전", "판타지", "현대", "라이트노벨", "하렘", "일상", "중세", "TS", "전생", "로맨스", "먼치킨", "아카데미", "SF", "드라마", "코미디", "이세계", "순애", "빙의", "남성향"]
+    const [max, setMax] = useState(0);
+    const [list, setList] = useState([{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag:["1"]}]);
+    const tlist = ["공모전", "판타지", "현대", "라이트노벨", "하렘", "일상", "중세", "TS", "전생", "로맨스", "먼치킨", "아카데미", "SF", "드라마", "코미디", "이세계", "순애", "빙의", "남성향"]
     const params = useParams();
     const location = useLocation();
     const plus = location.pathname.includes("/plus")
 
     useEffect(()=>{
-        console.log("공모전" === params.category);
+        console.log("공모전" === params.tag);
     })
 
     const Category = () => {
         return(
             <>
-            {clist.map(
+            {tlist.map(
                 i => {
                     return(
                         <NavLink to={`/${plus ? "plus" : "free"}/${params.type? params.type : "all"}/${params.order ? params.order : "date"}/1/${i}`}>
-                            <S.Category selected={i === params.category}>{i}</S.Category>
+                            <S.Category selected={i === params.tag}>{i}</S.Category>
                         </NavLink>
                     )
                 }
@@ -39,7 +40,11 @@ const SerializePage = () => {
     }
 
     useEffect(()=>{
-        axios.get(`/${params}`)
+        axios.get(location.pathname)
+            .then(res => {
+                setMax(res.data.max);
+                setList(res.data.list);
+            });
     },[])
 
     return(
@@ -61,9 +66,9 @@ const SerializePage = () => {
                 </NavLink>
             </S.SelectDiv>
             <S.Result>
-                <b>총 0개의 작품</b>
+                <b>총 {max}개의 작품</b>
                 <div>
-                    <NavLink to={`/${plus ? "plus" : "free"}/${params.type ? params.type : "all"}/date/1${params.category ? `/${params.category}` : ""}`}>
+                    <NavLink to={`/${plus ? "plus" : "free"}/${params.type ? params.type : "all"}/date/1${params.tag ? `/${params.tag}` : ""}`}>
                     <div>
                         {params.order === "date" || !params.order ?
                         <Check />
@@ -73,7 +78,7 @@ const SerializePage = () => {
                         <b>공개일자 순</b>
                     </div>
                     </NavLink>
-                    <NavLink to={`/${plus ? "plus" : "free"}/${params.type ? params.type : "all"}/view/1${params.category ? `/${params.category}` : ""}`}>
+                    <NavLink to={`/${plus ? "plus" : "free"}/${params.type ? params.type : "all"}/view/1${params.tag ? `/${params.tag}` : ""}`}>
                     <div>
                         {params.order === "view" ?
                             <Check />
@@ -83,7 +88,7 @@ const SerializePage = () => {
                         <b>조회순</b>
                     </div>
                     </NavLink>
-                    <NavLink to={`/${plus ? "plus" : "free"}/${params.type ? params.type : "all"}/like/1${params.category ? `/${params.category}` : ""}`}>
+                    <NavLink to={`/${plus ? "plus" : "free"}/${params.type ? params.type : "all"}/like/1${params.tag ? `/${params.tag}` : ""}`}>
                     <div>
                         {params.order === "like" ?
                             <Check />
@@ -96,11 +101,13 @@ const SerializePage = () => {
                 </div>
             </S.Result>
             <S.CategoryDiv>
-                <S.Category selected={!params.category}>전체</S.Category>
+                <NavLink to={`/${plus ? "plus" : "free"}/${params.type? params.type : "all"}/${params.order ? params.order : "date"}/1`}>
+                    <S.Category selected={!params.tag}>전체</S.Category>
+                </NavLink>
                 <Category />
             </S.CategoryDiv>
             <S.List>
-                <Book lists={lists}/>
+                <Book lists={list}/>
             </S.List>
     </S.Body>
     </>

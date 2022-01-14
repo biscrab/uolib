@@ -1,5 +1,5 @@
 import React from 'react'
-import AlarmPage from '../components/AlarmPage'
+import AlarmPage from '../components/Alarm/AlarmPage'
 
 const Alarm = () => {
     return(

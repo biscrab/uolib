@@ -1,4 +1,4 @@
-import * as S from '../styled/Emoticon'
+import * as S from '../../styled/Emoticon'
 
 const EmoticonPage = () => {
     return(

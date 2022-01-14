@@ -1,5 +1,5 @@
 import React from 'react'
-import ViewerPage from '../components/ViewerPage'
+import ViewerPage from '../components/Novel/ViewerPage'
 
 const Viewer = () => {
     return(

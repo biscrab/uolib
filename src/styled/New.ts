@@ -27,6 +27,7 @@ export const BodyBorder = styled.div`
 
 export const ButtonDiv = styled.div`
     display: flex;
+    justify-content: end;
 `
 
 export const BodyInput = styled.div`
@@ -107,8 +108,8 @@ export const SampleImg = styled.div`
 `
 
 export const BookCover = styled.img`
-    width: 330px;
-    height: 480px;
+    width: 270px;
+    height: 420px;
     border-radius: 10px;
     box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 30%);
 `
@@ -116,20 +117,22 @@ export const BookCover = styled.img`
 export const CancleButton = styled.button`
     color: white;
     background-color: #727b84;
-    height: 40px;
+    height: 45px;
     border: 0;
     font-size: 17px;
     font-weight: bold;
     width: 80px;
-    margin-right: 5px;
+    margin-right: 10px;
+    border-radius: 3px;
 `
 
 export const RegistButton = styled.button`
     color: white;
     border: 0;
     background-color: royalblue;
-    height: 40px;
+    height: 45px;
     width: 200px;
     font-size: 17px;
     font-weight: bold;
+    border-radius: 3px;
 `

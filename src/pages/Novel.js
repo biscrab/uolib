@@ -1,5 +1,5 @@
 import React from 'react'
-import NovelPage from '../components/NovelPage'
+import NovelPage from '../components/Novel/NovelPage'
 
 const Novel = () => {
     return(

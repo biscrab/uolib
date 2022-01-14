@@ -1,6 +1,10 @@
-import * as S from '../styled/New'
+import { useNavigate } from 'react-router-dom'
+import * as S from '../../styled/New'
 
 const NewPage = () => {
+
+    const navigate = useNavigate();
+
     return(
         <S.Body>
             <b>작품설정</b>
@@ -67,7 +71,7 @@ const NewPage = () => {
                 </S.BodyInput>
             </S.BodyBorder>
             <S.ButtonDiv>
-                <S.CancleButton>취소</S.CancleButton>
+                <S.CancleButton onClick={()=>window.history.back()}>취소</S.CancleButton>
                 <S.RegistButton>작품등록</S.RegistButton>
             </S.ButtonDiv>
         </S.Body>

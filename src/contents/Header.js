@@ -94,7 +94,10 @@ const Header = (prop) => {
                     <S.Menu className='menu'>
                         <img className='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
                         {onMenu ?
+                        <>
                         <S.MenuModal className='menumodal'>
+                            {0 ?
+                            <>
                             <S.MenuWrap>
                                 <S.MenuLi>
                                     <img src="https://phinf.pstatic.net/contact/20210430_217/1619765233604XypyT_PNG/avatar_profile.png"/>
@@ -143,7 +146,15 @@ const Header = (prop) => {
                             <S.Logout>
                                 <button><i class="fas fa-sign-out-alt"></i>로그아웃</button>
                             </S.Logout>
+                            </>
+                            :
+                            <S.MenuWrap>
+                                <S.MenuLi><i class="fas fa-bullhorn"></i>로그인</S.MenuLi>
+                                <S.MenuLi><i class="fas fa-bullhorn"></i>회원가입</S.MenuLi>
+                            </S.MenuWrap>
+                            }
                         </S.MenuModal>
+                        </>
                         :
                         <></>
                         }

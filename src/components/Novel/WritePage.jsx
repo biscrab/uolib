@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import * as S from '../styled/Write'
+import * as S from '../../styled/Write'
 import $ from 'jquery'
 
 const WritePage = () => {

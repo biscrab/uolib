@@ -45,7 +45,6 @@ export const Body = styled.div`
         border: 0;
         height: 40px;
         border-radius: 2px;
-        font-weight: bold;
         text-align: center;
     }
 
@@ -110,6 +109,13 @@ export const EmailDiv = styled.div`
         height: 28px;
         margin-left: 5px;
         font-size: 15px;
+    }
+    span{
+        width: 80px;
+        text-align: center;
+        font-size: 15px;
+        color: crimson;
+        margin-left: 5px;
     }
 `
 

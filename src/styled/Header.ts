@@ -96,7 +96,7 @@ export const MenuModal = styled.ul`
     width: 250px;
     margin-top: 60px;
     padding: 0px 0px;
-    height: 350px;
+    max-height: 350px;
     box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
     ::-webkit-scrollbar {

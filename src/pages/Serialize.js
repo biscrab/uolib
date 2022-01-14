@@ -1,5 +1,4 @@
-import React from 'react'
-import SerializePage from '../components/SerializePage'
+import SerializePage from '../components/Novel/SerializePage'
 
 const Serialize = () => {
     return(

@@ -1,5 +1,5 @@
 import React from 'react'
-import WritePage from '../components/WritePage'
+import WritePage from '../components/Novel/WritePage'
 
 const Write = () => {
     return(
