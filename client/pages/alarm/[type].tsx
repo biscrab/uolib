@@ -1,5 +1,6 @@
-import * as S from '../styled/Alarm'
+import * as S from '../../styled/Alarm'
 import Link from "next/link";
+import { useRouter } from 'next/router'
 
 type AlarmType = {
     title: string,
@@ -8,15 +9,17 @@ type AlarmType = {
 }
 
 const AlarmPage = () => {
-    
-    const params = useParams();
+
+    const router = useRouter()
+    const {type} = router.query;
+
     const lists: AlarmType[] = [{title: "123", contents: "string", id: "1"}];
 
     const path = () => {
-        if(params.type === ("comment" || "subscribe")){
+        if(type === ("comment" || "subscribe")){
 
         }
-        else if (params.type === "1"){
+        else if (type === "1"){
 
         }
     }
@@ -24,23 +27,24 @@ const AlarmPage = () => {
     return(
         <S.Body>
             <S.SelectDiv>
-                <Link to="/alarm/comment">
-                    <S.Select selected={params.type==="comment" || !params.type}>댓글알림</S.Select>
+                <Link href="/alarm/comment">
+                    <S.Select selected={type==="comment" || !type}>댓글알림</S.Select>
                 </Link>
-                <Link to="/alarm/subscribe">
-                    <S.Select selected={params.type==="subscribe"}>구독알림</S.Select>
+                <Link href="/alarm/subscribe">
+                    <S.Select selected={type==="subscribe"}>구독알림</S.Select>
                 </Link>
-                <Link to="/alarm/system">
-                    <S.Select selected={params.type==="system"}>시스템알림</S.Select>
+                <Link href="/alarm/system">
+                    <S.Select selected={type==="system"}>시스템알림</S.Select>
                 </Link>
-                <Link to="/alarm/event">
-                    <S.Select selected={params.type==="event"}>이벤트알림</S.Select>
+                <Link href="/alarm/event">
+                    <S.Select selected={type==="event"}>이벤트알림</S.Select>
                 </Link>
             </S.SelectDiv>
             <S.List>
-                {lists.map(i => {
+                {lists.map((i, index) => {
                     return(
-                        <Link to={`/${path}/${i.id}`}>
+                        <div key={index}>
+                        <Link href={`/${path}/${i.id}`}>
                         <S.Alarm>
                             <img src="https://novelpia.com/img/new/menu/alarm.png"/>
                             <div>
@@ -51,6 +55,7 @@ const AlarmPage = () => {
                             </div>
                         </S.Alarm>
                         </Link>
+                        </div>
                     )
                 })}
             </S.List>

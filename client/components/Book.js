@@ -1,20 +1,20 @@
 import * as S from '../styled/Book'
-import { NavLink } from 'react-router-dom'
+import Link from 'next/link'
 
 const Book = ({i}) => {
     return(
         <S.Book>
-        <NavLink to="/novel/1">
+        <Link href="/novel/1">
             <S.BookCover src={i.image}/>
-        </NavLink>
+        </Link>
         <S.BookInfo> 
             <S.Title>   
-            <NavLink to="/novel/1">
+            <Link href="/novel/1">
                 <b>{i.title}</b>
-            </NavLink>
-            <NavLink to="/user/1">
+            </Link>
+            <Link href="/user/1">
                 <span>작가</span>
-            </NavLink>
+            </Link>
             </S.Title>
             <S.Explane>{i.explane}</S.Explane>
             <S.Info>
@@ -35,9 +35,9 @@ const Book = ({i}) => {
             {i.tag.map(
                 tag => {
                     return(
-                        <NavLink to="/">
+                        <Link href="/">
                         <span>#{tag}</span>
-                        </NavLink>
+                        </Link>
                     )
                 }
             )}
@@ -45,9 +45,9 @@ const Book = ({i}) => {
 
 const List = ({lists}) => {
     const itemList = lists.map(
-        i => {
+        (i, index) => {
             return(
-                <Book i={i}/>
+                <Book i={i} key={index}/>
             )
         }
     )

@@ -157,9 +157,9 @@ const PlusShopPage = () => {
                 <S.Tittle>NEW 이모티콘</S.Tittle>
                 <S.EmoticonDiv>
                     {ilist.map(
-                        i => {
+                        (i, index) => {
                             return(
-                                <S.Emoticon>
+                                <S.Emoticon key={index}>
                                     <div>
                                         <img src={i.image}/>
                                     </div>
@@ -174,7 +174,7 @@ const PlusShopPage = () => {
                     {blist.map(
                         (i, index) => {
                             return(
-                            <div>
+                            <div key={index}>
                                 <h3>{index+1}</h3>
                                 <img src={i.image}/>
                                 <span>{i.name}</span>

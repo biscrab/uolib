@@ -145,6 +145,7 @@ const Top100Page: NextPage<{}> = () => {
                 {lists.map(
                 (i, index) => {
                     return(
+                        <div key={index}>
                         <S.Book>
                             <S.Rank>{index + 1}</S.Rank>
                             <NavLink to="/novel/1">
@@ -157,6 +158,7 @@ const Top100Page: NextPage<{}> = () => {
                                 </NavLink>
                             </NavLink>
                         </S.Book>
+                        </div>
                     )
                 })}
             </S.List>

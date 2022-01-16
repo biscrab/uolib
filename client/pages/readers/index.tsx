@@ -94,6 +94,7 @@ const ReadersPage = () => {
                 {list.map(
                     (i, index) => {
                         return(
+                            <div key={index}>
                             <NavLink to={`/readers/view/${i.number}`}>
                             <S.Row idx={index%2}>
                                 <S.Number idx={index%2}>{i.number}</S.Number>
@@ -103,6 +104,7 @@ const ReadersPage = () => {
                                 <S.Like idx={index%2}>{i.like}</S.Like>
                             </S.Row>
                             </NavLink>
+                            </div>
                         )
                     }
                 )}
@@ -113,9 +115,9 @@ const ReadersPage = () => {
             {params.type === "fanart" ?
             <S.FanArtList>
                 {flist.map(
-                    i => {
+                    (i, index) => {
                         return(
-                            <S.FanArt>
+                            <S.FanArt key={index}>
                                 <div>
                                     <img src={i.image}/>
                                 </div>
@@ -140,7 +142,7 @@ const ReadersPage = () => {
                        {rlist.map(
                            (i, index) => {
                                return(
-                                   <S.Ranking>
+                                   <S.Ranking key={index}>
                                        <S.Rank>{index+1}위</S.Rank>
                                             <S.Name><NavLink to={`/user/${i.id}`}>{i.name}</NavLink></S.Name>
                                        <S.Amount>{i.amount}</S.Amount>

@@ -1,23 +1,26 @@
-import * as S from '../styled/PlusAgree'
-import Book from '../contents/Book'
+import * as S from '../../../styled/PlusAgree'
+import Book from '../../../components/Book'
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 const PlusAgreePage: NextPage<{}> = () => {
 
-    const params = useParams();
-
     const book = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag:["1"]}];
 
+    const router = useRouter()
+    const {id} = router.query;
+
     const requestPlus = () => {
-        axios.post(`/requestPlus/${params.id}`)
-            .then(res => alert("플러스 신청이 완료되었습니다."))
+        /*
+        axios.post(`/requestPlus/${id}`)
+            .then(res => alert("플러스 신청이 완료되었습니다."))*/
     }
 
     useEffect(()=>{
-        axios.get(`/requestPlus/${params.id}`)
+        /*
+        axios.get(`/requestPlus/${id}`)*/
     },[])
 
     return(

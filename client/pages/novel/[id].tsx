@@ -1,22 +1,23 @@
 import { useEffect, useState } from 'react'
 import * as S from '../../styled/Novel'
 import queryString from 'query-string'
-import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom'
+import Link from 'next/link'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const NovelPage = () => {
 
     const [novel, setNovel] = useState({view: "", tag: ["1", "2"], other: [{title: "1", author: "1", image: "https://image.novelpia.com/imagebox/cover/71ef870f96a30146e548d3c75dfe439e_458688_ori.file"}], notice:[], comment:[], explane: "1", user: "1"});
     const [lists, setLists] = useState([{title: "test1", type: "notice", plus: true},{title: "test1", type: "notice"}]);
-    const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState([{name: "1"}]);
     const [pages, setPages] = useState([]);
     const [page, setPage] = useState([]);
     const [onSupport, setOnSupport] = useState(false);
     const [price, setPrice] = useState(0);
 
-    const location = useLocation();
-    const params = useParams();
-    const query = queryString.parse(location.search);
+    //const query = queryString.parse(location.search);
+    const router = useRouter()
+    const {id} = router.query;
     
     useEffect(()=>{
         /*
@@ -67,14 +68,12 @@ const NovelPage = () => {
         setPrice(e.target.value);
     }
 
-    const navigate = useNavigate();
-
     const support = () => {
         if(!price){
             alert("후원금을 설정해 주십쇼.")
         }
         else{
-            axios.post(`/support/${params.id}`)
+            axios.post(`/support/${id}`)
                 .then(res => alert(`후원 되었습니다. (${price}코인)`))
                 .catch(err => {
                     if(err.status === 400){
@@ -82,7 +81,7 @@ const NovelPage = () => {
                     }
                     else if(err.status === 401){
                         alert("로그인을 먼저 해 주세요.");
-                        navigate('/login');
+                        //navigate('/login');
                     }
                 })
         }
@@ -98,9 +97,9 @@ const NovelPage = () => {
                         <S.Tittle>제목</S.Tittle>
                         <S.AuthorDiv>
                             <S.Author>작가</S.Author>
-                            <NavLink to={`/user/${1}`}>
+                            <Link href={`/user/${1}`}>
                             <S.Name>테스트</S.Name>
-                            </NavLink>
+                            </Link>
                         </S.AuthorDiv>
                     </S.TopInfo>
                     <S.BottomInfo>
@@ -122,9 +121,9 @@ const NovelPage = () => {
                             {novel.explane}
                         </S.Explane>
                         <S.TagDiv>
-                            {novel.tag.map(i => {
+                            {novel.tag.map((i, index) => {
                                 return(
-                                    <span>#{i}</span>
+                                    <span key={index}>#{i}</span>
                                 )
                             })}
                         </S.TagDiv>
@@ -137,9 +136,10 @@ const NovelPage = () => {
             <S.List>
                 <S.ListTittle>회차리스트</S.ListTittle>
                 <S.ListBorder>
-                    {lists.map(i => {
+                    {lists.map((i, index) => {
                         return(
-                            <NavLink to={`/viewer/${1}`}>
+                            <div key={index}>
+                            <Link href={`/viewer/${1}`}>
                             <S.Round notice={i.type == "notice"}>
                                 <S.RoundDiv>
                                     <S.RLeft>
@@ -160,7 +160,8 @@ const NovelPage = () => {
                                     <S.RDate>10월 10일</S.RDate>
                                 </S.RoundDiv>
                             </S.Round>
-                            </NavLink>
+                            </Link>
+                            </div>
                         )
                     })}
                 </S.ListBorder>
@@ -168,10 +169,10 @@ const NovelPage = () => {
             <S.CommentTittle>댓글</S.CommentTittle>
             <S.CommentList>
                 {comments.map(
-                    item => {
+                    (item, index) => {
                         return(
-                            <S.Comment>
-                                <b>{item.user}</b>
+                            <S.Comment key={index}>
+                                <b>{item.name}</b>
                             </S.Comment>
                         )
                     }
@@ -211,9 +212,9 @@ const NovelPage = () => {
             </S.Border>
             <S.PDiv>
                 {pages.map(
-                    item => {
+                    (item, index) => {
                         return(
-                            <S.Page bgcolor={item === page ? "royalblue" : "#eee"} color={item === page ? "white" : "black"}>
+                            <S.Page key={index} bgcolor={item === page ? "royalblue" : "#eee"} color={item === page ? "white" : "black"}>
                             {item}
                             </S.Page>
                         )

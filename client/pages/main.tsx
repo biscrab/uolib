@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link } from 'next/link';
+import Link from 'next/link';
 import * as S from '../styled/Main'
 import { NextPage } from 'next';
 
@@ -7,7 +7,7 @@ type BookType = {
     id: number,
     title: string,
     author: string,
-    tag: string[];
+    tag: string[],
 }
 
 type BannerType = {
@@ -19,35 +19,44 @@ const List: React.FC<{lists: BookType[]}> = ({lists}) => {
     return(
         <>
         {lists.map(
-            item => {
+            (i, index) => {
                 return(
-            <S.Book>
-                <Link to={`/novel/${item.id}`}>
-                    <S.BookCover src={"//image.novelpia.com/imagebox/cover/148f406a052dae41bfd628929b897e56_453275_ori.thumb"}/>
-                </Link>
-                <S.BookInfo>
-                    <S.BookInfoDiv>
-                        <Link to={`/novel/${item.id}`}>
-                            <S.BookTittle>{item.title}</S.BookTittle>
-                        </Link>
-                        <S.BookAuthor>{item.author}</S.BookAuthor>
-                    </S.BookInfoDiv>
-                    <S.BookTagDiv>
-                        {item.tag.map(
-                            i => {
-                                return(
-                                    <S.Tag>#{i}</S.Tag>
-                                     
-                                )
-                            }
-                        )}    
-                    </S.BookTagDiv>
-                </S.BookInfo>
-            </S.Book>
-            )
+                    <Book i={i} key={index}/>
+                )
             })}
         </>
     )
+}
+
+const Book = (i: any) => {
+    return(
+        <S.Book>
+            <Link href={`/novel/${i.id}`}>
+                <S.BookCover src={"//image.novelpia.com/imagebox/cover/148f406a052dae41bfd628929b897e56_453275_ori.thumb"}/>
+            </Link>
+            <S.BookInfo>
+                <S.BookInfoDiv>
+                    <Link href={`/novel/${i.id}`}>
+                        <S.BookTittle>{i.title}</S.BookTittle>
+                    </Link>
+                    <S.BookAuthor>{i.author}</S.BookAuthor>
+                </S.BookInfoDiv>
+                <S.BookTagDiv> 
+                </S.BookTagDiv>
+            </S.BookInfo>
+        </S.Book>
+        /*                    {i.tag.map(
+                        (item: string) => {
+                            return(
+                                <div key={item}>
+                                    <S.Tag>#{item}</S.Tag>
+                                </div>
+
+                            )
+                        }
+                    )}    */
+)
+
 }
 
 const MainPage: NextPage<{}> = () => {
@@ -93,9 +102,9 @@ const MainPage: NextPage<{}> = () => {
                 <div onClick={()=>NextBanner()}><svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="30px" viewBox="0 0 24 24" width="30px" fill="#000"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><polygon points="6.23,20.23 8,22 18,12 8,2 6.23,3.77 14.46,12"/></g></svg></div>
             </S.NavWrap>
             {BannerList.map(
-                i => {
+                (i, index) => {
                     return(
-                        <S.Banner color={"#1c0426"}>
+                        <S.Banner color={"#1c0426"} key={index}>
                             <img src={"https://novelpia.com/img/new/banner/main_banner_pc_20220104.jpg"}/>
                         </S.Banner> 
                     )

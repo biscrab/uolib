@@ -1,7 +1,7 @@
 import * as S from '../../styled/Search'
 import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import Book from '../../src/contents/Book'
+import Book from '../../components/Book'
 import axios from 'axios';
 import { NextPage } from 'next';
 
@@ -22,11 +22,13 @@ const SerializePage: NextPage<{}> = () => {
         return(
             <>
             {tlist.map(
-                i => {
+                (i, index) => {
                     return(
+                        <div key={index}>
                         <NavLink to={`/${plus ? "plus" : "free"}/${params.type? params.type : "all"}/${params.order ? params.order : "date"}/1/${i}`}>
                             <S.Category selected={i === params.tag}>{i}</S.Category>
                         </NavLink>
+                        </div>
                     )
                 }
             )}

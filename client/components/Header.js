@@ -1,15 +1,14 @@
 import * as S from '../styled/Header'
 import logo from '../images/logo.png'
-import { NavLink, useLocation } from 'react-router-dom'
-import $ from 'jquery'
+import Link from 'next/link'
+//import $ from 'jquery'
 import { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 const Header = (prop) => {
 
-    const isMobile = useMediaQuery({ maxWidth: 1240 })
-
-    const location = useLocation();
+    //const isMobile = useMediaQuery({ maxWidth: 1240 })
+    const isMobile = 0;
 
     const [onMenu, setOnMenu] = useState(false);
 
@@ -24,6 +23,7 @@ const Header = (prop) => {
     },[])
 
     useEffect(()=>{
+        /*
         $("html").click(function(e){
             if(!$(".menu").has(e.target).length){
                 $(".menumodal").animate({opacity: 0, height: 0}, 1000);
@@ -38,27 +38,27 @@ const Header = (prop) => {
             else{
                 setOnMenu(false);
             }
-        })
+        })*/
     })
 
     const Path = () => {
         return(
             <S.PathDiv>
-                <NavLink to="/free">
-                    <S.Path path={location.pathname.includes("/free")}>자유연재</S.Path>
-                </NavLink>
-                <NavLink to="/plus">
-                    <S.Path path={location.pathname.includes("/plus") && location.pathname !== "/plus_shop" && location.pathname !== "/plus_agree"}>플러스</S.Path>
-                </NavLink>
-                <NavLink to="/top100">
-                    <S.Path path={location.pathname.includes("/top100")}>TOP100</S.Path>
-                </NavLink>
-                <NavLink to="/readers/comunity/1">
-                    <S.Path path={location.pathname.includes("/readers")}>독자마당</S.Path>
-                </NavLink>
-                <NavLink to="/mybook">
-                    <S.Path path={location.pathname.includes("/mybook")}>내서재</S.Path>
-                </NavLink>
+                <Link href="/free">
+                    <S.Path path={("/free")}>자유연재</S.Path>
+                </Link>
+                <Link href="/plus">
+                    <S.Path path={("/plus") && 1 !== "/plus_shop" && 1 !== "/plus_agree"}>플러스</S.Path>
+                </Link>
+                <Link href="/top100">
+                    <S.Path path={("/top100")}>TOP100</S.Path>
+                </Link>
+                <Link href="/readers/comunity/1">
+                    <S.Path path={("/readers")}>독자마당</S.Path>
+                </Link>
+                <Link href="/mybook">
+                    <S.Path path={("/mybook")}>내서재</S.Path>
+                </Link>
             </S.PathDiv>
         )
     }
@@ -67,9 +67,9 @@ const Header = (prop) => {
         <S.Header>
             <S.HeaderDiv>
                 <S.LogoDiv>
-                    <NavLink to="/">
+                    <Link href="/">
                         <S.Logo src={logo}/>
-                    </NavLink>
+                    </Link>
                 </S.LogoDiv>
                 {!isMobile ?
                 <Path />
@@ -77,80 +77,80 @@ const Header = (prop) => {
                 <></>
                 }
                 <S.MenuDiv>
-                    <NavLink to="/plus_shop">
+                    <Link href="/plus_shop">
                     <img src="https://image.novelpia.com/img/new/menu/point.png?ver=3" />
-                    </NavLink>
-                    <NavLink to="/alarm">
+                    </Link>
+                    <Link href="/alarm">
                     <img src="https://image.novelpia.com/img/new/menu/alarm.png"/>
-                    </NavLink>
+                    </Link>
                     {isAlarm ?
                         <S.IsAlarm />
                         :
                         <></>
                     }
-                    <NavLink to="/search">
+                    <Link href="/search">
                         <img src="https://image.novelpia.com/img/new/menu/search.png"/>
-                    </NavLink>
-                    <S.Menu className='menu'>
-                        <img className='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
+                    </Link>
+                    <S.Menu classNameName='menu'>
+                        <img classNameName='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
                         {onMenu ?
                         <>
-                        <S.MenuModal className='menumodal'>
+                        <S.MenuModal classNameName='menumodal'>
                             {0 ?
                             <>
                             <S.MenuWrap>
                                 <S.MenuLi>
                                     <img src="https://phinf.pstatic.net/contact/20210430_217/1619765233604XypyT_PNG/avatar_profile.png"/>
-                                    <NavLink to={`/user/${1}`}>
+                                    <Link href={`/user/${1}`}>
                                         <b>이름</b>
-                                    </NavLink>
+                                    </Link>
                                 </S.MenuLi>
                             </S.MenuWrap>
                             <S.MenuWrap>
                                 <S.MenuLi>
-                                <i class="fas fa-coins"></i>코인 0
-                                    <NavLink to="/coin_shop">
+                                <i className="fas fa-coins"></i>코인 0
+                                    <Link href="/coin_shop">
                                         <button>충전</button>
-                                    </NavLink>
+                                    </Link>
                                 </S.MenuLi>
                             </S.MenuWrap>
                             <S.MenuWrap>
-                                <NavLink to="/new">
-                                    <S.MenuLi><i class="far fa-edit"></i>신규 소설등록</S.MenuLi>
-                                </NavLink>
-                                <NavLink to="/mybook">
-                                    <S.MenuLi><i class="far fa-folder-open"></i>내 작품 관리</S.MenuLi>
-                                </NavLink>
+                                <Link href="/new">
+                                    <S.MenuLi><i className="far fa-edit"></i>신규 소설등록</S.MenuLi>
+                                </Link>
+                                <Link href="/mybook">
+                                    <S.MenuLi><i className="far fa-folder-open"></i>내 작품 관리</S.MenuLi>
+                                </Link>
                             </S.MenuWrap>
                             <S.MenuWrap>
-                                <NavLink to="/useredit">
-                                    <S.MenuLi><i class="far fa-user-circle"></i>유저 정보 설정/수정</S.MenuLi>
-                                </NavLink>
+                                <Link href="/useredit">
+                                    <S.MenuLi><i className="far fa-user-circle"></i>유저 정보 설정/수정</S.MenuLi>
+                                </Link>
                             </S.MenuWrap>
                             <S.MenuWrap>
-                                <NavLink to="/plus_shop">
-                                    <S.MenuLi><i class="far fa-plus-square"></i>플러스 샵</S.MenuLi>
-                                </NavLink>
-                                <NavLink to="/coin_shop">
-                                    <S.MenuLi><i class="fas fa-coins"></i>코인 샵</S.MenuLi>
-                                </NavLink>
-                                <NavLink to="/emoticon_shop">
-                                    <S.MenuLi><i class="far fa-smile-wink"></i>이모티콘 샵</S.MenuLi>
-                                </NavLink>
+                                <Link href="/plus_shop">
+                                    <S.MenuLi><i className="far fa-plus-square"></i>플러스 샵</S.MenuLi>
+                                </Link>
+                                <Link href="/coin_shop">
+                                    <S.MenuLi><i className="fas fa-coins"></i>코인 샵</S.MenuLi>
+                                </Link>
+                                <Link href="/emoticon_shop">
+                                    <S.MenuLi><i className="far fa-smile-wink"></i>이모티콘 샵</S.MenuLi>
+                                </Link>
                             </S.MenuWrap>
                             <S.MenuWrap>
-                                <NavLink to="/readers">
-                                    <S.MenuLi><i class="fas fa-bullhorn"></i>공지사항</S.MenuLi>
-                                </NavLink>
+                                <Link href="/readers">
+                                    <S.MenuLi><i className="fas fa-bullhorn"></i>공지사항</S.MenuLi>
+                                </Link>
                             </S.MenuWrap>
                             <S.Logout>
-                                <button><i class="fas fa-sign-out-alt"></i>로그아웃</button>
+                                <button><i className="fas fa-sign-out-alt"></i>로그아웃</button>
                             </S.Logout>
                             </>
                             :
                             <S.MenuWrap>
-                                <S.MenuLi><i class="fas fa-bullhorn"></i>로그인</S.MenuLi>
-                                <S.MenuLi><i class="fas fa-bullhorn"></i>회원가입</S.MenuLi>
+                                <S.MenuLi><i className="fas fa-bullhorn"></i>로그인</S.MenuLi>
+                                <S.MenuLi><i className="fas fa-bullhorn"></i>회원가입</S.MenuLi>
                             </S.MenuWrap>
                             }
                         </S.MenuModal>

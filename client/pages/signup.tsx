@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom'
-import * as S from '../../styled/Account'
+import * as S from '../styled/Account'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 

@@ -1,49 +1,48 @@
 import { useEffect, useState } from 'react';
-import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom'
-import * as S from '../styled/Search'
-import Book from '../contents/Book'
+import * as S from '../../../../../styled/Search'
+import Book from '../../../../../components/Book'
 import { NextPage } from 'next';
+import { useRouter } from 'next/router'
+import Link from 'next/link';
 
 const SearchPage: NextPage<{}> = () => {
 
-    const params = useParams();
-    const location = useLocation();
-    const navigate = useNavigate();
+    const router = useRouter();
+    const {type, order, page, keyword} = router.query;
 
-    const plus = location.pathname.includes("/plus");
-    const [keyword, setKeyword] = useState(params.keyword);
+    const [word, setWord] = useState(keyword);
 
-    const lists = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag: ["1"]}]
+    const lists = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag: ["1"]}];
 
     return(
         <S.Body>
-            <S.Search placeholder="소설제목, 태그, 검색어, 작가를 입력해주세요." onChange={(e)=>setKeyword(e.target.value)} value={keyword} onKeyPress={(e)=>{
+            <S.Search placeholder="소설제목, 태그, 검색어, 작가를 입력해주세요." onChange={(e)=>setWord(e.target.value)} value={keyword} onKeyPress={(e)=>{
                 if(e.key === "Enter" && keyword){
-                    if(params.type){
-                        navigate(`/search/${params.type}/${keyword}`)
+                    if(type){
+                        //navigate(`/search/${type}/${keyword}`)
                     }
                     else{
-                        navigate(`/search/keyword/date/1/${keyword}`)
+                        //navigate(`/search/keyword/date/1/${keyword}`)
                     }
                 }
             }}/>
-            {params.keyword ?
-            <S.ResultSpan>'{params.keyword}' 검색결과 입니다.</S.ResultSpan>
+            {keyword ?
+            <S.ResultSpan>{`'${keyword}' 검색결과 입니다.`}</S.ResultSpan>
             :
             <></>
             }
-            {params.keyword ?
+            {keyword ?
             <>
             <S.SelectDiv>
-                <NavLink to={`/search/keyword/date/1/${params.keyword}`}>
-                <S.Select selected={params.type === "keyword"}>소설검색</S.Select>
-                </NavLink>
-                <NavLink to={`/search/tag/date/1/${params.keyword}`}>
-                <S.Select selected={params.type === "tag"}>해시태그</S.Select>
-                </NavLink>
-                <NavLink to={`/search/author/date/1/${params.keyword}`}>
-                <S.Select selected={params.type === "author"}>작가검색</S.Select>
-                </NavLink>
+                <Link href={`/search/keyword/date/1/${keyword}`}>
+                <S.Select selected={type === "keyword"}>소설검색</S.Select>
+                </Link>
+                <Link href={`/search/tag/date/1/${keyword}`}>
+                <S.Select selected={type === "tag"}>해시태그</S.Select>
+                </Link>
+                <Link href={`/search/author/date/1/${keyword}`}>
+                <S.Select selected={type === "author"}>작가검색</S.Select>
+                </Link>
             </S.SelectDiv>
             <S.Result>
                 <b>총 0개의 작품</b>
