@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { NavLink, useParams } from 'react-router-dom';
 import * as S from '../../styled/Viewer'
-import $ from 'jquery'
+//import $ from 'jquery'
 import {connect} from 'react-redux';
+import Link from 'next/link';
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 const ViewerPage: NextPage<{}> = () => {
 
@@ -12,8 +13,10 @@ const ViewerPage: NextPage<{}> = () => {
     const [darkmode, setDarkmode] = useState(false);
     const [onInterface, setOnInterface] = useState(true);
     const [isPlus, setIsPlus] = useState(true);
-    const params = useParams();
     const novel = {next: 1, authorsword: 1, prev: 0};
+
+    const router = useRouter();
+    const {id} = router.query;
 
     useEffect(()=>{
         if(darkmode){
@@ -25,7 +28,7 @@ const ViewerPage: NextPage<{}> = () => {
     },[darkmode])
 
     useEffect(()=>{
-        $('html').click(function(e){if(!$(".interface").has(e.target).length)setOnInterface(!onInterface)})
+       /* $('html').click(function(e){if(!$(".interface").has(e.target).length)setOnInterface(!onInterface)})
         /*
         document.addEventListener('scroll', function() {
             setOnInterface(false);
@@ -37,9 +40,9 @@ const ViewerPage: NextPage<{}> = () => {
         {onInterface ?
         <S.Header dark={darkmode} className='interface'>
             <S.HeaderDiv>
-                <NavLink to={`/novel/${novel}`}>
+                <Link href={`/novel/${novel}`}>
                     <i className="fas fa-home fa-lg"></i>
-                </NavLink>
+                </Link>
                 <span>123</span>
                 <S.RightDiv>
                     <span>목록</span>
@@ -172,7 +175,7 @@ const ViewerPage: NextPage<{}> = () => {
         <S.Background>
             <S.PlusModal>
                 <i className="fas fa-home"></i>홈
-                <img src={`https://uolib.herokuapp.com/bookcover/${params.id}`}/>
+                <img src={`https://uolib.herokuapp.com/bookcover/${id}`}/>
                 <span>PLUS 멤버십 가입이<br />필요한 회차 입니다.</span>
                 <button>PLUS 가입</button>
             </S.PlusModal>

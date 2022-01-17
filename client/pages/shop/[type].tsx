@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom';
 import * as S from '../../styled/Shop'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const PlusShopPage = () => {
 
-    const location = useLocation();
+    const router = useRouter();
+    const {type} = router.query;
 
     const [onPayment, setOnPayment] = useState(false);
     const [onAccept, setOnAccept] = useState([false, false, false]);
@@ -35,15 +37,15 @@ const PlusShopPage = () => {
         <>
         <S.ShopDiv>
             <div>
-            <NavLink to="/plus_shop">
+            <Link href="/plus_shop">
                 <span>맴버십</span>
-            </NavLink>
-            <NavLink to="/coin_shop">
+            </Link>
+            <Link href="/coin_shop">
                 <span>코인</span>
-            </NavLink>
-            <NavLink to="/emoticon_shop">
+            </Link>
+            <Link href="/emoticon_shop">
                 <span>이모티콘</span>
-            </NavLink>
+            </Link>
             </div>
         </S.ShopDiv>
         <S.Banner>

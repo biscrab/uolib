@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { NavLink, useParams } from 'react-router-dom';
 import * as S from '../../styled/MyBook'
-import Book from '../../src/contents/Book'
+import Book from '../../components/Book'
 import { NextPage } from 'next';
+import Link from 'next/link'
+import {useRouter} from 'next/router'
 
 type BookInterface = {
     id: number,
@@ -15,26 +16,28 @@ type BookInterface = {
 
 const MyBookPage: NextPage<{}> = () => {
 
-    const params = useParams();
     const lists : BookInterface[] = [{id: 1, title: "test", author: "이상운", explane: "123123", image: "https://image.novelpia.com/imagebox/cover/18fc3444c07e1ecadd65072b4bd08e28_47837_ori.thumb",tag: ["1", "2"]}];
 
     const [selected, setSelected] = useState(1);
 
+    const router = useRouter();
+    const {type} = router.query;
+
     return(
         <S.Body>
             <S.SelectDiv>
-                <NavLink to="/mybook/like">
-                    <S.Select selected={params.type==="like" || !params.type}>선호작</S.Select>
-                </NavLink>
-                <NavLink to="/mybook/my">
-                    <S.Select selected={params.type==="my"}>내작품</S.Select>
-                </NavLink>
-                <NavLink to="/mybook/donation">
-                    <S.Select selected={params.type==="donation"}>후원목록</S.Select>
-                </NavLink>
-                <NavLink to="/mybook/last_view">
-                    <S.Select selected={params.type==="last_view"}>최근 본 작품</S.Select>
-                </NavLink>
+                <Link href="/mybook/like">
+                    <S.Select selected={type==="like" || !type}>선호작</S.Select>
+                </Link>
+                <Link href="/mybook/my">
+                    <S.Select selected={type==="my"}>내작품</S.Select>
+                </Link>
+                <Link href="/mybook/donation">
+                    <S.Select selected={type==="donation"}>후원목록</S.Select>
+                </Link>
+                <Link href="/mybook/last_view">
+                    <S.Select selected={type==="last_view"}>최근 본 작품</S.Select>
+                </Link>
             </S.SelectDiv>
             <S.CountOfBook>
                 총 0개의 작품
