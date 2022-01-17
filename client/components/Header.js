@@ -19,7 +19,7 @@ const Header = (prop) => {
     }
 
     useEffect(()=>{
-        console.log(location);
+        console.log(logo);
     },[])
 
     useEffect(()=>{
@@ -68,7 +68,7 @@ const Header = (prop) => {
             <S.HeaderDiv>
                 <S.LogoDiv>
                     <Link href="/">
-                        <S.Logo src={logo}/>
+                        <S.Logo src={logo.src}/>
                     </Link>
                 </S.LogoDiv>
                 {!isMobile ?
@@ -77,7 +77,7 @@ const Header = (prop) => {
                 <></>
                 }
                 <S.MenuDiv>
-                    <Link href="/plus_shop">
+                    <Link href="/shop/plus">
                     <img src="https://image.novelpia.com/img/new/menu/point.png?ver=3" />
                     </Link>
                     <Link href="/alarm">
@@ -128,7 +128,7 @@ const Header = (prop) => {
                                 </Link>
                             </S.MenuWrap>
                             <S.MenuWrap>
-                                <Link href="/plus_shop">
+                                <Link href="/shop/plus">
                                     <S.MenuLi><i className="far fa-plus-square"></i>플러스 샵</S.MenuLi>
                                 </Link>
                                 <Link href="/coin_shop">

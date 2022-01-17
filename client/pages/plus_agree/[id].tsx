@@ -1,5 +1,5 @@
-import * as S from '../../../styled/PlusAgree'
-import Book from '../../../components/Book'
+import * as S from '../../styled/PlusAgree'
+import Book from '../../components/Book'
 import axios from 'axios';
 import { useEffect } from 'react';
 import { NextPage } from 'next';

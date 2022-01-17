@@ -1,5 +1,5 @@
 import Page from './[type]'
-const Top100 = () => {
+const MyBook = () => {
     return(
         <>
             <Page />
@@ -7,4 +7,4 @@ const Top100 = () => {
     )
 }
 
-export default Top100
+export default MyBook

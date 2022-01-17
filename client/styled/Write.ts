@@ -194,7 +194,7 @@ export const SettingDiv = styled.div`
 `
 
 interface SettingProps{
-    selected: boolean
+    selected?: boolean
 }
 
 export const Setting = styled.button<SettingProps>`

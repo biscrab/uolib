@@ -55,6 +55,7 @@ export const BookCover = styled.img`
     border-radius: 10px;
     width: 100px;
     height: 150px;
+    cursor: pointer;
 `
 
 export const Title = styled.div`
@@ -62,10 +63,12 @@ export const Title = styled.div`
     align-items: center;
     b{
         font-size: 20px;
+        cursor: pointer;
     }
     span{
         color: dimgray;
         font-size: 13px;
         margin-left: 5px;
+        cursor: pointer;
     }
 `

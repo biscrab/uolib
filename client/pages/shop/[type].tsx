@@ -37,22 +37,22 @@ const PlusShopPage = () => {
         <>
         <S.ShopDiv>
             <div>
-            <Link href="/plus_shop">
+            <Link href="/shop/plus">
                 <span>맴버십</span>
             </Link>
-            <Link href="/coin_shop">
+            <Link href="/shop/coin">
                 <span>코인</span>
             </Link>
-            <Link href="/emoticon_shop">
+            <Link href="/shop/emoticon">
                 <span>이모티콘</span>
             </Link>
             </div>
         </S.ShopDiv>
         <S.Banner>
-            <div />
+            <img src="https://novelpia.com/img/new/plus/v2/banner_20211223_plus_pc.png"/>
         </S.Banner>
         <S.Body>
-            {location.pathname === "/plus_shop" ?
+            {type === "plus" ?
             <>
             <S.Tittle>유라이브 PLUS 요금제</S.Tittle>
             <S.MemberShipDiv>
@@ -89,7 +89,7 @@ const PlusShopPage = () => {
             :
             <></>
             }
-            {location.pathname === "/coin_shop" ?
+            {type === "coin" ?
                 <>
                 <S.Tittle>코인 상품</S.Tittle>
                 <S.CoinDiv>
@@ -154,7 +154,7 @@ const PlusShopPage = () => {
                 :
                 <></>
             }
-            {location.pathname === "/emoticon_shop" ?
+            {type === "emoticon" ?
                 <>
                 <S.Tittle>NEW 이모티콘</S.Tittle>
                 <S.EmoticonDiv>

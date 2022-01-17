@@ -60,7 +60,7 @@ export const NavWrap = styled.div`
     }
 `
 
-export const Title = styled.h3`
+export const Title = styled.h2`
     margin-bottom: 30px;
     font-weight: bold;
 `

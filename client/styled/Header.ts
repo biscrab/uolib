@@ -35,6 +35,7 @@ export const LogoDiv = styled.div`
 export const Logo = styled.img`
     width: 160px;
     padding-right: 30px;
+    cursor: pointer;
 `
 
 export const MobilePathDiv = styled.div`

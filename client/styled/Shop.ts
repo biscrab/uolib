@@ -26,13 +26,12 @@ export const Banner = styled.div`
     background-color: #C0C0BD;
     box-sizing: border-box;
     display: block;
-    div{
+    justify-content: center;
+    width: 100%;
+    img{
         width: 100%;
         margin: auto;
-        height: 300px;
         max-width: 3000px;
-        background-size: auto 200px;
-        background: url(https://novelpia.com/img/new/plus/v2/banner_20211223_plus_pc.png) no-repeat center;
     }
 `
 

@@ -4,12 +4,12 @@ import Link from 'next/link'
 const Book = ({i}) => {
     return(
         <S.Book>
-        <Link href="/novel/1">
+        <Link href="/novel/a">
             <S.BookCover src={i.image}/>
         </Link>
         <S.BookInfo> 
             <S.Title>   
-            <Link href="/novel/1">
+            <Link href="/novel/a">
                 <b>{i.title}</b>
             </Link>
             <Link href="/user/1">

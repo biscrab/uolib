@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import * as S from '../styled/User'
 import { NextPage } from 'next';
 
@@ -13,8 +12,6 @@ const UserEditPage: NextPage<{}> = () => {
             </S.Toggle>
         )
     }
-
-    const params = useParams();
 
     const [user, setUser] = useState({type: "", image: "", id: 1});
     const [isImg, setIsImg] = useState(false);

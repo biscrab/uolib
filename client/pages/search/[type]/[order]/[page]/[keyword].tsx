@@ -6,9 +6,14 @@ import { useRouter } from 'next/router'
 import Link from 'next/link';
 
 const SearchPage: NextPage<{}> = () => {
+    //"type", "order", "page", "keyword"
 
     const router = useRouter();
     const {type, order, page, keyword} = router.query;
+
+    useEffect(()=>{
+        console.log(router)
+    })
 
     const [word, setWord] = useState(keyword);
 
@@ -19,10 +24,10 @@ const SearchPage: NextPage<{}> = () => {
             <S.Search placeholder="소설제목, 태그, 검색어, 작가를 입력해주세요." onChange={(e)=>setWord(e.target.value)} value={keyword} onKeyPress={(e)=>{
                 if(e.key === "Enter" && keyword){
                     if(type){
-                        //navigate(`/search/${type}/${keyword}`)
+                        router.push(`/search/${type}/${keyword}`)
                     }
                     else{
-                        //navigate(`/search/keyword/date/1/${keyword}`)
+                        router.push(`/search/keyword/date/1/${keyword}`)
                     }
                 }
             }}/>

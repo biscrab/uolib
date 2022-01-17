@@ -19,6 +19,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <title>유라이브</title>
       <link href="https://cdn-icons-png.flaticon.com/512/3627/3627782.png" rel="shortcut icon" type="image/x-icon"></link>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet"></link>
       <Header />
       <Component {...pageProps} />
       <Footer />
