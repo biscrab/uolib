@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react'
 import * as S from '../styled/App'
 import '../styles/index.css'
 import '../styles/App.css'
+import dynamic from 'next/dynamic'
+import {useRouter} from 'next/router'
 
 function MyApp({ Component, pageProps }: AppProps) {
 
@@ -14,6 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(()=>{
     setLoading(false)
   })
+  
+  const router = useRouter();
+  const pathname = router.pathname;
 
   return (
     <>
@@ -22,9 +27,18 @@ function MyApp({ Component, pageProps }: AppProps) {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet"></link>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css" integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug==" crossOrigin="anonymous" />
+      {!pathname.includes("viewer") ?
       <Header />
+      :
+      <></>
+      }
       <Component {...pageProps} />
+      {!pathname.includes("viewer") ?
       <Footer />
+      :
+      <></>
+      }
       {loading ?
       <S.LoadingBackground>
         <div className="spinner-border text-secondary" style={{width: "4rem", height: "4rem"}} role="status">

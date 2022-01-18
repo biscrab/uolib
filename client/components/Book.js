@@ -4,30 +4,29 @@ import Link from 'next/link'
 const Book = ({i}) => {
     return(
         <S.Book>
-        <Link href="/novel/a">
-            <S.BookCover src={i.image}/>
-        </Link>
-        <S.BookInfo> 
-            <S.Title>   
             <Link href="/novel/a">
-                <b>{i.title}</b>
+                <S.BookCover src={i.image}/>
             </Link>
-            <Link href="/user/1">
-                <span>작가</span>
-            </Link>
-            </S.Title>
-            <S.Explane>{i.explane}</S.Explane>
-            <S.Info>
-                <img src="https://novelpia.com/img/new/icon/count_view.png"/>
-                <span>104.3K명</span>
-                <img src="https://novelpia.com/img/new/icon/count_book.png"/>
-                <span>515회차</span>
-                <img src="	https://image.novelpia.com/img/new/icon/count_good.png"/>
-                <span>8.0K회</span>
-            </S.Info>
-
-        </S.BookInfo>
-    </S.Book>
+            <S.BookInfo> 
+                <S.Title>   
+                <Link href="/novel/a">
+                    <b>{i.title}</b>
+                </Link>
+                <Link href="/user/1">
+                    <span>작가</span>
+                </Link>
+                </S.Title>
+                <S.Explane>{i.explane}</S.Explane>
+                <S.Info>
+                    <img src="https://novelpia.com/img/new/icon/count_view.png"/>
+                    <span>104.3K명</span>
+                    <img src="https://novelpia.com/img/new/icon/count_book.png"/>
+                    <span>515회차</span>
+                    <img src="	https://image.novelpia.com/img/new/icon/count_good.png"/>
+                    <span>8.0K회</span>
+                </S.Info>
+            </S.BookInfo>
+        </S.Book>
     )
 }
 

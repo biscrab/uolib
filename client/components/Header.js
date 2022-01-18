@@ -7,9 +7,8 @@ import { useMediaQuery } from 'react-responsive'
 
 const Header = (prop) => {
 
-    //const isMobile = useMediaQuery({ maxWidth: 1240 })
+    //const isMobile = useMediaQuery('( maxWidth: 1240 )')
     const isMobile = 0;
-
     const [onMenu, setOnMenu] = useState(false);
 
     const [isAlarm, setIsAlarm] = useState(false);

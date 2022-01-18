@@ -1,6 +1,7 @@
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
-import * as S from '../../styled/Readers'
+import { Link } from 'react-router-dom';
+import * as S from '../../../../styled/Readers'
 
 type RowType = {
     number: number,
@@ -51,38 +52,35 @@ const ReadersPage = () => {
         {name: "1", amount: 1}
     ]
 
-    const params = useParams();
-
-    const [type, setType] = useState('all')
-
-    const navigate = useNavigate();
+    const router = useRouter();
+    const {type, detail, page} = router.query;
 
     useEffect(()=>{
-        if(!params.type){
-            navigate('/readers/comunity/1');
+        if(!type){
+            router.push('/readers/comunity/1');
         }
     })
 
     return(
         <S.Body>
             <S.SelectDiv>
-                <NavLink to="/readers/comunity/1">
-                <S.Select selected={params.type === "comunity"}>커뮤니티</S.Select>
-                </NavLink>
-                <NavLink to="/readers/fanart/1">
-                    <S.Select selected={params.type === "fanart"}>팬아트</S.Select>
-                </NavLink>
-                <NavLink to="/readers/hall_of_fame/1">
-                    <S.Select selected={params.type === "hall_of_fame"}>명예의전당</S.Select>
-                </NavLink>
+                <Link to="/readers/comunity/1">
+                <S.Select selected={type === "comunity"}>커뮤니티</S.Select>
+                </Link>
+                <Link to="/readers/fanart/1">
+                    <S.Select selected={type === "fanart"}>팬아트</S.Select>
+                </Link>
+                <Link to="/readers/hall_of_fame/1">
+                    <S.Select selected={type === "hall_of_fame"}>명예의전당</S.Select>
+                </Link>
            </S.SelectDiv>
-           {params.type === "comunity" ?
+           {type === "comunity" ?
             <S.List>
             <S.CommunityPathDiv>
-                <S.CommunityPath selected={type === "all"}>전체</S.CommunityPath>
-                <S.CommunityPath selected={type === "contest_review"}>공모전리뷰</S.CommunityPath>
-                <S.CommunityPath selected={type === "review"}>작품리뷰</S.CommunityPath>
-                <S.CommunityPath selected={type === "h"}>작품홍보</S.CommunityPath>
+                <S.CommunityPath selected={detail === "all"}>전체</S.CommunityPath>
+                <S.CommunityPath selected={detail === "contest_review"}>공모전리뷰</S.CommunityPath>
+                <S.CommunityPath selected={detail === "review"}>작품리뷰</S.CommunityPath>
+                <S.CommunityPath selected={detail === "h"}>작품홍보</S.CommunityPath>
             </S.CommunityPathDiv>
             <S.TRow idx={1}>
                 <S.TNumber idx={1}>번호</S.TNumber>
@@ -95,7 +93,7 @@ const ReadersPage = () => {
                     (i, index) => {
                         return(
                             <div key={index}>
-                            <NavLink to={`/readers/view/${i.number}`}>
+                            <Link to={`/readers/view/${i.number}`}>
                             <S.Row idx={index%2}>
                                 <S.Number idx={index%2}>{i.number}</S.Number>
                                 <S.Title idx={index%2}>{i.title}</S.Title>
@@ -103,7 +101,7 @@ const ReadersPage = () => {
                                 <S.View idx={index%2}>{i.view}</S.View>
                                 <S.Like idx={index%2}>{i.like}</S.Like>
                             </S.Row>
-                            </NavLink>
+                            </Link>
                             </div>
                         )
                     }
@@ -112,7 +110,7 @@ const ReadersPage = () => {
             :
             <></>
             }
-            {params.type === "fanart" ?
+            {type === "fanart" ?
             <S.FanArtList>
                 {flist.map(
                     (i, index) => {
@@ -131,7 +129,7 @@ const ReadersPage = () => {
             :
             <></>
             }
-            {params.type === "hall_of_fame" ?
+            {type === "hall_of_fame" ?
             <>
             <S.HallOfFame>
             <h2>명예의 전당</h2>
@@ -144,7 +142,7 @@ const ReadersPage = () => {
                                return(
                                    <S.Ranking key={index}>
                                        <S.Rank>{index+1}위</S.Rank>
-                                            <S.Name><NavLink to={`/user/${i.id}`}>{i.name}</NavLink></S.Name>
+                                            <S.Name><Link to={`/user/${i.id}`}>{i.name}</Link></S.Name>
                                        <S.Amount>{i.amount}</S.Amount>
                                    </S.Ranking>
                                )

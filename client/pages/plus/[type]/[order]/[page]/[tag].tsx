@@ -1,21 +1,24 @@
-import * as S from '../../styled/Search'
-import { NavLink, useLocation, useParams } from 'react-router-dom';
+import * as S from '../../../../../styled/Search'
 import { useEffect, useState } from 'react';
-import Book from '../../components/Book'
+import Book from '../../../../../components/Book'
 import axios from 'axios';
 import { NextPage } from 'next';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const SerializePage: NextPage<{}> = () => {
 
     const [max, setMax] = useState(0);
     const [list, setList] = useState([{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag:["1"]}]);
     const tlist = ["공모전", "판타지", "현대", "라이트노벨", "하렘", "일상", "중세", "TS", "전생", "로맨스", "먼치킨", "아카데미", "SF", "드라마", "코미디", "이세계", "순애", "빙의", "남성향"]
-    const params = useParams();
-    const location = useLocation();
-    const plus = location.pathname.includes("/plus")
+
+    const router = useRouter();
+    const {type, order, page, tag} = router.query;
+
+    const plus = true;
 
     useEffect(()=>{
-        console.log("공모전" === params.tag);
+        console.log("공모전" === tag);
     })
 
     const Category = () => {
@@ -25,9 +28,9 @@ const SerializePage: NextPage<{}> = () => {
                 (i, index) => {
                     return(
                         <div key={index}>
-                        <NavLink to={`/${plus ? "plus" : "free"}/${params.type? params.type : "all"}/${params.order ? params.order : "date"}/1/${i}`}>
-                            <S.Category selected={i === params.tag}>{i}</S.Category>
-                        </NavLink>
+                        <Link href={`/${plus ? "plus" : "free"}/${type? type : "all"}/${order ? order : "date"}/1/${i}`}>
+                            <S.Category selected={i === tag}>{i}</S.Category>
+                        </Link>
                         </div>
                     )
                 }
@@ -55,62 +58,66 @@ const SerializePage: NextPage<{}> = () => {
         <S.Banner background="#eee"/>
         <S.Body>
             <S.SelectDiv>
-                <NavLink to={`/${plus ? "plus" : "free"}/all/${params.order ? params.order : "date"}/1`}>
-                <S.Select selected={params.type === "all" || !params.type}>전체</S.Select>
-                </NavLink>
-                <NavLink to={`/${plus ? "plus" : "free"}/monopoly/${params.order ? params.order : "date"}/1`}>
-                <S.Select selected={params.type === "monopoly"}>독점</S.Select>
-                </NavLink>
-                <NavLink to={`/${plus ? "plus" : "free"}/new/${params.order ? params.order : "date"}/1`}>
-                <S.Select selected={params.type === "new"}>신작</S.Select>
-                </NavLink>
-                <NavLink to={`/${plus ? "plus" : "free"}/compleate/${params.order ? params.order : "date"}/1`}>
-                <S.Select selected={params.type === "compleate"}>완결</S.Select>
-                </NavLink>
+                <Link href={`/${plus ? "plus" : "free"}/all/${order ? order : "date"}/1`}>
+                <S.Select selected={type === "all" || !type}>전체</S.Select>
+                </Link>
+                <Link href={`/${plus ? "plus" : "free"}/monopoly/${order ? order : "date"}/1`}>
+                <S.Select selected={type === "monopoly"}>독점</S.Select>
+                </Link>
+                <Link href={`/${plus ? "plus" : "free"}/new/${order ? order : "date"}/1`}>
+                <S.Select selected={type === "new"}>신작</S.Select>
+                </Link>
+                <Link href={`/${plus ? "plus" : "free"}/compleate/${order ? order : "date"}/1`}>
+                <S.Select selected={type === "compleate"}>완결</S.Select>
+                </Link>
             </S.SelectDiv>
             <S.Result>
                 <b>총 {max}개의 작품</b>
                 <div>
-                    <NavLink to={`/${plus ? "plus" : "free"}/${params.type ? params.type : "all"}/date/1${params.tag ? `/${params.tag}` : ""}`}>
+                    <Link href={`/${plus ? "plus" : "free"}/${type ? type : "all"}/date/1${tag ? `/${tag}` : ""}`}>
                     <div>
-                        {params.order === "date" || !params.order ?
+                        {order === "date" || !order ?
                         <Check />
                         :
                         <i className="fas fa-circle"></i>
                         }
                         <b>공개일자 순</b>
                     </div>
-                    </NavLink>
-                    <NavLink to={`/${plus ? "plus" : "free"}/${params.type ? params.type : "all"}/view/1${params.tag ? `/${params.tag}` : ""}`}>
+                    </Link>
+                    <Link href={`/${plus ? "plus" : "free"}/${type ? type : "all"}/view/1${tag ? `/${tag}` : ""}`}>
                     <div>
-                        {params.order === "view" ?
+                        {order === "view" ?
                             <Check />
                             :
                             <i className="fas fa-circle"></i>
                         }
                         <b>조회순</b>
                     </div>
-                    </NavLink>
-                    <NavLink to={`/${plus ? "plus" : "free"}/${params.type ? params.type : "all"}/like/1${params.tag ? `/${params.tag}` : ""}`}>
+                    </Link>
+                    <Link href={`/${plus ? "plus" : "free"}/${type ? type : "all"}/like/1${tag ? `/${tag}` : ""}`}>
                     <div>
-                        {params.order === "like" ?
+                        {order === "like" ?
                             <Check />
                             :
                             <i className="fas fa-circle"></i>
                         }
                         <b>추천순</b>
                     </div>
-                    </NavLink>
+                    </Link>
                 </div>
             </S.Result>
             <S.CategoryDiv>
-                <NavLink to={`/${plus ? "plus" : "free"}/${params.type? params.type : "all"}/${params.order ? params.order : "date"}/1`}>
-                    <S.Category selected={!params.tag}>전체</S.Category>
-                </NavLink>
+                <Link href={`/${plus ? "plus" : "free"}/${type? type : "all"}/${order ? order : "date"}/1`}>
+                    <S.Category selected={!tag}>전체</S.Category>
+                </Link>
                 <Category />
             </S.CategoryDiv>
             <S.List>
+                {list ?
                 <Book lists={list}/>
+                :
+                <></>
+                }
             </S.List>
     </S.Body>
     </>

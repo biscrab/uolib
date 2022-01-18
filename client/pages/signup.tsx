@@ -1,11 +1,9 @@
-import { NavLink, useLocation } from 'react-router-dom'
 import * as S from '../styled/Account'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 
 const SignUpPage = () => {
-
-    const location = useLocation();
 
     const [info, setInfo] = useState({email: "", password: ""});
     const [check, setCheck] = useState({number: "", password: ""});
@@ -20,7 +18,7 @@ const SignUpPage = () => {
                     setEdit(false);
                 })
         }
-    },[location.pathname, ])
+    },[])
 
     useEffect(()=>{
         if(time){
@@ -96,9 +94,9 @@ const SignUpPage = () => {
                     <S.Input placeholder='비밀번호 (7~25)' type="password" onChange={(e)=>setInfo({...info, password: e.target.value})} value={info.password}/>
                     <S.Input placeholder='비밀번호 확인' type="password" onChange={(e)=>setCheck({...check, password: e.target.value})} value={check.password}/>
                     <S.LButton>회원가입</S.LButton>
-                    <NavLink to="/login">
+                    <Link href="/login">
                         <S.SButton>로그인</S.SButton>
-                    </NavLink>
+                    </Link>
                 </S.Body>
             </S.BackgroundFilter>
         </S.Background>

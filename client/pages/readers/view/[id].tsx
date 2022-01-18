@@ -1,4 +1,4 @@
-import * as S from '../../styled/Readers'
+import * as S from '../../../styled/Readers'
 
 const ReadersViewPage = () => {
     return(

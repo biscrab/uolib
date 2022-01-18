@@ -63,6 +63,7 @@ export const NavWrap = styled.div`
 export const Title = styled.h2`
     margin-bottom: 30px;
     font-weight: bold;
+    color: #333;
 `
 
 export const Border = styled.div`
@@ -86,6 +87,7 @@ export const BookCover = styled.img`
     width: 140px;
     border-radius: 5px;
     box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 `
 
 export const BookInfo = styled.div`
