@@ -14,6 +14,15 @@ export const BTittle = styled.b`
     margin-bottom: 10px;
 `
 
+export const Search = styled.div`
+    display: flex;
+    margin-top: 20px;
+    button{
+        border: 0;
+        width: 90px;
+    }
+`
+
 export const Tittle = styled.input`
     display: block;
     outline: 0;
@@ -23,6 +32,7 @@ export const Tittle = styled.input`
     color: #495057;
     background-color: #f8f9fa;
     border: 1px solid rgba(0,0,0,0.15);
+    width: 100%;
 `
 
 export const SelectDiv = styled.div`

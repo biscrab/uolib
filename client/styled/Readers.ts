@@ -19,7 +19,7 @@ export const SelectDiv = styled.div`
 `
 
 interface SelectProps{
-    selected: boolean,
+    selected?: boolean,
 }
 
 export const Select = styled.div<SelectProps>`
@@ -38,16 +38,15 @@ export const List = styled.table`
     list-style: none;
     margin: 0;
     width: 100%;
-    height: 1000px;
-    border-bottom: 1px solid #555;
+    max-height: 1000px;
     margin-top: 30px;
 `
 
-export const CommunityPathDiv = styled.div`
+export const ComunityPathDiv = styled.div`
     display: flex;
 `
 
-export const CommunityPath = styled.span<SelectProps>`
+export const ComunityPath = styled.span<SelectProps>`
     padding: 10px;
     cursor: pointer;
     background-color: ${props => props.selected ? "#5d3fdf" : ""};
@@ -60,13 +59,12 @@ export const CommunityPath = styled.span<SelectProps>`
 export const FanArtList = styled.ul`
     display: flex;
     flex-wrap: wrap;
-    height: 2000px;
     list-style: none;
     margin: 50px 0px;
 `
 
 export const FanArt = styled.div`
-    padding: 10px;
+    padding: 10px 20px;
     width: 25%;
     display: flex;
     flex-direction: column;
@@ -79,15 +77,17 @@ export const FanArt = styled.div`
         vertical-align: middle;
         border-style: none;
         object-fit: cover;
+        cursor: pointer;
     }
     div{
     overflow: hidden;
     width: 100%;
-    height: 380px;
+    height: 300px;
     border-radius: 10px;
+    object-fit: cover;
     }   
     b{
-        margin-top: 10px;
+        margin-top: 8px;
         font-size: 17px;
     }
     span{
@@ -363,4 +363,45 @@ export const OtherList = styled.ul`
 
 export const Other = styled.li`
 
+`
+
+export const PageDiv = styled.div`
+    display: flex;
+    justify-content: center;
+`
+
+export const Page = styled.a<SelectProps>`
+    background-color: ${props => props.selected ? "#17a2b8" : "#eee"};
+    color: ${props => props.selected ? "white" : ""};
+    padding: 7px 12px;
+    font-size: 15px;
+    margin: 5px;
+    font-weight: bold;
+`
+
+export const ButtonDiv = styled.div`
+    margin-top: 20px;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: end;
+
+    button{
+        font-size: 17px;
+        display: inline-block;
+        font-weight: 600;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 0.75rem 0.75rem;
+        width: 200px;
+        font-size: .875rem;
+        line-height: 1.25;
+        border-radius: 2px;
+        transition: all .15s ease-in-out;
+        color: #fff;
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+    }
 `

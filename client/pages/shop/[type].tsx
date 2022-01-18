@@ -22,7 +22,7 @@ const PlusShopPage = () => {
     {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
     {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"}]
 
-    const blist = [{name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    const blist = [
     {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
     {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
     {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
@@ -31,7 +31,8 @@ const PlusShopPage = () => {
     {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
     {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
     {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"}];
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},];
 
     return(
         <>
@@ -158,7 +159,21 @@ const PlusShopPage = () => {
                 <>
                 <S.Tittle>NEW 이모티콘</S.Tittle>
                 <S.EmoticonDiv>
-                    {ilist.map(
+                    {ilist.slice(0, 5).map(
+                        (i, index) => {
+                            return(
+                                <S.Emoticon key={index}>
+                                    <div>
+                                        <img src={i.image}/>
+                                    </div>
+                                    <span>{i.name}</span>
+                                </S.Emoticon>
+                            )
+                        }
+                    )}
+                </S.EmoticonDiv>
+                <S.EmoticonDiv>
+                    {ilist.slice(5, 10).map(
                         (i, index) => {
                             return(
                                 <S.Emoticon key={index}>

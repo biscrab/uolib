@@ -67,6 +67,7 @@ export const IsAlarm = styled.em`
 
 export const Path = styled.b<{path: boolean}>`
     font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
     color: ${props => props.path ? "#5a35cd" : ""};
 `

@@ -98,8 +98,9 @@ export const MemeberShipExplane = styled.span`
     padding: 0px 30px;
 `
 
-export const GuidanceTitle = styled.h2`
+export const GuidanceTitle = styled.h3`
     margin-bottom: 20px;
+    font-weight: bold;
 `
 
 export const Guidance = styled.div`
@@ -146,6 +147,11 @@ export const PaymentHead = styled.div`
     border-bottom: 2px solid #333;
     svg{
         cursor: pointer;
+    }
+    h3{
+        font-weight: bold;
+        font-size: 25px;
+        color: #333;
     }
 `
 
@@ -246,7 +252,7 @@ export const BestEmoticonDiv = styled.div`
         display: flex;
         align-items: center;
         width: 48%;
-        padding: 10px 0px;
+        padding: 5px 0px;
         border-bottom: 1px solid #ddd;
         margin-right: 4%;
     }
@@ -255,14 +261,15 @@ export const BestEmoticonDiv = styled.div`
         font-size: 25px;
     }
     img{
-        width: 110px;
-        height: 110px;
+        width: 100px;
+        height: 100px;
         margin-right: 20px;
     }
     h3{
         color: #de4f4f;
         width: 80px;
         text-align: center;
+        font-weight: bold;
         margin: 0;
         font-size: 30px;
     }

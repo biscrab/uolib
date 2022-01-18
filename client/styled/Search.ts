@@ -123,7 +123,8 @@ export const List  = styled.ul`
 
 export const TagListDiv = styled.ul`    
     width: 100%;
-    height: 1000px;
+    display: flex;
+    flex-wrap: wrap;
 `
 
 export const TagList = styled.li`
@@ -131,8 +132,8 @@ export const TagList = styled.li`
     margin: 0;
     list-style: none;
     width: 100%;
+    margin-bottom: 20px;
     b{
-        font-size: 18px;
         font-weight: bold;
         color: #333;
     }
@@ -146,11 +147,13 @@ export const Tag = styled.div`
     color: #000;
     border: 2px solid #333;
     border-radius: 20px;
-    padding: 1px 8px;
+    padding: 2px 9px;
     line-height: 20px;
     float: left;
     margin: 3px 2px;
     cursor: pointer;
     user-select: none;
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
 `

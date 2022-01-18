@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Header from '../components/Header'
@@ -8,17 +9,17 @@ import '../styles/index.css'
 import '../styles/App.css'
 import dynamic from 'next/dynamic'
 import {useRouter} from 'next/router'
+import Loading from '../components/Loading.js'
 
 function MyApp({ Component, pageProps }: AppProps) {
-
-  const [loading, setLoading] = useState(true);
-
-  useEffect(()=>{
-    setLoading(false)
-  })
   
   const router = useRouter();
   const pathname = router.pathname;
+
+  const DynamicComponentWithCustomLoading = dynamic(
+    () => import('../components/Loading.js'),
+    { loading: () => <Loading /> }
+  )
 
   return (
     <>
@@ -36,16 +37,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
       {!pathname.includes("viewer") ?
       <Footer />
-      :
-      <></>
-      }
-      {loading ?
-      <S.LoadingBackground>
-        <div className="spinner-border text-secondary" style={{width: "4rem", height: "4rem"}} role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-        <S.LoadingText>로딩 중</S.LoadingText>
-      </S.LoadingBackground>
       :
       <></>
       }

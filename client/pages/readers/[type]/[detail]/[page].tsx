@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import * as S from '../../../../styled/Readers'
 
 type RowType = {
@@ -17,6 +17,8 @@ type FanArtType = {
     author: string,
     id: number
 }
+
+const max = 5;
 
 const ReadersPage = () => {
 
@@ -52,36 +54,65 @@ const ReadersPage = () => {
         {name: "1", amount: 1}
     ]
 
+    const [plist, setPlist] = useState([1]);
+
     const router = useRouter();
     const {type, detail, page} = router.query;
+    
+    useEffect(()=>{
+        /*if(!type){
+            router.push('/readers/comunity/all/1');
+        }+*/
+    })
 
     useEffect(()=>{
-        if(!type){
-            router.push('/readers/comunity/1');
-        }
-    })
+        const p = Number(page);
+        var l = [];
+
+        if(p >= 3)
+            l.push(p-2);
+        
+        if(p >= 2)
+            l.push(p-1);
+
+        l.push(p);
+
+        if(p <= max-1)
+            l.push(p+1);
+
+        if(p <= max-2)
+            l.push(p+2);
+        
+        console.log(l);
+        setPlist(l);
+    },[page])
 
     return(
         <S.Body>
             <S.SelectDiv>
-                <Link to="/readers/comunity/1">
+                <Link href="/readers/comunity/all/1">
                 <S.Select selected={type === "comunity"}>커뮤니티</S.Select>
                 </Link>
-                <Link to="/readers/fanart/1">
+                <Link href="/readers/fanart/all/1">
                     <S.Select selected={type === "fanart"}>팬아트</S.Select>
                 </Link>
-                <Link to="/readers/hall_of_fame/1">
+                <Link href="/readers/hall_of_fame/all/1">
                     <S.Select selected={type === "hall_of_fame"}>명예의전당</S.Select>
                 </Link>
            </S.SelectDiv>
            {type === "comunity" ?
             <S.List>
-            <S.CommunityPathDiv>
-                <S.CommunityPath selected={detail === "all"}>전체</S.CommunityPath>
-                <S.CommunityPath selected={detail === "contest_review"}>공모전리뷰</S.CommunityPath>
-                <S.CommunityPath selected={detail === "review"}>작품리뷰</S.CommunityPath>
-                <S.CommunityPath selected={detail === "h"}>작품홍보</S.CommunityPath>
-            </S.CommunityPathDiv>
+            <S.ComunityPathDiv>
+                <Link href="/readers/comunity/all/1">
+                    <S.ComunityPath selected={detail === "all"}>전체</S.ComunityPath>
+                </Link>
+                <Link href="/readers/comunity/review/1">
+                    <S.ComunityPath selected={detail === "review"}>작품리뷰</S.ComunityPath>
+                </Link>
+                <Link href="/readers/comunity/h/1">
+                    <S.ComunityPath selected={detail === "h"}>작품홍보</S.ComunityPath>
+                </Link>
+            </S.ComunityPathDiv>
             <S.TRow idx={1}>
                 <S.TNumber idx={1}>번호</S.TNumber>
                 <S.TTitle idx={1}>제목</S.TTitle>
@@ -93,7 +124,7 @@ const ReadersPage = () => {
                     (i, index) => {
                         return(
                             <div key={index}>
-                            <Link to={`/readers/view/${i.number}`}>
+                            <Link href={`/readers/view/${i.number}`}>
                             <S.Row idx={index%2}>
                                 <S.Number idx={index%2}>{i.number}</S.Number>
                                 <S.Title idx={index%2}>{i.title}</S.Title>
@@ -116,11 +147,17 @@ const ReadersPage = () => {
                     (i, index) => {
                         return(
                             <S.FanArt key={index}>
+                                <Link href={`/readers/view/${i.id}`}>
                                 <div>
                                     <img src={i.image}/>
                                 </div>
+                                </Link>
+                                <Link href={`/readers/view/${i.id}`}>
                                 <b>제목</b>
+                                </Link>
+                                <Link href={`user/${1}`}>
                                 <span>저자</span>
+                                </Link>
                             </S.FanArt>
                         )
                     }
@@ -142,7 +179,7 @@ const ReadersPage = () => {
                                return(
                                    <S.Ranking key={index}>
                                        <S.Rank>{index+1}위</S.Rank>
-                                            <S.Name><Link to={`/user/${i.id}`}>{i.name}</Link></S.Name>
+                                            <S.Name><Link href={`/user/${i.id}`}>{i.name}</Link></S.Name>
                                        <S.Amount>{i.amount}</S.Amount>
                                    </S.Ranking>
                                )
@@ -168,6 +205,20 @@ const ReadersPage = () => {
             :
             <></>
             }
+            <S.PageDiv>
+                <S.Page><i className="fas fa-chevron-left"></i></S.Page>
+                {plist.map(
+                    (i, index) => {
+                        return(
+                            <S.Page key={index} selected={Number(page) === i}>{i}</S.Page>
+                        )
+                    }
+                )}
+                <S.Page><i className="fas fa-chevron-right"></i></S.Page>
+            </S.PageDiv>
+            <S.ButtonDiv>
+                <button>새 글 쓰기</button>
+            </S.ButtonDiv>
         </S.Body>
     )
 }

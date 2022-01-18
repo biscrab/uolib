@@ -60,7 +60,7 @@ export const NavWrap = styled.div`
     }
 `
 
-export const Title = styled.h2`
+export const Title = styled.h3`
     margin-bottom: 30px;
     font-weight: bold;
     color: #333;
@@ -107,12 +107,14 @@ export const BookInfoDiv = styled.div`
 
 export const BookTittle = styled.b`
     font-size: 20px;
+    cursor: pointer;
 `
 
 export const BookAuthor = styled.span`
     color: dimgray;
     font-size: 14px;
     padding: 3px 0px;
+    cursor: pointer;
 `
 
 export const BookTagDiv = styled.div`

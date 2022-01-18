@@ -52,7 +52,7 @@ const Header = (prop) => {
                 <Link href="/top100">
                     <S.Path path={("/top100")}>TOP100</S.Path>
                 </Link>
-                <Link href="/readers/comunity/1">
+                <Link href="/readers/comunity/all/1">
                     <S.Path path={("/readers")}>독자마당</S.Path>
                 </Link>
                 <Link href="/mybook">

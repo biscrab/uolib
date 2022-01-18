@@ -21,23 +21,17 @@ const SearchPage: NextPage<{}> = () => {
 
     return(
         <S.Body>
-            <S.Search placeholder="소설제목, 태그, 검색어, 작가를 입력해주세요." onChange={(e)=>setWord(e.target.value)} value={keyword} onKeyPress={(e)=>{
-                if(e.key === "Enter" && keyword){
+            <S.Search placeholder="소설제목, 태그, 검색어, 작가를 입력해주세요." onChange={(e)=>setWord(e.target.value)} value={word} onKeyPress={(e)=>{
+                if(e.key === "Enter" && word){
                     if(type){
-                        router.push(`/search/${type}/${keyword}`)
+                        router.push(`/search/${type}/${word}`)
                     }
                     else{
-                        router.push(`/search/keyword/date/1/${keyword}`)
+                        router.push(`/search/keyword/date/1/${word}`)
                     }
                 }
             }}/>
-            {keyword ?
             <S.ResultSpan>{`'${keyword}' 검색결과 입니다.`}</S.ResultSpan>
-            :
-            <></>
-            }
-            {keyword ?
-            <>
             <S.SelectDiv>
                 <Link href={`/search/keyword/date/1/${keyword}`}>
                 <S.Select selected={type === "keyword"}>소설검색</S.Select>
@@ -66,35 +60,6 @@ const SearchPage: NextPage<{}> = () => {
             <S.List>
                 <Book lists={lists}/>
             </S.List>
-            </>
-            :
-            <S.TagListDiv>
-                <S.TagList>
-                    <b>인기 태그</b>
-                    <ul>
-                        <S.Tag>1</S.Tag>
-                    </ul>
-                </S.TagList>
-                <S.TagList>
-                    <b>인기 태그</b>
-                    <ul>
-                        <S.Tag>1</S.Tag>
-                    </ul>
-                </S.TagList>
-                <S.TagList>
-                    <b>인기 태그</b>
-                    <ul>
-                        <S.Tag>1</S.Tag>
-                    </ul>
-                </S.TagList>
-                <S.TagList>
-                    <b>인기 태그</b>
-                    <ul>
-                        <S.Tag>1</S.Tag>
-                    </ul>
-                </S.TagList>
-            </S.TagListDiv>
-            }
         </S.Body>
     )
 }
