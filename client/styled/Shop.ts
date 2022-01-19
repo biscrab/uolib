@@ -40,11 +40,12 @@ export const Body = styled.div`
     margin-top: 80px;
     left: 50%;
     transform: translateX(-50%);
-    width: 1200px;
+    width: 1150px;
 `
 
 export const Tittle = styled.h3`
     font-weight: bold;
+    font-size: 28px;
     margin-bottom: 30px;
 `
 
@@ -108,16 +109,18 @@ export const Guidance = styled.div`
     margin-bottom: 100px;
     border: 1px solid #ddd;
     padding: 30px 50px;
-    background: #f6f6f6;
+    background: #f8f8f8;
     box-sizing: border-box;
     list-style: inside;
-    h3{
+    h4{
         margin-bottom: 20px;
+        font-weight: bold;
+        color: #333;
     }
     li{
         font-size: 14px;
         padding: 3px 0px;
-        color: #777;
+        color: #666;
     }
 `
 
@@ -210,10 +213,15 @@ export const Coin = styled.div`
     }
 `
 
+export const NewEmoticon = styled.div`
+    margin-bottom: 50px;
+`
+
 export const EmoticonDiv = styled.div`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 
 `
 
@@ -223,6 +231,8 @@ export const Emoticon = styled.div`
     margin-bottom: 20px;
     span{
        width: 100%;
+       font-weight: bold;
+       text-align: center;
     }
     div{
         border-radius: 10px;
@@ -244,7 +254,7 @@ export const BestEmoticonDiv = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
     height: 650px;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
     width: 100%;
     div{
         height: 130px;
@@ -258,7 +268,8 @@ export const BestEmoticonDiv = styled.div`
     }
     span{
         font-weight: bold;
-        font-size: 25px;
+        color: #333;
+        font-size: 22px;
     }
     img{
         width: 100px;
@@ -272,5 +283,13 @@ export const BestEmoticonDiv = styled.div`
         font-weight: bold;
         margin: 0;
         font-size: 30px;
+    }
+`
+
+export const EmoticonList = styled.ul`
+    list-style: none;
+    border-top: 1px solid black;
+    li{
+        border-bottom: 1px solid #eee;
     }
 `

@@ -40,12 +40,14 @@ const ViewerPage: NextPage<{}> = () => {
         {onInterface ?
         <S.Header dark={darkmode} className='interface'>
             <S.HeaderDiv>
-                <Link href={`/novel/${novel}`}>
-                    <i className="fas fa-home fa-lg"></i>
-                </Link>
-                <span>123</span>
+                <S.LeftDiv>
+                    <Link href={`/novel/${novel}`}>
+                        <i className="fas fa-home fa-lg"></i>
+                    </Link>
+                    <span>123</span>
+                </S.LeftDiv>
                 <S.RightDiv>
-                    <span>목록</span>
+                    <S.ListSpan><i className="fas fa-bars"/>목록</S.ListSpan>
                     <S.Setting>
                     <span onClick={()=>setOnSetting(!onSetting)}><i className="fas fa-cog"></i>설정</span>
                     {onSetting ?
@@ -140,7 +142,7 @@ const ViewerPage: NextPage<{}> = () => {
         </S.Text>
         {novel.authorsword ?
         <S.AuthorsWords dark={darkmode}>
-            <div>작가의 말</div>
+            <b>작가의 말</b>
         </S.AuthorsWords>
         :
         <></>

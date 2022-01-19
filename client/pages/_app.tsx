@@ -10,6 +10,7 @@ import '../styles/App.css'
 import dynamic from 'next/dynamic'
 import {useRouter} from 'next/router'
 import Loading from '../components/Loading.js'
+import axios from 'axios';
 
 function MyApp({ Component, pageProps }: AppProps) {
   
@@ -20,6 +21,13 @@ function MyApp({ Component, pageProps }: AppProps) {
     () => import('../components/Loading.js'),
     { loading: () => <Loading /> }
   )
+
+  const [setting, setSetting] = useState();
+
+  useEffect(()=>{
+    axios.get('/setting')
+      .then(res => setSetting(res.data));
+  },[])
 
   return (
     <>

@@ -123,7 +123,9 @@ const NovelPage = () => {
                         <S.TagDiv>
                             {novel.tag.map((i, index) => {
                                 return(
-                                    <span key={index}>#{i}</span>
+                                    <Link href={`/`} key={index}>
+                                        <span>#{i}</span>
+                                    </Link>
                                 )
                             })}
                         </S.TagDiv>
@@ -173,6 +175,8 @@ const NovelPage = () => {
                         return(
                             <S.Comment key={index}>
                                 <b>{item.name}</b>
+                                <span>전에 작성됨</span>
+                                <div></div>
                             </S.Comment>
                         )
                     }

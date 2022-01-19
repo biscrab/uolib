@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { NextPage } from 'next';
-import * as S from '../../styled/New'
+import * as S from '../styled/New'
 
 const NewPage: NextPage<{}> = () => {
 
     const [info, setInfo] = useState()
+    const [focus, setFocus] = useState(false);
 
     return(
         <S.Body>
@@ -23,6 +24,28 @@ const NewPage: NextPage<{}> = () => {
                     <S.InputDiv>
                         <span>작품부제</span>
                         <input />
+                    </S.InputDiv>
+                    <S.InputDiv>
+                        <span>태그</span>
+                        <input onFocus={() => setFocus(true)} onBlur={() => setFocus(false)}/>
+                        {focus ?
+                        <S.TagList>
+                            <li>판타지</li>
+                            <li>라이트노벨</li>
+                            <li>전생</li>
+                            <li>현대</li>
+                            <li>중세</li>
+                            <li>하렘</li>
+                            <li>드라마</li>
+                            <li>일상</li>
+                            <li>로맨스</li>
+                            <li>SF</li>
+                            <li>스포츠</li>
+                            <li>무협</li>
+                        </S.TagList>
+                        :
+                        <></>
+                        }
                     </S.InputDiv>
                     <S.SelectDiv>
                         <span>연재요일</span>

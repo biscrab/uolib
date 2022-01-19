@@ -48,7 +48,7 @@ export const InputDiv = styled.div`
     flex-direction: column;
     margin-bottom: 20px;
     input, textarea{
-        padding: 10px;
+        padding: 8px 10px;
         outline: 0;
         background-color: #fafafa;
         border: 1px solid #ddd;
@@ -63,6 +63,28 @@ export const InputDiv = styled.div`
     }
     span{
         margin-bottom: 5px;
+    }
+`
+
+export const TagList = styled.ul`
+    margin-top: 70px;
+    position: absolute;
+    height: 200px;
+    background-color: white;
+    border: 1px solid #ddd;
+    overflow-y: scroll;
+    width: 720px;
+    list-style: none;
+
+    li{
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px 12px;
+        cursor: pointer;
+        :hover{
+            background-color: #5897fb;
+            color: white;
+        }
     }
 `
 

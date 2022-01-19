@@ -31,8 +31,26 @@ export const HeaderDiv = styled.div`
     }
 `
 
+export const LeftDiv = styled.div`
+    span{
+        margin-left: 25px;
+        font-weight: bold;
+    }
+    i{
+        cursor: pointer;
+        font-size: 18px;
+    }
+`
+
 export const RightDiv = styled.div`
-    display: flex;
+    display: flex; 
+    i{
+        margin-right: 3px;
+    }
+`
+
+export const ListSpan = styled.span`
+    margin-right: 15px;
 `
 
 export const Body = styled.div<DarkProps>`
@@ -59,19 +77,26 @@ export const Text = styled.div`
 `
 
 export const AuthorsWords = styled.div<DarkProps>`
-    background: ${props => props.dark ? "#35363a" : "#f2f2f2"};
+    background: ${props => props.dark ? "#35363a" : "#f9f9f9"};
     padding: 10px;
     min-height: 200px;
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    b{
+        color: #333;
+    }
 `
 
 export const NextButton = styled.button`
     margin-top: 30px;
-    background-color: #eee;
+    background-color: #f1f1f1;
     border: 0;
     padding: 10px 0px;
     font-size: 18px;
-    border: 1px solid darkgray;
+    border: 1px solid #e1e1e1;
     border-radius: 3px;
+    font-weight: bold;
+    color: #333;
 `
 
 export const Setting = styled.div`

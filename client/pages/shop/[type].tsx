@@ -20,7 +20,9 @@ const PlusShopPage = () => {
     {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
     {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
     {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"}]
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},]
 
     const blist = [
     {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
@@ -97,58 +99,72 @@ const PlusShopPage = () => {
                     <S.Coin>
                         <div>
                         <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
-                        <span>코인</span>
+                        <span>50코인</span>
                         </div>
-                        <b>원</b>
+                        <b>5,000원</b>
                     </S.Coin>
                     <S.Coin>
                         <div>
                         <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
-                        <span>코인</span>
+                        <span>100코인</span>
                         </div>
-                        <b>원</b>
+                        <b>10,000원</b>
                     </S.Coin>
                     <S.Coin>
                         <div>
                         <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
-                        <span>코인</span>
+                        <span>200코인</span>
                         </div>
-                        <b>원</b>
+                        <b>20,000원</b>
                     </S.Coin>
                     <S.Coin>
                         <div>
                         <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
-                        <span>코인</span>
+                        <span>300코인</span>
                         </div>
-                        <b>원</b>
+                        <b>30,000원</b>
                     </S.Coin>
                     <S.Coin>
                         <div>
                         <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
-                        <span>코인</span>
+                        <span>500코인</span>
                         </div>
-                        <b>원</b>
+                        <b>50,000원</b>
                     </S.Coin>
                     <S.Coin>
                         <div>
                         <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
-                        <span>코인</span>
+                        <span>1,000코인</span>
                         </div>
-                        <b>원</b>
+                        <b>100,000원</b>
                     </S.Coin>
                     <S.Coin>
                         <div>
                         <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
-                        <span>코인</span>
+                        <span>2,000코인</span>
                         </div>
-                        <b>원</b>
+                        <b>200,000원</b>
                     </S.Coin>
                     <S.Coin>
                         <div>
                         <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
-                        <span>코인</span>
+                        <span>3,000코인</span>
                         </div>
-                        <b>원</b>
+                        <b>300,000원</b>
+                    </S.Coin>
+                    <S.Coin>
+                        <div>
+                        <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
+                        <span>5,000코인</span>
+                        </div>
+                        <b>500,000원</b>
+                    </S.Coin>
+                    <S.Coin>
+                        <div>
+                        <img src="https://novelpia.com/img/new/plus/v2/icon_paymentcoin.png"/>
+                        <span>10,000코인</span>
+                        </div>
+                        <b>1,000,000원</b>
                     </S.Coin>
                 </S.CoinDiv>
                 </>
@@ -158,8 +174,9 @@ const PlusShopPage = () => {
             {type === "emoticon" ?
                 <>
                 <S.Tittle>NEW 이모티콘</S.Tittle>
+                <S.NewEmoticon>
                 <S.EmoticonDiv>
-                    {ilist.slice(0, 5).map(
+                    {ilist.slice(0, 6).map(
                         (i, index) => {
                             return(
                                 <S.Emoticon key={index}>
@@ -173,7 +190,7 @@ const PlusShopPage = () => {
                     )}
                 </S.EmoticonDiv>
                 <S.EmoticonDiv>
-                    {ilist.slice(5, 10).map(
+                    {ilist.slice(6, 12).map(
                         (i, index) => {
                             return(
                                 <S.Emoticon key={index}>
@@ -186,6 +203,7 @@ const PlusShopPage = () => {
                         }
                     )}
                 </S.EmoticonDiv>
+                </S.NewEmoticon>
                 <S.Tittle>인기 이모티콘</S.Tittle>
                 <S.BestEmoticonDiv>
                     {blist.map(
@@ -205,7 +223,7 @@ const PlusShopPage = () => {
                 <></>
             }
             <S.Guidance>
-                <h3>결제상품 이용 안내</h3>
+                <h4>결제상품 이용 안내</h4>
                 <ul>
                     <li>모든 상품은 출판물/후원으로 면세항목을 적용 받습니다.</li>
                     <li>이미 구매한 상품을 재차 구매시, 이용 가능 기간이 추가됩니다.</li>

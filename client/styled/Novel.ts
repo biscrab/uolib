@@ -52,6 +52,7 @@ export const TagDiv = styled.div`
         font-size: 14px;
         font-weight: 600;
         margin-right: 5px;
+        cursor: pointer;
     }
 `
 
@@ -111,14 +112,17 @@ export const Tittle = styled.h1`
 `
 
 export const AuthorDiv = styled.div`
-    font-size: 16px;
     display: flex;
+    align-items: end;
     margin-top: 5px;
     margin-bottom: 15px;
+    font-weight: 600;
 `
 
 export const Author = styled.div`
-    color: dimgray;
+    color: #999;
+    font-size: 13px;
+    height: 21px;
 `
 
 export const Name = styled.span`
@@ -283,16 +287,26 @@ export const Notice = styled.li`
 
 export const CommentList = styled.ul`
     height: 1000px;
+    list-style: none;
 `
 
 export const CommentTittle = styled.h2`
     border-bottom: 2px solid black;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     font-size: 22px;
+    font-weight: bold;
 `
 
 export const Comment = styled.li`
-
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 15px;
+    padding-bottom: 10px;
+    span{
+        font-size: 12px;
+        color: #999;
+    }
 `
 
 export const Background = styled.div`
