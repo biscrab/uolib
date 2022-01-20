@@ -39,14 +39,19 @@ export const List = styled.div`
     display: flex;
     flex-wrap: wrap;
     margin: 30px 0px;
+    width: 100%;
+    justify-content: space-between;
 `
 
 export const Book = styled.div`
-    width: 19%;
+    width: 215px;
     margin: 0.5%;
     margin-top: 2%;
     border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
     b{
         margin-top: 6px;
     }
@@ -71,6 +76,7 @@ export const Rank = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
     font-size: 13px;
     z-index: 1;
+    cursor: pointer;
 `
 
 export const BookImgDiv = styled.div`
@@ -87,4 +93,5 @@ export const BookImgDiv = styled.div`
         vertical-align: middle;
         border-style: none;
     }
+    cursor: pointer;
 `

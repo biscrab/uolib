@@ -13,7 +13,12 @@ export const Header = styled.div`
         align-items: center;
     }
     img{
-        width: 200px;
+        height: 180px;
+        width: 180px;
+    }
+    h3{
+        font-weight: bold;
+        margin-left: 30px;
     }
 `
 
@@ -33,6 +38,7 @@ export const Border = styled.div`
     display: flex;
     flex-wrap: wrap;
     padding: 40px 45px;
+    border-radius: 3px;
 
     img{
         margin: 30px 35px;

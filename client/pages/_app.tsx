@@ -25,8 +25,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [setting, setSetting] = useState();
 
   useEffect(()=>{
-    axios.get('/setting')
-      .then(res => setSetting(res.data));
+    /*axios.get('/setting')
+      .then(res => setSetting(res.data));*/
   },[])
 
   return (

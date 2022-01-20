@@ -13,7 +13,7 @@ const Book = ({i}) => {
                     <b>{i.title}</b>
                 </Link>
                 <Link href="/user/1">
-                    <span>작가</span>
+                    <S.Author>작가</S.Author>
                 </Link>
                 </S.Title>
                 <S.Explane>{i.explane}</S.Explane>

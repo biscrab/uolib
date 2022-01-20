@@ -12,6 +12,11 @@ export const BookInfo = styled.div`
     flex-direction: column;
 `
 
+export const Author = styled.span`
+    margin-top: 5px;
+    font-size: 13px;
+`
+
 export const Explane = styled.span`
     color: dimgray;
     height: 100%;

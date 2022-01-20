@@ -4,6 +4,7 @@ import Link from 'next/link'
 //import $ from 'jquery'
 import { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
+import { useRouter } from 'next/router'
 
 const Header = (prop) => {
 
@@ -12,6 +13,9 @@ const Header = (prop) => {
     const [onMenu, setOnMenu] = useState(false);
 
     const [isAlarm, setIsAlarm] = useState(false);
+
+    const rotuer = useRouter();
+    const pathname = rotuer.pathname
 
     const logout = () => {
 
@@ -44,19 +48,19 @@ const Header = (prop) => {
         return(
             <S.PathDiv>
                 <Link href="/free">
-                    <S.Path path={("/free")}>자유연재</S.Path>
+                    <S.Path path={pathname.includes("/free")}>자유연재</S.Path>
                 </Link>
                 <Link href="/plus">
-                    <S.Path path={("/plus") && 1 !== "/plus_shop" && 1 !== "/plus_agree"}>플러스</S.Path>
+                    <S.Path path={pathname.includes("/plus") && 1 !== "/plus_shop" && 1 !== "/plus_agree"}>플러스</S.Path>
                 </Link>
                 <Link href="/top100">
-                    <S.Path path={("/top100")}>TOP100</S.Path>
+                    <S.Path path={pathname.includes("/top100")}>TOP100</S.Path>
                 </Link>
                 <Link href="/readers/comunity/all/1">
-                    <S.Path path={("/readers")}>독자마당</S.Path>
+                    <S.Path path={pathname.includes("/readers")}>독자마당</S.Path>
                 </Link>
                 <Link href="/mybook">
-                    <S.Path path={("/mybook")}>내서재</S.Path>
+                    <S.Path path={pathname.includes("/mybook")}>내서재</S.Path>
                 </Link>
             </S.PathDiv>
         )

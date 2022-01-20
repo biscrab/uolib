@@ -18,7 +18,7 @@ const Top100Page: NextPage<{}> = () => {
     const {type} = router.query;
 
     useEffect(()=>{
-        axios.get(location.pathname)
+        //axios.get(location.pathname)
 
     },[])
 
@@ -152,10 +152,10 @@ const Top100Page: NextPage<{}> = () => {
                             <S.BookImgDiv>
                                 <img src={i.image}/>  
                             </S.BookImgDiv>
+                            </Link>
                             <b>{i.title}</b>
-                                <Link href="/user/1">
-                                    <span>{i.author}</span>
-                                </Link>
+                            <Link href="/user/1">
+                                <span>{i.author}</span>
                             </Link>
                         </S.Book>
                         </div>

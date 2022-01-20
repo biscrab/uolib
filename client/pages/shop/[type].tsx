@@ -2,6 +2,7 @@ import { useState } from 'react'
 import * as S from '../../styled/Shop'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { NavLink } from 'react-router-dom'
 
 const PlusShopPage = () => {
 
@@ -179,12 +180,14 @@ const PlusShopPage = () => {
                     {ilist.slice(0, 6).map(
                         (i, index) => {
                             return(
-                                <S.Emoticon key={index}>
+                                <Link href="/emoticon/1" key={index}>
+                                <S.Emoticon>
                                     <div>
                                         <img src={i.image}/>
                                     </div>
                                     <span>{i.name}</span>
                                 </S.Emoticon>
+                                </Link>
                             )
                         }
                     )}
@@ -218,6 +221,9 @@ const PlusShopPage = () => {
                         }
                     )}
                 </S.BestEmoticonDiv>
+                <S.EmoticonList>
+
+                </S.EmoticonList>
                 </>
                 :
                 <></>

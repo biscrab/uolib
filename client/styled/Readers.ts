@@ -39,32 +39,41 @@ export const List = styled.table`
     margin: 0;
     width: 100%;
     max-height: 1000px;
-    margin-top: 30px;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #555;
 `
 
-export const ComunityPathDiv = styled.div`
+export const PathDiv = styled.div`
     display: flex;
+    margin-top: 30px;
+    margin-bottom: 15px;
 `
 
-export const ComunityPath = styled.span<SelectProps>`
+export const Path = styled.span<SelectProps>`
     padding: 10px;
     cursor: pointer;
     background-color: ${props => props.selected ? "#5d3fdf" : ""};
     color: ${props => props.selected ? "white" : ""};
     padding: 5px 8px; 
     margin-right: 5px;
-    margin-bottom: 10px;
 `
 
 export const FanArtList = styled.ul`
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    margin: 50px 0px;
+`
+
+export const FanArtHeader = styled.div`
+    color: #333;
+    border-bottom: 2px solid #333;
+    padding: 5px 10px;
+    font-weight: bold;
 `
 
 export const FanArt = styled.div`
     padding: 10px 20px;
+    margin-top: 20px;
     width: 25%;
     display: flex;
     flex-direction: column;
@@ -80,11 +89,11 @@ export const FanArt = styled.div`
         cursor: pointer;
     }
     div{
-    overflow: hidden;
-    width: 100%;
-    height: 300px;
-    border-radius: 10px;
-    object-fit: cover;
+        overflow: hidden;
+        width: 100%;
+        height: 300px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.1);
     }   
     b{
         margin-top: 8px;
@@ -134,6 +143,7 @@ export const Ranking = styled.tr`
     padding: 10px 0px;
     display: flex;
     font-size: 15px;
+    font-weight: bold;
 `
 
 export const Rank = styled.td`
@@ -142,12 +152,12 @@ export const Rank = styled.td`
 `
 
 export const Name = styled.td`
-    width: 260px;
+    width: 220px;
 `
 
 export const Amount = styled.td`
     text-align: center;
-    width: 40px;
+    width: 80px;
 `
 
 interface IndexProps{
@@ -218,7 +228,6 @@ export const TRow = styled.li<IndexProps>`
     border: 1px solid #dee2e6;
     border-bottom: 0;
     display: flex;
-    border-top: 1px solid #555;
     span{
         box-sizing: border-box;
         padding: 0.5rem 0.75rem; 
@@ -368,6 +377,7 @@ export const Other = styled.li`
 export const PageDiv = styled.div`
     display: flex;
     justify-content: center;
+    margin-top: 50px;
 `
 
 export const Page = styled.a<SelectProps>`

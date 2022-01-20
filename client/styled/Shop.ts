@@ -242,6 +242,7 @@ export const Emoticon = styled.div`
         box-shadow: 0 2px 10px 0 rgb(0 0 0 / 6%);
         padding: 20px;
         margin-bottom: 10px;
+        cursor: pointer;
         img{
             height: 130px;
             width: 130px;

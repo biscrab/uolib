@@ -96,23 +96,24 @@ const ReadersPage = () => {
                 <Link href="/readers/fanart/all/1">
                     <S.Select selected={type === "fanart"}>팬아트</S.Select>
                 </Link>
-                <Link href="/readers/hall_of_fame/all/1">
+                <Link href="/readers/hall_of_fame">
                     <S.Select selected={type === "hall_of_fame"}>명예의전당</S.Select>
                 </Link>
            </S.SelectDiv>
            {type === "comunity" ?
+           <>
+            <S.PathDiv>
+            <Link href="/readers/comunity/all/1">
+                <S.Path selected={detail === "all"}>전체</S.Path>
+            </Link>
+            <Link href="/readers/comunity/review/1">
+                <S.Path selected={detail === "review"}>작품리뷰</S.Path>
+            </Link>
+            <Link href="/readers/comunity/h/1">
+                <S.Path selected={detail === "h"}>작품홍보</S.Path>
+            </Link>
+            </S.PathDiv>
             <S.List>
-            <S.ComunityPathDiv>
-                <Link href="/readers/comunity/all/1">
-                    <S.ComunityPath selected={detail === "all"}>전체</S.ComunityPath>
-                </Link>
-                <Link href="/readers/comunity/review/1">
-                    <S.ComunityPath selected={detail === "review"}>작품리뷰</S.ComunityPath>
-                </Link>
-                <Link href="/readers/comunity/h/1">
-                    <S.ComunityPath selected={detail === "h"}>작품홍보</S.ComunityPath>
-                </Link>
-            </S.ComunityPathDiv>
             <S.TRow idx={1}>
                 <S.TNumber idx={1}>번호</S.TNumber>
                 <S.TTitle idx={1}>제목</S.TTitle>
@@ -138,10 +139,26 @@ const ReadersPage = () => {
                     }
                 )}
             </S.List>
+            </>
             :
             <></>
             }
             {type === "fanart" ?
+            <>
+            <S.PathDiv>
+                <Link href="/readers/comunity/all/1">
+                    <S.Path selected={detail === "all"}>전체</S.Path>
+                </Link>
+                <Link href="/readers/comunity/review/1">
+                    <S.Path selected={detail === "review"}>작품리뷰</S.Path>
+                </Link>
+                <Link href="/readers/comunity/h/1">
+                    <S.Path selected={detail === "h"}>작품홍보</S.Path>
+                </Link>
+            </S.PathDiv>
+            <S.FanArtHeader>
+                총 개의 팬아트
+            </S.FanArtHeader>
             <S.FanArtList>
                 {flist.map(
                     (i, index) => {
@@ -162,7 +179,8 @@ const ReadersPage = () => {
                         )
                     }
                 )}
-            </S.FanArtList>    
+            </S.FanArtList>   
+            </> 
             :
             <></>
             }
@@ -205,6 +223,8 @@ const ReadersPage = () => {
             :
             <></>
             }
+            {type !== "hall_of_fame" ?
+            <>
             <S.PageDiv>
                 <S.Page><i className="fas fa-chevron-left"></i></S.Page>
                 {plist.map(
@@ -219,6 +239,10 @@ const ReadersPage = () => {
             <S.ButtonDiv>
                 <button>새 글 쓰기</button>
             </S.ButtonDiv>
+            </>
+            :
+            <></>
+            }
         </S.Body>
     )
 }

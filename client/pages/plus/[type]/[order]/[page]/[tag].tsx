@@ -18,8 +18,32 @@ const SerializePage: NextPage<{}> = () => {
     const plus = true;
 
     useEffect(()=>{
-        console.log("공모전" === tag);
+
     })
+
+    const [plist, setPlist] = useState([1]);
+    
+    useEffect(()=>{
+        const p = Number(page);
+        var l = [];
+
+        if(p >= 3)
+            l.push(p-2);
+        
+        if(p >= 2)
+            l.push(p-1);
+
+        l.push(p);
+
+        if(p <= max-1)
+            l.push(p+1);
+
+        if(p <= max-2)
+            l.push(p+2);
+        
+        console.log(l);
+        setPlist(l);
+    },[page])
 
     const Category = () => {
         return(
@@ -113,12 +137,23 @@ const SerializePage: NextPage<{}> = () => {
                 <Category />
             </S.CategoryDiv>
             <S.List>
-                {list ?
+                {list !== undefined?
                 <Book lists={list}/>
                 :
                 <></>
                 }
             </S.List>
+            <S.PageDiv>
+                <S.Page><i className="fas fa-chevron-left"></i></S.Page>
+                {plist.map(
+                    (i, index) => {
+                        return(
+                            <S.Page key={index} selected={Number(page) === i}>{i}</S.Page>
+                        )
+                    }
+                )}
+                <S.Page><i className="fas fa-chevron-right"></i></S.Page>
+            </S.PageDiv>
     </S.Body>
     </>
     )
