@@ -1,4 +1,4 @@
-import Page from '../../../plus/[type]/[order]/[page]'
+import Page from '../../../../plus/[type]/[order]/[page]/[tag]'
 
 const Free = () => {
     return(

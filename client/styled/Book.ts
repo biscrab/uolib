@@ -4,6 +4,7 @@ export const Book = styled.li`
     border-bottom: 1px solid #eee;
     display: flex;
     padding: 10px 0px;
+    padding-bottom: 15px;
 `
 
 export const BookInfo = styled.div`
@@ -12,9 +13,32 @@ export const BookInfo = styled.div`
     flex-direction: column;
 `
 
+export const ButtonDiv = styled.div`
+    display: flex;
+    align-items: end;
+    button{
+        border: 1px solid #ddd;
+        padding: 5px 12px;
+        color: #fff;
+        width: 120px;
+        font-size: 13px;
+        cursor: pointer;
+    }
+`
+
+export const Continue = styled.button`
+    background-color: #856ede;
+    margin-right: 5px;
+`
+
+export const Next = styled.button`
+    background-color: #6143d1;
+`
+
 export const Author = styled.span`
-    margin-top: 5px;
-    font-size: 13px;
+    margin-top: 7px;
+    font-size: 11px;
+    color: #666;
 `
 
 export const Explane = styled.span`
@@ -29,7 +53,7 @@ export const Info = styled.div`
     align-items: center;
     font-size: 15px;
     width: 100%;
-    padding: 15px 0px;
+    padding: 10px 0px;
     font-weight: bold;
     span{
         margin-right: 10px;
@@ -61,6 +85,7 @@ export const BookCover = styled.img`
     width: 100px;
     height: 150px;
     cursor: pointer;
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.2);
 `
 
 export const Title = styled.div`

@@ -1,4 +1,4 @@
-import Page from './[type]/[page]'
+import Page from './[page]'
 const Alarm = () => {
     return(
         <>

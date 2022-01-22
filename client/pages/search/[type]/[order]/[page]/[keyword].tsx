@@ -19,6 +19,12 @@ const SearchPage: NextPage<{}> = () => {
 
     const lists = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag: ["1"]}];
 
+    const Check = () => {
+        return(
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#5a35cd"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+        )
+    }
+
     return(
         <S.Body>
             <S.Search placeholder="소설제목, 태그, 검색어, 작가를 입력해주세요." onChange={(e)=>setWord(e.target.value)} value={word} onKeyPress={(e)=>{
@@ -46,15 +52,36 @@ const SearchPage: NextPage<{}> = () => {
             <S.Result>
                 <b>총 0개의 작품</b>
                 <div>
+                    <Link href={`/search/${type}/date/1/${keyword}`}>
                     <div>
+                        {order === "date" || !order ?
+                        <Check />
+                        :
+                        <i className="fas fa-circle"></i>
+                        }
                         <b>공개일자 순</b>
                     </div>
+                    </Link>
+                    <Link href={`/search/${type}/view/1/${keyword}`}>
                     <div>
+                        {order === "view" ?
+                            <Check />
+                            :
+                            <i className="fas fa-circle"></i>
+                        }
                         <b>조회순</b>
                     </div>
+                    </Link>
+                    <Link href={`/search/${type}/like/1/${keyword}`}>
                     <div>
+                        {order === "like" ?
+                            <Check />
+                            :
+                            <i className="fas fa-circle"></i>
+                        }
                         <b>추천순</b>
                     </div>
+                    </Link>
                 </div>
             </S.Result>
             <S.List>

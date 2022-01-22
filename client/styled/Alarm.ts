@@ -17,7 +17,7 @@ export const SelectDiv = styled.div`
 `
 
 interface SelectProps{
-    selected: boolean,
+    selected?: boolean,
 }
 
 export const Select = styled.div<SelectProps>`
@@ -33,10 +33,25 @@ export const Select = styled.div<SelectProps>`
 `
 
 export const List = styled.ul`
-    padding: 10px;
+    padding-top: 15px;
     height: 1000px;
     margin: 0;
     margin-top: 20px;
+`
+
+export const PageDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+`
+
+export const Page = styled.a<SelectProps>`
+    background-color: ${props => props.selected ? "#17a2b8" : "#eee"};
+    color: ${props => props.selected ? "white" : ""};
+    padding: 7px 12px;
+    font-size: 15px;
+    margin: 5px;
+    font-weight: bold;
 `
 
 export const Alarm = styled.div`
@@ -44,7 +59,7 @@ export const Alarm = styled.div`
     align-items: center;
     padding: 10px;
     width: 100%;
-    border: 2px solid #eee;
+    border: 2px solid #ccc;
     b{
         font-size: 15px;
         margin-bottom: 10px;

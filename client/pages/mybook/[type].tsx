@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import * as S from '../../styled/MyBook'
-import Book from '../../components/Book'
+import MyBook from '../../components/MyBook'
 import { NextPage } from 'next';
 import Link from 'next/link'
 import {useRouter} from 'next/router'
@@ -38,17 +38,27 @@ const MyBookPage: NextPage<{}> = () => {
                 <Link href="/mybook/last_view">
                     <S.Select selected={type==="last_view"}>최근 본 작품</S.Select>
                 </Link>
+                <Link href="/mybook/support">
+                    <S.Select selected={type==="support"}>후원금 정산</S.Select>
+                </Link>
             </S.SelectDiv>
+            {type !== "support" ?
+            <>
             <S.CountOfBook>
                 총 0개의 작품
             </S.CountOfBook>
             <S.List>
-                <Book lists={lists}/>
+                <MyBook lists={lists}/>
             </S.List>
+            </>
+            :
             <S.Support>
                 <div>후원금 정산</div>
-                <ul></ul>
+                <ul>
+                    
+                </ul>
             </S.Support>
+            }
         </S.Body>
     )
 }

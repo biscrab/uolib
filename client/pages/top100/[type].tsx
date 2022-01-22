@@ -23,7 +23,7 @@ const Top100Page: NextPage<{}> = () => {
     },[])
 
     const [lists, setLists] = useState([
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
+        {id: 1, title: "1", author: "1123123123", image: "https://image.novelpia.com/img/layout/readycover4.png"},
         {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
         {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
         {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},

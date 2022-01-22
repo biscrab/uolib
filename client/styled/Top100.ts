@@ -60,8 +60,9 @@ export const Book = styled.div`
         flex-direction: column;
     }
     span{
-        font-size: 13px;
-        color: dimgray;
+        font-size: 12px;
+        font-weight: bold;
+        color: #999;
     }
 `
 

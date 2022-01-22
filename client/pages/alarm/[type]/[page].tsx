@@ -1,6 +1,7 @@
-import * as S from '../../styled/Alarm'
+import * as S from '../../../styled/Alarm'
 import Link from "next/link";
 import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
 
 type AlarmType = {
     title: string,
@@ -11,7 +12,7 @@ type AlarmType = {
 const AlarmPage = () => {
 
     const router = useRouter()
-    const {type} = router.query;
+    const {type, page} = router.query;
 
     const lists: AlarmType[] = [{title: "123", contents: "string", id: "1"}];
 
@@ -23,6 +24,37 @@ const AlarmPage = () => {
 
         }
     }
+
+    const max = 5;
+
+    const [plist, setPlist] = useState([1]);
+
+    useEffect(()=>{
+        var p;
+        if(!page)
+            p = 1;
+        else
+            p = Number(page);
+            
+        var l = [];
+
+        if(p >= 3)
+            l.push(p-2);
+        
+        if(p >= 2)
+            l.push(p-1);
+
+        l.push(p);
+
+        if(p <= max-1)
+            l.push(p+1);
+
+        if(p <= max-2)
+            l.push(p+2);
+        
+        console.log(l);
+        setPlist(l);
+    },[page])
 
     return(
         <S.Body>
@@ -59,6 +91,17 @@ const AlarmPage = () => {
                     )
                 })}
             </S.List>
+            <S.PageDiv>
+                <S.Page><i className="fas fa-chevron-left"></i></S.Page>
+                {plist.map(
+                    (i, index) => {
+                        return(
+                            <S.Page key={index} selected={Number(page) === i}>{i}</S.Page>
+                        )
+                    }
+                )}
+                <S.Page><i className="fas fa-chevron-right"></i></S.Page>
+            </S.PageDiv>
         </S.Body>
     )
 }

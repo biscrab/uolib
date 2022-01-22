@@ -18,6 +18,7 @@ export const CountOfBook = styled.div`
     margin-top: 30px;
     margin-bottom: 5px;
     padding-bottom: 5px;
+    font-weight: bold;
 `
 
 interface Props {
@@ -46,7 +47,7 @@ export const Support = styled.div`
     width: 100%;
     box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin: 30px 0px;
     div{
         width: 100%;
         color: white;
@@ -55,6 +56,9 @@ export const Support = styled.div`
         box-sizing: border-box;
         border-radius: 8px 8px 0px 0px;
         font-size: 13px;
+    }
+    ul{
+        height: 1000px;
     }
 `
 

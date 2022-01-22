@@ -12,13 +12,14 @@ export const Body = styled.div`
 
 export const BookCover = styled.img`
     border-radius: 10px;
-    height: 300px;
+    height: 250px;
 `
 
 export const Info = styled.div`
     display: flex;
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 30px;
 `
 
 export const Border = styled.div`
@@ -61,7 +62,6 @@ export const TopInfo = styled.div`
 `
 
 export const BottomInfo = styled.div`
-    min-height: 300px;
 `
 
 export const BottomInfoDiv = styled.div`
@@ -115,7 +115,7 @@ export const AuthorDiv = styled.div`
     display: flex;
     align-items: end;
     margin-top: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     font-weight: 600;
 `
 
@@ -236,7 +236,9 @@ export const Support = styled.div`
 `
 
 export const OtherBookList = styled.ul`
-
+    background-color: #fbfbfb;
+    border: 1px solid #e1e1e1;
+    padding: 20px;
 `
 
 export const OtherBook = styled.li`

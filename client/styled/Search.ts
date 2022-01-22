@@ -69,15 +69,16 @@ export const Select = styled.div<SelectedProps>`
     width: 100%;
     height: 50px;
     border: 1px solid #eee;
-    border-bottom: 2px solid #333;
+    border-bottom: 1px solid #555;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     white-space: nowrap;
     cursor: pointer;
-    border: ${props => props.selected ? "1px solid #333" : ""};
-    border-bottom: ${props => props.selected ? "none" : "1px solid #333"};
+    border: ${props => props.selected ? "1px solid #555" : ""};
+    border-bottom: ${props => props.selected ? "none" : "1px solid #555"};
+    border-top: ${props => props.selected ? "1px solid #555" : ""};
 `
 
 export const ResultSpan = styled.div`
