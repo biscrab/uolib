@@ -13,9 +13,6 @@ export const Header = styled.div<DarkProps>`
     z-index: 9999;
     background: ${props => props.dark ? "#35363a" : "white"};
     color: ${props => props.dark ? "white" : ""};
-    span{
-        cursor: pointer;
-    }
 `
 
 export const HeaderDiv = styled.div`
@@ -31,21 +28,38 @@ export const HeaderDiv = styled.div`
     }
 `
 
+export const Episode = styled.span`
+    margin-left: 25px;
+    color: #555;
+    font-weight: bold;
+    background-color: #eee;
+    padding: 1px 8px;
+    font-size: 13px;
+    border-radius: 3px;
+    line-height: 13px;
+`
+
 export const LeftDiv = styled.div`
-    span{
-        margin-left: 25px;
-        font-weight: bold;
-    }
     i{
         cursor: pointer;
         font-size: 18px;
     }
 `
 
+export const Title = styled.span`
+    margin-left: 5px;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 16px;
+`
+
 export const RightDiv = styled.div`
     display: flex; 
     i{
         margin-right: 3px;
+    }
+    span{
+        cursor: pointer;
     }
 `
 
@@ -89,7 +103,7 @@ export const AuthorsWords = styled.div<DarkProps>`
 
 export const NextButton = styled.button`
     margin-top: 30px;
-    background-color: #f1f1f1;
+    background-color: #f9f9f9;
     border: 0;
     padding: 10px 0px;
     font-size: 18px;

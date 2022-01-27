@@ -66,6 +66,10 @@ export const InputDiv = styled.div`
     }
 `
 
+export const TagDiv = styled.div`
+
+`
+
 export const TagList = styled.ul`
     margin-top: 70px;
     position: absolute;

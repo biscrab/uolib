@@ -59,11 +59,35 @@ export const Book = styled.div`
         display: flex;
         flex-direction: column;
     }
-    span{
-        font-size: 12px;
-        font-weight: bold;
-        color: #999;
-    }
+`
+
+export const Author = styled.span`
+    font-size: 12px;
+    font-weight: bold;
+    color: #999;
+`
+
+type colorType = {
+    color: string
+}
+
+export const Type = styled.span<colorType>`
+    font-weight: 400;
+    background-color: ${props => props.color};
+    padding: 0.5px 4px;
+    border-radius: 3px;
+    font-size: 11px;
+    color: #fff;
+    text-shadow: 0.5px 0.5px black;
+    line-height: 17px;
+    text-indent: initial;
+    border-spacing: 2px;
+    margin-right: 5px;
+`
+
+export const TypeDiv = styled.div`
+    margin-top: 5px;
+    display: flex;
 `
 
 export const Rank = styled.div`

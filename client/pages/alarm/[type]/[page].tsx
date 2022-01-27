@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 type AlarmType = {
     title: string,
     contents: string,
-    id: string
+    id: number
 }
 
 const AlarmPage = () => {
@@ -14,10 +14,10 @@ const AlarmPage = () => {
     const router = useRouter()
     const {type, page} = router.query;
 
-    const lists: AlarmType[] = [{title: "123", contents: "string", id: "1"}];
+    const lists: AlarmType[] = [{title: "123", contents: "string", id: 1}];
 
     const path = () => {
-        if(type === ("comment" || "subscribe")){
+        if(type === ("comment" || "novel")){
 
         }
         else if (type === "1"){
@@ -56,14 +56,31 @@ const AlarmPage = () => {
         setPlist(l);
     },[page])
 
+    const Path = (id: number) => {
+        if(type === "comment"){
+            return `/viewer/${id}`
+        }
+        else if(type === "novel"){
+            return `/viewer/${id}`
+        }
+        else if(type === "system"){
+            return "/"
+        }
+        else if(type === "event"){
+            return "/"
+        }   
+        else 
+            return "/"
+    }
+
     return(
         <S.Body>
             <S.SelectDiv>
                 <Link href="/alarm/comment">
                     <S.Select selected={type==="comment" || !type}>댓글알림</S.Select>
                 </Link>
-                <Link href="/alarm/subscribe">
-                    <S.Select selected={type==="subscribe"}>구독알림</S.Select>
+                <Link href="/alarm/novel">
+                    <S.Select selected={type==="novel"}>구독알림</S.Select>
                 </Link>
                 <Link href="/alarm/system">
                     <S.Select selected={type==="system"}>시스템알림</S.Select>
@@ -76,7 +93,8 @@ const AlarmPage = () => {
                 {lists.map((i, index) => {
                     return(
                         <div key={index}>
-                        <Link href={`/${path}/${i.id}`}>
+                        {Path(i.id) !== "/" ?
+                        <Link href={Path(i.id)}>
                         <S.Alarm>
                             <img src="https://novelpia.com/img/new/menu/alarm.png"/>
                             <div>
@@ -87,6 +105,17 @@ const AlarmPage = () => {
                             </div>
                         </S.Alarm>
                         </Link>
+                        :
+                        <S.Alarm>
+                        <img src="https://novelpia.com/img/new/menu/alarm.png"/>
+                        <div>
+                        <b>{i.title}</b>
+                        <S.AlarmContents>
+                        {i.contents}
+                        </S.AlarmContents>
+                        </div>
+                        </S.Alarm>
+                        }
                         </div>
                     )
                 })}

@@ -4,10 +4,18 @@ const EmoticonPage = () => {
     return(
         <>
         <S.Header>
-            <div>
-                <img src="https://image.novelpia.com/img/emoticon/d89jg198x/1.jpg"/>\
-                <h3>제목</h3>
-            </div>
+            <S.HeaderDiv>
+                <img src="https://image.novelpia.com/img/emoticon/d89jg198x/1.jpg"/>
+                <S.HeaderInfo>
+                <div>
+                <h2>제목</h2>
+                <S.Coin></S.Coin>
+                </div>
+                <S.ButtonDiv>
+                    <button>구매하기</button>
+                </S.ButtonDiv>
+                </S.HeaderInfo>
+            </S.HeaderDiv>
         </S.Header>
         <S.Body>
             <S.Border>

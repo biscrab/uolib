@@ -1,11 +1,18 @@
 import { useState } from 'react';
 import { NextPage } from 'next';
 import * as S from '../styled/New'
+import axios from 'axios';
 
 const NewPage: NextPage<{}> = () => {
 
     const [info, setInfo] = useState()
     const [focus, setFocus] = useState(false);
+    const [novel, setNovel] = useState({title: "", explane: "", day: "", tag: []})
+
+    const regist = () => {
+        axios.post('/novel/new', {...novel, tag: JSON.stringify(novel.tag)})
+            .then(res => alert("등록되었습니다."))
+    }
 
     return(
         <S.Body>
@@ -27,7 +34,12 @@ const NewPage: NextPage<{}> = () => {
                     </S.InputDiv>
                     <S.InputDiv>
                         <span>태그</span>
-                        <input onFocus={() => setFocus(true)} onBlur={() => setFocus(false)}/>
+                        <div>
+                            <S.TagDiv>
+                                
+                            </S.TagDiv>
+                            <input onFocus={() => setFocus(true)} onBlur={() => setFocus(false)}/>
+                        </div>
                         {focus ?
                         <S.TagList>
                             <li>판타지</li>

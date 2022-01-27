@@ -121,8 +121,8 @@ const NovelPage = () => {
                             {novel.explane}
                         </S.Explane>
                         <br/>
-                        <br/>
                         <S.TagDiv>
+                            <b>태그 :</b>
                             {novel.tag.map((i, index) => {
                                 return(
                                     <Link href={`/`} key={index}>

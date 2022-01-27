@@ -16,6 +16,7 @@ export const BookInfo = styled.div`
 export const ButtonDiv = styled.div`
     display: flex;
     align-items: end;
+    padding-top: 10px;
     button{
         border: 1px solid #ddd;
         padding: 5px 12px;
@@ -33,12 +34,20 @@ export const Continue = styled.button`
 
 export const Next = styled.button`
     background-color: #6143d1;
+    margin-right: 5px;
+`
+
+export const Write = styled.button`
+    background-color: black;
 `
 
 export const Author = styled.span`
-    margin-top: 7px;
-    font-size: 11px;
-    color: #666;
+    font-size: 13px;
+    line-height: 16px;
+    color: dimgray;
+    margin-left: 10px;
+    font-weight: bold;
+    cursor: pointer;
 `
 
 export const Explane = styled.span`
@@ -46,6 +55,8 @@ export const Explane = styled.span`
     height: 100%;
     width: 100%;
     font-size: 13px;
+    margin-top: 5px;
+    min-height: 50px;
 `
 
 export const Info = styled.div`
@@ -53,30 +64,34 @@ export const Info = styled.div`
     align-items: center;
     font-size: 15px;
     width: 100%;
-    padding: 10px 0px;
-    font-weight: bold;
+    padding-top: 10px;
     span{
         margin-right: 10px;
+        font-weight: bold;
+        line-height: 15px;
     }
     img{
         width: 12px;
         height: 12px;
+        margin-top: 2px;
         margin-right: 5px;
     }
 `
 
 export const TagDiv = styled.div`
+    padding-top: 10px;
     display: flex;
     span{
         color: #5032df;
         border: 2px solid #5032df;
         border-radius: 20px;
-        padding: 3px 10px;
+        padding: 2px 10px;
         line-height: 20px;
         user-select: none;
         font-size: 14px;
         font-weight: 600;
         margin-right: 5px;
+        cursor: pointer;
     }
 `
 
@@ -90,15 +105,30 @@ export const BookCover = styled.img`
 
 export const Title = styled.div`
     display: flex;
-    align-items: center;
+    align-items: end;
+    margin-top: 10px;
     b{
-        font-size: 20px;
+        font-size: 22px;
+        line-height: 22px;
+        letter-spacing: -2px;
         cursor: pointer;
     }
-    span{
-        color: dimgray;
-        font-size: 13px;
-        margin-left: 5px;
-        cursor: pointer;
-    }
+`
+
+type colorType = {
+    color: string
+}
+
+export const Type = styled.span<colorType>`
+    font-weight: 400;
+    background-color: ${props => props.color};
+    padding: 0.5px 4px;
+    border-radius: 3px;
+    font-size: 11px;
+    color: #fff;
+    text-shadow: 0.5px 0.5px black;
+    line-height: 17px;
+    text-indent: initial;
+    border-spacing: 2px;
+    margin-right: 5px;
 `

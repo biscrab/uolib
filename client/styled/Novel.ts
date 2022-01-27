@@ -42,7 +42,10 @@ export const Explane = styled.div`
 export const TagDiv = styled.div`
     display: flex;
     align-items: center;
-    margin-top: 15px;
+    b{
+        margin-right: 10px;
+        color: #333;
+    }
     span{
         color: #5032df;
         border: 2px solid #5032df;
@@ -335,7 +338,9 @@ export const SupportModalHeader = styled.div`
     justify-content: space-between;
     color: #333;
     border-bottom: 2px solid #555;
-
+    h5{
+        font-weight: bold;
+    }
     svg{
         cursor: pointer;
     }

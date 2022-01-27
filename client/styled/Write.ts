@@ -33,26 +33,34 @@ export const Tittle = styled.input`
     background-color: #f8f9fa;
     border: 1px solid rgba(0,0,0,0.15);
     width: 100%;
+
+    :focus{
+        border: 1px solid royalblue;
+        background-color: white;
+    }
 `
 
 export const SelectDiv = styled.div`
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 20px;
 `
 export const Select = styled.div`
     width: 170px;
-    height: 35px;
+    height: 40px;
     background-color: #f8f9fa;
     border: 1px solid rgba(0,0,0,0.15);
     display: flex;
     align-items: center;
     select{
+        color: #333;
         background: none;
         border: 0;
         height: 100%;
         width: 100%;
         outline: 0;
+        padding: 0px 8px;
+        font-size: 15px;
     }
     span{
         height: 34px;
@@ -119,6 +127,7 @@ export const RoundDiv = styled.div`
 
 export const TextDiv = styled.div`
     border: 1px solid rgba(0,0,0,0.15);
+    margin-top: 20px;
     .text{
         resize: vertical;
         min-height: 500px;
@@ -353,7 +362,7 @@ export const ImageHeader = styled.div`
     align-items: center;
     padding: 10px;
     h3{
-        font-weight: 300;
+        font-weight: 600;
         margin: 0;
     }
     svg{
@@ -371,6 +380,7 @@ export const ImageBody = styled.div`
     }
     span{
         font-size: 15px;
+        font-weight: bold;
         //margin-bottom: 5px;
     }
     div{
@@ -390,5 +400,6 @@ export const ImageBottom = styled.div`
         padding: 7px;
         font-size: 15px;
         border-radius: 2px;
+        font-weight: 500;
     }
 `

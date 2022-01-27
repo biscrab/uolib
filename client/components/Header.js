@@ -1,7 +1,7 @@
 import * as S from '../styled/Header'
 import logo from '../images/logo.png'
 import Link from 'next/link'
-//import $ from 'jquery'
+import $ from 'jquery'
 import { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
@@ -26,7 +26,6 @@ const Header = (prop) => {
     },[])
 
     useEffect(()=>{
-        /*
         $("html").click(function(e){
             if(!$(".menu").has(e.target).length){
                 $(".menumodal").animate({opacity: 0, height: 0}, 1000);
@@ -41,7 +40,7 @@ const Header = (prop) => {
             else{
                 setOnMenu(false);
             }
-        })*/
+        })
     })
 
     const Path = () => {

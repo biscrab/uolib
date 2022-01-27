@@ -19,7 +19,7 @@ const WritePage: NextPage<{}> = () => {
 
     const handleChange = (evt: any) => {
         text.current = evt.target.value;
-        console.log(text)
+        localStorage.autosave = "123123";
     };
     
     const handleBlur = () => {
@@ -40,7 +40,7 @@ const WritePage: NextPage<{}> = () => {
                 setOn({...on, underline: c});
                 break;
         }*/
-        //$(".text").focus();
+        $(".text").focus();
     }
 
     const [imgUrl, setImgUrl] = useState("");
@@ -52,10 +52,6 @@ const WritePage: NextPage<{}> = () => {
     useEffect(()=>{
         console.log(document.execCommand("underline", false, ""));
     },[])
-
-    useEffect(()=>{
-        setOn({...on, bold: document.queryCommandState("bold")})
-    },[text.current])
 
     useEffect(()=>{
         /*
@@ -73,36 +69,12 @@ const WritePage: NextPage<{}> = () => {
             <S.Tittle placeholder='에피소드 제목을 입력해주세요'/>
             <S.SelectDiv>
                 <S.Select>
-                    <select></select>
-                </S.Select>
-                <S.Select>
-                    <select></select>
-                </S.Select>
-                <S.Select>
-                    <span><i className="far fa-calendar-check"></i></span>
-                    <input />
-                </S.Select>
-                <S.Select>
-                    <span><i className="far fa-clock"></i></span>
                     <select>
-                        {
-
-                        }
+                        <option>연재회차</option>
+                        <option>공지사항</option>
                     </select>
                 </S.Select>
-                <S.Select>
-                    <span><i className="far fa-clock"></i></span>
-                    <select></select>
-                </S.Select>
-                <S.Select>
-                    <div>공개일사용</div>
-                    <input type="checkbox" />
-                </S.Select>
             </S.SelectDiv>
-            <S.RoundDiv>
-                <select></select>
-                <button>임시저장</button>
-            </S.RoundDiv>
             <S.TextDiv>
                 <S.SettingDiv>                        
                     <S.Setting onClick={()=>change("bold")} selected={on.bold}><i className="fas fa-bold"></i></S.Setting>
@@ -132,7 +104,7 @@ const WritePage: NextPage<{}> = () => {
                     <S.Setting onClick={()=>change("undo")}><i className="fas fa-undo-alt"></i></S.Setting>
                     <S.Setting onClick={()=>change("redo")}><i className="fas fa-redo-alt"></i></S.Setting>  
                 </S.SettingDiv>
-                <div className="text" id="text" role="textbox" aria-multiline="true" spellCheck="true" autoCorrect="true" contentEditable="true" /*html={text.current}*/ onBlur={handleBlur} onChange={handleChange}>
+                <div className="text" id="text" role="textbox" aria-multiline="true" spellCheck="true" autoCorrect="true" contentEditable="true" /*html={text.current}*/ onBlur={handleBlur} onInput={(e)=>console.log(e.target)}>
                 </div>
             </S.TextDiv>
             <S.RTittle>
@@ -143,7 +115,6 @@ const WritePage: NextPage<{}> = () => {
 
             </S.Review>
             <S.ButtonDiv>
-                <S.CheckButton><i className="far fa-check-square"></i>맞춤법 검사</S.CheckButton>
                 <S.RegistButton><i className="fas fa-pen"></i>소설 등록</S.RegistButton>
             </S.ButtonDiv>
         </S.Body>
@@ -177,3 +148,36 @@ const WritePage: NextPage<{}> = () => {
 }
 
 export default WritePage
+
+/*            <S.SelectDiv>
+                <S.Select>
+                    <select></select>
+                </S.Select>
+                <S.Select>
+                    <select></select>
+                </S.Select>
+                <S.Select>
+                    <span><i className="far fa-calendar-check"></i></span>
+                    <input />
+                </S.Select>
+                <S.Select>
+                    <span><i className="far fa-clock"></i></span>
+                    <select>
+                        {
+
+                        }
+                    </select>
+                </S.Select>
+                <S.Select>
+                    <span><i className="far fa-clock"></i></span>
+                    <select></select>
+                </S.Select>
+                <S.Select>
+                    <div>공개일사용</div>
+                    <input type="checkbox" />
+                </S.Select>
+            </S.SelectDiv>
+            <S.RoundDiv>
+                <select></select>
+                <button>임시저장</button>
+            </S.RoundDiv> */

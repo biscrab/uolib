@@ -279,7 +279,8 @@ export const TLike = styled.tr<IndexProps>`
     text-align: center;
 `
 
-export const ViewTitle = styled.h4`
+export const ViewTitle = styled.h3`
+    font-weight: bold;
     margin: 0;
 `
 
@@ -347,7 +348,7 @@ export const CommentInputDiv = styled.div`
         background: #343a40;
         color: white;
         font-size: 20px;
-        font-weight: 500;
+        font-weight: 600;
     }
     textarea{
         outline: 0;

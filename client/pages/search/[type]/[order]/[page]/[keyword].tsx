@@ -30,7 +30,7 @@ const SearchPage: NextPage<{}> = () => {
             <S.Search placeholder="소설제목, 태그, 검색어, 작가를 입력해주세요." onChange={(e)=>setWord(e.target.value)} value={word} onKeyPress={(e)=>{
                 if(e.key === "Enter" && word){
                     if(type){
-                        router.push(`/search/${type}/${word}`)
+                        router.push(`/search/${type}/date/1/${word}`)
                     }
                     else{
                         router.push(`/search/keyword/date/1/${word}`)

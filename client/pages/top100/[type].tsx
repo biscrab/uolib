@@ -155,8 +155,14 @@ const Top100Page: NextPage<{}> = () => {
                             </Link>
                             <b>{i.title}</b>
                             <Link href="/user/1">
-                                <span>{i.author}</span>
+                                <S.Author>{i.author}</S.Author>
                             </Link>
+                            <S.TypeDiv>
+                                <S.Type color='#5232dd'>PLUS</S.Type>
+                                <S.Type color='#166d95'>자유</S.Type> 
+                                <S.Type color='#0d60d1'>독점</S.Type>
+                                <S.Type color='black'>완결</S.Type>  
+                            </S.TypeDiv>
                         </S.Book>
                         </div>
                     )

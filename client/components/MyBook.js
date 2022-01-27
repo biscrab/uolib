@@ -8,7 +8,11 @@ const Book = ({i}) => {
                 <S.BookCover src={i.image}/>
             </Link>
             <S.BookInfo> 
-                <S.Title>   
+                <S.Title>
+                <S.Type color='#5232dd'>PLUS</S.Type>
+                <S.Type color='#166d95'>자유</S.Type> 
+                <S.Type color='#0d60d1'>독점</S.Type>
+                <S.Type color='black'>완결</S.Type>  
                 <Link href="/novel/a">
                     <b>{i.title}</b>
                 </Link>
@@ -25,9 +29,21 @@ const Book = ({i}) => {
                     <img src="	https://image.novelpia.com/img/new/icon/count_good.png"/>
                     <span>8.0K회</span>
                 </S.Info>
+                <S.TagDiv>
+                    {i.tag.map(
+                        (tag, index) => {
+                            return(
+                                <Link href={`/search/tag/date/1/${tag}`} key={index}>
+                                <span>#{tag}</span>
+                                </Link>
+                            )
+                        }
+                    )}
+                </S.TagDiv>
                 <S.ButtonDiv>
                     <S.Continue>EP.1 이어보기</S.Continue>
                     <S.Next>다음화 보기</S.Next>
+                    <S.Write>회차쓰기</S.Write>
                 </S.ButtonDiv>
             </S.BookInfo>
         </S.Book>

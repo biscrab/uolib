@@ -60,6 +60,10 @@ export const Alarm = styled.div`
     padding: 10px;
     width: 100%;
     border: 2px solid #ccc;
+    cursor: pointer;
+    div{
+        width: 100%;
+    }
     b{
         font-size: 15px;
         margin-bottom: 10px;
@@ -68,8 +72,8 @@ export const Alarm = styled.div`
 
 export const AlarmContents = styled.div`
     background: #eee;
-    margin-top: 2.5px;
-    padding: 2.5px 10px;
+    margin-top: 5px;
+    padding: 6px 12px;
     border-radius: 3px;
     width: 100%;
     box-sizing: border-box;
