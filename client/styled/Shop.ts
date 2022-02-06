@@ -19,6 +19,8 @@ export const ShopDiv = styled.div`
     }
     span{
         cursor: pointer;
+        font-weight: bold;
+        font-size: 15px;
     }
 `
 
@@ -289,7 +291,6 @@ export const BestEmoticonDiv = styled.div`
 
 export const EmoticonList = styled.ul`
     list-style: none;
-    border-top: 1px solid black;
     li{
         border-bottom: 1px solid #eee;
     }

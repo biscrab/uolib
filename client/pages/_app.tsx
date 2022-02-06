@@ -11,6 +11,7 @@ import dynamic from 'next/dynamic'
 import {useRouter} from 'next/router'
 import Loading from '../components/Loading.js'
 import axios from 'axios';
+import {NextPageContext} from 'next'
 
 function MyApp({ Component, pageProps }: AppProps) {
   
@@ -23,6 +24,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 
   const [setting, setSetting] = useState();
+
+  axios.defaults.baseURL = "https://uolib.herokuapp.com"
 
   useEffect(()=>{
     /*axios.get('/setting')
@@ -67,5 +70,18 @@ function MyApp({ Component, pageProps }: AppProps) {
     </>
   )
 }
+
+MyApp.getInitialProps = async (context:NextPageContext) => {
+  const { ctx, Component } = context;
+  let pageProps = {};
+
+  if (Component.getInitialProps) {
+    // Component의 context로 ctx를 넣어주자
+    pageProps = await Component.getInitialProps(ctx);
+  }
+
+  // return한 값은 해당 컴포넌트의 props로 들어가게 됩니다.
+  return { pageProps };
+};
 
 export default MyApp

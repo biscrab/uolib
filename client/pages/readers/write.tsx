@@ -57,15 +57,14 @@ const WritePage: NextPage<{}> = () => {
         <>
         <S.Body>
             <S.BTittle>새 글 쓰기</S.BTittle>
-            <S.Tittle placeholder='에피소드 제목을 입력해주세요'/>
+            <S.Search>
+                <S.Tittle placeholder='제목을 입력해주세요'/>
+                <select></select>
+            </S.Search>
             <S.Search>
                 <S.Tittle placeholder='소설을 검색하세요'/>
                 <button>검색</button>
             </S.Search>
-            <S.RoundDiv>
-                <select></select>
-                <button>임시저장</button>
-            </S.RoundDiv>
             <S.TextDiv>
                 <S.SettingDiv>                        
                     <S.Setting onClick={()=>change("bold")} selected={on.bold}><i className="fas fa-bold"></i></S.Setting>

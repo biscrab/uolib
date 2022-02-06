@@ -43,11 +43,26 @@ export const BodyDiv = styled.div`
     }
 `
 
+export const TagInputDiv = styled.div`
+    padding: 0px 10px;
+    outline: 0;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    input{
+        border: 0;
+        outline: 0;
+        background: none;
+        padding: 8px 10px;
+    }
+`
+
 export const InputDiv = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-    input, textarea{
+    textarea{
         padding: 8px 10px;
         outline: 0;
         background-color: #fafafa;
@@ -66,8 +81,30 @@ export const InputDiv = styled.div`
     }
 `
 
-export const TagDiv = styled.div`
+export const Input = styled.input`
+    padding: 8px 10px;
+    outline: 0;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    :focus{
+        border: 1px solid royalblue;
+        background-color: white;
+    }
+`
 
+export const TagDiv = styled.div`
+    span{
+        background-color: #5635ce;
+        padding: 4px 10px;
+        color: #fff;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        cursor: default;
+        float: left;
+        margin-right: 5px;
+        margin-top: 5px;
+        padding: 0 5px;
+    }
 `
 
 export const TagList = styled.ul`

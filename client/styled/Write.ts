@@ -20,13 +20,25 @@ export const Search = styled.div`
     button{
         border: 0;
         width: 90px;
+        margin-left: 10px;
+    }
+    select{
+        width: 300px;
+        margin-left: 10px;
+        outline: 0;
+        padding: 0px 9px;
+        font-size: .875rem;
+        line-height: 1.25;
+        color: #495057;
+        background-color: #f8f9fa;
+        border: 1px solid rgba(0,0,0,0.15);
     }
 `
 
 export const Tittle = styled.input`
     display: block;
     outline: 0;
-    padding: 12px 10px;
+    padding: 11px 9px;
     font-size: .875rem;
     line-height: 1.25;
     color: #495057;
@@ -37,6 +49,10 @@ export const Tittle = styled.input`
     :focus{
         border: 1px solid royalblue;
         background-color: white;
+    }
+
+    ::placeholder{
+        font-weight: bold;
     }
 `
 
@@ -93,7 +109,7 @@ export const RoundDiv = styled.div`
     display: flex;
     align-items: end;
     width: 100%;
-    margin: 30px 0px;
+    margin-top: 20px;
 
     select{
         height: 40px;

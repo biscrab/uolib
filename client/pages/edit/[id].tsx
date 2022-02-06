@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { NextPage } from 'next';
-import * as S from '../styled/New'
+import * as S from '../../styled/New'
 import axios from 'axios';
 
-const NewPage: NextPage<{}> = () => {
+const EditPage: NextPage<{}> = () => {
 
     const [info, setInfo] = useState()
     const [focus, setFocus] = useState(false);
@@ -114,10 +114,10 @@ const NewPage: NextPage<{}> = () => {
             </S.BodyBorder>
             <S.ButtonDiv>
                 <S.CancleButton onClick={()=>window.history.back()}>취소</S.CancleButton>
-                <S.RegistButton>작품등록</S.RegistButton>
+                <S.RegistButton>작품수정</S.RegistButton>
             </S.ButtonDiv>
         </S.Body>
     )
 }
 
-export default NewPage
+export default EditPage

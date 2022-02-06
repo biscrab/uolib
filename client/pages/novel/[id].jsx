@@ -5,9 +5,30 @@ import Link from 'next/link'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 
-const NovelPage = () => {
+/*
+type novelType = {
+    view: number,
+    tag: string[],
+    other: any[],
+    image: string,
+    notice: any[],
+    comment: any[],
+    explane: string,
+    user: string,
+}*/
 
-    const [novel, setNovel] = useState({view: "", tag: ["1", "2"], other: [{title: "1", author: "1", image: "https://image.novelpia.com/imagebox/cover/71ef870f96a30146e548d3c75dfe439e_458688_ori.file"}], notice:[], comment:[], explane: "새로운 삶이 이득같은 손해인지 손해같은 이득인지 아직도 장담할 수 없다. 하지만 나는 이 괴랄한 설정의 세계에 적응해야 한다.", user: "1"});
+export const getStaticProps = async(context) =>{
+    const {id} = context.params;
+    const res = await axios.get(`https://uolib.herokuapp.com/novel/${id}`)
+    const data = await res.json();
+    return {
+        props : {data}
+    }
+}
+
+const NovelPage/*: NextPage*/ = ({data}) => {
+
+    //const [novel, setNovel] = useState({view: "", tag: ["1", "2"], other: [{title: "1", author: "1", image: "https://image.novelpia.com/imagebox/cover/71ef870f96a30146e548d3c75dfe439e_458688_ori.file"}], notice:[], comment:[], explane: "새로운 삶이 이득같은 손해인지 손해같은 이득인지 아직도 장담할 수 없다. 하지만 나는 이 괴랄한 설정의 세계에 적응해야 한다.", user: "1"});
     const [lists, setLists] = useState([{title: "test1", type: "notice", plus: true},{title: "test1", type: "notice"}]);
     const [comments, setComments] = useState([{name: "1"}]);
     const [pages, setPages] = useState([]);
@@ -61,10 +82,9 @@ const NovelPage = () => {
                     setPages([...pages, Number(query.p)+1, Number(query.p)+2]);
                 }
             })*/
-            
     },[])
 
-    const changePrice = (e: any) => {
+    const changePrice = (e/*: any*/) => {
         setPrice(e.target.value);
     }
 
@@ -118,12 +138,12 @@ const NovelPage = () => {
                             </S.InfoBorder>
                         </S.BottomInfoDiv>
                         <S.Explane>
-                            {novel.explane}
+                            {data.novel.explane}
                         </S.Explane>
                         <br/>
                         <S.TagDiv>
                             <b>태그 :</b>
-                            {novel.tag.map((i, index) => {
+                            {data.novel.tags.map((i/*: any*/, index/*: any*/) => {
                                 return(
                                     <Link href={`/`} key={index}>
                                         <span>#{i}</span>
@@ -196,6 +216,7 @@ const NovelPage = () => {
                         </S.SupporterList>
                     </S.SupportDiv>
                 </S.Support>
+                {/*
                 {novel.other ?
                 <S.ListTittle>작가의 다른 작품</S.ListTittle>
                 :
@@ -203,8 +224,8 @@ const NovelPage = () => {
                 }
                 <S.OtherBookList>
                     {novel.other.map(
-                        item => {
-                            <S.OtherBook>
+                        (item: any, index: any) => {
+                            <S.OtherBook key={index}>
                                 <img src={item.image}/>
                                 <div>
                                    <b>{item.title}</b> 
@@ -214,6 +235,7 @@ const NovelPage = () => {
                         }
                     )}
                 </S.OtherBookList>
+            */}
             </S.AuthorBorder>
             </S.Border>
             <S.PDiv>

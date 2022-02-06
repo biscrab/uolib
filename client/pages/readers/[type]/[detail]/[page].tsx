@@ -237,7 +237,9 @@ const ReadersPage = () => {
                 <S.Page><i className="fas fa-chevron-right"></i></S.Page>
             </S.PageDiv>
             <S.ButtonDiv>
-                <button>새 글 쓰기</button>
+                <Link href="/readers/write">
+                    <button>새 글 쓰기</button>
+                </Link>
             </S.ButtonDiv>
             </>
             :
