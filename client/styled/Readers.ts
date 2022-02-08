@@ -323,9 +323,11 @@ export const NovelDiv = styled.div`
 `
 
 export const ContentsTitle = styled.div`
-    border-bottom: 1px solid #333;
+    border-bottom: 2px solid #333;
     font-size: 15px;
     padding: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
 `
 
 export const CommentList = styled.ul`
@@ -334,6 +336,13 @@ export const CommentList = styled.ul`
 
 export const EmoticonDiv = styled.div`
 
+`
+
+export const EmoticonList = styled.div`
+    padding: 10px 15px;
+    background-color: rgb(248, 249, 250);
+    border-top: 1px solid rgb(232, 232, 232);
+    margin-bottom: 0px;
 `
 
 export const CommentInputDiv = styled.div`

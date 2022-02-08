@@ -74,7 +74,7 @@ const Book = (i) => {
 const MainPage = () => {
 
     const contestList = [
-                        {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},
+                        {id: 1, title: "모르는 만화에 빙의했다12522", author: "이상운", tag: ["1", "2"]},
                         {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},
                         {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},
                         {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},

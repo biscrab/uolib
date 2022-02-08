@@ -17,16 +17,7 @@ type novelType = {
     user: string,
 }*/
 
-export const getStaticProps = async(context) =>{
-    const {id} = context.params;
-    const res = await axios.get(`https://uolib.herokuapp.com/novel/${id}`)
-    const data = await res.json();
-    return {
-        props : {data}
-    }
-}
-
-const NovelPage/*: NextPage*/ = ({data}) => {
+const NovelPage/*: NextPage*/ = ({props}) => {
 
     //const [novel, setNovel] = useState({view: "", tag: ["1", "2"], other: [{title: "1", author: "1", image: "https://image.novelpia.com/imagebox/cover/71ef870f96a30146e548d3c75dfe439e_458688_ori.file"}], notice:[], comment:[], explane: "새로운 삶이 이득같은 손해인지 손해같은 이득인지 아직도 장담할 수 없다. 하지만 나는 이 괴랄한 설정의 세계에 적응해야 한다.", user: "1"});
     const [lists, setLists] = useState([{title: "test1", type: "notice", plus: true},{title: "test1", type: "notice"}]);
@@ -39,6 +30,7 @@ const NovelPage/*: NextPage*/ = ({data}) => {
     //const query = queryString.parse(location.search);
     const router = useRouter()
     const {id} = router.query;
+    const data = props.data;
     
     useEffect(()=>{
         /*
@@ -130,11 +122,11 @@ const NovelPage/*: NextPage*/ = ({data}) => {
                             </S.InfoBorder>
                             <S.InfoBorder>
                             <img src="https://novelpia.com/img/new/icon/count_view.png" />
-                            <span>{novel.view}명</span>
+                            <span>{data.view}명</span>
                             <img src="https://novelpia.com/img/new/icon/count_book.png" />
                             <span>{0}회차</span>
                             <img src="https://novelpia.com/img/new/icon/count_good.png" />
-                            <span>{novel.view}회</span>
+                            <span>{data.round.length}회</span>
                             </S.InfoBorder>
                         </S.BottomInfoDiv>
                         <S.Explane>
@@ -142,14 +134,7 @@ const NovelPage/*: NextPage*/ = ({data}) => {
                         </S.Explane>
                         <br/>
                         <S.TagDiv>
-                            <b>태그 :</b>
-                            {data.novel.tags.map((i/*: any*/, index/*: any*/) => {
-                                return(
-                                    <Link href={`/`} key={index}>
-                                        <span>#{i}</span>
-                                    </Link>
-                                )
-                            })}
+                            <b>태그 : {data.novel.tag}</b>
                         </S.TagDiv>
                     </S.BottomInfo>
                 </S.InfoDiv>
@@ -160,7 +145,7 @@ const NovelPage/*: NextPage*/ = ({data}) => {
             <S.List>
                 <S.ListTittle>회차리스트</S.ListTittle>
                 <S.ListBorder>
-                    {lists.map((i, index) => {
+                    {data.round.map((i, index) => {
                         return(
                             <div key={index}>
                             <Link href={`/viewer/${1}`}>
@@ -192,7 +177,7 @@ const NovelPage/*: NextPage*/ = ({data}) => {
             </S.List>
             <S.CommentTittle>댓글</S.CommentTittle>
             <S.CommentList>
-                {comments.map(
+                {data.comments.map(
                     (item, index) => {
                         return(
                             <S.Comment key={index}>
@@ -277,6 +262,14 @@ const NovelPage/*: NextPage*/ = ({data}) => {
         }
         </>
     )
+}
+
+NovelPage.getInitialProps = async function(context){
+    const res = await axios.get(`https://uolib.herokuapp.com/novel/0`)
+    const data = await res.data;
+    return {
+        props : {data}
+    }
 }
 
 export default NovelPage

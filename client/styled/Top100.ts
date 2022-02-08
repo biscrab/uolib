@@ -33,6 +33,7 @@ export const Select = styled.div<SelectProps>`
     cursor: pointer;
     border: ${props => props.selected ? "1px solid black" : ""};
     border-bottom: ${props => props.selected ? "none" : "1px solid black"};
+    font-weight: bold;
 `
 
 export const List = styled.div`

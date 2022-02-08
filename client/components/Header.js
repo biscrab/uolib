@@ -93,12 +93,12 @@ const Header = (prop) => {
                     <Link href="/search">
                         <img src="https://image.novelpia.com/img/new/menu/search.png"/>
                     </Link>
-                    <S.Menu classNameName='menu'>
-                        <img classNameName='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
+                    <S.Menu className='menu'>
+                        <img className='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
                         {onMenu ?
                         <>
-                        <S.MenuModal classNameName='menumodal'>
-                            {0 ?
+                        <S.MenuModal className='menumodal'>
+                            {1 ?
                             <>
                             <S.MenuWrap>
                                 <S.MenuLi>
@@ -111,7 +111,7 @@ const Header = (prop) => {
                             <S.MenuWrap>
                                 <S.MenuLi>
                                 <i className="fas fa-coins"></i>코인 0
-                                    <Link href="/coin_shop">
+                                    <Link href="/shop/coin">
                                         <button>충전</button>
                                     </Link>
                                 </S.MenuLi>
@@ -133,10 +133,10 @@ const Header = (prop) => {
                                 <Link href="/shop/plus">
                                     <S.MenuLi><i className="far fa-plus-square"></i>플러스 샵</S.MenuLi>
                                 </Link>
-                                <Link href="/coin_shop">
+                                <Link href="/shop/coin">
                                     <S.MenuLi><i className="fas fa-coins"></i>코인 샵</S.MenuLi>
                                 </Link>
-                                <Link href="/emoticon_shop">
+                                <Link href="/shop/emoticon">
                                     <S.MenuLi><i className="far fa-smile-wink"></i>이모티콘 샵</S.MenuLi>
                                 </Link>
                             </S.MenuWrap>

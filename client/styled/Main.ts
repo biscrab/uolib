@@ -107,12 +107,18 @@ export const BookInfoDiv = styled.div`
 
 export const BookTittle = styled.b`
     font-size: 20px;
+    line-height: 20px;
+    width: 240px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
     cursor: pointer;
+    overflow: hidden;
 `
 
 export const BookAuthor = styled.span`
     color: dimgray;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: bold;
     padding: 3px 0px;
     cursor: pointer;
 `

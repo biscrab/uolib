@@ -44,17 +44,16 @@ export const BodyDiv = styled.div`
 `
 
 export const TagInputDiv = styled.div`
-    padding: 0px 10px;
     outline: 0;
-    background-color: #fafafa;
     border: 1px solid #ddd;
     display: flex;
     align-items: center;
+    padding: 8px 10px;
     input{
+        width: 100%;
         border: 0;
         outline: 0;
         background: none;
-        padding: 8px 10px;
     }
 `
 
@@ -93,6 +92,7 @@ export const Input = styled.input`
 `
 
 export const TagDiv = styled.div`
+    display: flex;
     span{
         background-color: #5635ce;
         padding: 4px 10px;
@@ -104,6 +104,10 @@ export const TagDiv = styled.div`
         margin-right: 5px;
         margin-top: 5px;
         padding: 0 5px;
+        overflow: hidden;
+        padding-left: 8px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 `
 

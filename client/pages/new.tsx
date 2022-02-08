@@ -3,15 +3,41 @@ import { NextPage } from 'next';
 import * as S from '../styled/New'
 import axios from 'axios';
 
+type BookInterface = {
+    title: string,
+    author: string,
+    explane: string,
+    tag: string[],
+    days: string,
+}
+
 const NewPage: NextPage<{}> = () => {
 
     const [info, setInfo] = useState()
     const [focus, setFocus] = useState(false);
-    const [novel, setNovel] = useState({title: "", explane: "", day: "", tag: ["123"]})
+    const [tag, setTag] = useState("");
+    const [novel, setNovel] = useState<BookInterface>({title: "", author: "", explane: "", days: "", tag: ["123"]})
 
     const regist = () => {
         axios.post('/novel/new', {...novel, tag: JSON.stringify(novel.tag)})
             .then(res => alert("등록되었습니다."))
+    }
+
+    const changeTag = (e: any) => {
+        var key = e.keyCode;
+        console.log(key);
+        if(!tag&&key === 8){
+            console.log(1);
+            var t = novel.tag;
+            t = t.slice(0, t.length-1);
+            setNovel({...novel, tag: t});
+        }
+        else if(key === 13 && tag.length <= 10){
+            var y = novel.tag;
+            y = [...y, tag];
+            setTag("");
+            setNovel({...novel, tag: y});
+        }
     }
 
     return(
@@ -44,7 +70,7 @@ const NewPage: NextPage<{}> = () => {
                                     }
                                 )}
                             </S.TagDiv>
-                            <input onFocus={() => setFocus(true)} onBlur={() => setFocus(false)}/>
+                            <input value={tag} onChange={(e)=>setTag(e.target.value)} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} onKeyDown={(e) => changeTag(e)}/>
                         </S.TagInputDiv>
                         {focus ?
                         <S.TagList>

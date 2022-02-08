@@ -59,8 +59,9 @@ interface SelectedProps{
 
 export const Category = styled.li<SelectedProps>`
     list-style: none;
-    padding: 10px;
+    padding: 4px 8px;
     font-size: 14px;
+    margin: 5px 2px;
     color: ${props => props.selected ? "white" : ""};
     background-color: ${props => props.selected ? "#5a35cd" : ""};
 `
