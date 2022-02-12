@@ -64,13 +64,19 @@ const ViewerPage: NextPage<{}> = () => {
         else if(status === "list"){
             return(
             <S.ListBody dark={darkmode}>
-            
+            <h1>회차리스트</h1>
+                
             </S.ListBody>
             )
         }
         else{
             return(
                 <S.CommentList>
+                    <S.ContentsTitle>댓글 수(0)</S.ContentsTitle>
+                    <S.CommentInputDiv>
+                        <textarea />
+                        <button>등록</button>
+                    </S.CommentInputDiv>
                     {comment.map(
                         i => {
                             <S.Comment>

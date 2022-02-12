@@ -31,6 +31,15 @@ export const HeaderInfo = styled.div`
     margin-left: 30px;
 `
 
+export const TitleDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    h1{
+        font-size: 28px;
+        margin: 0;
+    }
+`
+
 export const Coin = styled.p`
     background: url(https://novelpia.com/img/new/openstore/v2/icon_coin.png) no-repeat 10px center #f1eeff;
     border: 1px solid #dae0f1;
@@ -44,6 +53,8 @@ export const Coin = styled.p`
     padding-left: 20px;
     font-weight: bold;
     font-size: 14px;
+    margin: 0;
+    margin-top: 5px;
 `
 
 export const ButtonDiv = styled.div`
@@ -59,6 +70,7 @@ export const ButtonDiv = styled.div`
         font-size: 16px;
         background-color: #704bfa;
         border: 0;
+        border-radius: 3px;
     }
 `
 

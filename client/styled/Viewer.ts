@@ -120,10 +120,12 @@ export const Setting = styled.div`
 
 export const SettingModal = styled.div`
     padding: 5px 0px;
-    margin-top: 30px;
+    margin-top: 40px;
     border-radius: 5px;
     position: absolute;
     background: white;
+    width: 280px;
+    right: 0px;
     box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);
 `
 
@@ -131,6 +133,7 @@ export const SettingDiv = styled.div`
     padding: 5px 20px;
     display: flex;
     font-size: 15px;
+    font-weight: bold;
     align-items: center;
     span{
         width: 80px;
@@ -158,12 +161,43 @@ export const SettingButton = styled.button<ButtonProps>`
     border-radius: 3px;
 `
 
-export const CommentInputDiv = styled.textarea`
-
+export const CommentList = styled.div`
+    margin-bottom: 100px;
+    width: 1000px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 `
 
-export const CommentList = styled.ul`
+export const ContentsTitle = styled.div`
+    border-bottom: 2px solid #333;
+    font-size: 18px;
+    padding: 5px 0px;
+    margin-bottom: 10px;
+    font-weight: bold;
+`
 
+export const CommentInputDiv = styled.div`
+    height: 100px;
+    display: flex;
+    margin-bottom: 50px;
+    button{
+        border: 0;
+        outline: 0;
+        height: 100%;
+        width: 150px;
+        background: #343a40;
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    textarea{
+        outline: 0;
+        resize: none;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+    }
 `
 
 export const Comment = styled.li`
@@ -194,7 +228,11 @@ export const Bottom = styled.div<DarkProps>`
 `
 
 export const ListBody = styled.div<DarkProps>`
-
+    margin-bottom: 100px;
+    width: 1000px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 `
 
 export const List = styled.ul`

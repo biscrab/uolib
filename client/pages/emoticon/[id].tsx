@@ -7,13 +7,13 @@ const EmoticonPage = () => {
             <S.HeaderDiv>
                 <img src="https://image.novelpia.com/img/emoticon/d89jg198x/1.jpg"/>
                 <S.HeaderInfo>
-                <div>
-                <h2>제목</h2>
-                <S.Coin></S.Coin>
-                </div>
-                <S.ButtonDiv>
-                    <button>구매하기</button>
-                </S.ButtonDiv>
+                    <S.TitleDiv>
+                        <h1>제목</h1>
+                        <S.Coin></S.Coin>
+                    </S.TitleDiv>
+                    <S.ButtonDiv>
+                        <button>구매하기</button>
+                    </S.ButtonDiv>
                 </S.HeaderInfo>
             </S.HeaderDiv>
         </S.Header>

@@ -10,7 +10,7 @@ export const FooterDiv = styled.div`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    width: 1100px;
+    width: 1250px;
     display: flex;
     flex-direction: column;
 

@@ -2,7 +2,6 @@ import { useState } from 'react'
 import * as S from '../../styled/Shop'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { NavLink } from 'react-router-dom'
 
 const PlusShopPage = () => {
 
@@ -61,7 +60,7 @@ const PlusShopPage = () => {
             <S.Tittle>유라이브 PLUS 요금제</S.Tittle>
             <S.MemberShipDiv>
                 <S.MemberShip>
-                    <h4>PLUS 월 정기 멤버십</h4>
+                    <h3>PLUS 월 정기 멤버십</h3>
                     <S.MemeberShipExplane>매월 자동결제로 저렴하게 플러스멤버십을 이용하실 수 있습니다.</S.MemeberShipExplane>
                     <div>
                         <input type="checkbox" onClick={()=>setOnAccept({...onAccept})}/>
@@ -70,7 +69,7 @@ const PlusShopPage = () => {
                     <button onClick={() => setOnPayment(true)}>결제하기</button>
                 </S.MemberShip>
                 <S.MemberShip>
-                    <h4>PLUS멤버십 1개월(30일)</h4>
+                    <h3>PLUS멤버십 1개월(30일)</h3>
                     <S.MemeberShipExplane>플러스 작품들을 보실 수있는 PLUS멤버십을 1개월동안 사용하실 수 있습니다.</S.MemeberShipExplane>
                     <div>
                         <input type="checkbox" onClick={()=>setOnAccept({...onAccept})}/>
@@ -79,7 +78,7 @@ const PlusShopPage = () => {
                     <button onClick={() => setOnPayment(true)}>결제하기</button>
                 </S.MemberShip>
                 <S.MemberShip>
-                    <h4>PLUS멤버십 6개월(180일)</h4>
+                    <h3>PLUS멤버십 6개월(180일)</h3>
                     <S.MemeberShipExplane>플러스 작품들을 보실 수있는 PLUS멤버십을 6개월동안 사용하실 수 있습니다.</S.MemeberShipExplane>
                     <div>
                         <input type="checkbox" onClick={()=>setOnAccept({...onAccept})}/>

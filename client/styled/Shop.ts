@@ -68,8 +68,10 @@ export const MemberShip = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    h4{
+    h3{
         font-weight: bold;
+        font-size: 23px;
+        margin: 15px 0px;
     }
     div{
         display: flex;
@@ -241,7 +243,7 @@ export const Emoticon = styled.div`
         width: 170px;
         height: 170px;
         background-color: white;
-        box-shadow: 0 2px 10px 0 rgb(0 0 0 / 6%);
+        box-shadow: 0 2px 10px 0 rgb(0 0 0 / 15%);
         padding: 20px;
         margin-bottom: 10px;
         cursor: pointer;
