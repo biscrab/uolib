@@ -49,6 +49,9 @@ const ReadersViewPage = () => {
             <S.EmoticonDiv>
                 
             </S.EmoticonDiv>
+            <S.EmoticonList>
+                
+            </S.EmoticonList>
             <S.CommentInputDiv>
                 <textarea />
                 <button>등록</button>

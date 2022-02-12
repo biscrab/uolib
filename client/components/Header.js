@@ -3,7 +3,7 @@ import logo from '../images/logo.png'
 import Link from 'next/link'
 import $ from 'jquery'
 import { useEffect, useState } from 'react'
-import { useMediaQuery } from 'react-responsive'
+//import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 
 const Header = (prop) => {
@@ -173,5 +173,14 @@ const Header = (prop) => {
         </S.Header>
     )
 }
+
+Header.getInitialProps = async function(context){
+    const res = await axios.get(`https://uolib.herokuapp.com/novel/0`)
+    const data = await res.data;
+    return {
+        props : {data}
+    }
+}
+
 
 export default Header
