@@ -1,7 +1,7 @@
 import * as S from '../styled/Book'
 import Link from 'next/link'
 
-const Book = ({i}) => {
+const Book = (i) => {
     return(
         <S.Book>
             <Link href="/novel/a">
@@ -41,9 +41,15 @@ const Book = ({i}) => {
                     )}
                 </S.TagDiv>
                 <S.ButtonDiv>
+                    <Link href={`/write/${recent}`}>
                     <S.Continue>EP.1 이어보기</S.Continue>
-                    <S.Next>다음화 보기</S.Next>
-                    <S.Write>회차쓰기</S.Write>
+                    </Link>
+                    <Link href={`/write/${next}`}>
+                        <S.Next>다음화 보기</S.Next>
+                    </Link>
+                    <Link href="/write">
+                        <S.Write>회차쓰기</S.Write>
+                    </Link>
                 </S.ButtonDiv>
             </S.BookInfo>
         </S.Book>

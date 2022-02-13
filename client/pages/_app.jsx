@@ -1,6 +1,6 @@
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css'
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+//import type { AppProps } from 'next/app'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useEffect, useState } from 'react'
@@ -12,7 +12,7 @@ import {useRouter} from 'next/router'
 import Loading from '../components/Loading.js'
 import axios from 'axios';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }/*: AppProps*/) {
   
   const router = useRouter();
   const pathname = router.pathname;
@@ -47,6 +47,18 @@ function MyApp({ Component, pageProps }: AppProps) {
       
   },[])
 
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const handleStart = (url) => {
+      url !== router.pathname ? setLoading(true) : setLoading(false);
+    };
+    const handleComplete = (url) => setLoading(false);
+
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleComplete);
+    router.events.on("routeChangeError", handleComplete);
+  }, [router]);
+
   return (
     <>
       <title>유라이브</title>
@@ -66,6 +78,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       :
       <></>
       }
+      <Loading loading={loading}/>
     </>
   )
 }

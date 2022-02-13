@@ -141,7 +141,7 @@ const Header = (prop) => {
                                 </Link>
                             </S.MenuWrap>
                             <S.MenuWrap>
-                                <Link href="/readers">
+                                <Link href="/readers/comunity">
                                     <S.MenuLi><i className="fas fa-bullhorn"></i>공지사항</S.MenuLi>
                                 </Link>
                             </S.MenuWrap>

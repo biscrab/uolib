@@ -152,6 +152,7 @@ export const PaymentHead = styled.div`
     display: flex;
     justify-content: space-between;
     border-bottom: 2px solid #333;
+    padding: 10px 0px;
     svg{
         cursor: pointer;
     }
@@ -159,6 +160,7 @@ export const PaymentHead = styled.div`
         font-weight: bold;
         font-size: 25px;
         color: #333;
+        margin: 0;
     }
 `
 

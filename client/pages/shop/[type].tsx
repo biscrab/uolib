@@ -220,9 +220,6 @@ const PlusShopPage = () => {
                         }
                     )}
                 </S.BestEmoticonDiv>
-                <S.EmoticonList>
-
-                </S.EmoticonList>
                 </>
                 :
                 <></>

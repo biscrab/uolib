@@ -4,7 +4,7 @@ import Link from 'next/link'
 const Book = ({i}) => {
     return(
         <S.Book>
-            <Link href="/novel/a">
+            <Link href="/novel/1">
                 <S.BookCover src={i.image}/>
             </Link>
             <S.BookInfo> 
@@ -13,7 +13,7 @@ const Book = ({i}) => {
                 <S.Type color='#166d95'>자유</S.Type> 
                 <S.Type color='#0d60d1'>독점</S.Type>
                 <S.Type color='black'>완결</S.Type>  
-                <Link href="/novel/a">
+                <Link href="/novel/1">
                     <b>{i.title}</b>
                 </Link>
                 <Link href="/user/1">
