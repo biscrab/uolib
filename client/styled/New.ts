@@ -101,13 +101,16 @@ export const TagDiv = styled.div`
         border-radius: 4px;
         cursor: default;
         float: left;
+        margin: 0;
         margin-right: 5px;
-        margin-top: 5px;
         padding: 0 5px;
         overflow: hidden;
         padding-left: 8px;
         text-overflow: ellipsis;
         white-space: nowrap;
+    }
+    i{
+        margin-left: 5px;
     }
 `
 
@@ -156,8 +159,11 @@ export const Select = styled.div`
     cursor: pointer;
     input{
         margin-right: 2.5px;
+        height: 20px;
+        weight: 20px;
     }
     span{
+        font-weight: bold;
         margin-bottom: 2.5px;
     }
 `

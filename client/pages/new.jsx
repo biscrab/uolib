@@ -2,28 +2,34 @@ import { useState } from 'react';
 import { NextPage } from 'next';
 import * as S from '../styled/New'
 import axios from 'axios';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+/*
 type BookInterface = {
     title: string,
     author: string,
     explane: string,
     tag: string[],
     days: string,
-}
+}*/
 
-const NewPage: NextPage<{}> = () => {
+const NewPage = () => {
 
     const [info, setInfo] = useState()
     const [focus, setFocus] = useState(false);
     const [tag, setTag] = useState("");
-    const [novel, setNovel] = useState<BookInterface>({title: "", author: "", explane: "", days: "", tag: ["123"]})
+    const [novel, setNovel] = useState({title: "", author: "", explane: "", days: "", tag: ["123"]})
+    const [day, setDay] = useState({mon: false, tue: false, wen: false, thu: false, fri: false, sat: false, sun: false})
+
+    const getDay = () => {
+
+    }
 
     const regist = () => {
         axios.post('/novel/new', {...novel, tag: JSON.stringify(novel.tag)})
             .then(res => alert("등록되었습니다."))
     }
 
-    const changeTag = (e: any) => {
+    const changeTag = (e) => {
         var key = e.keyCode;
         console.log(key);
         if(!tag&&key === 8){
@@ -65,7 +71,7 @@ const NewPage: NextPage<{}> = () => {
                                 {novel.tag.map(
                                     (i, index) => {
                                         return(
-                                            <span key={index}>{i}</span>
+                                            <span key={index}>{i}<FontAwesomeIcon icon="fa-regular fa-x" /></span>
                                         )
                                     }
                                 )}
@@ -94,31 +100,31 @@ const NewPage: NextPage<{}> = () => {
                     <S.SelectDiv>
                         <span>연재요일</span>
                         <S.Select>
-                        <input type="checkbox" />
+                        <input type="checkbox" checked={day.mon} onClick={()=>setDay({...day, mon: !day.mon})}/>
                         <span>월</span>
                         </S.Select>
                         <S.Select>
-                        <input type="checkbox" />
+                        <input type="checkbox" checked={day.tue} onClick={()=>setDay({...day, tue: !day.tue})}/>
                         <span>화</span>
                         </S.Select>
                         <S.Select>
-                        <input type="checkbox" />
+                        <input type="checkbox" checked={day.wen} onClick={()=>setDay({...day, wen: !day.wen})}/>
                         <span>수</span>
                         </S.Select>
                         <S.Select>
-                        <input type="checkbox" />
+                        <input type="checkbox" checked={day.thu} onClick={()=>setDay({...day, thu: !day.thu})}/>
                         <span>목</span>
                         </S.Select>
                         <S.Select>
-                        <input type="checkbox" />
+                        <input type="checkbox" checked={day.fri} onClick={()=>setDay({...day, fri: !day.fri})}/>
                         <span>금</span>
                         </S.Select>
                         <S.Select>
-                        <input type="checkbox" />
+                        <input type="checkbox" checked={day.sat} onClick={()=>setDay({...day, sat: !day.sat})}/>
                         <span>토</span>
                         </S.Select>
                         <S.Select>
-                        <input type="checkbox" />
+                        <input type="checkbox" checked={day.sun} onClick={()=>setDay({...day, sun: !day.sun})}/>
                         <span>일</span>
                         </S.Select>
                     </S.SelectDiv>

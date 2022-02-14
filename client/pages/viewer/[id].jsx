@@ -5,21 +5,26 @@ import {connect} from 'react-redux';
 import Link from 'next/link';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-
+import axios from 'axios'
+/*
 type commentType = {
     userId: number,
     text: string,
 }
 
-const ViewerPage: NextPage<{}> = () => {
+type Readers = {
+    authorsword: string,
+}*/
+
+const ViewerPage = ({props}) => {
 
     const [onSetting, setOnSetting] = useState(false);
     const [status, setStatus] = useState("text");
     const [darkmode, setDarkmode] = useState(false);
     const [onInterface, setOnInterface] = useState(true);
     const [isPlus, setIsPlus] = useState(true);
-    const novel = {next: 1, authorsword: 1, prev: 0, novelId: 1};
-    const comment: commentType[] = [];
+    const novel = {next: 1, authorsword: 1, prev: 0, novel: 1};
+    const comment/*: commentType[]*/ = [];
 
     const router = useRouter();
     const {id} = router.query;
@@ -64,8 +69,31 @@ const ViewerPage: NextPage<{}> = () => {
         else if(status === "list"){
             return(
             <S.ListBody dark={darkmode}>
-            <h1>회차리스트</h1>
-                
+                <h2>회차리스트</h2>
+                <ul>
+                    <Link href={`/viewer/${1}`}>
+                        <S.Round notice={i.type == "notice"}>
+                            <S.RoundDiv>
+                                <S.RLeft>
+                                    <S.TittleDiv>
+                                        {i.plus ?
+                                        <S.Price color={"#5232dd"}>PLUS</S.Price>
+                                        :
+                                        <S.Price color={"#166d95"}>무료</S.Price>
+                                        }
+                                        <S.RTittle>{i.title}</S.RTittle>
+                                    </S.TittleDiv>
+                                    <S.RInfo>
+                                    <span><i className="fas fa-user"></i>3000</span>
+                                    <span><i className="fas fa-comment-alt"></i>400</span>
+                                    <span><i className="fas fa-thumbs-up"></i>1</span>
+                                    </S.RInfo>
+                                </S.RLeft>
+                                <S.RDate>10월 10일</S.RDate>
+                            </S.RoundDiv>
+                        </S.Round>
+                    </Link>
+                </ul>
             </S.ListBody>
             )
         }
@@ -80,7 +108,7 @@ const ViewerPage: NextPage<{}> = () => {
                     {comment.map(
                         i => {
                             <S.Comment>
-                                <b>{i.userId}</b>
+                                <b>{i.user}</b>
                             </S.Comment>
                         }
                     )}
@@ -95,57 +123,58 @@ const ViewerPage: NextPage<{}> = () => {
             <S.SettingDiv>
                 <span>폰트</span>
                 <div>
-                    <S.SettingButton></S.SettingButton>
+                  <S.SettingButton>가</S.SettingButton>
+                  <S.SettingButton>가</S.SettingButton>
+                  <S.SettingButton>가</S.SettingButton>
+                  <S.SettingButton>가</S.SettingButton>
+                  <S.SettingButton>가</S.SettingButton>
                 </div>
             </S.SettingDiv>
             <S.SettingDiv>
                 <span>배경색상</span>
                 <div>
                   <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
+                  <S.SettingButton style={{backgroundColor: "#eee"}}></S.SettingButton>
+                  <S.SettingButton style={{backgroundColor: "#fbffd5"}}></S.SettingButton>
+                  <S.SettingButton style={{backgroundColor: "#cdfac7"}}></S.SettingButton>
+                  <S.SettingButton style={{backgroundColor: "#d9f5ff"}}></S.SettingButton>
                 </div>
             </S.SettingDiv>
             <S.SettingDiv>
                 <span>글자크기</span>
                 <div>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
+                  <S.SettingButton style={{fontSize: "13px"}}>가</S.SettingButton>
+                  <S.SettingButton style={{fontSize: "14px"}}>가</S.SettingButton>
+                  <S.SettingButton style={{fontSize: "15px"}}>가</S.SettingButton>
+                  <S.SettingButton style={{fontSize: "16px"}}>가</S.SettingButton>
+                  <S.SettingButton style={{fontSize: "17px"}}>가</S.SettingButton>
                 </div>
             </S.SettingDiv>
             <S.SettingDiv>
                 <span>줄간격</span>
                 <div>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
+                  <S.SettingButton>130</S.SettingButton>
+                  <S.SettingButton>160</S.SettingButton>
+                  <S.SettingButton>200</S.SettingButton>
+                  <S.SettingButton>250</S.SettingButton>
+                  <S.SettingButton>280</S.SettingButton>
                 </div>
             </S.SettingDiv>
             <S.SettingDiv>
                 <span>글자두께</span>
                 <div>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
+                  <S.SettingButton>가</S.SettingButton>
+                  <S.SettingButton>가</S.SettingButton>
+                  <S.SettingButton>가</S.SettingButton>
+                  <S.SettingButton>가</S.SettingButton>
+                  <S.SettingButton>가</S.SettingButton>
                 </div>
             </S.SettingDiv>
             <S.SettingDiv>
                 <span>다크모드</span>
                 <div>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
-                  <S.SettingButton></S.SettingButton>
+                  <S.SettingButton>미사용</S.SettingButton>
+                  <S.SettingButton>사용</S.SettingButton>
                 </div>
             </S.SettingDiv>
             <S.SettingDiv>
@@ -168,7 +197,7 @@ const ViewerPage: NextPage<{}> = () => {
         <S.Header dark={darkmode} className='interface'>
             <S.HeaderDiv>
                 <S.LeftDiv>
-                    <Link href={`/novel/${novel.novelId}`}>
+                    <Link href={`/novel/${novel.novel}`}>
                         <i className="fas fa-home fa-lg"></i>
                     </Link>
                     <S.Episode>EP.1</S.Episode>
@@ -229,5 +258,13 @@ const ViewerPage: NextPage<{}> = () => {
         </>
     )
 }
+/*
+ViewerPage.getInitialProps = async function(context){
+    const res = await axios.get(`https://uolib.herokuapp.com/viewer/0`)
+    const data = await res.data;
+    return {
+        props : {data}
+    }
+}*/
 
 export default ViewerPage

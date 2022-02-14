@@ -157,7 +157,7 @@ export const SettingButton = styled.button<ButtonProps>`
     width: 25px;
     margin: 0px 3px;
     outline: 0;
-    border: 1px solid #333;
+    border: 1px solid #666;
     border-radius: 3px;
 `
 
@@ -233,14 +233,84 @@ export const ListBody = styled.div<DarkProps>`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    h2{
+        font-weight: bold;
+    }
+    ul{
+        border-top: 2px solid #666;
+        height: 1000px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+`
+
+interface NoticeProps{
+    notice: boolean
+}
+
+export const Round = styled.li<NoticeProps>`
+    background-color: ${props => props.notice ? "#feffe5" : "white"}
+    width: 100%;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    /*:hover{
+        background: #fafafa
+    }*/
+`
+
+export const RoundDiv = styled.div`
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`
+
+export const RLeft = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+export const TittleDiv = styled.div`
+    display: flex;
+    align-items: flex-end;
+`
+
+export const Price = styled.div`
+    font-size: 11px;
+    background: ${props => props.color};
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    text-shadow: 0.5px 0.5px black;
+    margin-right: 5px;
+`
+
+export const RDate = styled.span`
+    font-size: 13px;
+    font-weight: bold;
+`
+
+export const RInfo = styled.div`
+    margin-top: 5px;
+    color: #888;
+    font-size: 11px;
+    i{
+        margin-right: 3px;
+    }
+    span{
+        margin-right: 5px;
+    }
+`
+
+export const RTittle = styled.b`
+    font-size: 18px;
 `
 
 export const List = styled.ul`
     list-style: none;
-`
-
-export const Round = styled.li`
-
 `
 
 export const Background = styled.div`

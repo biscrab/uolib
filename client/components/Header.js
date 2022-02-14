@@ -151,8 +151,12 @@ const Header = (prop) => {
                             </>
                             :
                             <S.MenuWrap>
-                                <S.MenuLi><i className="fas fa-bullhorn"></i>로그인</S.MenuLi>
-                                <S.MenuLi><i className="fas fa-bullhorn"></i>회원가입</S.MenuLi>
+                                <Link href="/login">
+                                    <S.MenuLi><i className="fas fa-bullhorn"></i>로그인</S.MenuLi>
+                                </Link>
+                                <Link href="/signup">
+                                    <S.MenuLi><i className="fas fa-bullhorn"></i>회원가입</S.MenuLi>
+                                </Link>
                             </S.MenuWrap>
                             }
                         </S.MenuModal>

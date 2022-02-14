@@ -1,10 +1,10 @@
 import * as S from '../styled/Account'
 import logo from '../../images/logo.png'
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import GoogleLogin from 'react-google-login';
+//import GoogleLogin from 'react-google-login';
 import axios from 'axios';
 import { NextPage } from 'next';
+import Link from 'next/link';
 
 const LoginPage: NextPage<{}> = () => {
 
@@ -35,18 +35,9 @@ const LoginPage: NextPage<{}> = () => {
             <S.Input placeholder="이메일" onChange={(e)=>setInfo({...info, email: e.target.value})} value={info.email}/>
             <S.Input placeholder="비밀번호" onChange={(e)=>setInfo({...info, password: e.target.value})} value={info.password} type="password"/>
             <S.LButton onClick={()=>login()}>로그인</S.LButton>
-            <NavLink to="/signup">
+            <Link href="/signup">
             <S.SButton>회원가입</S.SButton>
-            </NavLink>
-            <GoogleLogin
-            className='google'
-            clientId={clientId}
-            onSuccess={responseGoogle}
-            //onFailure={responseGoogle}
-            //cookiePolicy={'single_host_origin'}
-            >
-            <span>구글 로그인</span>
-            </GoogleLogin>
+            </Link>
         </S.Body>
         </S.BackgroundFilter>
         </S.Background>
@@ -54,3 +45,13 @@ const LoginPage: NextPage<{}> = () => {
 }
 
 export default LoginPage
+
+/*            <GoogleLogin
+            className='google'
+            clientId={clientId}
+            onSuccess={responseGoogle}
+            //onFailure={responseGoogle}
+            //cookiePolicy={'single_host_origin'}
+            >
+            <span>구글 로그인</span>
+            </GoogleLogin> */

@@ -8,6 +8,11 @@ const EditPage: NextPage<{}> = () => {
     const [info, setInfo] = useState()
     const [focus, setFocus] = useState(false);
     const [novel, setNovel] = useState({title: "", explane: "", day: "", tag: ["123"]})
+    const [day, setDay] = useState({mon: false, tue: false, wen: false, thu: false, fri: false, sat: false, sun: false})
+
+    const days = () => {
+        
+    }
 
     const regist = () => {
         axios.post('/novel/new', {...novel, tag: JSON.stringify(novel.tag)})
