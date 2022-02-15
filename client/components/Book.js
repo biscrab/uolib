@@ -9,15 +9,26 @@ const Book = ({i}) => {
             </Link>
             <S.BookInfo> 
                 <S.Title>
-                <S.Type color='#5232dd'>PLUS</S.Type>
-                <S.Type color='#166d95'>자유</S.Type> 
-                <S.Type color='#0d60d1'>독점</S.Type>
-                <S.Type color='black'>완결</S.Type>  
+                {i.plus ?
+                    <S.Type color='#5232dd'>PLUS</S.Type>
+                    :
+                    <S.Type color='#166d95'>자유</S.Type> 
+                }
+                {i.monopoly ?
+                    <S.Type color='#0d60d1'>독점</S.Type>
+                    :
+                    <></>
+                }
+                {i.complete ?
+                    <S.Type color='black'>완결</S.Type>  
+                    :
+                    <></>
+                }
                 <Link href="/novel/1">
                     <b>{i.title}</b>
                 </Link>
                 <Link href="/user/1">
-                    <S.Author>작가</S.Author>
+                    <S.Author>{i.author}</S.Author>
                 </Link>
                 </S.Title>
                 <S.Explane>{i.explane}</S.Explane>
@@ -30,15 +41,17 @@ const Book = ({i}) => {
                     <span>8.0K회</span>
                 </S.Info>
                 <S.TagDiv>
-                    {i.tag.map(
+                    {`
+                    {JSON.parse(i.tag).map(
                         (tag, index) => {
                             return(
-                                <Link href={`/search/tag/date/1/${tag}`} key={index}>
+                                <Link href={/search/tag/date/1/tag} key={index}>
                                 <span>#{tag}</span>
                                 </Link>
                             )
                         }
-                    )}
+                    )}`
+                    }
                 </S.TagDiv>
             </S.BookInfo>
         </S.Book>

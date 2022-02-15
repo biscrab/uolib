@@ -81,6 +81,14 @@ export const Body = styled.div`
     justify-content: center;
 `
 
+export const BuyBackground = styled.div`
+
+`
+
+export const BuyBorder = styled.div`
+
+`
+
 export const Border = styled.div`
     background-color: white;
     border: 1px solid #ddd;

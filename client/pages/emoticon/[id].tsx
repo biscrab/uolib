@@ -1,6 +1,11 @@
 import * as S from '../../styled/Emoticon'
+import axios from 'axios'
+import { useState } from 'react'
 
-const EmoticonPage = () => {
+const EmoticonPage = (props: any) => {
+
+    const [buy, setBuy] = useState(false);
+
     return(
         <>
         <S.Header>
@@ -26,8 +31,20 @@ const EmoticonPage = () => {
                 <img src="https://image.novelpia.com/img/emoticon/fond8lwgcv/05.png"/>
             </S.Border>
         </S.Body>
+        {
+
+        }
         </>
     )
 }
+
+EmoticonPage.getInitialProps = async function(context: any){
+    const res = await axios.get(`https://uolib.herokuapp.com/novel/0`)
+    const data = await res.data;
+    return {
+        props : {data}
+    }
+}
+
 
 export default EmoticonPage

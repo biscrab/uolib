@@ -5,7 +5,7 @@ import { NextPage } from 'next';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 
-const SearchPage: NextPage<{}> = () => {
+const SearchPage = ({props}) => {
     //"type", "order", "page", "keyword"
 
     const router = useRouter();
@@ -25,7 +25,10 @@ const SearchPage: NextPage<{}> = () => {
         )
     }
 
+    const [buy, setBuy] = useState();
+
     return(
+        <>
         <S.Body>
             <S.Search placeholder="소설제목, 태그, 검색어, 작가를 입력해주세요." onChange={(e)=>setWord(e.target.value)} value={word} onKeyPress={(e)=>{
                 if(e.key === "Enter" && word){
@@ -88,7 +91,27 @@ const SearchPage: NextPage<{}> = () => {
                 <Book lists={lists}/>
             </S.List>
         </S.Body>
+        {buy?
+            <S.BuyBackground>
+                <S.BuyBorder>
+                    
+                </S.BuyBorder>
+            </S.BuyBackground>
+            :
+            <></>
+        }
+        </>
     )
+}
+
+SearchPage.getInitialProps = async function(context){
+    const router = useRouter();
+    const {type, order, page, keyword} = router.query;
+    const res = await axios.get(`https://uolib.herokuapp.com/search/${type}/${order}/${page}${keyword ? `/${keyword}` : ""}`)
+    const data = await res.data;
+    return {
+        props : {data}
+    }
 }
 
 export default SearchPage

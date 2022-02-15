@@ -22,6 +22,14 @@ export const Body = styled.div`
     }
 `
 
+export const BuyBackground = styled.div`
+
+`
+
+export const BuyBorder = styled.div`
+
+`
+
 export const Search = styled.input`
     width: 100%;
     border: 0;
