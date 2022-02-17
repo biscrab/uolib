@@ -163,5 +163,15 @@ const SerializePage: NextPage<{}> = () => {
     </>
     )
 }
+/*
+SerializePage.getInitialProps = async function(context){
+    const router = useRouter();
+    const {type, order, page, tag} = router.query;
+    const res = await axios.get(`https://uolib.herokuapp.com/novel/${router.pathname}/${type}/${order}/${page}${tag ? `/${tag}` : ""}`)
+    const data = await res.data;
+    return {
+        props : {data}
+    }
+}*/
 
 export default SerializePage

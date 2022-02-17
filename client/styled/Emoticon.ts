@@ -82,11 +82,34 @@ export const Body = styled.div`
 `
 
 export const BuyBackground = styled.div`
-
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
 `
 
 export const BuyBorder = styled.div`
 
+`
+
+export const BuyHeader = styled.div`
+    padding-bottom: 5px;
+    margin: 20px 15px;
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+    border-bottom: 2px solid #555;
+    h5{
+        font-weight: bold;
+    }
+    svg{
+        cursor: pointer;
+    }
 `
 
 export const Border = styled.div`

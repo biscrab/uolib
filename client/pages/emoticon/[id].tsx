@@ -31,8 +31,16 @@ const EmoticonPage = (props: any) => {
                 <img src="https://image.novelpia.com/img/emoticon/fond8lwgcv/05.png"/>
             </S.Border>
         </S.Body>
-        {
-
+        {buy ?
+            <S.BuyBackground>
+                <S.BuyBorder>
+                    <S.BuyHeader>
+                        
+                    </S.BuyHeader>
+                </S.BuyBorder>
+            </S.BuyBackground>
+            :
+            <></>
         }
         </>
     )

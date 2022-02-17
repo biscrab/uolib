@@ -25,7 +25,7 @@ const PlusAgreePage: NextPage<{}> = () => {
 
     return(
         <S.Body>
-            <h5>플러스 전환 신청</h5>
+            <h4>플러스 전환 신청</h4>
             <S.BookDiv>
                 <Book lists={book}/>
             </S.BookDiv>

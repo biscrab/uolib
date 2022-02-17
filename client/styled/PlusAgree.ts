@@ -8,10 +8,13 @@ export const Body = styled.div`
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
+    h4{
+        font-weight: bold;
+    }
 `
 
 export const BookDiv = styled.div`
-    border-top: 2px solid black;
+    border-top: 3px solid black;
 `
 
 export const ButtonDiv = styled.div`
@@ -25,6 +28,7 @@ export const ButtonDiv = styled.div`
         font-size: 25px;
         background-color: #5232dd;
         color: white;
+        font-weight: bold;
     }
 `
 

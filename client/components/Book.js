@@ -41,7 +41,7 @@ const Book = ({i}) => {
                     <span>8.0K회</span>
                 </S.Info>
                 <S.TagDiv>
-                    {`
+                    {/*`
                     {JSON.parse(i.tag).map(
                         (tag, index) => {
                             return(
@@ -50,7 +50,7 @@ const Book = ({i}) => {
                                 </Link>
                             )
                         }
-                    )}`
+                    )}`*/
                     }
                 </S.TagDiv>
             </S.BookInfo>

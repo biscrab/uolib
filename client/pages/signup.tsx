@@ -2,8 +2,11 @@ import * as S from '../styled/Account'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const SignUpPage = () => {
+
+    const router = useRouter();
 
     const [info, setInfo] = useState({email: "", password: ""});
     const [check, setCheck] = useState({number: "", password: ""});
@@ -71,7 +74,11 @@ const SignUpPage = () => {
     }   
 
     const signup = () => {
-
+        axios.post('/signup')
+            .then(res => {
+                alert("환영합니다.");
+                router.push("/");
+            })
     }
 
     return(
@@ -93,7 +100,7 @@ const SignUpPage = () => {
                     </S.EmailDiv>
                     <S.Input placeholder='비밀번호 (7~25)' type="password" onChange={(e)=>setInfo({...info, password: e.target.value})} value={info.password}/>
                     <S.Input placeholder='비밀번호 확인' type="password" onChange={(e)=>setCheck({...check, password: e.target.value})} value={check.password}/>
-                    <S.LButton>회원가입</S.LButton>
+                    <S.LButton onClick={() => signup()}>회원가입</S.LButton>
                     <Link href="/login">
                         <S.SButton>로그인</S.SButton>
                     </Link>
