@@ -1,5 +1,6 @@
 import * as S from '../../styled/User'
 import { NextPage } from 'next';
+import axios from 'axios';
 
 const UserPage: NextPage<{}> = () => {
     return(
@@ -40,6 +41,14 @@ const UserPage: NextPage<{}> = () => {
             </S.BodyDiv>
         </S.Body>
     )
+}
+
+UserPage.getInitialProps = async function(context){
+    const res = await axios.get(`https://uolib.herokuapp.com/user/0`)
+    const data = await res.data;
+    return {
+        props : {data}
+    }
 }
 
 export default UserPage

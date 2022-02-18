@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/search/[param].jsx", "pages/search/index.jsx", "pages/index.jsx", "components/Book.ts", "pages/novel/[id].tsx", "pages/search/[type]/[order]/[page]/[keyword].jsx", "pages/new.jsx", "pages/viewer/[id].jsx", "pages/_app.tjx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/search/[param].jsx", "pages/search/index.jsx", "pages/index.jsx", "components/Book.ts", "pages/novel/[id].tsx", "pages/search/[type]/[order]/[page]/[keyword].jsx", "pages/new.jsx", "pages/viewer/[id].jsx", "pages/_app.tjx", "pages/admin.jsx"],
   "exclude": ["node_modules"]
 }

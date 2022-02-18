@@ -332,8 +332,7 @@ export const SupportModal = styled.div`
 `
 
 export const SupportModalHeader = styled.div`
-    padding-bottom: 5px;
-    margin: 20px 15px;
+    margin: 15px;
     display: flex;
     justify-content: space-between;
     color: #333;
@@ -369,7 +368,7 @@ export const SupportModalBody = styled.div`
 
 export const SupportModalWarning = styled.div`
     padding: 20px;
-    font-size: 14px;
+    font-size: 12px;
     color: crimson;
 `
 

@@ -212,6 +212,7 @@ export const Bottom = styled.div<DarkProps>`
     width: 100%;
     padding: 20px 0px;
     box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px 0px;
+    z-index: 9999;
     div{
         width: 1000px;
         position: relative;

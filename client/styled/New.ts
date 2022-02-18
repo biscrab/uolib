@@ -40,6 +40,7 @@ export const BodyDiv = styled.div`
     flex-direction: column;
     span{
         margin-bottom: 5px;
+        font-weight: bold;
     }
 `
 
@@ -63,20 +64,21 @@ export const InputDiv = styled.div`
     margin-bottom: 20px;
     textarea{
         padding: 8px 10px;
+        font-size: 15px;
         outline: 0;
         background-color: #fafafa;
         border: 1px solid #ddd;
+        height: 200px;
+        resize: none;
+        letter-spacing: -2px;
         :focus{
             border: 1px solid royalblue;
             background-color: white;
         }
     }
-    textarea{
-        height: 200px;
-        resize: none;
-    }
     span{
         margin-bottom: 5px;
+        font-weight: bold;
     }
 `
 
@@ -139,6 +141,7 @@ export const TagList = styled.ul`
 export const ImgInputDiv = styled.div`
     span{
         margin-bottom: 5px;
+        font-weight: bold;
     }
     display: flex;
     flex-direction: column;
@@ -149,6 +152,9 @@ export const SelectDiv = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    span{
+        font-weight: bold;
+    }
 `
 
 export const Select = styled.div`
@@ -169,7 +175,9 @@ export const Select = styled.div`
 `
 
 export const SampleBookCover = styled.div`
-
+    span{
+        font-weight: bold;
+    }
 `
 
 export const SampleList = styled.div`

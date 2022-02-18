@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NextPage } from 'next';
 import * as S from '../styled/New'
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import $ from 'jquery'
 /*
 type BookInterface = {
     title: string,
@@ -19,13 +20,72 @@ const NewPage = () => {
     const [tag, setTag] = useState("");
     const [novel, setNovel] = useState({title: "", author: "", explane: "", days: "", tag: ["123"]})
     const [day, setDay] = useState({mon: false, tue: false, wen: false, thu: false, fri: false, sat: false, sun: false})
+    const taglist = ["판타지","라이트노벨","전생","현대","중세","하렘","드라마","일상","로맨스","SF","스포츠","무협"];
+
+    useEffect(()=>{
+        $(function() {
+            $("#image").on('change', function(){
+                readURL(this);
+            });
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                $('#image_container').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    },[]);
 
     const getDay = () => {
-
+        var d = "";
+        if(day.mon){
+            d.push("월");
+        }
+        if((day.mon) && (day.tue || day.wen || day.thu || day.fri || day.sat || day.sun)){
+            d.push("/")
+        }
+        if(day.tue){
+            d.push("화");
+        }
+        if((day.tue) && (day.wen || day.thu || day.fri || day.sat || day.sun)){
+            d.push("/")
+        }
+        if(day.mon){
+            d.push("수");
+        }
+        if((day.wen) && (day.thu || day.fri || day.sat || day.sun)){
+            d.push("/")
+        }
+        if(day.thu){
+            d.push("목");
+        }
+        if((day.thu) && (day.fri || day.sat || day.sun)){
+            d.push("/")
+        }
+        if(day.fir){
+            d.push("금");
+        }
+        if((day.fri) && (day.sat || day.sun)){
+            d.push("/")
+        }
+        if(day.sat){
+            d.push("토");
+        }
+        if((day.mon) && (day.sun)){
+            d.push("/")
+        }
+        if(day.sun){
+            d.push("일");
+        }
+        
+        return d;
     }
 
     const regist = () => {
-        axios.post('/novel/new', {...novel, tag: JSON.stringify(novel.tag)})
+        axios.post('/novel/new', {...novel, tag: JSON.stringify(novel.tag), day: getDay(day)})
             .then(res => alert("등록되었습니다."))
     }
 
@@ -38,11 +98,16 @@ const NewPage = () => {
             t = t.slice(0, t.length-1);
             setNovel({...novel, tag: t});
         }
-        else if(key === 13 && tag.length <= 10){
-            var y = novel.tag;
-            y = [...y, tag];
-            setTag("");
-            setNovel({...novel, tag: y});
+        else if(key === 13){
+            if(tag.length <= 10){
+                var y = novel.tag;
+                y = [...y, tag];
+                setTag("");
+                setNovel({...novel, tag: y});
+            }
+            else{
+                alert("태그의 최대길이는 10자 입니다.")
+            }
         }
     }
 
@@ -53,7 +118,7 @@ const NewPage = () => {
             <S.BodyBorder>
                 <S.BodyDiv>
                     <span>북커버</span>
-                    <S.BookCover src={"https://image.novelpia.com/imagebox/cover/18fc3444c07e1ecadd65072b4bd08e28_47837_ori.thumb"}/>
+                    <S.BookCover id="image_container"/>
                 </S.BodyDiv>
                 <S.BodyInput>
                     <S.InputDiv>
@@ -80,18 +145,14 @@ const NewPage = () => {
                         </S.TagInputDiv>
                         {focus ?
                         <S.TagList>
-                            <li>판타지</li>
-                            <li>라이트노벨</li>
-                            <li>전생</li>
-                            <li>현대</li>
-                            <li>중세</li>
-                            <li>하렘</li>
-                            <li>드라마</li>
-                            <li>일상</li>
-                            <li>로맨스</li>
-                            <li>SF</li>
-                            <li>스포츠</li>
-                            <li>무협</li>
+                            {taglist.map(i => {
+                                return(
+                                    <li onClick={()=>{
+                                        setTag("");
+                                        setNovel({...novel, tag: tag.push(i)})
+                                    }}>{i}</li>
+                                )
+                            })}
                         </S.TagList>
                         :
                         <></>
@@ -134,7 +195,7 @@ const NewPage = () => {
                     </S.InputDiv>
                     <S.ImgInputDiv>
                         <span>북커버</span>
-                        <input type="file"/>
+                        <input type="file" id="image" accept="image/*"/>
                     </S.ImgInputDiv>
                     <S.SampleBookCover>
                         <span>샘플 북커버 이미지:</span>
@@ -146,7 +207,7 @@ const NewPage = () => {
             </S.BodyBorder>
             <S.ButtonDiv>
                 <S.CancleButton onClick={()=>window.history.back()}>취소</S.CancleButton>
-                <S.RegistButton>작품등록</S.RegistButton>
+                <S.RegistButton onClick={()=>regist()}>작품등록</S.RegistButton>
             </S.ButtonDiv>
         </S.Body>
     )

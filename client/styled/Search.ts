@@ -70,6 +70,7 @@ export const Category = styled.li<SelectedProps>`
     padding: 4px 8px;
     font-size: 14px;
     margin: 5px 2px;
+    font-weight: bold;
     color: ${props => props.selected ? "white" : ""};
     background-color: ${props => props.selected ? "#5a35cd" : ""};
 `

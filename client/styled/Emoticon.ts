@@ -37,6 +37,7 @@ export const TitleDiv = styled.div`
     h1{
         font-size: 28px;
         margin: 0;
+        font-weight: bold;
     }
 `
 
@@ -71,6 +72,7 @@ export const ButtonDiv = styled.div`
         background-color: #704bfa;
         border: 0;
         border-radius: 3px;
+        font-size: 17px;
     }
 `
 

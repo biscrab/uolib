@@ -30,15 +30,17 @@ const Book = (i) => {
                     <span>8.0K회</span>
                 </S.Info>
                 <S.TagDiv>
+                    {`
                     {i.tag.map(
                         (tag, index) => {
                             return(
-                                <Link href={`/search/tag/date/1/${tag}`} key={index}>
+                                <Link href={/search/tag/date/1/tag} key={index}>
                                 <span>#{tag}</span>
                                 </Link>
                             )
                         }
                     )}
+                    `}
                 </S.TagDiv>
                 <S.ButtonDiv>
                     <Link href={`/write/${recent}`}>
