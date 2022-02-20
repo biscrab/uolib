@@ -287,6 +287,7 @@ export const ViewTitle = styled.h3`
 export const TypeDiv = styled.div`
     color: #888;
     font-size: 13px;
+    font-weight: bold;
 `
 
 export const Write = styled.div`

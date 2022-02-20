@@ -5,7 +5,6 @@ import $ from 'jquery'
 import { useEffect, useState } from 'react'
 //import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Header = (prop) => {
 
@@ -28,14 +27,14 @@ const Header = (prop) => {
 
     useEffect(()=>{
         $("html").click(function(e){
-            if(!$(".menu").has(e.target).length){
+            if(onMenu === true){
                 $(".menumodal").animate({opacity: 0, height: 0}, 1000);
                 setTimeout(() => {setOnMenu(false)}, 1000)
             }
         })
 
         $(".menuicon").click(function(e){
-            if(!onMenu){
+            if(onMenu === false){
                 setOnMenu(true);
             }
             else{
@@ -94,24 +93,24 @@ const Header = (prop) => {
                     <Link href="/search">
                         <img src="https://image.novelpia.com/img/new/menu/search.png"/>
                     </Link>
-                    <S.Menu icon='menu'>
-                        <img icon='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
-                        {onMenu ?
+                    <S.Menu className='menu'>
+                        <img className='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
+                        {1 ?
                         <>
-                        <S.MenuModal icon='menumodal'>
+                        <S.MenuModal className='menumodal'>
                             {1 ?
                             <>
                             <S.MenuWrap>
-                                <S.MenuLi>
-                                    <img src="https://phinf.pstatic.net/contact/20210430_217/1619765233604XypyT_PNG/avatar_profile.png"/>
-                                    <Link href={`/user/${1}`}>
-                                        <b>이름</b>
-                                    </Link>
-                                </S.MenuLi>
+                                <Link href={`/user/1`}>
+                                    <S.MenuLi>
+                                        <img src="https://phinf.pstatic.net/contact/20210430_217/1619765233604XypyT_PNG/avatar_profile.png"/>
+                                            <b>이름</b>
+                                    </S.MenuLi>
+                                </Link>
                             </S.MenuWrap>
                             <S.MenuWrap>
                                 <S.MenuLi>
-                                <FontAwesomeIcon icon="fas fa-coins"></FontAwesomeIcon>코인 0
+                                <i className="fas fa-coins"></i>코인 0
                                     <Link href="/shop/coin">
                                         <button>충전</button>
                                     </Link>
@@ -119,44 +118,44 @@ const Header = (prop) => {
                             </S.MenuWrap>
                             <S.MenuWrap>
                                 <Link href="/new">
-                                    <S.MenuLi><FontAwesomeIcon icon="far fa-edit"></FontAwesomeIcon>신규 소설등록</S.MenuLi>
+                                    <S.MenuLi><i className="far fa-edit"></i>신규 소설등록</S.MenuLi>
                                 </Link>
                                 <Link href="/mybook">
-                                    <S.MenuLi><FontAwesomeIcon icon="far fa-folder-open"></FontAwesomeIcon>내 작품 관리</S.MenuLi>
+                                    <S.MenuLi><i className="far fa-folder-open"></i>내 작품 관리</S.MenuLi>
                                 </Link>
                             </S.MenuWrap>
                             <S.MenuWrap>
                                 <Link href="/useredit">
-                                    <S.MenuLi><FontAwesomeIcon icon="far fa-user-circle"></FontAwesomeIcon>유저 정보 설정/수정</S.MenuLi>
+                                    <S.MenuLi><i className="far fa-user-circle"></i>유저 정보 설정/수정</S.MenuLi>
                                 </Link>
                             </S.MenuWrap>
                             <S.MenuWrap>
                                 <Link href="/shop/plus">
-                                    <S.MenuLi><FontAwesomeIcon icon="far fa-plus-square"></FontAwesomeIcon>플러스 샵</S.MenuLi>
+                                    <S.MenuLi><i className="far fa-plus-square"></i>플러스 샵</S.MenuLi>
                                 </Link>
                                 <Link href="/shop/coin">
-                                    <S.MenuLi><FontAwesomeIcon icon="fas fa-coins"></FontAwesomeIcon>코인 샵</S.MenuLi>
+                                    <S.MenuLi><i className="fas fa-coins"></i>코인 샵</S.MenuLi>
                                 </Link>
                                 <Link href="/shop/emoticon">
-                                    <S.MenuLi><FontAwesomeIcon icon="far fa-smile-wink"></FontAwesomeIcon>이모티콘 샵</S.MenuLi>
+                                    <S.MenuLi><i className="far fa-smile-wink"></i>이모티콘 샵</S.MenuLi>
                                 </Link>
                             </S.MenuWrap>
                             <S.MenuWrap>
                                 <Link href="/readers/comunity">
-                                    <S.MenuLi><FontAwesomeIcon icon="fas fa-bullhorn"></FontAwesomeIcon>공지사항</S.MenuLi>
+                                    <S.MenuLi><i className="fas fa-bullhorn"></i>공지사항</S.MenuLi>
                                 </Link>
                             </S.MenuWrap>
                             <S.Logout>
-                                <button><FontAwesomeIcon icon="fas fa-sign-out-alt"></FontAwesomeIcon>로그아웃</button>
+                                <button><i className="fas fa-sign-out-alt"></i>로그아웃</button>
                             </S.Logout>
                             </>
                             :
                             <S.MenuWrap>
                                 <Link href="/login">
-                                    <S.MenuLi><FontAwesomeIcon icon="fas fa-bullhorn"></FontAwesomeIcon>로그인</S.MenuLi>
+                                    <S.MenuLi><i className="fas fa-bullhorn"></i>로그인</S.MenuLi>
                                 </Link>
                                 <Link href="/signup">
-                                    <S.MenuLi><FontAwesomeIcon icon="fas fa-bullhorn"></FontAwesomeIcon>회원가입</S.MenuLi>
+                                    <S.MenuLi><i className="fas fa-bullhorn"></i>회원가입</S.MenuLi>
                                 </Link>
                             </S.MenuWrap>
                             }

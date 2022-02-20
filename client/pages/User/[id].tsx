@@ -2,8 +2,10 @@ import * as S from '../../styled/User'
 import { NextPage } from 'next';
 import axios from 'axios';
 
-const UserPage: NextPage<{}> = () => {
+const UserPage: NextPage<{}> = (props: any) => {
     return(
+        <>
+        {props.data ?
         <S.Body>
             <S.NameDiv>
             <span><b>유저</b>님의 회원카드</span>
@@ -40,12 +42,19 @@ const UserPage: NextPage<{}> = () => {
             </S.Comment>
             </S.BodyDiv>
         </S.Body>
+        :
+        <></>
+        }
+        </>
     )
 }
 
 UserPage.getInitialProps = async function(context){
     const res = await axios.get(`https://uolib.herokuapp.com/user/0`)
     const data = await res.data;
+    if(!data){
+        alert("잘못된 유저 아이디 입니다.")
+    }
     return {
         props : {data}
     }

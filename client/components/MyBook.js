@@ -43,10 +43,10 @@ const Book = (i) => {
                     `}
                 </S.TagDiv>
                 <S.ButtonDiv>
-                    <Link href={`/write/${recent}`}>
+                    <Link href={`/write/${1}`}>
                     <S.Continue>EP.1 이어보기</S.Continue>
                     </Link>
-                    <Link href={`/write/${next}`}>
+                    <Link href={`/write/${1}`}>
                         <S.Next>다음화 보기</S.Next>
                     </Link>
                     <Link href="/write">

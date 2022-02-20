@@ -3,6 +3,7 @@ import * as S from '../../../../../styled/Search'
 import Book from '../../../../../components/Book'
 import { NextPage } from 'next';
 import { useRouter } from 'next/router'
+import axios from 'axios';
 import Link from 'next/link';
 
 const SearchPage = ({props}) => {
@@ -88,7 +89,11 @@ const SearchPage = ({props}) => {
                 </div>
             </S.Result>
             <S.List>
-                <Book lists={lists}/>
+                {props.data ?
+                    <Book lists={props.data}/>
+                :
+                    <></>
+                }
             </S.List>
         </S.Body>
         {buy?
@@ -105,9 +110,8 @@ const SearchPage = ({props}) => {
 }
 
 SearchPage.getInitialProps = async function(context){
-    const router = useRouter();
-    const {type, order, page, keyword} = router.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/search/${type}/${order}/${page}${keyword ? `/${keyword}` : ""}`)
+    const {type, order, page, keyword} = context.query;
+    const res = await axios.get(`https://uolib.herokuapp.com/search/${type}/${order}/${page}${keyword ? `/${encodeURIComponent(keyword)}` : ""}`)
     const data = await res.data;
     return {
         props : {data}
