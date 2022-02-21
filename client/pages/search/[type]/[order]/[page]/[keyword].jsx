@@ -89,10 +89,10 @@ const SearchPage = ({props}) => {
                 </div>
             </S.Result>
             <S.List>
-                {props.data ?
+                {props.data[0] ?
                     <Book lists={props.data}/>
                 :
-                    <></>
+                    <S.Null>등록된 작품이 없습니다.</S.Null>
                 }
             </S.List>
         </S.Body>
@@ -111,7 +111,7 @@ const SearchPage = ({props}) => {
 
 SearchPage.getInitialProps = async function(context){
     const {type, order, page, keyword} = context.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/search/${type}/${order}/${page}${keyword ? `/${encodeURIComponent(keyword)}` : ""}`)
+    const res = await axios.get(`https://uolib.herokuapp.com/search/${type}/${order}/${page}${keyword ? `/${keyword}` : ""}`)
     const data = await res.data;
     return {
         props : {data}

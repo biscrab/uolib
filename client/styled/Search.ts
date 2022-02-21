@@ -35,8 +35,7 @@ export const Search = styled.input`
     border: 0;
     outline: 0;
     border-bottom: 1px solid #333;
-    height: 50px;
-    padding: 5px 10px;
+    padding: 8px 10px;
     box-sizing: border-box;
     margin-bottom: 30px;
     font-size: 17px;
@@ -130,6 +129,16 @@ export const List  = styled.ul`
     margin: 0;
     height: 1000px;
     list-style: none;
+`
+
+export const Null = styled.div`
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 18px;
+    font-weight: bold;
 `
 
 export const PageDiv = styled.div`

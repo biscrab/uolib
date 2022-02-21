@@ -2,7 +2,7 @@ import Page from './[type]'
 const Top100 = () => {
     return(
         <>
-            <Page />
+            <Page props={1}/>
         </>
     )
 }

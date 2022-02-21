@@ -124,6 +124,7 @@ export const BookAuthor = styled.span`
 `
 
 export const BookTagDiv = styled.div`
+    display: flex;
     padding-top: 5px;
     width: 200px;
     white-space: nowrap;
@@ -150,4 +151,15 @@ export const Tag = styled.span`
         content: " ";
         letter-spacing: -5px;
     }
+`
+
+export const Null = styled.div`
+    color: #999;
+    display: flex;
+    width: 100%;
+    height: 200px;
+    font-size: 18px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
 `

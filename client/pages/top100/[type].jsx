@@ -4,15 +4,15 @@ import * as S from '../../styled/Top100'
 import { NextPage } from 'next';
 import Link from 'next/link';
 import {useRouter} from 'next/router'
-
+/*
 type BookType = {
     id: number,
     title: string,
     author: string,
     image: string
-}
+}*/
 
-const Top100Page: NextPage<{}> = () => {
+const Top100Page = ({props}) => {
 
     const router = useRouter()
     const {type} = router.query;
@@ -142,7 +142,7 @@ const Top100Page: NextPage<{}> = () => {
                 </Link>
             </S.SelectDiv>
             <S.List>
-                {lists.map(
+                {props.data.map(
                 (i, index) => {
                     return(
                         <div key={index}>
@@ -170,6 +170,15 @@ const Top100Page: NextPage<{}> = () => {
             </S.List>
         </S.Body>
     )
+}
+
+Top100Page.getInitialProps = async function(content){
+    const {type} = content.query;
+    const res = await axios.get(`https://uolib.herokuapp.com/top100/${type ? type : "all"}`);
+    const data = await res.data;
+    return{
+        props: {data}
+    }
 }
 
 export default Top100Page

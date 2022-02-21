@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import * as S from '../styled/Main'
-import { NextPage } from 'next';
+import axios from 'axios';
 /*
 type BookType = {
     id: number,
@@ -32,7 +32,14 @@ const List = ({lists}) => {
                       <S.BookAuthor>{i.author}</S.BookAuthor>
                     </Link>
                 </S.BookInfoDiv>
-                <S.BookTagDiv> 
+                <S.BookTagDiv>
+                {i.tag.map(
+                    (item) => {
+                      return(
+                          <S.Tag>#{item}</S.Tag>
+                      )
+                    }
+                  )}  
                 </S.BookTagDiv>
             </S.BookInfo>
           </S.Book>
@@ -42,54 +49,7 @@ const List = ({lists}) => {
   return list
 }
 
-const Book = (i) => {
-    return(
-        <S.Book>
-            <Link href={`/novel/${i.id}`}>
-                <S.BookCover src={"//image.novelpia.com/imagebox/cover/148f406a052dae41bfd628929b897e56_453275_ori.thumb"}/>
-            </Link>
-            <S.BookInfo>
-                <S.BookInfoDiv>
-                    <Link href={`/novel/${i.id}`}>
-                        <S.BookTittle>{i.title}</S.BookTittle>
-                    </Link>
-                    <S.BookAuthor>{i.author}</S.BookAuthor>
-                </S.BookInfoDiv>
-                <S.BookTagDiv> 
-                </S.BookTagDiv>
-            </S.BookInfo>
-        </S.Book>
-        /*                    {i.tag.map(
-                        (item: string) => {
-                            return(
-                                <div key={item}>
-                                    <S.Tag>#{item}</S.Tag>
-                                </div>
-
-                            )
-                        }
-                    )}    */
-)
-
-}
-
-const MainPage = () => {
-
-    const contestList = [
-                        {id: 1, title: "모르는 만화에 빙의했다12522", author: "이상운", tag: ["1", "2"]},
-                        {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},
-                        {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},
-                        {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},
-                        {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},
-                        {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},];
-
-    const bestList = [
-                        {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},
-                        {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},
-                        {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},
-                        {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},
-                        {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},
-                        {id: 1, title: "모르는 만화에 빙의했다", author: "이상운", tag: ["1", "2"]},];
+const MainPage = ({props}) => {
 
     const BannerList = [
         {image: "https://novelpia.com/img/new/banner/main_banner_pc_20220104.jpg", color: "#1c0426"},
@@ -126,17 +86,33 @@ const MainPage = () => {
             )}
         </S.BannerDiv>
         <S.Body>
-            <S.Title>플러스 BEST</S.Title>
-            <S.Border>
-                <List lists={contestList}/>
+            <S.Title onClick={()=>console.log(props.data)}>플러스 BEST</S.Title>
+            <S.Border> 
+              {props.data.plus[0] ?
+                <List lists={props.data.plus}/>
+                :
+                <S.Null>작품이 존재하지 않습니다.</S.Null>
+              }
             </S.Border>
             <S.Title>자유연재 BEST</S.Title>
             <S.Border>
-                <List lists={bestList}/>
+              {props.data.free[0] ?
+                <List lists={props.data.free}/>
+                :
+                <S.Null>작품이 존재하지 않습니다.</S.Null>
+              }
             </S.Border>
         </S.Body>
         </>
     )
+}
+
+MainPage.getInitialProps = async function(context){
+  const res = await axios.get(`https://uolib.herokuapp.com/main`)
+  const data = await res.data;
+  return {
+      props : {data}
+  }
 }
 
 export default MainPage
