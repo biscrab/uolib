@@ -69,14 +69,24 @@ export const Title = styled.h3`
 export const Border = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     margin-bottom: 80px;
 `
 
+interface LengthProps {
+    length: number;
+}
+
+export const List = styled.div<LengthProps>`
+    display: flex;
+    width: 100%;
+    justify-content: ${props => props.length === 3 ? "space-between" : ""};
+`
+
 //책
-export const Book = styled.div`
+export const Book = styled.div<LengthProps>`
     display: flex;
     margin-bottom: 50px;
+    width: ${props => props.length === 3 ? "" : "33.3%"};
     @media screen and (max-width: 1200px) {
         width:100%;
     }
@@ -116,8 +126,8 @@ export const BookTittle = styled.b`
 `
 
 export const BookAuthor = styled.span`
-    color: dimgray;
-    font-size: 13px;
+    color: #666;
+    font-size: 11px;
     font-weight: bold;
     padding: 3px 0px;
     cursor: pointer;

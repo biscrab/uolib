@@ -66,7 +66,6 @@ function MyApp({ Component, pageProps }/*: AppProps*/) {
 
       Notification.requestPermission().then(function(result) {
       });
-      
   },[])
 
   const [loading, setLoading] = useState(false);
@@ -97,11 +96,7 @@ function MyApp({ Component, pageProps }/*: AppProps*/) {
       <></>
       }
       <Component {...pageProps} />
-      {!pathname.includes("viewer") || !pathname.includes("login") || !pathname.includes("signup")?
       <Footer />
-      :
-      <></>
-      }
       <Loading loading={loading}/>
     </>
   )

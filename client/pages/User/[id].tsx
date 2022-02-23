@@ -53,8 +53,9 @@ UserPage.getInitialProps = async function(context){
     const res = await axios.get(`https://uolib.herokuapp.com/user/0`)
     const data = await res.data;
     if(!data){
-        alert("잘못된 유저 아이디 입니다.")
-    }
+        alert("잘못된 유저 아이디 입니다.");
+        location.href ='/';
+    }   
     return {
         props : {data}
     }

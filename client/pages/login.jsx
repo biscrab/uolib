@@ -1,25 +1,36 @@
 import * as S from '../styled/Account'
-import logo from '../../images/logo.png'
 import { useEffect, useState } from 'react'
-//import GoogleLogin from 'react-google-login';
+import GoogleLogin from 'react-google-login';
 import axios from 'axios';
 import { NextPage } from 'next';
 import Link from 'next/link';
 
-const LoginPage: NextPage<{}> = () => {
+const LoginPage = () => {
 
     const [info, setInfo] = useState({email: "", password: ""});
 
     const clientId = "236232072754-81f153ainje620b38lonfi9u4r6qv3cc.apps.googleusercontent.com";
 
-    const responseGoogle = async(response: any) => {
+    const onSuccess = async(response) => {
+    	console.log(response);
+    
         const { googleId, profileObj : { email, name } } = response;
-        console.log(response);
+        
+        await onSocial({
+            socialId : googleId,
+            socialType : 'google',
+            email,
+            nickname : name
+        });
+    }
+
+    const onFailure = (error) => {
+        console.log(error);
     }
 
     const login = () => {
         if(!info.email || !info.password){
-            alert("로그인 정보를 모두 입력해주십쇼.");
+            alert("로그인 정보를 모두 입력해주세요.");
         }
         else{
             axios.post('/login', info)
@@ -35,6 +46,11 @@ const LoginPage: NextPage<{}> = () => {
             <S.Input placeholder="이메일" onChange={(e)=>setInfo({...info, email: e.target.value})} value={info.email}/>
             <S.Input placeholder="비밀번호" onChange={(e)=>setInfo({...info, password: e.target.value})} value={info.password} type="password"/>
             <S.LButton onClick={()=>login()}>로그인</S.LButton>
+            <GoogleLogin
+                clientId={clientId}
+                responseType={"id_token"}
+                onSuccess={onSuccess}
+                onFailure={onFailure}/>
             <Link href="/signup">
             <S.SButton>회원가입</S.SButton>
             </Link>

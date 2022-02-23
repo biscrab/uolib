@@ -16,37 +16,38 @@ type BannerType = {
 }*/
 
 const List = ({lists}) => {
-  const list =  lists.map(
-    (i, index) => {
-      return(
-          <S.Book key={index}>
-            <Link href={`/novel/${i.id}`}>
-                <S.BookCover src={"//image.novelpia.com/imagebox/cover/148f406a052dae41bfd628929b897e56_453275_ori.thumb"}/>
-            </Link>
-            <S.BookInfo>
-                <S.BookInfoDiv>
-                    <Link href={`/novel/${i.id}`}>
-                        <S.BookTittle>{i.title}</S.BookTittle>
-                    </Link>
-                    <Link href={`/user/1`}>
-                      <S.BookAuthor>{i.author}</S.BookAuthor>
-                    </Link>
-                </S.BookInfoDiv>
-                <S.BookTagDiv>
-                {i.tag.map(
-                    (item) => {
-                      return(
-                          <S.Tag>#{item}</S.Tag>
-                      )
-                    }
-                  )}  
-                </S.BookTagDiv>
-            </S.BookInfo>
-          </S.Book>
-      )
-  })
-
-  return list
+  return(
+      <S.List length={lists.length}>
+        {lists.map(
+          (i, index) => {
+            return(
+              <S.Book key={index} length={lists.length}>
+                <Link href={`/novel/${i.id}`}>
+                    <S.BookCover src={"//image.novelpia.com/imagebox/cover/148f406a052dae41bfd628929b897e56_453275_ori.thumb"}/>
+                </Link>
+                <S.BookInfo>
+                    <S.BookInfoDiv>
+                        <Link href={`/novel/${i.id}`}>
+                            <S.BookTittle>{i.title}</S.BookTittle>
+                        </Link>
+                        <Link href={`/user/1`}>
+                          <S.BookAuthor>{i.author}</S.BookAuthor>
+                        </Link>
+                    </S.BookInfoDiv>
+                    <S.BookTagDiv>
+                    {i.tag.map(
+                        (item) => {
+                          return(
+                              <S.Tag>#{item}</S.Tag>
+                          )
+                        }
+                      )}  
+                    </S.BookTagDiv>
+                </S.BookInfo>
+              </S.Book>
+            )})}
+      </S.List>
+  )
 }
 
 const MainPage = ({props}) => {
@@ -89,7 +90,10 @@ const MainPage = ({props}) => {
             <S.Title onClick={()=>console.log(props.data)}>플러스 BEST</S.Title>
             <S.Border> 
               {props.data.plus[0] ?
-                <List lists={props.data.plus}/>
+                <>
+                <List lists={props.data.plus.slice(0, 2)}/>
+                <List lists={props.data.plus.slice(3, 5)}/>
+                </>
                 :
                 <S.Null>작품이 존재하지 않습니다.</S.Null>
               }
@@ -97,7 +101,10 @@ const MainPage = ({props}) => {
             <S.Title>자유연재 BEST</S.Title>
             <S.Border>
               {props.data.free[0] ?
-                <List lists={props.data.free}/>
+                <>
+                <List lists={props.data.free.slice(0, 2)}/>
+                <List lists={props.data.free.slice(3, 5)}/>
+                </>
                 :
                 <S.Null>작품이 존재하지 않습니다.</S.Null>
               }

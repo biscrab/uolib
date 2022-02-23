@@ -1,8 +1,13 @@
 import Link from 'next/link'
 import * as S from '../styled/Footer'
+import { useRouter } from 'next/router'
 
 const Footer = () => {
+    const router = useRouter();
+    const pathname = router.pathname;
     return(
+        <>
+        {!pathname.includes("viewer") && !pathname.includes("login") && !pathname.includes("signup")?
         <S.Footer>
             <S.FooterDiv>
                 <S.PathDiv>
@@ -15,6 +20,10 @@ const Footer = () => {
                 </S.CopyRight>
             </S.FooterDiv>
         </S.Footer>
+        :
+        <></>
+        }
+        </>
     )
 }
 
