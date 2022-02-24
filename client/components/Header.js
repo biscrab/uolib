@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 //import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 
-const Header = (prop) => {
+const Header = ({props}) => {
 
     //const isMobile = useMediaQuery('( maxWidth: 1240 )')
     const isMobile = 0;
@@ -98,19 +98,19 @@ const Header = (prop) => {
                         {1 ?
                         <>
                         <S.MenuModal className='menumodal'>
-                            {1 ?
+                            {props.data ?
                             <>
                             <S.MenuWrap>
-                                <Link href={`/user/1`}>
+                                <Link href={`/user/${props.data.id}`}>
                                     <S.MenuLi>
                                         <img src="https://phinf.pstatic.net/contact/20210430_217/1619765233604XypyT_PNG/avatar_profile.png"/>
-                                            <b>이름</b>
+                                            <b>{props.data.name}</b>
                                     </S.MenuLi>
                                 </Link>
                             </S.MenuWrap>
                             <S.MenuWrap>
                                 <S.MenuLi>
-                                <i className="fas fa-coins"></i>코인 0
+                                <i className="fas fa-coins"></i>코인 {props.data.coin}
                                     <Link href="/shop/coin">
                                         <button>충전</button>
                                     </Link>
@@ -146,7 +146,7 @@ const Header = (prop) => {
                                 </Link>
                             </S.MenuWrap>
                             <S.Logout>
-                                <button><i className="fas fa-sign-out-alt"></i>로그아웃</button>
+                                <button onClick={()=>logOut()}><i className="fas fa-sign-out-alt"></i>로그아웃</button>
                             </S.Logout>
                             </>
                             :
@@ -179,7 +179,7 @@ const Header = (prop) => {
 }
 
 Header.getInitialProps = async function(context){
-    const res = await axios.get(`https://uolib.herokuapp.com/novel/0`)
+    const res = await axios.get(`https://uolib.herokuapp.com/header`)
     const data = await res.data;
     return {
         props : {data}
