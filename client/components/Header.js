@@ -98,7 +98,7 @@ const Header = ({props}) => {
                         {1 ?
                         <>
                         <S.MenuModal className='menumodal'>
-                            {props.data ?
+                            {0 ?
                             <>
                             <S.MenuWrap>
                                 <Link href={`/user/${props.data.id}`}>

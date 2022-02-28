@@ -4,7 +4,8 @@ import MyBook from '../../components/MyBook'
 import { NextPage } from 'next';
 import Link from 'next/link'
 import {useRouter} from 'next/router'
-
+import axios from 'axios';
+/*
 type BookInterface = {
     id: number,
     title: string,
@@ -12,12 +13,12 @@ type BookInterface = {
     image: string,
     explane: string,
     tag: string[];
-}
+}*/
 
-const MyBookPage: NextPage<{}> = () => {
+const MyBookPage = ({props}) => {
 
-    const lists : BookInterface[] = [{id: 1, title: "test", author: "이상운", explane: "123123", image: "https://image.novelpia.com/imagebox/cover/18fc3444c07e1ecadd65072b4bd08e28_47837_ori.thumb",tag: ["1", "2"]}];
-
+    /*const lists : BookInterface[] = [{id: 1, title: "test", author: "이상운", explane: "123123", image: "https://image.novelpia.com/imagebox/cover/18fc3444c07e1ecadd65072b4bd08e28_47837_ori.thumb",tag: ["1", "2"]}];
+*/
     const [selected, setSelected] = useState(1);
 
     const router = useRouter();
@@ -48,7 +49,7 @@ const MyBookPage: NextPage<{}> = () => {
                 총 0개의 작품
             </S.CountOfBook>
             <S.List>
-                <MyBook lists={lists}/>
+                <MyBook lists={props.data}/>
             </S.List>
             </>
             :
@@ -61,6 +62,15 @@ const MyBookPage: NextPage<{}> = () => {
             }
         </S.Body>
     )
+}
+
+MyBookPage.getInitialProps = async function(context){
+    const { type } = context.query;
+    const res = await axios.get(`https://uolib.herokuapp.com/mybook/${type ?type : "like"}`)
+    const data = await res.data;
+    return {
+        props : {data}
+    }
 }
 
 export default MyBookPage

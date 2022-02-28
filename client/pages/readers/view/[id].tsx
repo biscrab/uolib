@@ -1,7 +1,8 @@
 import * as S from '../../../styled/Readers'
 import Link from 'next/link';
+import { NextPage } from 'next';
 
-const ReadersViewPage = () => {
+const ReadersViewPage: NextPage<{}> = () => {
 
     type RowType = {
         number: number,
@@ -40,6 +41,14 @@ const ReadersViewPage = () => {
             <S.ViewBody>
                 <S.NovelDiv>
                     <img src="https://novelpia.com/imagebox/cover/7ad0832dde9ad51cff4c5ece918416f2_27396_ori.file"/>
+                    <S.InfoDiv>
+                        <S.TitleDiv>
+                            <h3>1</h3>
+                            <span>123</span>
+                        </S.TitleDiv>
+                        <S.ExplaneDiv>
+                        </S.ExplaneDiv>
+                    </S.InfoDiv>
                 </S.NovelDiv>
             </S.ViewBody>
             <S.ContentsTitle>게시물 댓글 (0)</S.ContentsTitle>

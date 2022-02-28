@@ -70,6 +70,17 @@ export const Alarm = styled.div`
     }
 `
 
+export const Null = styled.div`
+    color: #999;
+    display: flex;
+    width: 100%;
+    height: 200px;
+    font-size: 18px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+`
+
 export const AlarmContents = styled.div`
     background: #eee;
     margin-top: 5px;

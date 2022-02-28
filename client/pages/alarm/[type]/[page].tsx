@@ -2,6 +2,7 @@ import * as S from '../../../styled/Alarm'
 import Link from "next/link";
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 type AlarmType = {
     title: string,
@@ -90,6 +91,8 @@ const AlarmPage = () => {
                 </Link>
             </S.SelectDiv>
             <S.List>
+                {lists[0] ?
+                <>
                 {lists.map((i, index) => {
                     return(
                         <div key={index}>
@@ -119,6 +122,12 @@ const AlarmPage = () => {
                         </div>
                     )
                 })}
+                </>
+                :
+                <S.Null>
+                    작품이 존재하지 않습니다.
+                </S.Null>
+                }
             </S.List>
             <S.PageDiv>
                 <S.Page><i className="fas fa-chevron-left"></i></S.Page>
@@ -133,6 +142,15 @@ const AlarmPage = () => {
             </S.PageDiv>
         </S.Body>
     )
+}
+
+AlarmPage.getInitialProps = async function(context: any){
+    const { type, page } = context.query;
+    const res = await axios.get(`https://uolib.herokuapp.com/mybooke/${type ? type : "like"}/${page ? page : 1}`)
+    const data = await res.data;
+    return {
+        props : {data}
+    }
 }
 
 export default AlarmPage

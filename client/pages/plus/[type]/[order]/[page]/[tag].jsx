@@ -1,24 +1,24 @@
 import * as S from '../../../../../styled/Search'
-import { useEffect, useState } from 'react';
+import { useEffect, useState} from 'react';
 import Book from '../../../../../components/Book'
 import axios from 'axios';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+/*
+type BookInterface = {
+    id: number,
+    title: string,
+    author: string,
+    image: string,
+    explane: string,
+    tag: string[];
+}*/
 
-const SerializePage: NextPage<{}> = () => {
-
-    type BookInterface = {
-        id: number,
-        title: string,
-        author: string,
-        image: string,
-        explane: string,
-        tag: string[];
-    }
+const SerializePage = ({props}) => {
 
     const [max, setMax] = useState(0);
-    const list : BookInterface[] = [{id: 1, title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag:["1"]}];
+    //const list : BookInterface[] = [{id: 1, title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag:["1"]}];
     const tlist = ["공모전", "판타지", "현대", "라이트노벨", "하렘", "일상", "중세", "TS", "전생", "로맨스", "먼치킨", "아카데미", "SF", "드라마", "코미디", "이세계", "순애", "빙의", "남성향"]
 
     const router = useRouter();
@@ -146,7 +146,7 @@ const SerializePage: NextPage<{}> = () => {
                 <Category />
             </S.CategoryDiv>
             <S.List>
-                <Book lists={list}/>
+                <Book lists={props.data}/>
             </S.List>
             <S.PageDiv>
                 <S.Page><i className="fas fa-chevron-left"></i></S.Page>

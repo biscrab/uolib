@@ -258,13 +258,13 @@ const ViewerPage = ({props}) => {
         </>
     )
 }
-/*
+
 ViewerPage.getInitialProps = async function(context){
     const res = await axios.get(`https://uolib.herokuapp.com/viewer/0`)
     const data = await res.data;
     return {
         props : {data}
     }
-}*/
+}
 
 export default ViewerPage

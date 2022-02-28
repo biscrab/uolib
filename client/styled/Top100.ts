@@ -44,6 +44,17 @@ export const List = styled.div`
     justify-content: space-between;
 `
 
+export const Null = styled.div`
+    color: #999;
+    display: flex;
+    width: 100%;
+    height: 200px;
+    font-size: 18px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+`
+
 export const Book = styled.div`
     width: 215px;
     margin: 0.5%;

@@ -24,105 +24,6 @@ const Top100Page = ({props}) => {
 
     const [lists, setLists] = useState([
         {id: 1, title: "1", author: "1123123123", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
-        {id: 1, title: "1", author: "1", image: "https://image.novelpia.com/img/layout/readycover4.png"},
     ]);
 
     return(
@@ -142,6 +43,8 @@ const Top100Page = ({props}) => {
                 </Link>
             </S.SelectDiv>
             <S.List>
+                {props.data[0] ?
+                <>
                 {props.data.map(
                 (i, index) => {
                     return(
@@ -167,6 +70,12 @@ const Top100Page = ({props}) => {
                         </div>
                     )
                 })}
+                </>
+                :
+                <S.Null>
+                    작품이 존재하지 않습니다.
+                </S.Null>
+                }
             </S.List>
         </S.Body>
     )

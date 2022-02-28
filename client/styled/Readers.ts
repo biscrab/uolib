@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Body = styled.div`
     margin-top: 50px;
+    margin-bottom: 50px;
     width: 1250px;
     position: relative;
     left: 50%;
@@ -323,11 +324,23 @@ export const NovelDiv = styled.div`
     }
 `
 
+export const InfoDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+`
+
+export const TitleDiv = styled.div`
+    h3{
+        font-weight: bold;
+    }
+`
+
 export const ContentsTitle = styled.div`
     border-bottom: 2px solid #333;
     font-size: 15px;
     padding: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-weight: bold;
 `
 
@@ -378,7 +391,9 @@ export const Comment = styled.li`
 `
 
 export const OtherList = styled.ul`
-    height: 550px;
+    max-height: 550px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 `
 
 export const Other = styled.li`
