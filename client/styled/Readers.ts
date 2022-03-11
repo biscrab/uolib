@@ -336,6 +336,10 @@ export const TitleDiv = styled.div`
     }
 `
 
+export const ExplaneDiv = styled.div`
+
+`
+
 export const ContentsTitle = styled.div`
     border-bottom: 2px solid #333;
     font-size: 15px;
