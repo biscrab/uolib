@@ -13,7 +13,7 @@ const LoginPage = () => {
 
     const onSuccess = async(res) => {
     	console.log(res.accessToken);
-        document.cookie = "uolib_token = " + `{token: ${res.accessToken}, image: ${res.profileObj.imageUrl}, type: "google"}`;
+        document.cookie = "uolib_token = " + `{token: ${res.accessToken}, type: "google"}`;
         const { googleId, profileObj : { email, name } } = response;
         
         await onSocial({

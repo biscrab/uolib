@@ -11,7 +11,7 @@ const SignUpPage = () => {
     const [info, setInfo] = useState({email: "", password: ""});
     const [check, setCheck] = useState({number: "", password: ""});
     const [edit, setEdit] = useState(true);
-    const [time, setTime] = useState(1000);
+    const [time, setTime] = useState(0);
 
     useEffect(()=>{
         if(localStorage.getItem("uolib_email")){

@@ -53,7 +53,7 @@ const ViewerPage = ({props}) => {
             <S.Body dark={darkmode}>
                 <img src="https://image.novelpia.com/imagebox/cover/389dc063c0e465e5a7f7e3f3ac04bddd_130337_ori.file"/>
                 <S.Text>
-                    123
+                    {props.data.text}
                 </S.Text>
                 {novel.authorsword ?
                 <S.AuthorsWords dark={darkmode}>
@@ -260,7 +260,8 @@ const ViewerPage = ({props}) => {
 }
 
 ViewerPage.getInitialProps = async function(context){
-    const res = await axios.get(`https://uolib.herokuapp.com/viewer/0`)
+    const {id} = context.query;
+    const res = await axios.get(`https://uolib.herokuapp.com/round/${id}`)
     const data = await res.data;
     return {
         props : {data}

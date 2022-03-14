@@ -10,7 +10,7 @@ type AlarmType = {
     id: number
 }
 
-const AlarmPage = () => {
+const AlarmPage = ({props}: any) => {
 
     const router = useRouter()
     const {type, page} = router.query;

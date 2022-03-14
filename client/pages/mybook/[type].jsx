@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import * as S from '../../styled/MyBook'
 import MyBook from '../../components/MyBook'
-import { NextPage } from 'next';
+//import { NextPage } from 'next';
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import axios from 'axios';
@@ -68,7 +68,7 @@ MyBookPage.getInitialProps = async function(context){
     const { type } = context.query;
     const res = await axios.get(`https://uolib.herokuapp.com/mybook/${type ?type : "like"}`)
     const data = await res.data;
-    console.log(data);
+    console.log(res);
     return {
         props : {data}
     }

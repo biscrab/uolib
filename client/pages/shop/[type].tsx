@@ -36,6 +36,9 @@ const PlusShopPage = () => {
     {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
     {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},];
 
+    /*            <Link href="/shop/emoticon">
+                <span>이모티콘</span>
+            </Link> */
     return(
         <>
         <S.ShopDiv>
@@ -46,14 +49,8 @@ const PlusShopPage = () => {
             <Link href="/shop/coin">
                 <span>코인</span>
             </Link>
-            <Link href="/shop/emoticon">
-                <span>이모티콘</span>
-            </Link>
             </div>
         </S.ShopDiv>
-        <S.Banner>
-            <img src="https://novelpia.com/img/new/plus/v2/banner_20211223_plus_pc.png"/>
-        </S.Banner>
         <S.Body>
             {type === "plus" ?
             <>
@@ -171,59 +168,6 @@ const PlusShopPage = () => {
                 :
                 <></>
             }
-            {type === "emoticon" ?
-                <>
-                <S.Tittle>NEW 이모티콘</S.Tittle>
-                <S.NewEmoticon>
-                <S.EmoticonDiv>
-                    {ilist.slice(0, 6).map(
-                        (i, index) => {
-                            return(
-                                <Link href="/emoticon/1" key={index}>
-                                <S.Emoticon>
-                                    <div>
-                                        <img src={i.image}/>
-                                    </div>
-                                    <span>{i.name}</span>
-                                </S.Emoticon>
-                                </Link>
-                            )
-                        }
-                    )}
-                </S.EmoticonDiv>
-                <S.EmoticonDiv>
-                    {ilist.slice(6, 12).map(
-                        (i, index) => {
-                            return(
-                                <S.Emoticon key={index}>
-                                    <div>
-                                        <img src={i.image}/>
-                                    </div>
-                                    <span>{i.name}</span>
-                                </S.Emoticon>
-                            )
-                        }
-                    )}
-                </S.EmoticonDiv>
-                </S.NewEmoticon>
-                <S.Tittle>인기 이모티콘</S.Tittle>
-                <S.BestEmoticonDiv>
-                    {blist.map(
-                        (i, index) => {
-                            return(
-                            <div key={index}>
-                                <h3>{index+1}</h3>
-                                <img src={i.image}/>
-                                <span>{i.name}</span>
-                            </div>
-                            );
-                        }
-                    )}
-                </S.BestEmoticonDiv>
-                </>
-                :
-                <></>
-            }
             <S.Guidance>
                 <h4>결제상품 이용 안내</h4>
                 <ul>
@@ -270,3 +214,7 @@ const PlusShopPage = () => {
 }
 
 export default PlusShopPage
+
+/*        <S.Banner>
+            <img src="https://novelpia.com/img/new/plus/v2/banner_20211223_plus_pc.png"/>
+        </S.Banner> */

@@ -43,7 +43,7 @@ const Top100Page = ({props}) => {
                 </Link>
             </S.SelectDiv>
             <S.List>
-                {props.data[0] ?
+                {props.data.length ?
                 <>
                 {props.data.map(
                 (i, index) => {

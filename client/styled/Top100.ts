@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Body = styled.div`
     margin-top: 50px;
-    width: 1150px;
+    width: 1100px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -41,29 +41,32 @@ export const List = styled.div`
     flex-wrap: wrap;
     margin: 30px 0px;
     width: 100%;
-    justify-content: space-between;
 `
 
 export const Null = styled.div`
     color: #999;
     display: flex;
     width: 100%;
-    height: 200px;
+    height: 600px;
     font-size: 18px;
     font-weight: bold;
     align-items: center;
     justify-content: center;
 `
 
-export const Book = styled.div`
+interface BookProps{
+    key: number
+}
+
+export const Book = styled.div<BookProps>`
     width: 215px;
-    margin: 0.5%;
     margin-top: 2%;
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
+    margin-right: ${props => (props.key+1)/5 ? "" : "5px"};
     b{
         margin-top: 6px;
     }

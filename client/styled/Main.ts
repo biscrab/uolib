@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Body = styled.div`
     position: relative;
-    margin-top: 80px;
+    margin-top: 70px;
     left: 50%;
     transform: translateX(-50%);
     max-width: 1250px;

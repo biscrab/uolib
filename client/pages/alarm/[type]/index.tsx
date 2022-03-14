@@ -1,10 +1,21 @@
 import Page from './[page]'
-const Alarm = () => {
+import axios from 'axios'
+
+const AlarmPage = ({props}: any) => {
     return(
         <>
-            <Page />
+            <Page props={props}/>
         </>
     )
 }
 
-export default Alarm
+AlarmPage.getInitialProps = async function(context: any){
+    const { type, page } = context.query;
+    const res = await axios.get(`https://uolib.herokuapp.com/mybooke/${type ? type : "like"}/${page ? page : 1}`)
+    const data = await res.data;
+    return {
+        props : {data}
+    }
+}
+
+export default AlarmPage

@@ -1,4 +1,4 @@
-import * as S from '../../styled/Emoticon'
+import * as S from '../Emoticon'
 import axios from 'axios'
 import { useState } from 'react'
 

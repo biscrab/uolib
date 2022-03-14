@@ -21,35 +21,9 @@ type FanArtType = {
 
 const max = 5;
 
-const ReadersPage = () => {
+const ReadersPage = (props: any) => {
 
-    const list : RowType[] = [
-    {number: 1, title: "123", author: "123", view: 1, like: 1},
-    {number: 1, title: "123", author: "123", view: 1, like: 1},
-    {number: 1, title: "123", author: "123", view: 1, like: 1},
-    {number: 1, title: "123", author: "123", view: 1, like: 1},
-    {number: 1, title: "123", author: "123", view: 1, like: 1},
-    {number: 1, title: "123", author: "123", view: 1, like: 1},
-    {number: 1, title: "123", author: "123", view: 1, like: 1},
-    {number: 1, title: "123", author: "123", view: 1, like: 1},
-    {number: 1, title: "123", author: "123", view: 1, like: 1},
-    ];
-
-    const flist : FanArtType[] = [
-        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
-        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
-        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
-        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
-        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
-        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
-        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
-        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
-        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
-    ]
-
-    const clist = [
-
-    ]
+    const data = props.data;
 
     const rlist : any[] = [
         {name: "1", amount: 1}
@@ -119,8 +93,8 @@ const ReadersPage = () => {
                 <S.TView idx={1}>조회수</S.TView>
                 <S.TLike idx={1}>좋아요</S.TLike>
             </S.TRow>
-                {list.map(
-                    (i, index) => {
+                {data.map(
+                    (i: any, index: any) => {
                         return(
                             <div key={index}>
                             <Link href={`/readers/view/${i.number}`}>
@@ -168,12 +142,6 @@ const ReadersPage = () => {
                         
                     </ul>
                 </S.HallOfFameDiv>
-                <S.HallOfFameDiv>
-                    <div>이모티콘 보유 랭킹</div>  
-                    <ul>
-                        
-                    </ul>                 
-                </S.HallOfFameDiv>
             </S.HallOfFameList>
             </S.HallOfFame>
             </>
@@ -214,5 +182,34 @@ ReadersPage.getInitialProps = async function (context: any){
         props: {data}
     }
 }
+
+    /*
+    const list : RowType[] = [
+    {number: 1, title: "123", author: "123", view: 1, like: 1},
+    {number: 1, title: "123", author: "123", view: 1, like: 1},
+    {number: 1, title: "123", author: "123", view: 1, like: 1},
+    {number: 1, title: "123", author: "123", view: 1, like: 1},
+    {number: 1, title: "123", author: "123", view: 1, like: 1},
+    {number: 1, title: "123", author: "123", view: 1, like: 1},
+    {number: 1, title: "123", author: "123", view: 1, like: 1},
+    {number: 1, title: "123", author: "123", view: 1, like: 1},
+    {number: 1, title: "123", author: "123", view: 1, like: 1},
+    ];
+
+    const flist : FanArtType[] = [
+        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
+        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
+        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
+        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
+        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
+        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
+        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
+        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
+        {id: 1, title: "123", author: "123", image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/guest/image/jqwKm3b-S9Qulej18EjjvCeVI9s.JPG"},
+    ]
+
+    const clist = [
+
+    ]*/
 
 export default ReadersPage

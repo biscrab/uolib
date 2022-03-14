@@ -83,7 +83,7 @@ function MyApp({ Component, pageProps }/*: AppProps*/) {
   return (
     <>
       <title>유라이브</title>
-      <link href="https://cdn-icons-png.flaticon.com/512/3627/3627782.png" rel="shortcut icon" type="image/x-icon"></link>
+      <link href="https://cdn-icons.flaticon.com/png/512/1722/premium/1722398.png?token=exp=1647265594~hmac=9839c5fb0b6489cb5c39fa0170d6011d" rel="shortcut icon" type="image/x-icon"></link>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet"></link>
