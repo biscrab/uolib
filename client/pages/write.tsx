@@ -100,7 +100,6 @@ const WritePage: NextPage<{}> = () => {
                     <></>
                     }
                     </S.SettingButton>
-                    <S.Setting onClick={()=>setOnImage(true)}><i className="far fa-image fa-lg"></i></S.Setting>
                     <S.Setting onClick={()=>change("undo")}><i className="fas fa-undo-alt"></i></S.Setting>
                     <S.Setting onClick={()=>change("redo")}><i className="fas fa-redo-alt"></i></S.Setting>  
                 </S.SettingDiv>
@@ -118,7 +117,13 @@ const WritePage: NextPage<{}> = () => {
                 <S.RegistButton><i className="fas fa-pen"></i>소설 등록</S.RegistButton>
             </S.ButtonDiv>
         </S.Body>
-        {onImage ?
+        </>
+    )
+}
+
+export default WritePage
+
+/*        {onImage ?
         <S.Background>
             <S.ImageDiv className='imagediv'>
                 <S.ImageHeader>
@@ -142,12 +147,7 @@ const WritePage: NextPage<{}> = () => {
         </S.Background>
         :
         <></>
-        }
-        </>
-    )
-}
-
-export default WritePage
+        } */
 
 /*            <S.SelectDiv>
                 <S.Select>

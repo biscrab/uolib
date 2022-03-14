@@ -84,7 +84,7 @@ const WritePage: NextPage<{}> = () => {
                         </S.EffectSelect>
                         <S.SmokyEffect><span>테스트</span></S.SmokyEffect>
                         <S.NeonEffect>테스트</S.NeonEffect>
-                        <S.GritchyEffect><span>테스트</span></S.GritchyEffect><span></span>
+                        <S.GritchyEffect><span>테스트</span></S.GritchyEffect>
                     </S.EffectSelectDiv>
                     :
                     <></>
@@ -102,7 +102,13 @@ const WritePage: NextPage<{}> = () => {
                 <S.RegistButton><i className="fas fa-pen"></i>소설 등록</S.RegistButton>
             </S.ButtonDiv>
         </S.Body>
-        {onImage ?
+        </>
+    )
+}
+
+export default WritePage
+
+/*        {onImage ?
         <S.Background>
             <S.ImageDiv className='imagediv'>
                 <S.ImageHeader>
@@ -126,9 +132,4 @@ const WritePage: NextPage<{}> = () => {
         </S.Background>
         :
         <></>
-        }
-        </>
-    )
-}
-
-export default WritePage
+        } */

@@ -65,47 +65,6 @@ export const FanArtList = styled.ul`
     list-style: none;
 `
 
-export const FanArtHeader = styled.div`
-    color: #333;
-    border-bottom: 2px solid #333;
-    padding: 5px 10px;
-    font-weight: bold;
-`
-
-export const FanArt = styled.div`
-    padding: 10px 20px;
-    margin-top: 20px;
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    img{
-        :hover {
-            transform: scale(1.1);
-            -webkit-transform: scale(1.1);
-        }
-        transition: all 0.3s ease-in-out;
-        vertical-align: middle;
-        border-style: none;
-        object-fit: cover;
-        cursor: pointer;
-    }
-    div{
-        overflow: hidden;
-        width: 100%;
-        height: 300px;
-        border-radius: 5px;
-        box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.1);
-    }   
-    b{
-        margin-top: 8px;
-        font-size: 17px;
-    }
-    span{
-        font-size: 13px;
-        color: #888;
-    }
-`
-
 export const HallOfFame = styled.div`
     margin-top: 50px;
     margin-bottom: 80px;

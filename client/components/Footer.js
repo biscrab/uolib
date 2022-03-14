@@ -11,8 +11,8 @@ const Footer = () => {
         <S.Footer>
             <S.FooterDiv>
                 <S.PathDiv>
-                    <Link href="/terms_of_use">이용약관</Link>
-                    <Link href="/privacy_policy">개인정보처리방침</Link>
+                    <a>이용약관</a>
+                    <a>개인정보처리방침</a>
                 </S.PathDiv>
                 <S.CopyRight>
                 주의! 본 사이트에 등록된 컨텐츠는 사이트 및 원 저작권자에 권리가 있는 컨텐츠이며, 무단 복제/전송/수정/배포는 법적 처벌을 받을 수 있습니다.

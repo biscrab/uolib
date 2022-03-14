@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import GoogleLogin from 'react-google-login';
 
 type BackgroundProps = {
     src: string
@@ -129,4 +130,20 @@ export const SButton = styled.button`
     margin-top: 15px;
     color: white;
     background: royalblue;
+`
+
+export const GoogleLoginButton = styled(GoogleLogin) `
+    span{
+        width: 100%;
+        text-align: center;
+        color: #666;
+        font-family: none !important;
+        font-weight: 600 !important; 
+    }
+    margin-top: 15px !important;
+    div{
+        position: absolute;
+        padding: 5px !important;
+        padding-left: 10px !important;
+    }
 `

@@ -354,7 +354,7 @@ span{
   overflow: hidden;
 }
 `
-
+/*
 export const Background = styled.div`
     position: fixed;
     width: 100%;
@@ -418,4 +418,4 @@ export const ImageBottom = styled.div`
         border-radius: 2px;
         font-weight: 500;
     }
-`
+`*/

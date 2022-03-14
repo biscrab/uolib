@@ -22,12 +22,11 @@ const messaging = firebase.messaging();
 messaging.setBackgroundMessageHandler(function(payload) {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
   // Customize notification here
-  const notificationTitle = '노벨피아';
+  const notificationTitle = '유라이브';
   const notificationOptions = {
     body: '알림메세지',
     icon: 'https://novelpia.com/img/favicon/apple-icon-114x114.png'
   };
 
-  return self.registration.showNotification(notificationTitle,
-      notificationOptions);
+  return self.registration.showNotification(notificationTitle, notificationOptions);
 });

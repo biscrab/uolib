@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import * as S from '../../../../styled/Readers'
+import axios from 'axios';
 
 type RowType = {
     number: number,
@@ -93,9 +94,6 @@ const ReadersPage = () => {
                 <Link href="/readers/comunity/all/1">
                 <S.Select selected={type === "comunity"}>커뮤니티</S.Select>
                 </Link>
-                <Link href="/readers/fanart/all/1">
-                    <S.Select selected={type === "fanart"}>팬아트</S.Select>
-                </Link>
                 <Link href="/readers/hall_of_fame">
                     <S.Select selected={type === "hall_of_fame"}>명예의전당</S.Select>
                 </Link>
@@ -140,47 +138,6 @@ const ReadersPage = () => {
                 )}
             </S.List>
             </>
-            :
-            <></>
-            }
-            {type === "fanart" ?
-            <>
-            <S.PathDiv>
-                <Link href="/readers/comunity/all/1">
-                    <S.Path selected={detail === "all"}>전체</S.Path>
-                </Link>
-                <Link href="/readers/comunity/review/1">
-                    <S.Path selected={detail === "review"}>작품리뷰</S.Path>
-                </Link>
-                <Link href="/readers/comunity/h/1">
-                    <S.Path selected={detail === "h"}>작품홍보</S.Path>
-                </Link>
-            </S.PathDiv>
-            <S.FanArtHeader>
-                총 개의 팬아트
-            </S.FanArtHeader>
-            <S.FanArtList>
-                {flist.map(
-                    (i, index) => {
-                        return(
-                            <S.FanArt key={index}>
-                                <Link href={`/readers/view/${i.id}`}>
-                                <div>
-                                    <img src={i.image}/>
-                                </div>
-                                </Link>
-                                <Link href={`/readers/view/${i.id}`}>
-                                <b>제목</b>
-                                </Link>
-                                <Link href={`user/${1}`}>
-                                <span>저자</span>
-                                </Link>
-                            </S.FanArt>
-                        )
-                    }
-                )}
-            </S.FanArtList>   
-            </> 
             :
             <></>
             }
@@ -247,6 +204,15 @@ const ReadersPage = () => {
             }
         </S.Body>
     )
+}
+
+ReadersPage.getInitialProps = async function (context: any){
+    const {type, detail, page} = context.query;
+    const res = await axios.get(`https://uolib.herokuapp.com/readers/${type}/${detail}/${page ? page : ""}`);
+    const data = res.data;
+    return{
+        props: {data}
+    }
 }
 
 export default ReadersPage

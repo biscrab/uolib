@@ -11,9 +11,9 @@ const LoginPage = () => {
 
     const clientId = "236232072754-81f153ainje620b38lonfi9u4r6qv3cc.apps.googleusercontent.com";
 
-    const onSuccess = async(response) => {
-    	console.log(response);
-    
+    const onSuccess = async(res) => {
+    	console.log(res.accessToken);
+        document.cookie = "uolib_token = " + `{token: ${res.accessToken}, image: ${res.profileObj.imageUrl}, type: "google"}`;
         const { googleId, profileObj : { email, name } } = response;
         
         await onSocial({
@@ -34,7 +34,11 @@ const LoginPage = () => {
         }
         else{
             axios.post('/login', info)
-                .then(res => document.cookie = "uolib_token = " + {token: res.data.token, refresh_token: res.data.refresh_token, type: "uolib"})
+                .then(res => {
+                    document.cookie = "uolib_token = " + `{token: ${res.data.token}, refresh_token: ${res.data.refresh_token}, type: "uolib"}`;
+                    alert("로그인 완료");
+                })
+                .catch(err => alert("잘못된 정보 입니다."))
         }
     }
 
@@ -46,14 +50,16 @@ const LoginPage = () => {
             <S.Input placeholder="이메일" onChange={(e)=>setInfo({...info, email: e.target.value})} value={info.email}/>
             <S.Input placeholder="비밀번호" onChange={(e)=>setInfo({...info, password: e.target.value})} value={info.password} type="password"/>
             <S.LButton onClick={()=>login()}>로그인</S.LButton>
-            <GoogleLogin
-                clientId={clientId}
-                responseType={"id_token"}
-                onSuccess={onSuccess}
-                onFailure={onFailure}/>
             <Link href="/signup">
             <S.SButton>회원가입</S.SButton>
             </Link>
+            <S.GoogleLoginButton
+                clientId={clientId}
+                responseType={"id_token"}
+                onSuccess={onSuccess}
+                onFailure={onFailure}
+                buttonText="구글계정으로 로그인"
+            />
         </S.Body>
         </S.BackgroundFilter>
         </S.Background>

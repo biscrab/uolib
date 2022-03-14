@@ -23,7 +23,7 @@ const List = ({lists}) => {
             return(
               <S.Book key={index} length={lists.length}>
                 <Link href={`/novel/${i.id}`}>
-                    <S.BookCover src={"//image.novelpia.com/imagebox/cover/148f406a052dae41bfd628929b897e56_453275_ori.thumb"}/>
+                    <S.BookCover src={`https://uolib.herokuapp.com/uploads/${i.image}`}/>
                 </Link>
                 <S.BookInfo>
                     <S.BookInfoDiv>
@@ -75,17 +75,6 @@ const MainPage = ({props}) => {
             </S.NavWrap> */
     return(
         <>
-        <S.BannerDiv>
-            {BannerList.map(
-                (i, index) => {
-                    return(
-                        <S.Banner color={"#1c0426"} key={index}>
-                            <img src={"https://novelpia.com/img/new/banner/main_banner_pc_20220104.jpg"}/>
-                        </S.Banner> 
-                    )
-                }
-            )}
-        </S.BannerDiv>
         <S.Body>
             <S.Title onClick={()=>console.log(props.data)}>플러스 BEST</S.Title>
             <S.Border> 
@@ -123,6 +112,18 @@ MainPage.getInitialProps = async function(context){
 }
 
 export default MainPage
+
+/*        <S.BannerDiv>
+            {BannerList.map(
+                (i, index) => {
+                    return(
+                        <S.Banner color={"#1c0426"} key={index}>
+                            <img src={"https://novelpia.com/img/new/banner/main_banner_pc_20220104.jpg"}/>
+                        </S.Banner> 
+                    )
+                }
+            )}
+        </S.BannerDiv> */
 
 /*import type { NextPage } from 'next'
 import Head from 'next/head'

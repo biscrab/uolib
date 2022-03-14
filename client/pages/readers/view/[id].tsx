@@ -1,6 +1,7 @@
 import * as S from '../../../styled/Readers'
 import Link from 'next/link';
 import { NextPage } from 'next';
+import axios from 'axios';
 
 const ReadersViewPage: NextPage<{}> = () => {
 
@@ -94,6 +95,14 @@ const ReadersViewPage: NextPage<{}> = () => {
             </S.OtherList>
         </S.Body>
     )
+}
+
+ReadersViewPage.getInitialProps = async function(context: any){
+    const {id} = context.query;
+    const res = await axios.get(`https://uolib.herokuapp.com/view/${id}`)
+    const data = res.data;
+
+    return{data}
 }
 
 export default ReadersViewPage
