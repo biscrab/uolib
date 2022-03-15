@@ -12,7 +12,7 @@ type BookType = {
     image: string
 }*/
 
-const Top100Page = ({props}) => {
+const Top100Page = ({props}: {props: any}) => {
 
     const router = useRouter()
     const {type} = router.query;
@@ -43,13 +43,13 @@ const Top100Page = ({props}) => {
                 </Link>
             </S.SelectDiv>
             <S.List>
-                {props.data.length ?
+                {props[0] ?
                 <>
-                {props.data.map(
-                (i, index) => {
+                {props.map(
+                (i: any, index: any) => {
                     return(
-                        <div key={index}>
-                        <S.Book>
+                        <div>
+                        <S.Book key={index}>
                             <S.Rank>{index + 1}</S.Rank>
                             <Link href="/novel/1">
                             <S.BookImgDiv>
@@ -61,10 +61,21 @@ const Top100Page = ({props}) => {
                                 <S.Author>{i.author}</S.Author>
                             </Link>
                             <S.TypeDiv>
+                                {i.plus ?
                                 <S.Type color='#5232dd'>PLUS</S.Type>
+                                :
                                 <S.Type color='#166d95'>자유</S.Type> 
+                                }
+                                {i.monopoly ?
                                 <S.Type color='#0d60d1'>독점</S.Type>
+                                :
+                                <></>
+                                }
+                                {i.complete ?
                                 <S.Type color='black'>완결</S.Type>  
+                                :
+                                <></>
+                                }
                             </S.TypeDiv>
                         </S.Book>
                         </div>
@@ -81,13 +92,11 @@ const Top100Page = ({props}) => {
     )
 }
 
-Top100Page.getInitialProps = async function(content){
+Top100Page.getInitialProps = async function(content: any){
     const {type} = content.query;
     const res = await axios.get(`https://uolib.herokuapp.com/top100/${type ? type : "all"}`);
-    const data = await res.data;
-    return{
-        props: {data}
-    }
+    const props = await res.data;
+    return{props}
 }
 
 export default Top100Page

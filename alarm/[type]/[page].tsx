@@ -1,4 +1,4 @@
-import * as S from '../../../styled/Alarm'
+import * as S from '../../../../Alarm'
 import Link from "next/link";
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
@@ -146,7 +146,7 @@ const AlarmPage = ({props}: any) => {
 
 AlarmPage.getInitialProps = async function(context: any){
     const { type, page } = context.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/mybooke/${type ? type : "like"}/${page ? page : 1}`)
+    const res = await axios.get(`https://uolib.herokuapp.com/alarm/${type ? type : "like"}/${page ? page : 1}`)
     const data = await res.data;
     return {
         props : {data}

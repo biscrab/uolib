@@ -29,12 +29,11 @@ export const HeaderDiv = styled.div`
 `
 
 export const LogoDiv = styled.div`
-    width:200px;
+    width: 150px;
 `
 
 export const Logo = styled.img`
-    width: 160px;
-    padding-right: 30px;
+    width: 130px;
     cursor: pointer;
 `
 
@@ -74,7 +73,7 @@ export const Path = styled.b<{path: boolean}>`
 
 export const MenuDiv = styled.div`
     display: flex;
-    width: 200px;
+    width: 150px;
     justify-content: space-between;
 
     img{

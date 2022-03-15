@@ -66,7 +66,7 @@ const MyBookPage = ({props}) => {
 
 MyBookPage.getInitialProps = async function(context){
     const { type } = context.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/mybook/${type ?type : "like"}`)
+    const res = await axios.get(`https://uolib.herokuapp.com/mybook/${type ? type : "like"}`)
     const data = await res.data;
     console.log(res);
     return {

@@ -39,7 +39,7 @@ export const List = styled.table`
     list-style: none;
     margin: 0;
     width: 100%;
-    max-height: 1000px;
+    min-height: 1000px;
     border-top: 1px solid #555;
     border-bottom: 1px solid #555;
 `

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import * as S from '../../../../styled/Readers'
+import * as S from '../../../styled/Readers'
 import axios from 'axios';
 
 type RowType = {
@@ -21,18 +21,12 @@ type FanArtType = {
 
 const max = 5;
 
-const ReadersPage = (props: any) => {
-
-    const data = props.data;
-
-    const rlist : any[] = [
-        {name: "1", amount: 1}
-    ]
+const ReadersPage = ({props}: {props: RowType[]}) => {
 
     const [plist, setPlist] = useState([1]);
 
     const router = useRouter();
-    const {type, detail, page} = router.query;
+    const {type, page} = router.query;
     
     useEffect(()=>{
         /*if(!type){
@@ -64,25 +58,15 @@ const ReadersPage = (props: any) => {
 
     return(
         <S.Body>
-            <S.SelectDiv>
-                <Link href="/readers/comunity/all/1">
-                <S.Select selected={type === "comunity"}>커뮤니티</S.Select>
-                </Link>
-                <Link href="/readers/hall_of_fame">
-                    <S.Select selected={type === "hall_of_fame"}>명예의전당</S.Select>
-                </Link>
-           </S.SelectDiv>
-           {type === "comunity" ?
-           <>
             <S.PathDiv>
-            <Link href="/readers/comunity/all/1">
-                <S.Path selected={detail === "all"}>전체</S.Path>
+            <Link href="/readers/all/1">
+                <S.Path selected={type === "all"}>전체</S.Path>
             </Link>
-            <Link href="/readers/comunity/review/1">
-                <S.Path selected={detail === "review"}>작품리뷰</S.Path>
+            <Link href="/readers/review/1">
+                <S.Path selected={type === "review"}>작품리뷰</S.Path>
             </Link>
-            <Link href="/readers/comunity/h/1">
-                <S.Path selected={detail === "h"}>작품홍보</S.Path>
+            <Link href="/readers/h/1">
+                <S.Path selected={type === "h"}>작품홍보</S.Path>
             </Link>
             </S.PathDiv>
             <S.List>
@@ -93,7 +77,9 @@ const ReadersPage = (props: any) => {
                 <S.TView idx={1}>조회수</S.TView>
                 <S.TLike idx={1}>좋아요</S.TLike>
             </S.TRow>
-                {data.map(
+            {props[0] ?
+                <>
+                {props.map(
                     (i: any, index: any) => {
                         return(
                             <div key={index}>
@@ -110,12 +96,32 @@ const ReadersPage = (props: any) => {
                         )
                     }
                 )}
-            </S.List>
-            </>
-            :
-            <></>
+                </>
+                :
+                <></>
             }
-            {type === "hall_of_fame" ?
+            </S.List>
+        </S.Body>
+    )
+}
+
+ReadersPage.getInitialProps = async function (context: any){
+    const {type, page} = context.query;
+    const res = await axios.get(`https://uolib.herokuapp.com/readers/${type ? type : "all"}/${page ? page : "1"}`);
+    const props = res.data;
+    return{props}
+}
+
+/*            <S.SelectDiv>
+                <Link href="/readers/comunity/all/1">
+                <S.Select selected={type === "comunity"}>커뮤니티</S.Select>
+                </Link>
+                <Link href="/readers/hall_of_fame">
+                    <S.Select selected={type === "hall_of_fame"}>명예의전당</S.Select>
+                </Link>
+           </S.SelectDiv> */
+
+/*            {type === "hall_of_fame" ?
             <>
             <S.HallOfFame>
             <h2>명예의 전당</h2>
@@ -169,19 +175,7 @@ const ReadersPage = (props: any) => {
             </>
             :
             <></>
-            }
-        </S.Body>
-    )
-}
-
-ReadersPage.getInitialProps = async function (context: any){
-    const {type, detail, page} = context.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/readers/${type}/${detail}/${page ? page : ""}`);
-    const data = res.data;
-    return{
-        props: {data}
-    }
-}
+            } */
 
     /*
     const list : RowType[] = [

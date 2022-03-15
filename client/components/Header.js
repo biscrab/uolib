@@ -55,12 +55,16 @@ const Header = ({props}) => {
                 <Link href="/top100">
                     <S.Path path={pathname.includes("/top100")}>TOP100</S.Path>
                 </Link>
-                <Link href="/readers/comunity/all/1">
+                <Link href="/readers/all/1">
                     <S.Path path={pathname.includes("/readers")}>독자마당</S.Path>
                 </Link>
+                {0 ?
                 <Link href="/mybook">
                     <S.Path path={pathname.includes("/mybook")}>내서재</S.Path>
                 </Link>
+                :
+                <S.Path onClick={()=>alert("로그인을 먼저 해주세요.")}>내서재</S.Path>
+                }   
             </S.PathDiv>
         )
     }
@@ -82,14 +86,6 @@ const Header = ({props}) => {
                     <Link href="/shop/plus">
                     <img src="https://image.novelpia.com/img/new/menu/point.png?ver=3" />
                     </Link>
-                    <Link href="/alarm">
-                    <img src="https://image.novelpia.com/img/new/menu/alarm.png"/>
-                    </Link>
-                    {isAlarm ?
-                        <S.IsAlarm />
-                        :
-                        <></>
-                    }
                     <Link href="/search">
                         <img src="https://image.novelpia.com/img/new/menu/search.png"/>
                     </Link>
@@ -188,3 +184,12 @@ Header.getInitialProps = async function(context){
 
 
 export default Header
+
+/*                    <Link href="/alarm">
+                    <img src="https://image.novelpia.com/img/new/menu/alarm.png"/>
+                    </Link>
+                    {isAlarm ?
+                        <S.IsAlarm />
+                        :
+                        <></>
+                    } */

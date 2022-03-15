@@ -35,11 +35,11 @@ const PlusAgreePage: NextPage<{}> = () => {
                     <span>연재회차 수</span>
                 </div>
                 <div>
-                    <h1>0</h1>
+                    <h1>O</h1>
                     <span>3000자 여부</span>
                 </div>
                 <div>
-                    <h1>0</h1>
+                    <h1>O</h1>
                     <span>정산정보 등록</span>
                 </div>
             </S.StandardDiv>
@@ -51,3 +51,12 @@ const PlusAgreePage: NextPage<{}> = () => {
 }
 
 export default PlusAgreePage
+
+PlusAgreePage.getInitialProps = async(context: any) => {
+    const {id} = context.query
+    const res = await axios.get(`/plus_agree/${id}`);
+    const data = res.data;    
+    return{
+        props: {data}
+    }
+}

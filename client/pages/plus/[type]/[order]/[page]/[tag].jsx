@@ -146,7 +146,7 @@ const SerializePage = ({props}) => {
                 <Category />
             </S.CategoryDiv>
             <S.List>
-                <Book lists={props.data}/>
+                <Book lists={props.list}/>
             </S.List>
             <S.PageDiv>
                 <S.Page><i className="fas fa-chevron-left"></i></S.Page>
@@ -167,10 +167,8 @@ const SerializePage = ({props}) => {
 SerializePage.getInitialProps = async function(context){
     const {type, order, page, tag} = context.query;
     const res = await axios.get(`https://uolib.herokuapp.com/${context.pathname}/${type ? type : "all"}/${order ? order : "date"}${page ? `/${page}` : ""}${tag ? `/${tag}` : ""}`)
-    const data = await res.data;
-    return {
-        props : {data}
-    }
+    const props = await res.data;
+    return {props}
 }
 
 export default SerializePage

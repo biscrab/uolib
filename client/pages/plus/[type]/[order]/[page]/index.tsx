@@ -9,12 +9,9 @@ const SerializePage = ({props}: any) => {
 
 SerializePage.getInitialProps = async function(context: any){
     const {type, order, page, tag} = context.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/${context.pathname}${type&&order&&page ? `/${type}/${order}/${page}`: ""}${tag ? `/${tag}` : ""}`)
-    const data = await res.data;
-    return {
-        props : {data}
-    }
+    const res = await axios.get(`https://uolib.herokuapp.com/${context.pathname}/${type ? type : "all"}/${order ? order : "date"}${page ? `/${page}` : ""}${tag ? `/${tag}` : ""}`)
+    const props = await res.data;
+    return {props}
 }
-
 
 export default SerializePage
