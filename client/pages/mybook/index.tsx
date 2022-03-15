@@ -1,7 +1,7 @@
 import Page from './[type]'
 import axios from 'axios'
 
-const MyBook = (props: object) => {
+const MyBookPage = ({props}: any) => {
     return(
         <>
             <Page props={props}/>
@@ -9,18 +9,11 @@ const MyBook = (props: object) => {
     )
 }
 
-Page.getInitialProps = async function(context){
-    const { type } = context.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/mybook/${type ?type : "like"}`)
-    if(res.status === 401){
-        alert("로그인을 먼저 해주십쇼.");
-    }
-    const data = await res.data;
-    console.log(res.status);
-    return {
-        props : {data}
-    }
+MyBookPage.getInitialProps = async function(context: any){
+    const res = await axios.get(`https://uolib.herokuapp.com/mybook/like`)
+    const props = await res.data;
+    console.log(res);
+    return {props}
 }
 
-
-export default MyBook
+export default MyBookPage

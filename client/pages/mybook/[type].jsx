@@ -48,9 +48,13 @@ const MyBookPage = ({props}) => {
             <S.CountOfBook>
                 총 0개의 작품
             </S.CountOfBook>
-            <S.List>
-                <MyBook lists={props.data}/>
-            </S.List>
+            {props ?
+                <S.List>
+                    <MyBook lists={props}/>
+                </S.List>
+                :
+                <></>
+                }
             </>
             :
             <S.Support>
@@ -66,12 +70,10 @@ const MyBookPage = ({props}) => {
 
 MyBookPage.getInitialProps = async function(context){
     const { type } = context.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/mybook/${type ? type : "like"}`)
-    const data = await res.data;
+    const res = await axios.get(`https://uolib.herokuapp.com/mybook/${type}`)
+    const props = await res.data;
     console.log(res);
-    return {
-        props : {data}
-    }
+    return {props}
 }
 
 export default MyBookPage

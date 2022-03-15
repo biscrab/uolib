@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
-    margin-top: 50px;
-    width: 1200px;
+    margin-top: 60px;
+    width: 1100px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);

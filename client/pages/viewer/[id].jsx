@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import * as S from '../../styled/Viewer'
 import $ from 'jquery'
-import {connect} from 'react-redux';
 import Link from 'next/link';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
@@ -23,8 +22,8 @@ const ViewerPage = ({props}) => {
     const [darkmode, setDarkmode] = useState(false);
     const [onInterface, setOnInterface] = useState(true);
     const [isPlus, setIsPlus] = useState(true);
-    const novel = {next: 1, authorsword: 1, prev: 0, novel: 1};
     const comment/*: commentType[]*/ = [];
+    const textRef = useRef();
 
     const router = useRouter();
     const {id} = router.query;
@@ -47,17 +46,22 @@ const ViewerPage = ({props}) => {
 
     })
 
+    useEffect(()=>{
+        let newElement = document.createElement('div');
+        newElement.innerHTML = props.text;
+        textRef.current.appendChild(newElement);
+    },[])
+
     const Body = () => {
         if(status === "text"){
             return(
             <S.Body dark={darkmode}>
                 <img src="https://image.novelpia.com/imagebox/cover/389dc063c0e465e5a7f7e3f3ac04bddd_130337_ori.file"/>
-                <S.Text>
-                    {props.data.text}
-                </S.Text>
-                {novel.authorsword ?
+                <S.Text ref={textRef} />
+                {props.authorsword ?
                 <S.AuthorsWords dark={darkmode}>
                     <b>작가의 말</b>
+                    {props.authorsword}
                 </S.AuthorsWords>
                 :
                 <></>
@@ -197,11 +201,11 @@ const ViewerPage = ({props}) => {
         <S.Header dark={darkmode} className='interface'>
             <S.HeaderDiv>
                 <S.LeftDiv>
-                    <Link href={`/novel/${novel.novel}`}>
+                    <Link href={`/novel/${props.novel}`}>
                         <i className="fas fa-home fa-lg"></i>
                     </Link>
-                    <S.Episode>EP.1</S.Episode>
-                    <S.Title>123</S.Title>
+                    <S.Episode>EP.{props.episode}</S.Episode>
+                    <S.Title>{props.title}</S.Title>
                 </S.LeftDiv>
                 <S.RightDiv>
                     <S.ListSpan onClick={()=>{if(status !== "list"){setStatus("list")}else{setStatus("text")}}}><i className="fas fa-bars"/>목록</S.ListSpan>
@@ -223,7 +227,7 @@ const ViewerPage = ({props}) => {
         {onInterface ?
         <S.Bottom dark={darkmode} className='interface'>
             <div>
-                {novel.prev ?
+                {props.prev ?
                 <span><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
                 :
                 <span style={{color: "#ccc"}}><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
@@ -231,7 +235,7 @@ const ViewerPage = ({props}) => {
                 <span onClick={()=>{if(status !== "comment"){setStatus("comment")}else{setStatus("text")}}}><i className="far fa-comment-alt" style={{marginRight: "5px"}}></i>댓글</span>
                 <span><i className="far fa-thumbs-up" style={{marginRight: "5px"}}></i>추천</span>
                 <span><i className="far fa-heart" style={{marginRight: "5px"}}></i>선호</span>
-                {novel.next ?
+                {props.next ?
                 <span>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
                 :
                 <span style={{color: "#ccc"}}>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
@@ -262,10 +266,8 @@ const ViewerPage = ({props}) => {
 ViewerPage.getInitialProps = async function(context){
     const {id} = context.query;
     const res = await axios.get(`https://uolib.herokuapp.com/round/${id}`)
-    const data = await res.data;
-    return {
-        props : {data}
-    }
+    const props = await res.data;
+    return {props}
 }
 
 export default ViewerPage

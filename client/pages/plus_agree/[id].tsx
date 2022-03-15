@@ -29,7 +29,14 @@ const PlusAgreePage: NextPage<{}> = () => {
             <S.BookDiv>
                 <Book lists={book}/>
             </S.BookDiv>
-            <S.StandardDiv>
+            <S.ButtonDiv>
+                <button onClick={()=>requestPlus()}>플러스 신청</button>
+            </S.ButtonDiv>
+        </S.Body>
+    )
+}
+
+/*            <S.StandardDiv>
                 <div>
                     <h1>0</h1>
                     <span>연재회차 수</span>
@@ -42,21 +49,13 @@ const PlusAgreePage: NextPage<{}> = () => {
                     <h1>O</h1>
                     <span>정산정보 등록</span>
                 </div>
-            </S.StandardDiv>
-            <S.ButtonDiv>
-                <button onClick={()=>requestPlus()}>플러스 신청</button>
-            </S.ButtonDiv>
-        </S.Body>
-    )
-}
+            </S.StandardDiv> */
 
 export default PlusAgreePage
-
+/*
 PlusAgreePage.getInitialProps = async(context: any) => {
     const {id} = context.query
     const res = await axios.get(`/plus_agree/${id}`);
-    const data = res.data;    
-    return{
-        props: {data}
-    }
-}
+    const props = res.data;    
+    return{props}
+}*/

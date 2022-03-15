@@ -12,7 +12,7 @@ type BookType = {
     image: string
 }*/
 
-const Top100Page = ({props}: {props: any}) => {
+const Top100Page = ({props}: {props?: any}) => {
 
     const router = useRouter()
     const {type} = router.query;

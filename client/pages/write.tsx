@@ -74,6 +74,12 @@ const WritePage: NextPage<{}> = () => {
                         <option>공지사항</option>
                     </select>
                 </S.Select>
+                <S.Select>
+                    <select>
+                        <option>연재회차</option>
+                        <option>공지사항</option>
+                    </select>
+                </S.Select>
             </S.SelectDiv>
             <S.TextDiv>
                 <S.SettingDiv>                        
@@ -108,13 +114,12 @@ const WritePage: NextPage<{}> = () => {
             </S.TextDiv>
             <S.RTittle>
                 <b>작가후기</b>
-                <span>{`{작품제목}, {독자이름}, {작가이름} 등을 입력하시면 해당하는 이름으로 변환되어 표시됩니다.`}</span>
             </S.RTittle>
             <S.Review>
 
             </S.Review>
             <S.ButtonDiv>
-                <S.RegistButton><i className="fas fa-pen"></i>소설 등록</S.RegistButton>
+                <S.RegistButton><i className="fas fa-pen"></i> 회차 등록</S.RegistButton>
             </S.ButtonDiv>
         </S.Body>
         </>

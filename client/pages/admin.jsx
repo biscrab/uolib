@@ -1,4 +1,5 @@
 import axios from "axios"
+import * as S from '../styled/Admin'
 
 const AdminPage = () => {
     return(

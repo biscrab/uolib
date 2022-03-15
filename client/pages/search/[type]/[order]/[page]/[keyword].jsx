@@ -18,7 +18,7 @@ const SearchPage = ({props}) => {
 
     const [word, setWord] = useState(keyword);
 
-    const lists = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag: ["1"]}];
+    //const lists = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag: ["1"]}];
 
     const Check = () => {
         return(

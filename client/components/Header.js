@@ -13,7 +13,6 @@ const Header = ({props}) => {
     const [onMenu, setOnMenu] = useState(false);
 
     const [isAlarm, setIsAlarm] = useState(false);
-
     const rotuer = useRouter();
     const pathname = rotuer.pathname
 
@@ -58,7 +57,7 @@ const Header = ({props}) => {
                 <Link href="/readers/all/1">
                     <S.Path path={pathname.includes("/readers")}>독자마당</S.Path>
                 </Link>
-                {0 ?
+                {props ?
                 <Link href="/mybook">
                     <S.Path path={pathname.includes("/mybook")}>내서재</S.Path>
                 </Link>
@@ -94,19 +93,19 @@ const Header = ({props}) => {
                         {1 ?
                         <>
                         <S.MenuModal className='menumodal'>
-                            {0 ?
+                            {props ?
                             <>
                             <S.MenuWrap>
-                                <Link href={`/user/${props.data.id}`}>
+                                <Link href={`/user/${props.id}`}>
                                     <S.MenuLi>
                                         <img src="https://phinf.pstatic.net/contact/20210430_217/1619765233604XypyT_PNG/avatar_profile.png"/>
-                                            <b>{props.data.name}</b>
+                                            <b>{props.name}</b>
                                     </S.MenuLi>
                                 </Link>
                             </S.MenuWrap>
                             <S.MenuWrap>
                                 <S.MenuLi>
-                                <i className="fas fa-coins"></i>코인 {props.data.coin}
+                                <i className="fas fa-coins"></i>코인 {props.coin}
                                     <Link href="/shop/coin">
                                         <button>충전</button>
                                     </Link>
@@ -176,10 +175,8 @@ const Header = ({props}) => {
 
 Header.getInitialProps = async function(context){
     const res = await axios.get(`https://uolib.herokuapp.com/header`)
-    const data = await res.data;
-    return {
-        props : {data}
-    }
+    const props = await res.data;
+    return {props}
 }
 
 

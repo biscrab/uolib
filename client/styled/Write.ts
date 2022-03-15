@@ -11,7 +11,6 @@ export const Body = styled.div`
 `
 
 export const BTittle = styled.b`
-    margin-bottom: 10px;
 `
 
 export const Search = styled.div`
@@ -58,12 +57,12 @@ export const Tittle = styled.input`
 
 export const SelectDiv = styled.div`
     display: flex;
-    justify-content: space-between;
     margin-top: 20px;
 `
 export const Select = styled.div`
     width: 170px;
     height: 40px;
+    margin-right: 10px;
     background-color: #f8f9fa;
     border: 1px solid rgba(0,0,0,0.15);
     display: flex;
@@ -162,11 +161,6 @@ export const RTittle = styled.div`
     b{
         margin-bottom: 5px;
     }
-    span{
-        color: dimgray;
-        font-size: 13px;
-    }
-    margin-bottom: 10px;
 `
 
 export const Review = styled.textarea`
@@ -187,9 +181,9 @@ export const ButtonDiv = styled.div`
     margin-bottom: 80px;
 
     button{
-        font-size: 17px;
+        font-size: 19px;
         display: inline-block;
-        font-weight: 600;
+        //font-weight: 600;
         text-align: center;
         white-space: nowrap;
         vertical-align: middle;

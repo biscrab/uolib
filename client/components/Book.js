@@ -34,7 +34,7 @@ const Book = ({i}) => {
                 <S.Explane>{i.explane}</S.Explane>
                 <S.Info>
                     <img src="https://novelpia.com/img/new/icon/count_view.png"/>
-                    <span>104.3K명</span>
+                    <span>{i.view}명</span>
                     <img src="https://novelpia.com/img/new/icon/count_book.png"/>
                     <span>515회차</span>
                     <img src="	https://image.novelpia.com/img/new/icon/count_good.png"/>

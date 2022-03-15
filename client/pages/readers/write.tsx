@@ -12,7 +12,6 @@ const WritePage: NextPage<{}> = () => {
     })
 
     const [on, setOn] = useState({bold: false, italic: false, underline: false});
-    const [onImage, setOnImage] = useState(false);
     const [onEMenu, setOnEMenu] = useState(false);
 
     const text = useRef('');
@@ -90,7 +89,6 @@ const WritePage: NextPage<{}> = () => {
                     <></>
                     }
                     </S.SettingButton>
-                    <S.Setting onClick={()=>setOnImage(true)}><i className="far fa-image fa-lg"></i></S.Setting>
                     <S.Setting onClick={()=>change("undo")}><i className="fas fa-undo-alt"></i></S.Setting>
                     <S.Setting onClick={()=>change("redo")}><i className="fas fa-redo-alt"></i></S.Setting>  
                 </S.SettingDiv>
@@ -98,8 +96,7 @@ const WritePage: NextPage<{}> = () => {
                 </div>
             </S.TextDiv>
             <S.ButtonDiv>
-                <S.CheckButton><i className="far fa-check-square"></i>맞춤법 검사</S.CheckButton>
-                <S.RegistButton><i className="fas fa-pen"></i>소설 등록</S.RegistButton>
+                <S.RegistButton><i className="fas fa-pen"></i> 등록</S.RegistButton>
             </S.ButtonDiv>
         </S.Body>
         </>

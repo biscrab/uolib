@@ -13,7 +13,7 @@ export const ShopDiv = styled.div`
     padding: 10px 0px;
     font-size: 18px;
     div{
-        width: 500px;
+        width: 150px;
         display: flex;
         justify-content: space-between;
     }
@@ -59,7 +59,7 @@ export const MemberShipDiv = styled.div`
 `
 
 export const MemberShip = styled.div`
-    border: 3px solid #704bfa;
+    border: 5px solid #704bfa;
     width: 30%;
     height: 260px;
     display: flex;
@@ -204,7 +204,7 @@ export const CoinDiv = styled.div`
 `
 
 export const Coin = styled.div`
-    border: 2px solid #333;
+    border: 3px solid #555;
     width: 49%;
     margin-bottom: 20px;
     height: 100px;

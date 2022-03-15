@@ -15,7 +15,7 @@ type BookInterface = {
     tag: string[];
 }*/
 
-const SerializePage = ({props}) => {
+const SerializePage = ({props}: {props?: any}) => {
 
     const [max, setMax] = useState(0);
     //const list : BookInterface[] = [{id: 1, title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag:["1"]}];
@@ -24,11 +24,7 @@ const SerializePage = ({props}) => {
     const router = useRouter();
     const {type, order, page, tag} = router.query;
 
-    const plus = true;
-
-    useEffect(()=>{
-
-    })
+    const plus = router.pathname === "/plus";
 
     const [plist, setPlist] = useState([1]);
     
@@ -146,7 +142,7 @@ const SerializePage = ({props}) => {
                 <Category />
             </S.CategoryDiv>
             <S.List>
-                <Book lists={props.list}/>
+
             </S.List>
             <S.PageDiv>
                 <S.Page><i className="fas fa-chevron-left"></i></S.Page>
@@ -164,10 +160,12 @@ const SerializePage = ({props}) => {
     )
 }
 
-SerializePage.getInitialProps = async function(context){
+SerializePage.getInitialProps = async function(context: any){
     const {type, order, page, tag} = context.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/${context.pathname}/${type ? type : "all"}/${order ? order : "date"}${page ? `/${page}` : ""}${tag ? `/${tag}` : ""}`)
-    const props = await res.data;
+    //const res = await axios.get(`https://uolib.herokuapp.com/${context.pathname}/${type ? type : "all"}/${order ? order : "date"}${page ? `/${page}` : ""}${tag ? `/${tag}` : ""}`)
+    //const props = await res.data;
+    //console.log(props);
+    const props = 1;
     return {props}
 }
 
