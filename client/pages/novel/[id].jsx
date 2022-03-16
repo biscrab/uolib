@@ -30,7 +30,7 @@ const NovelPage/*: NextPage*/ = ({props}) => {
     //const query = queryString.parse(location.search);
     const router = useRouter()
     const {id} = router.query;
-    const data = props.data;
+    //const data = props.data;
     
     useEffect(()=>{
         /*
@@ -75,10 +75,10 @@ const NovelPage/*: NextPage*/ = ({props}) => {
                 }
             })*/
     },[])
-
-    const changePrice = (e/*: any*/) => {
+/*
+    const changePrice = (e: any) => {
         setPrice(e.target.value);
-    }
+    }*/
 
     const support = () => {
         if(!price){
@@ -231,11 +231,9 @@ const NovelPage/*: NextPage*/ = ({props}) => {
 }
 
 NovelPage.getInitialProps = async function(context){
-    const res = await axios.get(`https://uolib.herokuapp.com/novel/0`)
-    const data = await res.data;
-    return {
-        props : {data}
-    }
+    const res = await axios.get(`https://uolib.herokuapp.com/novel/${context.query.id}`)
+    const props = await res.data;
+    return {props}
 }
 
 export default NovelPage

@@ -43,7 +43,7 @@ const Top100Page = ({props}: {props?: any}) => {
                 </Link>
             </S.SelectDiv>
             <S.List>
-                {props[0] ?
+                {props ?
                 <>
                 {props.map(
                 (i: any, index: any) => {

@@ -11,7 +11,7 @@ export const Banner = styled.div<BannerProps>`
 `
 
 export const Body = styled.div`
-    width: 1200px;
+    width: 1100px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);

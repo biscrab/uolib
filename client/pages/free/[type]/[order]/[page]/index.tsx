@@ -1,18 +1,18 @@
-import Page from '../../../../plus/[type]/[order]/[page]/[tag]'
-import axios from 'axios'
+import axios from "axios";
+import Page from '../../../../../components/SerializePage'
 
-const SerializePage = () => {
+const SerializePage = ({props}: any) => {
     return(
-        <Page/>
+        <Page props={props}/>
     )
 }
-/*
+
 SerializePage.getInitialProps = async function(context: any){
     const {type, order, page, tag} = context.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/${context.pathname}/${type ? type : "all"}/${order ? order : "date"}${page ? `/${page}` : ""}${tag ? `/${tag}` : ""}`)
-    const props = await res.data;
-    console.log(`https://uolib.herokuapp.com/${context.pathname}/${type ? type : "all"}/${order ? order : "date"}${page ? `/${page}` : ""}${tag ? `/${tag}` : ""}`);
+    const res = await axios.get(`https://uolib.herokuapp.com${context.pathname.slice(0, 5)}/${type ? type : "all"}/${order ? order : "date"}/${page ? page : "1"}${tag ? `/${tag}` : ""}`)
+    const props = res.data;
+    console.log(props);
     return {props}
-}*/
+}
 
 export default SerializePage

@@ -48,8 +48,8 @@ export const PathDiv = styled.div`
     color: #333;
     display: flex;
     justify-content: space-around;
-    width: 500px;
-    @media screen and (max-width: 500px){
+    width: 400px;
+    @media screen and (max-width: 400px){
         width: 100%;
     }
 `

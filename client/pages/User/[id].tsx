@@ -14,19 +14,19 @@ const UserPage: NextPage<{}> = (props: any) => {
             <S.BodyDiv>
             <S.Info>
                 <S.Card>
-                    <S.CardHeader>{props.data.name}이 연재하는 소설</S.CardHeader>
+                    <S.CardHeader>{props.name}이 연재하는 소설</S.CardHeader>
                     <S.CardBody>
                         연재중인 소설이 없습니다.
                     </S.CardBody>
                 </S.Card>
                 <S.Card>
-                    <S.CardHeader>{props.data.name}이 선호하는 소설</S.CardHeader>
+                    <S.CardHeader>{props.name}이 선호하는 소설</S.CardHeader>
                     <S.CardBody>
                         연재중인 소설이 없습니다.
                     </S.CardBody>
                 </S.Card>
                 <S.Card>
-                    <S.CardHeader>{props.data.name}님의 후원작가 목록</S.CardHeader>
+                    <S.CardHeader>{props.name}님의 후원작가 목록</S.CardHeader>
                     <S.CardBody>
                         연재중인 소설이 없습니다.
                     </S.CardBody>
@@ -34,7 +34,7 @@ const UserPage: NextPage<{}> = (props: any) => {
             </S.Info>
             <S.Comment>
                 <S.Card>
-                    <S.CardHeader>{props.data.name}이 선호하는 소설</S.CardHeader>
+                    <S.CardHeader>{props.name}이 선호하는 소설</S.CardHeader>
                     <S.CardBody>
                         연재중인 소설이 없습니다.
                     </S.CardBody>
@@ -51,14 +51,12 @@ const UserPage: NextPage<{}> = (props: any) => {
 
 UserPage.getInitialProps = async function(context){
     const res = await axios.get(`https://uolib.herokuapp.com/user/0`)
-    const data = await res.data;
-    if(!data){
+    const props = await res.data;
+    if(!props){
         alert("잘못된 유저 아이디 입니다.");
         location.href ='/';
     }   
-    return {
-        props : {data}
-    }
+    return {props}
 }
 
 export default UserPage

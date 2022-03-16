@@ -5,6 +5,7 @@ import $ from 'jquery'
 import { useEffect, useState } from 'react'
 //import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
+import axios from 'axios'
 
 const Header = ({props}) => {
 
@@ -19,7 +20,7 @@ const Header = ({props}) => {
     }
 
     useEffect(()=>{
-        console.log(logo);
+        console.log(props);
     },[])
 
     useEffect(()=>{
@@ -40,6 +41,10 @@ const Header = ({props}) => {
         })
     })
 
+    /*                <Link href="/readers/all/1">
+                    <S.Path path={pathname.includes("/readers")}>독자마당</S.Path>
+                </Link> */
+
     const Path = () => {
         return(
             <S.PathDiv>
@@ -51,9 +56,6 @@ const Header = ({props}) => {
                 </Link>
                 <Link href="/top100">
                     <S.Path path={pathname.includes("/top100")}>TOP100</S.Path>
-                </Link>
-                <Link href="/readers/all/1">
-                    <S.Path path={pathname.includes("/readers")}>독자마당</S.Path>
                 </Link>
                 {props ?
                 <Link href="/mybook">
@@ -102,14 +104,6 @@ const Header = ({props}) => {
                                 </Link>
                             </S.MenuWrap>
                             <S.MenuWrap>
-                                <S.MenuLi>
-                                <i className="fas fa-coins"></i>코인 {props.coin}
-                                    <Link href="/shop/coin">
-                                        <button>충전</button>
-                                    </Link>
-                                </S.MenuLi>
-                            </S.MenuWrap>
-                            <S.MenuWrap>
                                 <Link href="/new">
                                     <S.MenuLi><i className="far fa-edit"></i>신규 소설등록</S.MenuLi>
                                 </Link>
@@ -118,24 +112,8 @@ const Header = ({props}) => {
                                 </Link>
                             </S.MenuWrap>
                             <S.MenuWrap>
-                                <Link href="/useredit">
-                                    <S.MenuLi><i className="far fa-user-circle"></i>유저 정보 설정/수정</S.MenuLi>
-                                </Link>
-                            </S.MenuWrap>
-                            <S.MenuWrap>
                                 <Link href="/shop/plus">
                                     <S.MenuLi><i className="far fa-plus-square"></i>플러스 샵</S.MenuLi>
-                                </Link>
-                                <Link href="/shop/coin">
-                                    <S.MenuLi><i className="fas fa-coins"></i>코인 샵</S.MenuLi>
-                                </Link>
-                                <Link href="/shop/emoticon">
-                                    <S.MenuLi><i className="far fa-smile-wink"></i>이모티콘 샵</S.MenuLi>
-                                </Link>
-                            </S.MenuWrap>
-                            <S.MenuWrap>
-                                <Link href="/readers/comunity">
-                                    <S.MenuLi><i className="fas fa-bullhorn"></i>공지사항</S.MenuLi>
                                 </Link>
                             </S.MenuWrap>
                             <S.Logout>
@@ -187,3 +165,29 @@ export default Header
                         :
                         <></>
                     } */
+
+/*
+                            <S.MenuWrap>
+                                <S.MenuLi>
+                                <i className="fas fa-coins"></i>코인 {props.coin}
+                                    <Link href="/shop/coin">
+                                        <button>충전</button>
+                                    </Link>
+                                </S.MenuLi>
+                            </S.MenuWrap>                            <S.MenuWrap>
+                                <Link href="/useredit">
+                                    <S.MenuLi><i className="far fa-user-circle"></i>유저 정보 설정/수정</S.MenuLi>
+                                </Link>
+                            </S.MenuWrap>
+                                                            <Link href="/shop/coin">
+                                    <S.MenuLi><i className="fas fa-coins"></i>코인 샵</S.MenuLi>
+                                </Link>
+                                <Link href="/shop/emoticon">
+                                    <S.MenuLi><i className="far fa-smile-wink"></i>이모티콘 샵</S.MenuLi>
+                                </Link>
+                            </S.MenuWrap>
+                            <S.MenuWrap>
+                                <Link href="/readers/comunity">
+                                    <S.MenuLi><i className="fas fa-bullhorn"></i>공지사항</S.MenuLi>
+                                </Link>
+ */
