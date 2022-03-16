@@ -19,7 +19,7 @@ const MyBookPage = ({props}) => {
 
     /*const lists : BookInterface[] = [{id: 1, title: "test", author: "이상운", explane: "123123", image: "https://image.novelpia.com/imagebox/cover/18fc3444c07e1ecadd65072b4bd08e28_47837_ori.thumb",tag: ["1", "2"]}];
 */
-    const [selected, setSelected] = useState(1);
+    //const [selected, setSelected] = useState(1);
 
     const router = useRouter();
     const {type} = router.query;

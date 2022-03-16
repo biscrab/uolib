@@ -11,13 +11,11 @@ const Header = ({props}) => {
     //const isMobile = useMediaQuery('( maxWidth: 1240 )')
     const isMobile = 0;
     const [onMenu, setOnMenu] = useState(false);
-
-    const [isAlarm, setIsAlarm] = useState(false);
     const rotuer = useRouter();
     const pathname = rotuer.pathname
 
-    const logout = () => {
-
+    const logOut = () => {
+        rotuer.push("/");
     }
 
     useEffect(()=>{
@@ -178,7 +176,6 @@ Header.getInitialProps = async function(context){
     const props = await res.data;
     return {props}
 }
-
 
 export default Header
 

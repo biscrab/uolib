@@ -4,8 +4,11 @@ import GoogleLogin from 'react-google-login';
 import axios from 'axios';
 import { NextPage } from 'next';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const LoginPage = () => {
+
+    const router = useRouter();
 
     const [info, setInfo] = useState({email: "", password: ""});
 
@@ -37,6 +40,7 @@ const LoginPage = () => {
                 .then(res => {
                     document.cookie = "uolib_token = " + `{token: ${res.data.token}, refresh_token: ${res.data.refresh_token}, type: "uolib"}`;
                     alert("로그인 완료");
+                    router.push("/")
                 })
                 .catch(err => alert("잘못된 정보 입니다."))
         }

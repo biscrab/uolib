@@ -192,15 +192,6 @@ const NovelPage/*: NextPage*/ = ({props}) => {
             </S.ListDiv>
 
             <S.AuthorBorder>
-                <S.Support>
-                    <S.ListTittle>작가후원</S.ListTittle>
-                    <S.SupportDiv>
-                        <S.SupportButton onClick={()=>setOnSupport(true)}>작가후원하기</S.SupportButton>
-                        <S.SupporterList>
-
-                        </S.SupporterList>
-                    </S.SupportDiv>
-                </S.Support>
                 {/*
                 {novel.other ?
                 <S.ListTittle>작가의 다른 작품</S.ListTittle>
@@ -235,7 +226,31 @@ const NovelPage/*: NextPage*/ = ({props}) => {
                 )}
             </S.PDiv>
         </S.Body>
-        {onSupport ?
+        </>
+    )
+}
+
+NovelPage.getInitialProps = async function(context){
+    const res = await axios.get(`https://uolib.herokuapp.com/novel/0`)
+    const data = await res.data;
+    return {
+        props : {data}
+    }
+}
+
+export default NovelPage
+
+/*                <S.Support>
+                    <S.ListTittle>작가후원</S.ListTittle>
+                    <S.SupportDiv>
+                        <S.SupportButton onClick={()=>setOnSupport(true)}>작가후원하기</S.SupportButton>
+                        <S.SupporterList>
+
+                        </S.SupporterList>
+                    </S.SupportDiv>
+                </S.Support> */
+
+/*        {onSupport ?
             <S.Background>
                 <S.SupportModal>
                     <S.SupportModalHeader>
@@ -259,17 +274,4 @@ const NovelPage/*: NextPage*/ = ({props}) => {
             </S.Background>
             :
             <></>
-        }
-        </>
-    )
-}
-
-NovelPage.getInitialProps = async function(context){
-    const res = await axios.get(`https://uolib.herokuapp.com/novel/0`)
-    const data = await res.data;
-    return {
-        props : {data}
-    }
-}
-
-export default NovelPage
+        } */

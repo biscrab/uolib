@@ -5,15 +5,21 @@ import axios from 'axios';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-/*
-type BookInterface = {
+
+type PropsType = {
+    max: number,
+    count: number;
+    list: BookType[]
+}
+
+type BookType = {
     id: number,
     title: string,
     author: string,
     image: string,
     explane: string,
     tag: string[];
-}*/
+}
 
 const SerializePage = ({props}: {props?: any}) => {
 
@@ -74,12 +80,10 @@ const SerializePage = ({props}: {props?: any}) => {
         )
     }
 
-    useEffect(()=>{
-        axios.get(location.pathname)
-            .then(res => {
-                setMax(res.data.max);
-                //setList(res.data.list);
-            });
+    useEffect(()=>{ 
+        const {type, order, page, tag} = router.query;
+        console.log(`https://uolib.herokuapp.com${router.pathname.slice(0, 5)}/${type ? type : "all"}/${order ? order : "date"}/${page ? page : "1"}${tag ? `/${tag}` : ""}`);
+        console.log(props);
     },[])
 
     return(
@@ -101,7 +105,7 @@ const SerializePage = ({props}: {props?: any}) => {
                 </Link>
             </S.SelectDiv>
             <S.Result>
-                <b>총 {max}개의 작품</b>
+                <b>총 {props?.max}개의 작품</b>
                 <div>
                     <Link href={`/${plus ? "plus" : "free"}/${type ? type : "all"}/date/1${tag ? `/${tag}` : ""}`}>
                     <div>
@@ -142,7 +146,11 @@ const SerializePage = ({props}: {props?: any}) => {
                 <Category />
             </S.CategoryDiv>
             <S.List>
-
+                {props ?
+                <Book lists={props?.list}/>
+                :
+                <></>
+                }
             </S.List>
             <S.PageDiv>
                 <S.Page><i className="fas fa-chevron-left"></i></S.Page>
@@ -162,10 +170,9 @@ const SerializePage = ({props}: {props?: any}) => {
 
 SerializePage.getInitialProps = async function(context: any){
     const {type, order, page, tag} = context.query;
-    //const res = await axios.get(`https://uolib.herokuapp.com/${context.pathname}/${type ? type : "all"}/${order ? order : "date"}${page ? `/${page}` : ""}${tag ? `/${tag}` : ""}`)
-    //const props = await res.data;
-    //console.log(props);
-    const props = 1;
+    const props = await axios.get(`https://uolib.herokuapp.com${context.pathname.slice(0, 5)}/${type ? type : "all"}/${order ? order : "date"}/${page ? page : "1"}${tag ? `/${tag}` : ""}`)
+    //const props = await res;
+    console.log(props);
     return {props}
 }
 

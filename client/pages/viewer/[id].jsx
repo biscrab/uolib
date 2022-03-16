@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from 'react'
 import * as S from '../../styled/Viewer'
 import $ from 'jquery'
 import Link from 'next/link';
-import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import axios from 'axios'
 /*
@@ -17,7 +16,6 @@ type Readers = {
 
 const ViewerPage = ({props}) => {
 
-    const [onSetting, setOnSetting] = useState(false);
     const [status, setStatus] = useState("text");
     const [darkmode, setDarkmode] = useState(false);
     const [onInterface, setOnInterface] = useState(true);
@@ -56,7 +54,7 @@ const ViewerPage = ({props}) => {
         if(status === "text"){
             return(
             <S.Body dark={darkmode}>
-                <img src="https://image.novelpia.com/imagebox/cover/389dc063c0e465e5a7f7e3f3ac04bddd_130337_ori.file"/>
+                <img src={props.image}/>
                 <S.Text ref={textRef} />
                 {props.authorsword ?
                 <S.AuthorsWords dark={darkmode}>
@@ -93,7 +91,7 @@ const ViewerPage = ({props}) => {
                                     <span><i className="fas fa-thumbs-up"></i>1</span>
                                     </S.RInfo>
                                 </S.RLeft>
-                                <S.RDate>10월 10일</S.RDate>
+                                <S.RDate>{props.rdate}</S.RDate>
                             </S.RoundDiv>
                         </S.Round>
                     </Link>
@@ -121,7 +119,85 @@ const ViewerPage = ({props}) => {
         }
     }
 
-    const SettingModal = () => {
+    return(
+        <>
+        {onInterface ?
+        <S.Header dark={darkmode} className='interface'>
+            <S.HeaderDiv>
+                <S.LeftDiv>
+                    <Link href={`/novel/${props.novel}`}>
+                        <i className="fas fa-home fa-lg"></i>
+                    </Link>
+                    <S.Episode>EP.{props.episode}</S.Episode>
+                    <S.Title>{props.title}</S.Title>
+                </S.LeftDiv>
+                <S.RightDiv>
+                    <S.ListSpan onClick={()=>{if(status !== "list"){setStatus("list")}else{setStatus("text")}}}><i className="fas fa-bars"/>목록</S.ListSpan>
+                </S.RightDiv>
+            </S.HeaderDiv>
+        </S.Header>
+        :
+        <></>
+        }
+        <Body />
+        {onInterface ?
+        <S.Bottom dark={darkmode} className='interface'>
+            <div>
+                {props.prev ?
+                <span><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
+                :
+                <span style={{color: "#ccc"}}><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
+                }
+                <span onClick={()=>{if(status !== "comment"){setStatus("comment")}else{setStatus("text")}}}><i className="far fa-comment-alt" style={{marginRight: "5px"}}></i>댓글</span>
+                <span><i className="far fa-thumbs-up" style={{marginRight: "5px"}}></i>추천</span>
+                <span><i className="far fa-heart" style={{marginRight: "5px"}}></i>선호</span>
+                {props.next ?
+                <span>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
+                :
+                <span style={{color: "#ccc"}}>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
+                }
+            </div>
+        </S.Bottom>
+        :
+        <></>
+        }
+        <>
+        {!isPlus ?
+        <S.Background>
+            <S.PlusModal>
+                <i className="fas fa-home"></i>홈
+                <img src={`https://uolib.herokuapp.com/bookcover/${id}`}/>
+                <span>PLUS 멤버십 가입이<br />필요한 회차 입니다.</span>
+                <button>PLUS 가입</button>
+            </S.PlusModal>
+        </S.Background>
+        :
+        <></>
+        }
+        </>
+        </>
+    )
+}
+
+ViewerPage.getInitialProps = async function(context){
+    const {id} = context.query;
+    const res = await axios.get(`https://uolib.herokuapp.com/round/${id}`)
+    const props = await res.data;
+    return {props}
+}
+
+export default ViewerPage
+
+/*                    <S.Setting>
+                    <span onClick={()=>setOnSetting(!onSetting)}><i className="fas fa-cog"></i>설정</span>
+                    {onSetting ?
+                        <SettingModal/>
+                        :
+                        <></>
+                    }
+                    </S.Setting> */
+
+/*    const SettingModal = () => {
         return(
             <S.SettingModal>
             <S.SettingDiv>
@@ -193,81 +269,4 @@ const ViewerPage = ({props}) => {
             </S.SettingDiv>
         </S.SettingModal>
         )
-    }
-
-    return(
-        <>
-        {onInterface ?
-        <S.Header dark={darkmode} className='interface'>
-            <S.HeaderDiv>
-                <S.LeftDiv>
-                    <Link href={`/novel/${props.novel}`}>
-                        <i className="fas fa-home fa-lg"></i>
-                    </Link>
-                    <S.Episode>EP.{props.episode}</S.Episode>
-                    <S.Title>{props.title}</S.Title>
-                </S.LeftDiv>
-                <S.RightDiv>
-                    <S.ListSpan onClick={()=>{if(status !== "list"){setStatus("list")}else{setStatus("text")}}}><i className="fas fa-bars"/>목록</S.ListSpan>
-                    <S.Setting>
-                    <span onClick={()=>setOnSetting(!onSetting)}><i className="fas fa-cog"></i>설정</span>
-                    {onSetting ?
-                        <SettingModal/>
-                        :
-                        <></>
-                    }
-                    </S.Setting>
-                </S.RightDiv>
-            </S.HeaderDiv>
-        </S.Header>
-        :
-        <></>
-        }
-        <Body />
-        {onInterface ?
-        <S.Bottom dark={darkmode} className='interface'>
-            <div>
-                {props.prev ?
-                <span><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
-                :
-                <span style={{color: "#ccc"}}><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
-                }
-                <span onClick={()=>{if(status !== "comment"){setStatus("comment")}else{setStatus("text")}}}><i className="far fa-comment-alt" style={{marginRight: "5px"}}></i>댓글</span>
-                <span><i className="far fa-thumbs-up" style={{marginRight: "5px"}}></i>추천</span>
-                <span><i className="far fa-heart" style={{marginRight: "5px"}}></i>선호</span>
-                {props.next ?
-                <span>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
-                :
-                <span style={{color: "#ccc"}}>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
-                }
-            </div>
-        </S.Bottom>
-        :
-        <></>
-        }
-        <>
-        {!isPlus ?
-        <S.Background>
-            <S.PlusModal>
-                <i className="fas fa-home"></i>홈
-                <img src={`https://uolib.herokuapp.com/bookcover/${id}`}/>
-                <span>PLUS 멤버십 가입이<br />필요한 회차 입니다.</span>
-                <button>PLUS 가입</button>
-            </S.PlusModal>
-        </S.Background>
-        :
-        <></>
-        }
-        </>
-        </>
-    )
-}
-
-ViewerPage.getInitialProps = async function(context){
-    const {id} = context.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/round/${id}`)
-    const props = await res.data;
-    return {props}
-}
-
-export default ViewerPage
+    } */

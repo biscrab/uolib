@@ -14,16 +14,6 @@ const SignUpPage = () => {
     const [time, setTime] = useState(0);
 
     useEffect(()=>{
-        if(localStorage.getItem("uolib_email")){
-            axios.post("/certification/check", {email: localStorage.getItem("uolib_emil")})
-                .then(res => {
-                    setTime(res.data)
-                    setEdit(false);
-                })
-        }
-    },[])
-
-    useEffect(()=>{
         if(time){
             setInterval(()=>{
                 setTime(time-1);
@@ -56,6 +46,11 @@ const SignUpPage = () => {
                     axios.post("/user", info)
                         .then(res => {
                             alert("환영합니다.")
+                        })
+                        .catch(err => {
+                            if(err.status == 400){
+                                setTime(err.data);
+                            }
                         })
                 })
         }
