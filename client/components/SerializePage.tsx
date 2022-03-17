@@ -84,8 +84,8 @@ const SerializePage = ({props}: any) => {
                 <Link href={`/${plus ? "plus" : "free"}/new/${order ? order : "date"}/1`}>
                 <S.Select selected={type === "new"}>신작</S.Select>
                 </Link>
-                <Link href={`/${plus ? "plus" : "free"}/compleate/${order ? order : "date"}/1`}>
-                <S.Select selected={type === "compleate"}>완결</S.Select>
+                <Link href={`/${plus ? "plus" : "free"}/complete/${order ? order : "date"}/1`}>
+                <S.Select selected={type === "complete"}>완결</S.Select>
                 </Link>
             </S.SelectDiv>
             <S.Result>
@@ -130,10 +130,12 @@ const SerializePage = ({props}: any) => {
                 <Category />
             </S.CategoryDiv>
             <S.List>
-                {props ?
+                {props.list[0] ?
                 <Book lists={props.list}/>
                 :
-                <></>
+                <S.Null>
+                    작품이 없습니다.
+                </S.Null>
                 }
             </S.List>
             <S.PageDiv>

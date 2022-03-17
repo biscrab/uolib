@@ -14,17 +14,17 @@ const LoginPage = () => {
 
     const clientId = "236232072754-81f153ainje620b38lonfi9u4r6qv3cc.apps.googleusercontent.com";
 
-    const onSuccess = async(res) => {
+    const onSuccess = (res) => {
     	console.log(res.accessToken);
-        document.cookie = "uolib_token = " + `{token: ${res.accessToken}, type: "google"}`;
+        document.cookie = "uolib_token = " + `{"token": "${res.accessToken}", "type": "google"}`;
         const { googleId, profileObj : { email, name } } = response;
-        
+        /*
         await onSocial({
             socialId : googleId,
             socialType : 'google',
             email,
             nickname : name
-        });
+        });*/
     }
 
     const onFailure = (error) => {
@@ -38,7 +38,7 @@ const LoginPage = () => {
         else{
             axios.post('/login', info)
                 .then(res => {
-                    document.cookie = "uolib_token = " + `{token: ${res.data.token}, refresh_token: ${res.data.refresh_token}, type: "uolib"}`;
+                    document.cookie = "uolib_token = " + `{"token": "${res.data.token}", "refresh_token": "${res.data.refresh_token}", "type": "uolib"}`;
                     alert("로그인 완료");
                     router.push("/")
                 })

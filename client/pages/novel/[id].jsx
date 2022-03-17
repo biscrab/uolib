@@ -45,7 +45,7 @@ const NovelPage/*: NextPage*/ = ({props}) => {
     
         axios.post(`/search?q=${String(query.q)}&p=${Number(p)}`)
             .then(res => {
-                let m = res.data.count;
+                let m = res.props.count;
                 setNovel(res.data)
                 if(Number(query.p) <= 2){
                     p = pages;
@@ -103,38 +103,38 @@ const NovelPage/*: NextPage*/ = ({props}) => {
         <>
         <S.Body>
             <S.Info>
-                <S.BookCover src="https://image.novelpia.com/imagebox/cover/18fc3444c07e1ecadd65072b4bd08e28_47837_ori.thumb"/>
+                <S.BookCover src={`https://uolib.herokuapp.com/bookcover/${props.novel.image}`}/>
                 <S.InfoDiv>
                     <S.TopInfo>
-                        <S.Tittle>제목</S.Tittle>
+                        <S.Tittle>{props.novel.title}</S.Tittle>
                         <S.AuthorDiv>
                             <S.Author>작가</S.Author>
-                            <Link href={`/user/${1}`}>
-                            <S.Name>테스트</S.Name>
+                            <Link href={`/user/${props.novel.author}`}>
+                            <S.Name>{props.novel.author}</S.Name>
                             </Link>
                         </S.AuthorDiv>
                     </S.TopInfo>
                     <S.BottomInfo>
                         <S.BottomInfoDiv>
                             <S.InfoBorder>
-                                <S.Day>월</S.Day>
+                                <S.Day>{props.novel.days}</S.Day>
                                 연재
                             </S.InfoBorder>
                             <S.InfoBorder>
                             <img src="https://novelpia.com/img/new/icon/count_view.png" />
-                            <span>{data.view}명</span>
+                            <span>{props.view}명</span>
                             <img src="https://novelpia.com/img/new/icon/count_book.png" />
-                            <span>{0}회차</span>
+                            <span>{props.round.length}회차</span>
                             <img src="https://novelpia.com/img/new/icon/count_good.png" />
-                            <span>{data.round.length}회</span>
+                            <span>{props.like}회</span>
                             </S.InfoBorder>
                         </S.BottomInfoDiv>
                         <S.Explane>
-                            {data.novel.explane}
+                            {props.explane}
                         </S.Explane>
                         <br/>
                         <S.TagDiv>
-                            <b>태그 : {data.novel.tag}</b>
+                            <b>태그 : {props.novel.tag.map(i => {return(<span>{i}</span>)})}</b>
                         </S.TagDiv>
                     </S.BottomInfo>
                 </S.InfoDiv>
@@ -145,7 +145,7 @@ const NovelPage/*: NextPage*/ = ({props}) => {
             <S.List>
                 <S.ListTittle>회차리스트</S.ListTittle>
                 <S.ListBorder>
-                    {data.round.map((i, index) => {
+                    {props.round.map((i, index) => {
                         return(
                             <div key={index}>
                             <Link href={`/viewer/${1}`}>
@@ -161,12 +161,12 @@ const NovelPage/*: NextPage*/ = ({props}) => {
                                             <S.RTittle>{i.title}</S.RTittle>
                                         </S.TittleDiv>
                                         <S.RInfo>
-                                        <span><i className="fas fa-user"></i>3000</span>
-                                        <span><i className="fas fa-comment-alt"></i>400</span>
-                                        <span><i className="fas fa-thumbs-up"></i>1</span>
+                                        <span><i className="fas fa-user"></i>{i.view}</span>
+                                        <span><i className="fas fa-comment-alt"></i>{i.comment}</span>
+                                        <span><i className="fas fa-thumbs-up"></i>{i.like}</span>
                                         </S.RInfo>
                                     </S.RLeft>
-                                    <S.RDate>10월 10일</S.RDate>
+                                    <S.RDate>{i.rdate}</S.RDate>
                                 </S.RoundDiv>
                             </S.Round>
                             </Link>
@@ -177,7 +177,7 @@ const NovelPage/*: NextPage*/ = ({props}) => {
             </S.List>
             <S.CommentTittle>댓글</S.CommentTittle>
             <S.CommentList>
-                {data.comments.map(
+                {props.comments.map(
                     (item, index) => {
                         return(
                             <S.Comment key={index}>

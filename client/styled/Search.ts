@@ -16,6 +16,7 @@ export const Body = styled.div`
     left: 50%;
     transform: translateX(-50%);
     margin-top: 30px;
+    padding-bottom: 60px;
     @media screen and (max-width: 1200px){
         width: 100%;
         padding: 0px 10px;
@@ -132,12 +133,12 @@ export const List  = styled.ul`
 `
 
 export const Null = styled.div`
-    height: 300px;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #999;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
 `
 

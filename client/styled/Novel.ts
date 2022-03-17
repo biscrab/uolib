@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Body = styled.div`
     margin-top: 50px;
-    width: 1250px;
+    width: 1150px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -13,6 +13,7 @@ export const Body = styled.div`
 export const BookCover = styled.img`
     border-radius: 10px;
     height: 250px;
+    width: 180px;
 `
 
 export const Info = styled.div`
@@ -139,6 +140,7 @@ export const Name = styled.span`
 `
 
 export const ListTittle = styled.h1`
+    width: 100%;
     margin-top: 30px;
     margin-bottom: 8px;
     font-size: 25px;
@@ -157,6 +159,7 @@ export const List = styled.div`
 export const ListBorder = styled.ul`
     border-top: 2px solid #666;
     height: 1000px;
+    width: 100%;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -300,10 +303,12 @@ export const CommentTittle = styled.h2`
     padding-bottom: 10px;
     font-size: 22px;
     font-weight: bold;
+    width: 100%;
 `
 
 export const Comment = styled.li`
     border-bottom: 1px solid #eee;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 5px 15px;

@@ -85,7 +85,7 @@ const NewPage = () => {
     }
 
     const regist = () => {
-        axios.post('/novel/new', {...novel, tag: JSON.stringify(novel.tag), day: getDay(day)})
+        axios.post('/novel/new', {...novel, tag: JSON.stringify(novel.tag), day: getDay()})
             .then(res => alert("등록되었습니다."))
     }
 

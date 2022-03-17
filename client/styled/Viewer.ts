@@ -88,6 +88,7 @@ export const Body = styled.div<DarkProps>`
 
 export const Text = styled.div`
     padding: 80px 0px;
+    min-height: 1000px;
 `
 
 export const AuthorsWords = styled.div<DarkProps>`
