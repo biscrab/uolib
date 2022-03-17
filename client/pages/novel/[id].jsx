@@ -103,7 +103,7 @@ const NovelPage/*: NextPage*/ = ({props}) => {
         <>
         <S.Body>
             <S.Info>
-                <S.BookCover src={`https://uolib.herokuapp.com/bookcover/${props.novel.image}`}/>
+                <S.BookCover src={props.novel.image ? props.novel.image : "https://image.novelpia.com/img/layout/readycover4.png"}/>
                 <S.InfoDiv>
                     <S.TopInfo>
                         <S.Tittle>{props.novel.title}</S.Tittle>

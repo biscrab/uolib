@@ -47,6 +47,7 @@ function MyApp({ Component, pageProps }/*: AppProps*/) {
   const [setting, setSetting] = useState();
 
   axios.defaults.baseURL = "https://uolib.herokuapp.com"
+  axios.defaults.withCredentials = true;
 
   useEffect(()=>{
     /*axios.get('/setting')

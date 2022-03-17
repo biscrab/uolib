@@ -1,4 +1,4 @@
-import * as S from '../../styled/User'
+import * as S from '../client/styled/User'
 import { NextPage } from 'next';
 import axios from 'axios';
 

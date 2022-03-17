@@ -38,7 +38,7 @@ const LoginPage = () => {
         else{
             axios.post('/login', info)
                 .then(res => {
-                    document.cookie = "uolib_token = " + `{"token": "${res.data.token}", "refresh_token": "${res.data.refresh_token}", "type": "uolib"}`;
+                    document.cookie = "uolib_token = " + `{"token": "${res.data.token}", "type": "uolib"}`;
                     alert("로그인 완료");
                     router.push("/")
                 })

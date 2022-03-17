@@ -23,7 +23,7 @@ const List = ({lists}) => {
             return(
               <S.Book key={index} length={lists.length}>
                 <Link href={`/novel/${i.id}`}>
-                    <S.BookCover src={`https://uolib.herokuapp.com/uploads/${i.image}`}/>
+                    <S.BookCover src={i.image ? i.image : "https://image.novelpia.com/img/layout/readycover4.png"}/>
                 </Link>
                 <S.BookInfo>
                     <S.BookInfoDiv>

@@ -96,12 +96,10 @@ const Header = ({props}) => {
                             {props ?
                             <>
                             <S.MenuWrap>
-                                <Link href={`/user/${props.id}`}>
-                                    <S.MenuLi>
-                                        <img src="https://phinf.pstatic.net/contact/20210430_217/1619765233604XypyT_PNG/avatar_profile.png"/>
-                                            <b>{props.name}</b>
-                                    </S.MenuLi>
-                                </Link>
+                                <S.MenuLi>
+                                    <img src="https://phinf.pstatic.net/contact/20210430_217/1619765233604XypyT_PNG/avatar_profile.png"/>
+                                        <b>{props.name}</b>
+                                </S.MenuLi>
                             </S.MenuWrap>
                             <S.MenuWrap>
                                 <Link href="/new">
@@ -150,7 +148,7 @@ const Header = ({props}) => {
 }
 
 Header.getInitialProps = async function(context){
-    const res = await axios.get(`https://uolib.herokuapp.com/header`)
+    const res = await axios.get(`https://uolib.herokuapp.com/test`)
     const props = await res.data;
     return {props}
 }

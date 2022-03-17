@@ -142,10 +142,11 @@ export const Name = styled.span`
 export const ListTittle = styled.h1`
     width: 100%;
     margin-top: 30px;
-    margin-bottom: 8px;
+    padding-bottom: 8px;
     font-size: 25px;
     color: #333;
     font-weight: bold;
+    border-bottom: 3px solid black;
 `
 
 export const ListDiv = styled.div`
@@ -157,7 +158,6 @@ export const List = styled.div`
 `
 
 export const ListBorder = styled.ul`
-    border-top: 2px solid #666;
     height: 1000px;
     width: 100%;
     margin: 0;
@@ -299,7 +299,7 @@ export const CommentList = styled.ul`
 `
 
 export const CommentTittle = styled.h2`
-    border-bottom: 2px solid black;
+    border-bottom: 3px solid black;
     padding-bottom: 10px;
     font-size: 22px;
     font-weight: bold;

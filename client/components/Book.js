@@ -5,7 +5,7 @@ const Book = ({i}) => {
     return(
         <S.Book>
             <Link href="/novel/1">
-                <S.BookCover src={i.image}/>
+                <S.BookCover src={i.image ? i.image : "https://image.novelpia.com/img/layout/readycover4.png"}/>
             </Link>
             <S.BookInfo> 
                 <S.Title>
