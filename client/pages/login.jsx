@@ -16,7 +16,7 @@ const LoginPage = () => {
 
     const onSuccess = (res) => {
     	console.log(res.accessToken);
-        document.cookie = "uolib_token = " + `{"token": "${res.accessToken}", "type": "google"}`;
+        localStorage.setItem("uolib_token = " + `{"token": "${res.accessToken}", "type": "google"}`);
         const { googleId, profileObj : { email, name } } = response;
         /*
         await onSocial({
@@ -38,11 +38,11 @@ const LoginPage = () => {
         else{
             axios.post('/login', info)
                 .then(res => {
-                    document.cookie = "uolib_token = " + `{"token": "${res.data.token}", "type": "uolib"}`;
+                    localStorage.setItem("uolib_token", `{"token": "${res.data.token}", "type": "uolib"}`);
                     alert("로그인 완료");
                     router.push("/")
                 })
-                .catch(err => alert("잘못된 정보 입니다."))
+                .catch(err => alert("잘못된 정보 입니다. " + err.status))
         }
     }
 

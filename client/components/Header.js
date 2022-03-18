@@ -148,8 +148,18 @@ const Header = ({props}) => {
 }
 
 Header.getInitialProps = async function(context){
-    const res = await axios.get(`https://uolib.herokuapp.com/test`)
-    const props = await res.data;
+    const token = localStorage.getItem("uolib_token");
+    console.log(token);
+    var props;
+    
+    if(token){
+        const res = await axios.get(`https://uolib.herokuapp.com/header`, {headers: {Authorization: `Bearer ${token}`}})
+        props = await res.data;
+    }
+    else{
+        props = false;
+    }
+
     return {props}
 }
 

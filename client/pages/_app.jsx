@@ -7,10 +7,12 @@ import { useEffect, useState } from 'react'
 import * as S from '../styled/App'
 import '../styles/index.css'
 import '../styles/App.css'
-import dynamic from 'next/dynamic'
 import {useRouter} from 'next/router'
 import Loading from '../components/Loading.js'
 import axios from 'axios';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import rootReducer from "../store/rootReducer";
 /*
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -39,14 +41,7 @@ function MyApp({ Component, pageProps }/*: AppProps*/) {
   const router = useRouter();
   const pathname = router.pathname;
 
-  const DynamicComponentWithCustomLoading = dynamic(
-    () => import('../components/Loading.js'),
-    { loading: () => <Loading /> }
-  )
-
-  const [setting, setSetting] = useState();
-
-  axios.defaults.baseURL = "https://uolib.herokuapp.com"
+  axios.defaults.baseURL = "https://uolib.herokuapp.com";
   axios.defaults.withCredentials = true;
 
   useEffect(()=>{
@@ -81,6 +76,8 @@ function MyApp({ Component, pageProps }/*: AppProps*/) {
     router.events.on("routeChangeError", handleComplete);
   }, [router]);
 
+  const store = createStore(rootReducer);
+
   return (
     <>
       <title>유라이브</title>
@@ -96,7 +93,9 @@ function MyApp({ Component, pageProps }/*: AppProps*/) {
       :
       <></>
       }
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
       <Footer />
       <Loading loading={loading}/>
     </>

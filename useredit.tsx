@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import * as S from '../styled/User'
+import * as S from './client/styled/User'
 import { NextPage } from 'next';
 
 const UserEditPage: NextPage<{}> = () => {

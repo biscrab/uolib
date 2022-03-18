@@ -66,7 +66,7 @@ export const Book = styled.div<BookProps>`
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    margin-right: ${props => (props.key+1)/5 ? "" : "5px"};
+    margin-right: ${props => (props.key+1)/5 ? "" : "15px"};
     b{
         margin-top: 6px;
     }

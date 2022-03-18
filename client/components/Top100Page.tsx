@@ -43,7 +43,7 @@ const Top100Page = ({props}: any) => {
                             <S.Rank>{index + 1}</S.Rank>
                             <Link href="/novel/1">
                             <S.BookImgDiv>
-                                <img src={i.image}/>  
+                                <img src={i.image ? i.image : "https://image.novelpia.com/img/layout/readycover4.png"}/>  
                             </S.BookImgDiv>
                             </Link>
                             <b>{i.title}</b>
