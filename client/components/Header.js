@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 //import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import cookies from 'next-cookies'
 
 const Header = ({props}) => {
 
@@ -20,7 +21,8 @@ const Header = ({props}) => {
     }
 
     useEffect(()=>{
-        console.log(props);
+        axios.get("https://uolib.herokuapp.com/test")
+            .then(res => console.log(res));
     },[])
 
     useEffect(()=>{
@@ -29,14 +31,12 @@ const Header = ({props}) => {
                 $(".menumodal").animate({opacity: 0, height: 0}, 1000);
                 setTimeout(() => {setOnMenu(false)}, 1000)
             }
-        })
-
-        $(".menuicon").click(function(e){
-            if(onMenu === false){
-                setOnMenu(true);
-            }
             else{
-                setOnMenu(false);
+                $(".menuicon").click(function(e){
+                    if(onMenu === false){
+                        setOnMenu(true);
+                    }
+                })
             }
         })
     })
@@ -52,7 +52,7 @@ const Header = ({props}) => {
                     <S.Path path={pathname.includes("/free")}>자유연재</S.Path>
                 </Link>
                 <Link href="/plus">
-                    <S.Path path={pathname.includes("/plus") && 1 !== "/plus_shop" && 1 !== "/plus_agree"}>플러스</S.Path>
+                    <S.Path path={pathname.includes("/plus") && pathname !== "/plus_agree"}>플러스</S.Path>
                 </Link>
                 <Link href="/top100">
                     <S.Path path={pathname.includes("/top100")}>TOP100</S.Path>
@@ -90,7 +90,7 @@ const Header = ({props}) => {
                     </Link>
                     <S.Menu className='menu'>
                         <img className='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
-                        {1 ?
+                        {onMenu ?
                         <>
                         <S.MenuModal className='menumodal'>
                             {props ?
@@ -136,34 +136,36 @@ const Header = ({props}) => {
                     </S.Menu>
                 </S.MenuDiv>
             </S.HeaderDiv>
-            {isMobile ?
-                <S.MobilePathDiv>
-                    <Path />
-                </S.MobilePathDiv>
-                :
-                <></>
-                }
         </S.Header>
     )
 }
 
 Header.getInitialProps = async function(context){
-    const token = localStorage.getItem("uolib_token");
-    console.log(token);
+    const { uolib_token } = cookies(context);
+    console.log(uolib_token);
+
     var props;
     
-    if(token){
-        const res = await axios.get(`https://uolib.herokuapp.com/header`, {headers: {Authorization: `Bearer ${token}`}})
+    if(!uolib_token || uolib_token === ''){
+        const res = await axios.get(`https://uolib.herokuapp.com/header`, {headers: {Authorization: `Bearer ${uolib_token}`}})
         props = await res.data;
     }
     else{
-        props = false;
+        
     }
 
     return {props}
 }
 
 export default Header
+
+/*            {isMobile ?
+                <S.MobilePathDiv>
+                    <Path />
+                </S.MobilePathDiv>
+                :
+                <></>
+            } */
 
 /*                    <Link href="/alarm">
                     <img src="https://image.novelpia.com/img/new/menu/alarm.png"/>

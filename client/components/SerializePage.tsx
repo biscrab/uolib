@@ -70,9 +70,10 @@ const SerializePage = ({props}: any) => {
         console.log(props);
     },[])
 
+    /*        <S.Banner background="#eee"/> */
+
     return(
         <>
-        <S.Banner background="#eee"/>
         <S.Body>
             <S.SelectDiv>
                 <Link href={`/${plus ? "plus" : "free"}/all/${order ? order : "date"}/1`}>

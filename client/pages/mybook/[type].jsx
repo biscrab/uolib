@@ -28,13 +28,10 @@ const MyBookPage = ({props}) => {
         <S.Body>
             <S.SelectDiv>
                 <Link href="/mybook/like">
-                    <S.Select selected={type==="like" || !type}>선호작</S.Select>
+                    <S.Select selected={type==="like"}>선호작</S.Select>
                 </Link>
                 <Link href="/mybook/my">
                     <S.Select selected={type==="my"}>내작품</S.Select>
-                </Link>
-                <Link href="/mybook/donation">
-                    <S.Select selected={type==="donation"}>후원목록</S.Select>
                 </Link>
                 <Link href="/mybook/last_view">
                     <S.Select selected={type==="last_view"}>최근 본 작품</S.Select>
@@ -43,8 +40,6 @@ const MyBookPage = ({props}) => {
                     <S.Select selected={type==="support"}>후원금 정산</S.Select>
                 </Link>
             </S.SelectDiv>
-            {type !== "support" ?
-            <>
             <S.CountOfBook>
                 총 0개의 작품
             </S.CountOfBook>
@@ -54,15 +49,6 @@ const MyBookPage = ({props}) => {
                 </S.List>
                 :
                 <></>
-                }
-            </>
-            :
-            <S.Support>
-                <div>후원금 정산</div>
-                <ul>
-                    
-                </ul>
-            </S.Support>
             }
         </S.Body>
     )
@@ -72,8 +58,22 @@ MyBookPage.getInitialProps = async function(context){
     const { type } = context.query;
     const res = await axios.get(`https://uolib.herokuapp.com/mybook/${type}`)
     const props = await res.data;
-    console.log(res);
     return {props}
 }
 
 export default MyBookPage
+
+/*                <Link href="/mybook/donation">
+                    <S.Select selected={type==="donation"}>후원목록</S.Select>
+                </Link>
+                            {type !== "support" ?
+            <>
+                        :
+            <S.Support>
+                <div>후원금 정산</div>
+                <ul>
+                    
+                </ul>
+            </S.Support>
+            }
+                        </>*/

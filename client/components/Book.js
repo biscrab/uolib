@@ -36,9 +36,9 @@ const Book = ({i}) => {
                     <img src="https://novelpia.com/img/new/icon/count_view.png"/>
                     <span>{i.view}명</span>
                     <img src="https://novelpia.com/img/new/icon/count_book.png"/>
-                    <span>515회차</span>
+                    <span>{i.round}회차</span>
                     <img src="	https://image.novelpia.com/img/new/icon/count_good.png"/>
-                    <span>8.0K회</span>
+                    <span>{i.like}회</span>
                 </S.Info>
                 <S.TagDiv>
                     {/*`

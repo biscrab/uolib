@@ -33,7 +33,7 @@ const Search/*: NextPage<{}>*/ = () => {
                 <>
                 {tag.list.map((i/*: string*/, index/*: number*/) => {
                     return(
-                        <Link href={`/search/tag/date/1/${i}`} key={index}>
+                        <Link href={`/search/tag/date/1/${encodeURI(i)}`} key={index}>
                             <S.Tag>#{i}</S.Tag>
                         </Link>
                     )

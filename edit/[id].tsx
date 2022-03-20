@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NextPage } from 'next';
-import * as S from '../../styled/New'
+import * as S from '../client/styled/New'
 import axios from 'axios';
 
 const EditPage: NextPage<{}> = () => {

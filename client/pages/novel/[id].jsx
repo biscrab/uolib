@@ -5,27 +5,11 @@ import Link from 'next/link'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 
-/*
-type novelType = {
-    view: number,
-    tag: string[],
-    other: any[],
-    image: string,
-    notice: any[],
-    comment: any[],
-    explane: string,
-    user: string,
-}*/
-
 const NovelPage/*: NextPage*/ = ({props}) => {
 
     //const [novel, setNovel] = useState({view: "", tag: ["1", "2"], other: [{title: "1", author: "1", image: "https://image.novelpia.com/imagebox/cover/71ef870f96a30146e548d3c75dfe439e_458688_ori.file"}], notice:[], comment:[], explane: "새로운 삶이 이득같은 손해인지 손해같은 이득인지 아직도 장담할 수 없다. 하지만 나는 이 괴랄한 설정의 세계에 적응해야 한다.", user: "1"});
-    const [lists, setLists] = useState([{title: "test1", type: "notice", plus: true},{title: "test1", type: "notice"}]);
-    const [comments, setComments] = useState([{name: "1"}]);
     const [pages, setPages] = useState([]);
     const [page, setPage] = useState([]);
-    const [onSupport, setOnSupport] = useState(false);
-    const [price, setPrice] = useState(0);
 
     //const query = queryString.parse(location.search);
     const router = useRouter()
@@ -182,37 +166,14 @@ const NovelPage/*: NextPage*/ = ({props}) => {
                         return(
                             <S.Comment key={index}>
                                 <b>{item.name}</b>
-                                <span>전에 작성됨</span>
-                                <div></div>
+                                <span>{item.rdate}</span>
+                                <div>{item.comment}</div>
                             </S.Comment>
                         )
                     }
                 )}
             </S.CommentList>
             </S.ListDiv>
-
-            <S.AuthorBorder>
-                {/*
-                {novel.other ?
-                <S.ListTittle>작가의 다른 작품</S.ListTittle>
-                :
-                <S.ListTittle>추천작품</S.ListTittle>
-                }
-                <S.OtherBookList>
-                    {novel.other.map(
-                        (item: any, index: any) => {
-                            <S.OtherBook key={index}>
-                                <img src={item.image}/>
-                                <div>
-                                   <b>{item.title}</b> 
-                                   <span>{item.author}</span>
-                                </div>
-                            </S.OtherBook>
-                        }
-                    )}
-                </S.OtherBookList>
-            */}
-            </S.AuthorBorder>
             </S.Border>
             <S.PDiv>
                 {pages.map(
@@ -237,6 +198,42 @@ NovelPage.getInitialProps = async function(context){
 }
 
 export default NovelPage
+
+/*
+type novelType = {
+    view: number,
+    tag: string[],
+    other: any[],
+    image: string,
+    notice: any[],
+    comment: any[],
+    explane: string,
+    user: string,
+}*/
+
+
+/*            <S.AuthorBorder>
+                {/*
+                {novel.other ?
+                <S.ListTittle>작가의 다른 작품</S.ListTittle>
+                :
+                <S.ListTittle>추천작품</S.ListTittle>
+                }
+                <S.OtherBookList>
+                    {novel.other.map(
+                        (item: any, index: any) => {
+                            <S.OtherBook key={index}>
+                                <img src={item.image}/>
+                                <div>
+                                   <b>{item.title}</b> 
+                                   <span>{item.author}</span>
+                                </div>
+                            </S.OtherBook>
+                        }
+                    )}
+                </S.OtherBookList>
+            }
+            </S.AuthorBorder> */
 
 /*                <S.Support>
                     <S.ListTittle>작가후원</S.ListTittle>
