@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import * as S from '../../../styled/Readers'
+import * as S from '../../../../Readers'
 import axios from 'axios';
 
 type RowType = {

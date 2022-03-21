@@ -38,7 +38,6 @@ const Top100Page = ({props}: any) => {
                 {props.map(
                 (i: any, index: any) => {
                     return(
-                        <div>
                         <S.Book key={index}>
                             <S.Rank>{index + 1}</S.Rank>
                             <Link href="/novel/1">
@@ -68,7 +67,6 @@ const Top100Page = ({props}: any) => {
                                 }
                             </S.TypeDiv>
                         </S.Book>
-                        </div>
                     )
                 })}
                 </>

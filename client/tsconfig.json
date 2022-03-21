@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/search/[param].jsx", "pages/search/index.jsx", "pages/index.jsx", "components/Book.ts", "pages/novel/[id].tsx", "pages/search/[type]/[order]/[page]/[keyword].jsx", "pages/new.jsx", "pages/viewer/[id].jsx", "pages/_app.tjx", "pages/admin.jsx", "pages/top100/[type].tsx", "pages/login.jsx", "pages/plus/[type]/[order]/[page]/[tag].jsx", "pages/plus/[type]/[order]/[page]/[tag].jsx", "pages/mybook/[type].jsx", "../Emoticon.ts", "../Alarm.ts", "../useredit.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/search/[param].jsx", "pages/search/index.jsx", "pages/index.jsx", "components/Book.ts", "pages/novel/[id].tsx", "pages/search/[type]/[order]/[page]/[keyword].jsx", "pages/new.jsx", "pages/viewer/[id].jsx", "pages/_app.tjx", "pages/admin.jsx", "pages/top100/[type].tsx", "pages/login.jsx", "pages/plus/[type]/[order]/[page]/[tag].jsx", "pages/plus/[type]/[order]/[page]/[tag].jsx", "pages/mybook/[type].jsx", "../Emoticon.ts", "../Alarm.ts", "../useredit.tsx", "../Readers.ts"],
   "exclude": ["node_modules"]
 }

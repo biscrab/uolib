@@ -33,6 +33,11 @@ const SignUpPage = () => {
                     setEdit(false);
                     localStorage.setItem("uolib_email", info.email)
                 })
+                .catch(err => {
+                    if(err.status === 400){
+                        setTime(err.data);
+                    }
+                })
         }
         else{
             alert("잘못된 형식의 메일입니다.")

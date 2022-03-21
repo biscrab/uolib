@@ -11,7 +11,7 @@ import cookies from 'next-cookies'
 const Header = ({props}) => {
 
     //const isMobile = useMediaQuery('( maxWidth: 1240 )')
-    const isMobile = 0;
+    //const isMobile = 0;
     const [onMenu, setOnMenu] = useState(false);
     const rotuer = useRouter();
     const pathname = rotuer.pathname
@@ -76,11 +76,7 @@ const Header = ({props}) => {
                         <S.Logo src={logo.src}/>
                     </Link>
                 </S.LogoDiv>
-                {!isMobile ?
                 <Path />
-                :
-                <></>
-                }
                 <S.MenuDiv>
                     <Link href="/shop/plus">
                     <img src="https://image.novelpia.com/img/new/menu/point.png?ver=3" />
@@ -141,17 +137,15 @@ const Header = ({props}) => {
 }
 
 Header.getInitialProps = async function(context){
-    const { uolib_token } = cookies(context);
-    console.log(uolib_token);
-
+    const token = await getCookie("uolib_token");
     var props;
     
-    if(!uolib_token || uolib_token === ''){
-        const res = await axios.get(`https://uolib.herokuapp.com/header`, {headers: {Authorization: `Bearer ${uolib_token}`}})
+    if(!token || token === ''){
+        const res = await axios.get(`https://uolib.herokuapp.com/header`, {headers: {Authorization: `Bearer ${token}`}})
         props = await res.data;
     }
     else{
-        
+        props = false;
     }
 
     return {props}

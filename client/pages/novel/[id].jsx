@@ -9,79 +9,6 @@ const NovelPage/*: NextPage*/ = ({props}) => {
 
     //const [novel, setNovel] = useState({view: "", tag: ["1", "2"], other: [{title: "1", author: "1", image: "https://image.novelpia.com/imagebox/cover/71ef870f96a30146e548d3c75dfe439e_458688_ori.file"}], notice:[], comment:[], explane: "새로운 삶이 이득같은 손해인지 손해같은 이득인지 아직도 장담할 수 없다. 하지만 나는 이 괴랄한 설정의 세계에 적응해야 한다.", user: "1"});
     const [pages, setPages] = useState([]);
-    const [page, setPage] = useState([]);
-
-    //const query = queryString.parse(location.search);
-    const router = useRouter()
-    const {id} = router.query;
-    //const data = props.data;
-    
-    useEffect(()=>{
-        /*
-        var p: number;
-
-        if(query.p){
-            p = query.p
-        }
-        else{
-            p = 1;
-        }
-    
-        axios.post(`/search?q=${String(query.q)}&p=${Number(p)}`)
-            .then(res => {
-                let m = res.props.count;
-                setNovel(res.data)
-                if(Number(query.p) <= 2){
-                    p = pages;
-                    if(Number(query.p) === 2){
-                        p.unshift(2)
-                    }
-                    p.unshift(1)
-
-                    setPages(p);
-                }
-                else{
-                    var p = pages;
-                    p.unshift(Number(query.p)-2, Number(query.p)-1, query.p)
-                    setPages(p);
-                }
-
-                if(Number(query.p)+1 >= m){
-                    if(Number(query.p) === m){
-                        setPages([...pages, Number(query.p)])
-                    }
-                    else{
-                        setPages([...pages, Number(query.p)+1])
-                    }
-                }
-                else{
-                    setPages([...pages, Number(query.p)+1, Number(query.p)+2]);
-                }
-            })*/
-    },[])
-/*
-    const changePrice = (e: any) => {
-        setPrice(e.target.value);
-    }*/
-
-    const support = () => {
-        if(!price){
-            alert("후원금을 설정해 주십쇼.")
-        }
-        else{
-            axios.post(`/support/${id}`)
-                .then(res => alert(`후원 되었습니다. (${price}코인)`))
-                .catch(err => {
-                    if(err.status === 400){
-                        alert("후원금이 모자랍니다.")
-                    }
-                    else if(err.status === 401){
-                        alert("로그인을 먼저 해 주세요.");
-                        //navigate('/login');
-                    }
-                })
-        }
-    }
 
     return(
         <>
@@ -106,11 +33,11 @@ const NovelPage/*: NextPage*/ = ({props}) => {
                             </S.InfoBorder>
                             <S.InfoBorder>
                             <img src="https://novelpia.com/img/new/icon/count_view.png" />
-                            <span>{props.view}명</span>
+                            <span>{props.novel.view}명</span>
                             <img src="https://novelpia.com/img/new/icon/count_book.png" />
                             <span>{props.round.length}회차</span>
                             <img src="https://novelpia.com/img/new/icon/count_good.png" />
-                            <span>{props.like}회</span>
+                            <span>{props.novel.like}회</span>
                             </S.InfoBorder>
                         </S.BottomInfoDiv>
                         <S.Explane>
@@ -132,25 +59,27 @@ const NovelPage/*: NextPage*/ = ({props}) => {
                     {props.round.map((i, index) => {
                         return(
                             <div key={index}>
-                            <Link href={`/viewer/${1}`}>
+                            <Link href={`/viewer/${i.id}`}>
                             <S.Round notice={i.type == "notice"}>
                                 <S.RoundDiv>
                                     <S.RLeft>
                                         <S.TittleDiv>
-                                            {i.plus ?
+                                            {i ?
                                             <S.Price color={"#5232dd"}>PLUS</S.Price>
                                             :
                                             <S.Price color={"#166d95"}>무료</S.Price>
                                             }
-                                            <S.RTittle>{i.title}</S.RTittle>
+                                            <S.RTittle></S.RTittle>
                                         </S.TittleDiv>
                                         <S.RInfo>
+                                        {/*
                                         <span><i className="fas fa-user"></i>{i.view}</span>
                                         <span><i className="fas fa-comment-alt"></i>{i.comment}</span>
                                         <span><i className="fas fa-thumbs-up"></i>{i.like}</span>
+                                        */}
                                         </S.RInfo>
                                     </S.RLeft>
-                                    <S.RDate>{i.rdate}</S.RDate>
+                                    <S.RDate>{}</S.RDate>
                                 </S.RoundDiv>
                             </S.Round>
                             </Link>
@@ -192,7 +121,8 @@ const NovelPage/*: NextPage*/ = ({props}) => {
 }
 
 NovelPage.getInitialProps = async function(context){
-    const res = await axios.get(`https://uolib.herokuapp.com/novel/${context.query.id}`)
+    const { id } = context.query;
+    const res = await axios.get(`https://uolib.herokuapp.com/novel/${id}`)
     const props = await res.data;
     return {props}
 }
@@ -270,3 +200,72 @@ type novelType = {
             :
             <></>
         } */
+
+    //const {id} = router.query;
+    //const data = props.data;
+    /*
+    useEffect(()=>{
+        var p: number;
+
+        if(query.p){
+            p = query.p
+        }
+        else{
+            p = 1;
+        }
+    
+        axios.post(`/search?q=${String(query.q)}&p=${Number(p)}`)
+            .then(res => {
+                let m = res.props.count;
+                setNovel(res.data)
+                if(Number(query.p) <= 2){
+                    p = pages;
+                    if(Number(query.p) === 2){
+                        p.unshift(2)
+                    }
+                    p.unshift(1)
+
+                    setPages(p);
+                }
+                else{
+                    var p = pages;
+                    p.unshift(Number(query.p)-2, Number(query.p)-1, query.p)
+                    setPages(p);
+                }
+
+                if(Number(query.p)+1 >= m){
+                    if(Number(query.p) === m){
+                        setPages([...pages, Number(query.p)])
+                    }
+                    else{
+                        setPages([...pages, Number(query.p)+1])
+                    }
+                }
+                else{
+                    setPages([...pages, Number(query.p)+1, Number(query.p)+2]);
+                }
+            })
+    },[])*/
+/*
+    const changePrice = (e: any) => {
+        setPrice(e.target.value);
+    }*/
+/*
+    const support = () => {
+        if(!price){
+            alert("후원금을 설정해 주십쇼.")
+        }
+        else{
+            axios.post(`/support/${id}`)
+                .then(res => alert(`후원 되었습니다. (${price}코인)`))
+                .catch(err => {
+                    if(err.status === 400){
+                        alert("후원금이 모자랍니다.")
+                    }
+                    else if(err.status === 401){
+                        alert("로그인을 먼저 해 주세요.");
+                        //navigate('/login');
+                    }
+                })
+        }
+    }*/

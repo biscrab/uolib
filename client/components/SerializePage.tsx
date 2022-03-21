@@ -16,8 +16,8 @@ const SerializePage = ({props}: any) => {
 
     const plus = router.pathname === "/plus";
 
-    const [plist, setPlist] = useState([1]);
-    /*
+    const [plist, setPlist] = useState<number[]>([1]);
+    
     useEffect(()=>{
         const p = Number(page);
         var l = [];
@@ -38,7 +38,7 @@ const SerializePage = ({props}: any) => {
         
         console.log(l);
         setPlist(l);
-    },[page])*/
+    },[page])
 
     const Category = () => {
         return(

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as S from '../../../../../styled/Search'
 import Book from '../../../../../components/Book'
-import { NextPage } from 'next';
+//import { NextPage } from 'next';
 import { useRouter } from 'next/router'
 import axios from 'axios';
 import Link from 'next/link';
@@ -12,10 +12,6 @@ const SearchPage = ({props}) => {
     const router = useRouter();
     const {type, order, page, keyword} = router.query;
 
-    useEffect(()=>{
-        console.log(router)
-    })
-
     const [word, setWord] = useState(keyword);
 
     //const lists = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag: ["1"]}];
@@ -25,8 +21,6 @@ const SearchPage = ({props}) => {
             <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#5a35cd"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
         )
     }
-
-    const [buy, setBuy] = useState();
 
     return(
         <>
@@ -89,14 +83,27 @@ const SearchPage = ({props}) => {
                 </div>
             </S.Result>
             <S.List>
-                {props[0] ?
-                    <Book lists={props}/>
+                {props.list[0] ?
+                    <Book lists={props.list}/>
                 :
                     <S.Null>등록된 작품이 없습니다.</S.Null>
                 }
             </S.List>
         </S.Body>
-        {buy?
+        </>
+    )
+}
+
+SearchPage.getInitialProps = async function(context){
+    const {type, order, page, keyword} = context.query;
+    const res = await axios.get(`https://uolib.herokuapp.com/search/${type}/${order}/${page}${keyword ? `/${encodeURI(keyword)}` : ""}`)
+    const props = await res.data;
+    return {props}
+}
+
+export default SearchPage
+
+/*        {buy?
             <S.BuyBackground>
                 <S.BuyBorder>
                     
@@ -104,16 +111,4 @@ const SearchPage = ({props}) => {
             </S.BuyBackground>
             :
             <></>
-        }
-        </>
-    )
-}
-
-SearchPage.getInitialProps = async function(context){
-    const {type, order, page, keyword} = context.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/search/${type}/${order}/${page}${keyword ? `/${keyword}` : ""}`)
-    const props = await res.data;
-    return {props}
-}
-
-export default SearchPage
+        } */

@@ -1,4 +1,4 @@
-import * as S from '../../../styled/Readers'
+import * as S from '../../../../Readers'
 import Link from 'next/link';
 import { NextPage } from 'next';
 import axios from 'axios';

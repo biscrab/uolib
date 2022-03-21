@@ -5,6 +5,7 @@ import MyBook from '../../components/MyBook'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import axios from 'axios';
+import { getCookie } from 'cookies-next';
 /*
 type BookInterface = {
     id: number,
@@ -55,8 +56,9 @@ const MyBookPage = ({props}) => {
 }
 
 MyBookPage.getInitialProps = async function(context){
+    const token = await getCookie("uolib_token");
     const { type } = context.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/mybook/${type}`)
+    const res = await axios.get(`https://uolib.herokuapp.com/mybook/${type}`, {headers: {Authorization: `Bearer ${token}`}})
     const props = await res.data;
     return {props}
 }

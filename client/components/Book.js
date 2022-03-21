@@ -41,17 +41,15 @@ const Book = ({i}) => {
                     <span>{i.like}회</span>
                 </S.Info>
                 <S.TagDiv>
-                    {/*`
-                    {JSON.parse(i.tag).map(
+                    {i.tag.map(
                         (tag, index) => {
                             return(
-                                <Link href={/search/tag/date/1/tag} key={index}>
+                                <Link href={`/search/tag/date/1/${tag}`} key={index}>
                                 <span>#{tag}</span>
                                 </Link>
                             )
                         }
-                    )}`*/
-                    }
+                    )}
                 </S.TagDiv>
             </S.BookInfo>
         </S.Book>

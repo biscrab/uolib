@@ -38,7 +38,9 @@ const List = ({lists}) => {
                     {i.tag.map(
                         (item) => {
                           return(
+                            <Link href={`/search/tag/date/1/${item}`}>
                               <S.Tag>#{item}</S.Tag>
+                            </Link>
                           )
                         }
                       )}  

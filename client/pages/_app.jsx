@@ -10,9 +10,6 @@ import '../styles/App.css'
 import {useRouter} from 'next/router'
 import Loading from '../components/Loading.js'
 import axios from 'axios';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
-import rootReducer from "../store/rootReducer";
 /*
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -76,8 +73,6 @@ function MyApp({ Component, pageProps }/*: AppProps*/) {
     router.events.on("routeChangeError", handleComplete);
   }, [router]);
 
-  const store = createStore(rootReducer);
-
   return (
     <>
       <title>유라이브</title>
@@ -93,9 +88,7 @@ function MyApp({ Component, pageProps }/*: AppProps*/) {
       :
       <></>
       }
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
+      <Component {...pageProps} />
       <Footer />
       <Loading loading={loading}/>
     </>
