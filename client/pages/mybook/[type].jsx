@@ -37,20 +37,17 @@ const MyBookPage = ({props}) => {
                 <Link href="/mybook/last_view">
                     <S.Select selected={type==="last_view"}>최근 본 작품</S.Select>
                 </Link>
-                <Link href="/mybook/support">
-                    <S.Select selected={type==="support"}>후원금 정산</S.Select>
-                </Link>
             </S.SelectDiv>
             <S.CountOfBook>
                 총 0개의 작품
             </S.CountOfBook>
-            {props ?
-                <S.List>
-                    <MyBook lists={props}/>
-                </S.List>
+            <S.List>
+                {props ?
+                <MyBook lists={props}/>
                 :
                 <></>
-            }
+                }
+            </S.List>
         </S.Body>
     )
 }
@@ -79,3 +76,6 @@ export default MyBookPage
             </S.Support>
             }
                         </>*/
+/*                <Link href="/mybook/support">
+                    <S.Select selected={type==="support"}>후원금 정산</S.Select>
+                </Link> */

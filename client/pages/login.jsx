@@ -36,7 +36,7 @@ const LoginPage = () => {
             alert("로그인 정보를 모두 입력해주세요.");
         }
         else{
-            axios.post('/login', info)
+            axios.post('/login', {email: info.email, password: info.email})
                 .then(res => {
                     setCookies('uolib_token', token);
                     //document.cookie = `uolib_token=${res.data}`;

@@ -2,17 +2,12 @@ import { useState, useRef, useEffect } from 'react'
 import * as S from '../styled/Write'
 import $ from 'jquery'
 import { NextPage } from 'next';
+import axios from 'axios';
 
 const WritePage: NextPage<{}> = () => {
 
-    useEffect(()=>{
-        if(typeof(window) !== undefined){
-
-        }
-    })
-
     const [on, setOn] = useState({bold: false, italic: false, underline: false});
-    const [onImage, setOnImage] = useState(false);
+    //const [onImage, setOnImage] = useState(false);
     const [onEMenu, setOnEMenu] = useState(false);
 
     const text = useRef('');
@@ -43,24 +38,48 @@ const WritePage: NextPage<{}> = () => {
         $(".text").focus();
     }
 
+    /*
     const [imgUrl, setImgUrl] = useState("");
 
     const InsertPicture = (img: string) => {
         document.execCommand("insertImage", false, img);
-    }
+    }*/
 
+    /*
     useEffect(()=>{
-        console.log(document.execCommand("underline", false, ""));
-    },[])
-
-    useEffect(()=>{
-        /*
         $("html").click(function(e){
             if(!$(".emenu").has(e.target).length){
                 setOnEMenu(false);
             }
-        })  */
-    })
+        })  
+    })*/
+
+    /*
+        <S.SettingButton>
+        <S.Setting onClick={()=>setOnEMenu(!onEMenu)}>
+            <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24" x="0"/></g><g><g><polygon points="19,9 20.25,6.25 23,5 20.25,3.75 19,1 17.75,3.75 15,5 17.75,6.25"/><polygon points="19,15 17.75,17.75 15,19 17.75,20.25 19,23 20.25,20.25 23,19 20.25,17.75"/><path d="M11.5,9.5L9,4L6.5,9.5L1,12l5.5,2.5L9,20l2.5-5.5L17,12L11.5,9.5z M9.99,12.99L9,15.17l-0.99-2.18L5.83,12l2.18-0.99 L9,8.83l0.99,2.18L12.17,12L9.99,12.99z"/></g></g></svg>
+        </S.Setting>
+        {onEMenu ?
+        <S.EffectSelectDiv className='emenu'>
+            <S.EffectSelect>
+            <span style={{
+            background: "linear-gradient(to right, #00d9ff, #d53afc)", 
+            color: "transparent",
+            //webkitBackgroundClip: "text"}}>테스트</span>
+            </S.EffectSelect>
+            <S.SmokyEffect><span>테스트</span></S.SmokyEffect>
+            <S.NeonEffect>테스트</S.NeonEffect>
+            <S.GritchyEffect><span>테스트</span></S.GritchyEffect><span></span>
+        </S.EffectSelectDiv>
+        :
+        <></>
+        }
+        </S.SettingButton>
+     */
+
+    const registNovel = () => {
+        axios.post(`/round`, )
+    }
 
     return(
         <>
@@ -86,26 +105,6 @@ const WritePage: NextPage<{}> = () => {
                     <S.Setting onClick={()=>change("bold")} selected={on.bold}><i className="fas fa-bold"></i></S.Setting>
                     <S.Setting onClick={()=>change("italic")} selected={on.italic}><i className="fas fa-italic"></i></S.Setting>
                     <S.Setting onClick={()=>change("underline")} selected={on.underline}><i className="fas fa-underline"></i></S.Setting>
-                    <S.SettingButton>
-                    <S.Setting onClick={()=>setOnEMenu(!onEMenu)}>
-                        <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24" x="0"/></g><g><g><polygon points="19,9 20.25,6.25 23,5 20.25,3.75 19,1 17.75,3.75 15,5 17.75,6.25"/><polygon points="19,15 17.75,17.75 15,19 17.75,20.25 19,23 20.25,20.25 23,19 20.25,17.75"/><path d="M11.5,9.5L9,4L6.5,9.5L1,12l5.5,2.5L9,20l2.5-5.5L17,12L11.5,9.5z M9.99,12.99L9,15.17l-0.99-2.18L5.83,12l2.18-0.99 L9,8.83l0.99,2.18L12.17,12L9.99,12.99z"/></g></g></svg>
-                    </S.Setting>
-                    {onEMenu ?
-                    <S.EffectSelectDiv className='emenu'>
-                        <S.EffectSelect>
-                        <span style={{
-                        background: "linear-gradient(to right, #00d9ff, #d53afc)", 
-                        color: "transparent",
-                        /*webkitBackgroundClip: "text"*/}}>테스트</span>
-                        </S.EffectSelect>
-                        <S.SmokyEffect><span>테스트</span></S.SmokyEffect>
-                        <S.NeonEffect>테스트</S.NeonEffect>
-                        <S.GritchyEffect><span>테스트</span></S.GritchyEffect><span></span>
-                    </S.EffectSelectDiv>
-                    :
-                    <></>
-                    }
-                    </S.SettingButton>
                     <S.Setting onClick={()=>change("undo")}><i className="fas fa-undo-alt"></i></S.Setting>
                     <S.Setting onClick={()=>change("redo")}><i className="fas fa-redo-alt"></i></S.Setting>  
                 </S.SettingDiv>
@@ -115,9 +114,7 @@ const WritePage: NextPage<{}> = () => {
             <S.RTittle>
                 <b>작가후기</b>
             </S.RTittle>
-            <S.Review>
-
-            </S.Review>
+            <S.Review />
             <S.ButtonDiv>
                 <S.RegistButton><i className="fas fa-pen"></i> 회차 등록</S.RegistButton>
             </S.ButtonDiv>

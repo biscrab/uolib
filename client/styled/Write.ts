@@ -11,6 +11,7 @@ export const Body = styled.div`
 `
 
 export const BTittle = styled.b`
+    margin-bottom: 10px;
 `
 
 export const Search = styled.div`
@@ -76,6 +77,7 @@ export const Select = styled.div`
         outline: 0;
         padding: 0px 8px;
         font-size: 15px;
+        border-radius: 0px !important;
     }
     span{
         height: 34px;

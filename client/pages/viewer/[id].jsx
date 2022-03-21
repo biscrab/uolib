@@ -54,7 +54,7 @@ const ViewerPage = ({props}) => {
         if(status === "text"){
             return(
             <S.Body dark={darkmode}>
-                <img src={props.image}/>
+                <img src={0 ? 0 : "https://image.novelpia.com/img/layout/readycover4.png"}/>
                 <S.Text ref={textRef} />
                 {props.authorsword ?
                 <S.AuthorsWords dark={darkmode}>
@@ -73,28 +73,27 @@ const ViewerPage = ({props}) => {
             <S.ListBody dark={darkmode}>
                 <h2>회차리스트</h2>
                 <ul>
-                    <Link href={`/viewer/${1}`}>
-                        <S.Round notice={i.type == "notice"}>
-                            <S.RoundDiv>
-                                <S.RLeft>
-                                    <S.TittleDiv>
-                                        {i.plus ?
-                                        <S.Price color={"#5232dd"}>PLUS</S.Price>
-                                        :
-                                        <S.Price color={"#166d95"}>무료</S.Price>
-                                        }
-                                        <S.RTittle>{i.title}</S.RTittle>
-                                    </S.TittleDiv>
-                                    <S.RInfo>
-                                    <span><i className="fas fa-user"></i>3000</span>
-                                    <span><i className="fas fa-comment-alt"></i>400</span>
-                                    <span><i className="fas fa-thumbs-up"></i>1</span>
-                                    </S.RInfo>
-                                </S.RLeft>
-                                <S.RDate>{props.rdate}</S.RDate>
-                            </S.RoundDiv>
-                        </S.Round>
-                    </Link>
+                    {props.round.map(i => {
+                        return(
+                            <Link href={`/viewer/${i.id}`}>
+                                <S.Round notice={i.notice}>
+                                    <S.RoundDiv>
+                                        <S.RLeft>
+                                            <S.TittleDiv>
+                                                {i.plus ?
+                                                <S.Price color={"#5232dd"}>PLUS</S.Price>
+                                                :
+                                                <S.Price color={"#166d95"}>무료</S.Price>
+                                                }
+                                                <S.RTittle>{i.title}</S.RTittle>
+                                            </S.TittleDiv>
+                                        </S.RLeft>
+                                        <S.RDate>{props.rdate}</S.RDate>
+                                    </S.RoundDiv>
+                                </S.Round>
+                            </Link>
+                        )
+                    })}
                 </ul>
             </S.ListBody>
             )

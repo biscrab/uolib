@@ -1,15 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import * as S from '../../styled/Novel'
-import queryString from 'query-string'
 import Link from 'next/link'
 import axios from 'axios'
-import { useRouter } from 'next/router'
 
 const NovelPage/*: NextPage*/ = ({props}) => {
 
     //const [novel, setNovel] = useState({view: "", tag: ["1", "2"], other: [{title: "1", author: "1", image: "https://image.novelpia.com/imagebox/cover/71ef870f96a30146e548d3c75dfe439e_458688_ori.file"}], notice:[], comment:[], explane: "새로운 삶이 이득같은 손해인지 손해같은 이득인지 아직도 장담할 수 없다. 하지만 나는 이 괴랄한 설정의 세계에 적응해야 한다.", user: "1"});
     const [pages, setPages] = useState([]);
-
+    //<Link href={`/user/${props.novel.author}`}>
     return(
         <>
         <S.Body>
@@ -20,16 +18,13 @@ const NovelPage/*: NextPage*/ = ({props}) => {
                         <S.Tittle>{props.novel.title}</S.Tittle>
                         <S.AuthorDiv>
                             <S.Author>작가</S.Author>
-                            <Link href={`/user/${props.novel.author}`}>
                             <S.Name>{props.novel.author}</S.Name>
-                            </Link>
                         </S.AuthorDiv>
                     </S.TopInfo>
                     <S.BottomInfo>
                         <S.BottomInfoDiv>
                             <S.InfoBorder>
-                                <S.Day>{props.novel.days}</S.Day>
-                                연재
+                                <S.Day>{props.novel.days}</S.Day>연재
                             </S.InfoBorder>
                             <S.InfoBorder>
                             <img src="https://novelpia.com/img/new/icon/count_view.png" />
@@ -45,64 +40,68 @@ const NovelPage/*: NextPage*/ = ({props}) => {
                         </S.Explane>
                         <br/>
                         <S.TagDiv>
-                            <b>태그 : {props.novel.tag.map(i => {return(<span>{i}</span>)})}</b>
+                            <b>태그 : {props.novel.tag.map(i => {
+                                return(
+                                    <Link href={`/search/tag/date/1/${encodeURI(i)}`}>
+                                        <span>{i}</span>
+                                    </Link>
+                                )
+                            })}</b>
                         </S.TagDiv>
                     </S.BottomInfo>
                 </S.InfoDiv>
             </S.Info>
             <S.Border>
-
-            <S.ListDiv>
-            <S.List>
-                <S.ListTittle>회차리스트</S.ListTittle>
-                <S.ListBorder>
-                    {props.round.map((i, index) => {
-                        return(
-                            <div key={index}>
-                            <Link href={`/viewer/${i.id}`}>
-                            <S.Round notice={i.type == "notice"}>
-                                <S.RoundDiv>
-                                    <S.RLeft>
-                                        <S.TittleDiv>
-                                            {i ?
-                                            <S.Price color={"#5232dd"}>PLUS</S.Price>
-                                            :
-                                            <S.Price color={"#166d95"}>무료</S.Price>
-                                            }
-                                            <S.RTittle></S.RTittle>
-                                        </S.TittleDiv>
-                                        <S.RInfo>
-                                        {/*
-                                        <span><i className="fas fa-user"></i>{i.view}</span>
-                                        <span><i className="fas fa-comment-alt"></i>{i.comment}</span>
-                                        <span><i className="fas fa-thumbs-up"></i>{i.like}</span>
-                                        */}
-                                        </S.RInfo>
-                                    </S.RLeft>
-                                    <S.RDate>{}</S.RDate>
-                                </S.RoundDiv>
-                            </S.Round>
-                            </Link>
-                            </div>
-                        )
-                    })}
-                </S.ListBorder>
-            </S.List>
-            <S.CommentTittle>댓글</S.CommentTittle>
-            <S.CommentList>
-                {props.comments.map(
-                    (item, index) => {
-                        return(
-                            <S.Comment key={index}>
-                                <b>{item.name}</b>
-                                <span>{item.rdate}</span>
-                                <div>{item.comment}</div>
-                            </S.Comment>
-                        )
-                    }
-                )}
-            </S.CommentList>
-            </S.ListDiv>
+                <S.ListDiv>
+                <S.List>
+                    <S.ListTittle>회차리스트</S.ListTittle>
+                    <S.ListBorder>
+                        {props.round.map((i, index) => {
+                            return(
+                                <Link key={index} href={`/viewer/${i.id}`}>
+                                <S.Round notice={i.type == "notice"}>
+                                    <S.RoundDiv>
+                                        <S.RLeft>
+                                            <S.TittleDiv>
+                                                <S.Episode>EP.{i.episode}</S.Episode>
+                                                {props.novel.plus && index >= 15 ?
+                                                <S.Price color={"#5232dd"}>PLUS</S.Price>
+                                                :
+                                                <S.Price color={"#166d95"}>무료</S.Price>
+                                                }
+                                                <S.RTittle>{i.title}</S.RTittle>
+                                            </S.TittleDiv>
+                                            <S.RInfo>
+                                            {/*
+                                            <span><i className="fas fa-user"></i>{i.view}</span>
+                                            <span><i className="fas fa-comment-alt"></i>{i.comment}</span>
+                                            <span><i className="fas fa-thumbs-up"></i>{i.like}</span>
+                                            */}
+                                            </S.RInfo>
+                                        </S.RLeft>
+                                        <S.RDate>{i.rdate}</S.RDate>
+                                    </S.RoundDiv>
+                                </S.Round>
+                                </Link>
+                            )
+                        })}
+                    </S.ListBorder>
+                </S.List>
+                <S.CommentTittle>댓글</S.CommentTittle>
+                <S.CommentList>
+                    {props.comments.map(
+                        (item, index) => {
+                            return(
+                                <S.Comment key={index}>
+                                    <b>{item.name}</b>
+                                    <span>{item.rdate}</span>
+                                    <div>{item.comment}</div>
+                                </S.Comment>
+                            )
+                        }
+                    )}
+                </S.CommentList>
+                </S.ListDiv>
             </S.Border>
             <S.PDiv>
                 {pages.map(

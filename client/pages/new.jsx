@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { NextPage } from 'next';
 import * as S from '../styled/New'
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import $ from 'jquery'
+//import $ from 'jquery'
 /*
 type BookInterface = {
     title: string,
@@ -15,14 +14,15 @@ type BookInterface = {
 
 const NewPage = () => {
 
-    const [info, setInfo] = useState()
+    const [info, setInfo] = useState();
     const [focus, setFocus] = useState(false);
     const [tag, setTag] = useState("");
-    const [novel, setNovel] = useState({title: "", author: "", explane: "", days: "", tag: ["123"]})
-    const [day, setDay] = useState({mon: false, tue: false, wen: false, thu: false, fri: false, sat: false, sun: false})
+    const [novel, setNovel] = useState({title: "", author: "", explane: "", image: "", days: "", tag: ["123"]})
+    const [day, setDay] = useState({mon: false, tue: false, wen: false, thu: false, fri: false, sat: false, sun: false});
     const taglist = ["판타지","라이트노벨","전생","현대","중세","하렘","드라마","일상","로맨스","SF","스포츠","무협"];
 
     useEffect(()=>{
+        /*
         $(function() {
             $("#image").on('change', function(){
                 readURL(this);
@@ -36,8 +36,21 @@ const NewPage = () => {
                 }
                 reader.readAsDataURL(input.files[0]);
             }
-        }
+        }*/
     },[]);
+
+    useCallback(()=>{
+        if(!focus && tag){
+            if(tag.length <= 10){
+                var t = novel.tag;
+                t = t.slice(0, t.length-1);
+                setNovel({...novel, tag: t});
+            }
+            else{
+                alert("태그의 최대길이는 10자 입니다.")
+            }
+        }
+    },[focus])
 
     const getDay = () => {
         var d = "";
@@ -111,6 +124,15 @@ const NewPage = () => {
         }
     }
 
+    const deleteTag = (t) => {
+        const arr = [];
+        novel.tag.map(i => {
+            if(i !== t)
+                arr.push(i);
+        })
+        setNovel({...novel, tag: arr});
+    }
+
     return(
         <S.Body>
             <b>작품설정</b>
@@ -118,7 +140,7 @@ const NewPage = () => {
             <S.BodyBorder>
                 <S.BodyDiv>
                     <span>북커버</span>
-                    <S.BookCover id="image_container"/>
+                    <S.BookCover src={novel.image}/>
                 </S.BodyDiv>
                 <S.BodyInput>
                     <S.InputDiv>
@@ -136,7 +158,7 @@ const NewPage = () => {
                                 {novel.tag.map(
                                     (i, index) => {
                                         return(
-                                            <span key={index}>{i}<FontAwesomeIcon icon="fa-regular fa-x" /></span>
+                                            <span key={index} onClick={()=>deleteTag(i)}>{i}<i className="fa-solid fa-xmark"></i></span>
                                         )
                                     }
                                 )}
@@ -195,7 +217,7 @@ const NewPage = () => {
                     </S.InputDiv>
                     <S.ImgInputDiv>
                         <span>북커버</span>
-                        <input type="file" id="image" accept="image/*"/>
+                        <S.Input onChange={(e)=>setNovel({...novel, image: e.target.value})}/>
                     </S.ImgInputDiv>
                     <S.SampleBookCover>
                         <span>샘플 북커버 이미지:</span>

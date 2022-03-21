@@ -1,7 +1,6 @@
 import * as S from '../../styled/PlusAgree'
 import Book from '../../components/Book'
 import axios from 'axios';
-import { useEffect } from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
@@ -17,11 +16,10 @@ const PlusAgreePage: NextPage<{}> = () => {
         axios.post(`/requestPlus/${id}`)
             .then(res => alert("플러스 신청이 완료되었습니다."))*/
     }
-
+/*
     useEffect(()=>{
-        /*
-        axios.get(`/requestPlus/${id}`)*/
-    },[])
+        axios.get(`/requestPlus/${id}`)
+    },[])*/
 
     return(
         <S.Body>

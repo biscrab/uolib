@@ -231,6 +231,7 @@ export const Bottom = styled.div<DarkProps>`
 
 export const ListBody = styled.div<DarkProps>`
     margin-bottom: 100px;
+    margin-top: 30px;
     width: 1000px;
     position: relative;
     left: 50%;
@@ -239,7 +240,7 @@ export const ListBody = styled.div<DarkProps>`
         font-weight: bold;
     }
     ul{
-        border-top: 2px solid #666;
+        border-top: 3px solid #666;
         height: 1000px;
         margin: 0;
         padding: 0;

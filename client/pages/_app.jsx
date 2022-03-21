@@ -4,7 +4,6 @@ import '../styles/globals.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useEffect, useState } from 'react'
-import * as S from '../styled/App'
 import '../styles/index.css'
 import '../styles/App.css'
 import {useRouter} from 'next/router'
@@ -56,7 +55,6 @@ function MyApp({ Component, pageProps }/*: AppProps*/) {
           );
         });
       }
-
       Notification.requestPermission().then(function(result) {
       });
   },[])

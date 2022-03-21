@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import * as S from '../../../../../styled/Search'
 import Book from '../../../../../components/Book'
 //import { NextPage } from 'next';

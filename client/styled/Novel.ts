@@ -106,6 +106,7 @@ export const InfoBorder = styled.div`
 `
 export const Day = styled.span`
     color: #5232dd;
+    font-size: 15px;
     padding-right: 5px;
 `
 
@@ -130,13 +131,15 @@ export const Author = styled.div`
 `
 
 export const Name = styled.span`
-    color: royalblue;
+    //color: royalblue;
+    color: #555;
     margin-left: 5px;
+    font-size: 15px;
     cursor: pointer;
-
+    /*
     :hover{
         color: blue;
-    }
+    }*/
 `
 
 export const ListTittle = styled.h1`
@@ -206,6 +209,16 @@ export const Price = styled.div`
     border-radius: 5px;
     text-shadow: 0.5px 0.5px black;
     margin-right: 5px;
+`
+
+export const Episode = styled.div`
+    margin-right: 10px;
+    color: #555;
+    font-weight: bold;
+    background-color: #eee;
+    padding: 2px 5px;
+    font-size: 11px;
+    border-radius: 5px;
 `
 
 export const RDate = styled.span`

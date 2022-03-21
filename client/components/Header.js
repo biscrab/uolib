@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react'
 //import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 import axios from 'axios'
-import cookies from 'next-cookies'
 
 const Header = ({props}) => {
 
@@ -28,14 +27,13 @@ const Header = ({props}) => {
     useEffect(()=>{
         $("html").click(function(e){
             if(onMenu === true){
-                $(".menumodal").animate({opacity: 0, height: 0}, 1000);
-                setTimeout(() => {setOnMenu(false)}, 1000)
+                $(".menumodal").fadeOut(1000);
+                setTimeout(() => setOnMenu(false),1000);   
             }
             else{
                 $(".menuicon").click(function(e){
-                    if(onMenu === false){
-                        setOnMenu(true);
-                    }
+                    $(".menumodal").fadeIn(1000);
+                    setTimeout(() => setOnMenu(true), 1000);
                 })
             }
         })
@@ -86,7 +84,6 @@ const Header = ({props}) => {
                     </Link>
                     <S.Menu className='menu'>
                         <img className='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
-                        {onMenu ?
                         <>
                         <S.MenuModal className='menumodal'>
                             {props ?
@@ -126,9 +123,6 @@ const Header = ({props}) => {
                             }
                         </S.MenuModal>
                         </>
-                        :
-                        <></>
-                        }
                     </S.Menu>
                 </S.MenuDiv>
             </S.HeaderDiv>
