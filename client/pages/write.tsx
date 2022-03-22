@@ -3,12 +3,10 @@ import * as S from '../styled/Write'
 import $ from 'jquery'
 import { NextPage } from 'next';
 import axios from 'axios';
+import { getCookie } from 'cookies-next';
 
-const WritePage: NextPage<{}> = () => {
-
-    const [on, setOn] = useState({bold: false, italic: false, underline: false});
-    //const [onImage, setOnImage] = useState(false);
-    const [onEMenu, setOnEMenu] = useState(false);
+/*: NextPage<{}>  */
+const WritePage = (props: string[]) => {
 
     const text = useRef('');
 
@@ -37,6 +35,73 @@ const WritePage: NextPage<{}> = () => {
         }*/
         $(".text").focus();
     }
+
+    //회차 등록
+    const registRound = () => {
+        axios.post(`/round`, )
+    }
+
+    useEffect(()=>{
+        console.log(props);  
+    },[])
+
+    return(
+        <>
+        <S.Body>
+            <S.BTittle>소설연재</S.BTittle>
+            <S.Tittle placeholder='에피소드 제목을 입력해주세요'/>
+            <S.SelectDiv>
+                <S.NovelSelect>
+                    <select>
+                        {props.map((i: string) => {
+                            return(
+                                <option>{i}</option>
+                            )
+                        })}
+                    </select>
+                </S.NovelSelect>
+                <S.Select>
+                    <select>
+                        <option>연재회차</option>
+                        <option>공지사항</option>
+                    </select>
+                </S.Select>
+            </S.SelectDiv>
+            <S.TextDiv>
+                <S.SettingDiv>                        
+                    <S.Setting onClick={()=>change("bold")}><i className="fas fa-bold"></i></S.Setting>
+                    <S.Setting onClick={()=>change("italic")}><i className="fas fa-italic"></i></S.Setting>
+                    <S.Setting onClick={()=>change("underline")}><i className="fas fa-underline"></i></S.Setting>
+                    <S.Setting onClick={()=>change("undo")}><i className="fas fa-undo-alt"></i></S.Setting>
+                    <S.Setting onClick={()=>change("redo")}><i className="fas fa-redo-alt"></i></S.Setting>  
+                </S.SettingDiv>
+                <div className="text" id="text" role="textbox" aria-multiline="true" spellCheck="true" autoCorrect="true" contentEditable="true" /*html={text.current}*/ onBlur={handleBlur} onInput={(e)=>console.log(e.target)}>
+                </div>
+            </S.TextDiv>
+            <S.RTittle>
+                <b>작가후기</b>
+            </S.RTittle>
+            <S.Review />
+            <S.ButtonDiv>
+                <S.RegistButton onClick={()=>registRound()}><i className="fas fa-pen"></i> 회차 등록</S.RegistButton>
+            </S.ButtonDiv>
+        </S.Body>
+        </>
+    )
+}
+
+export default WritePage
+
+WritePage.getInitialProps = async function(context: any){
+    const token = getCookie("uolib_token");
+    const res = await axios.get("/users_novel", {headers: {Authorization: `Bearer ${token}`}});
+    const props = res.data;
+    return {props}
+}
+
+    //const [on, setOn] = useState({bold: false, italic: false, underline: false});
+    //const [onImage, setOnImage] = useState(false);
+    //const [onEMenu, setOnEMenu] = useState(false);
 
     /*
     const [imgUrl, setImgUrl] = useState("");
@@ -76,54 +141,6 @@ const WritePage: NextPage<{}> = () => {
         }
         </S.SettingButton>
      */
-
-    const registNovel = () => {
-        axios.post(`/round`, )
-    }
-
-    return(
-        <>
-        <S.Body>
-            <S.BTittle>소설연재</S.BTittle>
-            <S.Tittle placeholder='에피소드 제목을 입력해주세요'/>
-            <S.SelectDiv>
-                <S.Select>
-                    <select>
-                        <option>연재회차</option>
-                        <option>공지사항</option>
-                    </select>
-                </S.Select>
-                <S.Select>
-                    <select>
-                        <option>연재회차</option>
-                        <option>공지사항</option>
-                    </select>
-                </S.Select>
-            </S.SelectDiv>
-            <S.TextDiv>
-                <S.SettingDiv>                        
-                    <S.Setting onClick={()=>change("bold")} selected={on.bold}><i className="fas fa-bold"></i></S.Setting>
-                    <S.Setting onClick={()=>change("italic")} selected={on.italic}><i className="fas fa-italic"></i></S.Setting>
-                    <S.Setting onClick={()=>change("underline")} selected={on.underline}><i className="fas fa-underline"></i></S.Setting>
-                    <S.Setting onClick={()=>change("undo")}><i className="fas fa-undo-alt"></i></S.Setting>
-                    <S.Setting onClick={()=>change("redo")}><i className="fas fa-redo-alt"></i></S.Setting>  
-                </S.SettingDiv>
-                <div className="text" id="text" role="textbox" aria-multiline="true" spellCheck="true" autoCorrect="true" contentEditable="true" /*html={text.current}*/ onBlur={handleBlur} onInput={(e)=>console.log(e.target)}>
-                </div>
-            </S.TextDiv>
-            <S.RTittle>
-                <b>작가후기</b>
-            </S.RTittle>
-            <S.Review />
-            <S.ButtonDiv>
-                <S.RegistButton><i className="fas fa-pen"></i> 회차 등록</S.RegistButton>
-            </S.ButtonDiv>
-        </S.Body>
-        </>
-    )
-}
-
-export default WritePage
 
 /*        {onImage ?
         <S.Background>
@@ -183,3 +200,4 @@ export default WritePage
                 <select></select>
                 <button>임시저장</button>
             </S.RoundDiv> */
+        

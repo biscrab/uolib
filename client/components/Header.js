@@ -20,11 +20,6 @@ const Header = ({props}) => {
     }
 
     useEffect(()=>{
-        axios.get("https://uolib.herokuapp.com/test")
-            .then(res => console.log(res));
-    },[])
-
-    useEffect(()=>{
         $("html").click(function(e){
             if(onMenu === true){
                 $(".menumodal").fadeOut(1000);
@@ -132,7 +127,8 @@ const Header = ({props}) => {
 
 Header.getInitialProps = async function(context){
     const token = await getCookie("uolib_token");
-    var props;
+    console.log(token);
+    let props;
     
     if(!token || token === ''){
         const res = await axios.get(`https://uolib.herokuapp.com/header`, {headers: {Authorization: `Bearer ${token}`}})

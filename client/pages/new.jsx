@@ -14,7 +14,7 @@ type BookInterface = {
 
 const NewPage = () => {
 
-    const [info, setInfo] = useState();
+    //const [info, setInfo] = useState();
     const [focus, setFocus] = useState(false);
     const [tag, setTag] = useState("");
     const [novel, setNovel] = useState({title: "", author: "", explane: "", image: "", days: "", tag: ["123"]})
@@ -100,6 +100,11 @@ const NewPage = () => {
     const regist = () => {
         axios.post('/novel/new', {...novel, tag: JSON.stringify(novel.tag), day: getDay()})
             .then(res => alert("등록되었습니다."))
+            .catch(err => {
+                if(err.status === 401){
+                    alert("로그인을 먼저 해주십쇼.");
+                }
+            })
     }
 
     const changeTag = (e) => {
@@ -158,27 +163,15 @@ const NewPage = () => {
                                 {novel.tag.map(
                                     (i, index) => {
                                         return(
-                                            <span key={index} onClick={()=>deleteTag(i)}>{i}<i className="fa-solid fa-xmark"></i></span>
+                                            <span key={index} onClick={()=>deleteTag(i)}>{i}
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="13px" viewBox="0 0 24 24" width="13px" fill="#fff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+                                            </span>
                                         )
                                     }
                                 )}
                             </S.TagDiv>
                             <input value={tag} onChange={(e)=>setTag(e.target.value)} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} onKeyDown={(e) => changeTag(e)}/>
                         </S.TagInputDiv>
-                        {focus ?
-                        <S.TagList>
-                            {taglist.map(i => {
-                                return(
-                                    <li onClick={()=>{
-                                        setTag("");
-                                        setNovel({...novel, tag: tag.push(i)})
-                                    }}>{i}</li>
-                                )
-                            })}
-                        </S.TagList>
-                        :
-                        <></>
-                        }
                     </S.InputDiv>
                     <S.SelectDiv>
                         <span>연재요일</span>
@@ -236,3 +229,18 @@ const NewPage = () => {
 }
 
 export default NewPage
+
+/*                        {focus ?
+                        <S.TagList>
+                            {taglist.map(i => {
+                                return(
+                                    <li onClick={()=>{
+                                        setTag("");
+                                        setNovel({...novel, tag: tag.push(i)})
+                                    }}>{i}</li>
+                                )
+                            })}
+                        </S.TagList>
+                        :
+                        <></>
+                        } */

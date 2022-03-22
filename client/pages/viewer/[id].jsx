@@ -20,7 +20,6 @@ const ViewerPage = ({props}) => {
     const [darkmode, setDarkmode] = useState(false);
     const [onInterface, setOnInterface] = useState(true);
     const [isPlus, setIsPlus] = useState(true);
-    const comment/*: commentType[]*/ = [];
     const textRef = useRef();
 
     const router = useRouter();
@@ -101,12 +100,12 @@ const ViewerPage = ({props}) => {
         else{
             return(
                 <S.CommentList>
-                    <S.ContentsTitle>댓글 수(0)</S.ContentsTitle>
+                    <S.ContentsTitle>댓글 수({props.comment.length})</S.ContentsTitle>
                     <S.CommentInputDiv>
                         <textarea />
                         <button>등록</button>
                     </S.CommentInputDiv>
-                    {comment.map(
+                    {props.comment.map(
                         i => {
                             <S.Comment>
                                 <b>{i.user}</b>

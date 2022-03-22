@@ -60,6 +60,53 @@ export const SelectDiv = styled.div`
     display: flex;
     margin-top: 20px;
 `
+
+export const NovelSelect = styled.div`
+    width: 100%;
+    height: 40px;
+    margin-right: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    select{
+        color: #333;
+        background: none;
+        border: 0;
+        height: 100%;
+        width: 100%;
+        outline: 0;
+        padding: 0px 8px;
+        font-size: 15px;
+        border-radius: 0px !important;
+    }
+    span{
+        height: 34px;
+        width: 34px;
+        background-color: #e9ecef;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    input{
+        width: 135px;
+        border: 0;
+        outline: 0;
+        padding: 0px 5px;
+        font-size: 14px;
+        background: none;
+    }
+    div{
+        width: 140px;
+        height: 100%;
+        background-color: #e9ecef;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+    }
+`
+
 export const Select = styled.div`
     width: 170px;
     height: 40px;

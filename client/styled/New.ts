@@ -49,9 +49,12 @@ export const TagInputDiv = styled.div`
     border: 1px solid #ddd;
     display: flex;
     align-items: center;
-    padding: 8px 10px;
+    padding: 0px 10px;
+    padding-bottom: 8px;
+    flex-wrap: wrap;
     input{
-        width: 100%;
+        padding-top: 8px;
+        width: auto;
         border: 0;
         outline: 0;
         background: none;
@@ -87,6 +90,7 @@ export const Input = styled.input`
     outline: 0;
     background-color: #fafafa;
     border: 1px solid #ddd;
+    overflow-y: auto;
     :focus{
         border: 1px solid royalblue;
         background-color: white;
@@ -95,6 +99,7 @@ export const Input = styled.input`
 
 export const TagDiv = styled.div`
     display: flex;
+    flex-wrap: wrap;
     span{
         background-color: #5635ce;
         padding: 4px 10px;
@@ -104,14 +109,17 @@ export const TagDiv = styled.div`
         cursor: default;
         float: left;
         margin: 0;
+        margin-top: 8px;
         margin-right: 5px;
         padding: 0 5px;
         overflow: hidden;
         padding-left: 8px;
         text-overflow: ellipsis;
         white-space: nowrap;
+        display: flex;
+        align-items: center;
     }
-    i{
+    svg{
         margin-left: 5px;
     }
 `

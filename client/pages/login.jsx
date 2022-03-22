@@ -36,12 +36,12 @@ const LoginPage = () => {
             alert("로그인 정보를 모두 입력해주세요.");
         }
         else{
-            axios.post('/login', {email: info.email, password: info.email})
+            axios.post('https://uolib.herokuapp.com/login', info)
                 .then(res => {
-                    setCookies('uolib_token', token);
+                    setCookies('uolib_token', res.data);
                     //document.cookie = `uolib_token=${res.data}`;
                     alert("로그인 완료");
-                    router.push("/")
+                    router.push("/");
                 })
                 .catch(err => alert("잘못된 정보 입니다. " + err.status))
         }
