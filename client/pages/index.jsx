@@ -107,7 +107,7 @@ const MainPage = ({props}) => {
 
 MainPage.getInitialProps = async function(context){
   const res = await axios.get(`https://uolib.herokuapp.com/main`)
-  const data = await res.data;
+  const data = res.data;
   return {
       props : {data}
   }
