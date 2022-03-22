@@ -1,4 +1,4 @@
-import Page from './[type]'
+import Page from '../../components/MyBookPage'
 import axios from 'axios'
 
 const MyBookPage = ({props}: any) => {

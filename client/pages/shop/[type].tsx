@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import * as S from '../../styled/Shop'
-import Link from 'next/link'
+//import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 const PlusShopPage = () => {
@@ -11,34 +11,6 @@ const PlusShopPage = () => {
     const [onPayment, setOnPayment] = useState(false);
     const [onAccept, setOnAccept] = useState([false, false, false]);
 
-    const ilist = [{name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},]
-/*
-    const blist = [
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},];*/
-
-    /*            <Link href="/shop/emoticon">
-                <span>이모티콘</span>
-            </Link> */
     return(
         <>
         <S.Body>
@@ -125,6 +97,35 @@ const PlusShopPage = () => {
 }
 
 export default PlusShopPage
+
+/*    const ilist = [{name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},]
+/*
+    const blist = [
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
+    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},];*/
+
+    /*            <Link href="/shop/emoticon">
+                <span>이모티콘</span>
+            </Link> */ 
 
 /*        <S.ShopDiv>
             <div>

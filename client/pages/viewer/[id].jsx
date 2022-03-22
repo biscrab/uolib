@@ -180,7 +180,7 @@ const ViewerPage = ({props}) => {
 ViewerPage.getInitialProps = async function(context){
     const {id} = context.query;
     const res = await axios.get(`https://uolib.herokuapp.com/round/${id}`)
-    const props = await res.data;
+    const props = res.data;
     return {props}
 }
 
