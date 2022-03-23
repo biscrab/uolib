@@ -30,7 +30,7 @@ const NewPage = () => {
         });
         function readURL(input) {
             if (input.files && input.files[0]) {
-                var reader = new FileReader();
+                let reader = new FileReader();
                 reader.onload = function (e) {
                 $('#image_container').attr('src', e.target.result);
                 }
@@ -42,7 +42,7 @@ const NewPage = () => {
     useCallback(()=>{
         if(!focus && tag){
             if(tag.length <= 10){
-                var t = novel.tag;
+                let t = novel.tag;
                 t = t.slice(0, t.length-1);
                 setNovel({...novel, tag: t});
             }
@@ -53,47 +53,17 @@ const NewPage = () => {
     },[focus])
 
     const getDay = () => {
-        var d = "";
-        if(day.mon){
-            d.push("월");
-        }
-        if((day.mon) && (day.tue || day.wen || day.thu || day.fri || day.sat || day.sun)){
-            d.push("/")
-        }
-        if(day.tue){
-            d.push("화");
-        }
-        if((day.tue) && (day.wen || day.thu || day.fri || day.sat || day.sun)){
-            d.push("/")
-        }
-        if(day.mon){
-            d.push("수");
-        }
-        if((day.wen) && (day.thu || day.fri || day.sat || day.sun)){
-            d.push("/")
-        }
-        if(day.thu){
-            d.push("목");
-        }
-        if((day.thu) && (day.fri || day.sat || day.sun)){
-            d.push("/")
-        }
-        if(day.fir){
-            d.push("금");
-        }
-        if((day.fri) && (day.sat || day.sun)){
-            d.push("/")
-        }
-        if(day.sat){
-            d.push("토");
-        }
-        if((day.mon) && (day.sun)){
-            d.push("/")
-        }
-        if(day.sun){
-            d.push("일");
-        }
-        
+        let d = "";
+        const koreanDays = ["월", "화", "수", "목", "금", "토", "일"];
+        const daysArr = Object.values(day);
+        daysArr.map((i, index) => {
+            if(i){
+                if(daysArr[index+1])
+                    d.push("/");
+
+                d.push(koreanDays(index));
+            }
+        })
         return d;
     }
 
@@ -108,17 +78,17 @@ const NewPage = () => {
     }
 
     const changeTag = (e) => {
-        var key = e.keyCode;
+        let key = e.keyCode;
         console.log(key);
         if(!tag&&key === 8){
             console.log(1);
-            var t = novel.tag;
+            let t = novel.tag;
             t = t.slice(0, t.length-1);
             setNovel({...novel, tag: t});
         }
         else if(key === 13){
             if(tag.length <= 10){
-                var y = novel.tag;
+                let y = novel.tag;
                 y = [...y, tag];
                 setTag("");
                 setNovel({...novel, tag: y});
@@ -176,32 +146,32 @@ const NewPage = () => {
                     <S.SelectDiv>
                         <span>연재요일</span>
                         <S.Select>
-                        <input type="checkbox" checked={day.mon} onClick={()=>setDay({...day, mon: !day.mon})}/>
-                        <span>월</span>
+                            <input type="checkbox" checked={day.mon} onClick={()=>setDay({...day, mon: !day.mon})}/>
+                            <span>월</span>
                         </S.Select>
                         <S.Select>
-                        <input type="checkbox" checked={day.tue} onClick={()=>setDay({...day, tue: !day.tue})}/>
-                        <span>화</span>
+                            <input type="checkbox" checked={day.tue} onClick={()=>setDay({...day, tue: !day.tue})}/>
+                            <span>화</span>
                         </S.Select>
                         <S.Select>
-                        <input type="checkbox" checked={day.wen} onClick={()=>setDay({...day, wen: !day.wen})}/>
-                        <span>수</span>
+                            <input type="checkbox" checked={day.wen} onClick={()=>setDay({...day, wen: !day.wen})}/>
+                            <span>수</span>
                         </S.Select>
                         <S.Select>
-                        <input type="checkbox" checked={day.thu} onClick={()=>setDay({...day, thu: !day.thu})}/>
-                        <span>목</span>
+                            <input type="checkbox" checked={day.thu} onClick={()=>setDay({...day, thu: !day.thu})}/>
+                            <span>목</span>
                         </S.Select>
                         <S.Select>
-                        <input type="checkbox" checked={day.fri} onClick={()=>setDay({...day, fri: !day.fri})}/>
-                        <span>금</span>
+                            <input type="checkbox" checked={day.fri} onClick={()=>setDay({...day, fri: !day.fri})}/>
+                            <span>금</span>
                         </S.Select>
                         <S.Select>
-                        <input type="checkbox" checked={day.sat} onClick={()=>setDay({...day, sat: !day.sat})}/>
-                        <span>토</span>
+                            <input type="checkbox" checked={day.sat} onClick={()=>setDay({...day, sat: !day.sat})}/>
+                            <span>토</span>
                         </S.Select>
                         <S.Select>
-                        <input type="checkbox" checked={day.sun} onClick={()=>setDay({...day, sun: !day.sun})}/>
-                        <span>일</span>
+                            <input type="checkbox" checked={day.sun} onClick={()=>setDay({...day, sun: !day.sun})}/>
+                            <span>일</span>
                         </S.Select>
                     </S.SelectDiv>
                     <S.InputDiv>

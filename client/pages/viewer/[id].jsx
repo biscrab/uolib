@@ -17,7 +17,7 @@ type Readers = {
 const ViewerPage = ({props}) => {
 
     const [status, setStatus] = useState("text");
-    const [darkmode, setDarkmode] = useState(false);
+    //const [darkmode, setDarkmode] = useState(false);
     const [onInterface, setOnInterface] = useState(true);
     const [isPlus, setIsPlus] = useState(true);
     const textRef = useRef();
@@ -28,7 +28,7 @@ const ViewerPage = ({props}) => {
     document.addEventListener('scroll', function() {
         setOnInterface(false);
     })*/
-
+    /*
     useEffect(()=>{
         if(darkmode){
             document.body.style.backgroundColor="black";
@@ -36,7 +36,7 @@ const ViewerPage = ({props}) => {
         else{
             document.body.style.backgroundColor="white";
         }
-    },[darkmode])
+    },[darkmode])*/
 
     useEffect(()=>{
         $('html').click(function(e){if(!$(".interface").has(e.target).length)setOnInterface(!onInterface)})
@@ -49,14 +49,22 @@ const ViewerPage = ({props}) => {
         textRef.current.appendChild(newElement);
     },[])
 
+    const getNextPage = (page) => {
+        const round = props.round;
+        round.map(i =>{
+            if(i.episode+page === props.episode)
+                return i.id
+        })
+    }
+
     const Body = () => {
         if(status === "text"){
             return(
-            <S.Body dark={darkmode}>
+            <S.Body>
                 <img src={0 ? 0 : "https://image.novelpia.com/img/layout/readycover4.png"}/>
                 <S.Text ref={textRef} />
                 {props.authorsword ?
-                <S.AuthorsWords dark={darkmode}>
+                <S.AuthorsWords>
                     <b>작가의 말</b>
                     {props.authorsword}
                 </S.AuthorsWords>
@@ -69,7 +77,7 @@ const ViewerPage = ({props}) => {
         }
         else if(status === "list"){
             return(
-            <S.ListBody dark={darkmode}>
+            <S.ListBody>
                 <h2>회차리스트</h2>
                 <ul>
                     {props.round.map(i => {
@@ -119,60 +127,64 @@ const ViewerPage = ({props}) => {
 
     return(
         <>
-        {onInterface ?
-        <S.Header dark={darkmode} className='interface'>
-            <S.HeaderDiv>
-                <S.LeftDiv>
-                    <Link href={`/novel/${props.novel}`}>
-                        <i className="fas fa-home fa-lg"></i>
+            {onInterface ?
+            <S.Header className='interface'>
+                <S.HeaderDiv>
+                    <S.LeftDiv>
+                        <Link href={`/novel/${props.novel}`}>
+                            <i className="fas fa-home fa-lg"></i>
+                        </Link>
+                        <S.Episode>EP.{props.episode}</S.Episode>
+                        <S.Title>{props.title}</S.Title>
+                    </S.LeftDiv>
+                    <S.RightDiv>
+                        <S.ListSpan onClick={()=>{if(status !== "list"){setStatus("list")}else{setStatus("text")}}}><i className="fas fa-bars"/>목록</S.ListSpan>
+                    </S.RightDiv>
+                </S.HeaderDiv>
+            </S.Header>
+            :
+            <></>
+            }
+            <Body />
+            {onInterface ?
+            <S.Bottom className='interface'>
+                <div>
+                    {props.episode > 1 ?
+                    <Link href={`/viewer/${getNextPage(1)}`}>
+                        <span><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
                     </Link>
-                    <S.Episode>EP.{props.episode}</S.Episode>
-                    <S.Title>{props.title}</S.Title>
-                </S.LeftDiv>
-                <S.RightDiv>
-                    <S.ListSpan onClick={()=>{if(status !== "list"){setStatus("list")}else{setStatus("text")}}}><i className="fas fa-bars"/>목록</S.ListSpan>
-                </S.RightDiv>
-            </S.HeaderDiv>
-        </S.Header>
-        :
-        <></>
-        }
-        <Body />
-        {onInterface ?
-        <S.Bottom dark={darkmode} className='interface'>
-            <div>
-                {props.prev ?
-                <span><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
-                :
-                <span style={{color: "#ccc"}}><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
-                }
-                <span onClick={()=>{if(status !== "comment"){setStatus("comment")}else{setStatus("text")}}}><i className="far fa-comment-alt" style={{marginRight: "5px"}}></i>댓글</span>
-                <span><i className="far fa-thumbs-up" style={{marginRight: "5px"}}></i>추천</span>
-                <span><i className="far fa-heart" style={{marginRight: "5px"}}></i>선호</span>
-                {props.next ?
-                <span>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
-                :
-                <span style={{color: "#ccc"}}>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
-                }
-            </div>
-        </S.Bottom>
-        :
-        <></>
-        }
-        <>
-        {!isPlus ?
-        <S.Background>
-            <S.PlusModal>
-                <i className="fas fa-home"></i>홈
-                <img src={`https://uolib.herokuapp.com/bookcover/${id}`}/>
-                <span>PLUS 멤버십 가입이<br />필요한 회차 입니다.</span>
-                <button>PLUS 가입</button>
-            </S.PlusModal>
-        </S.Background>
-        :
-        <></>
-        }
-        </>
+                    :
+                    <span style={{color: "#ccc"}}><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
+                    }
+                    <span onClick={()=>{if(status !== "comment"){setStatus("comment")}else{setStatus("text")}}}><i className="far fa-comment-alt" style={{marginRight: "5px"}}></i>댓글</span>
+                    <span><i className="far fa-thumbs-up" style={{marginRight: "5px"}}></i>추천</span>
+                    <span><i className="far fa-heart" style={{marginRight: "5px"}}></i>선호</span>
+                    {props.round.length >= props.episode ?
+                    <Link href={`/viewer/${getNextPage(1)}`}>
+                        <span>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
+                    </Link>
+                    :
+                    <span style={{color: "#ccc"}}>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
+                    }
+                </div>
+            </S.Bottom>
+            :
+            <></>
+            }
+            <>
+            {!isPlus ?
+            <S.Background>
+                <S.PlusModal>
+                    <i className="fas fa-home"></i>홈
+                    <img src={`https://uolib.herokuapp.com/bookcover/${id}`}/>
+                    <span>PLUS 멤버십 가입이<br />필요한 회차 입니다.</span>
+                    <button>PLUS 가입</button>
+                </S.PlusModal>
+            </S.Background>
+            :
+            <></>
+            }
+            </>
         </>
     )
 }

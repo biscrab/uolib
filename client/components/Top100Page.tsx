@@ -1,7 +1,6 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import * as S from '../styled/Top100'
-import { NextPage } from 'next';
+//import { NextPage } from 'next';
 import Link from 'next/link';
 import {useRouter} from 'next/router'
 

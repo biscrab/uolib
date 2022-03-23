@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 type DarkProps = {
-    dark: boolean
+    dark?: boolean
 }
 
 export const Header = styled.div<DarkProps>`

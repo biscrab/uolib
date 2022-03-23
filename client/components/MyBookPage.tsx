@@ -3,8 +3,9 @@ import MyBook from '../components/MyBook'
 //import { NextPage } from 'next';
 import Link from 'next/link'
 import {useRouter} from 'next/router'
+/*
 import axios from 'axios';
-import { getCookie } from 'cookies-next';
+import { getCookie } from 'cookies-next';*/
 
 const MyBookPage = ({props}: {props: any}) => {
 

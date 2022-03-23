@@ -98,31 +98,6 @@ const PlusShopPage = () => {
 
 export default PlusShopPage
 
-/*    const ilist = [{name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},]
-/*
-    const blist = [
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},
-    {name: "1", image: "https://image.novelpia.com/img/emoticon/knbivm28nc/1.png"},];*/
-
     /*            <Link href="/shop/emoticon">
                 <span>이모티콘</span>
             </Link> */ 

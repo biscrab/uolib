@@ -36,7 +36,7 @@ const LoginPage = () => {
             alert("로그인 정보를 모두 입력해주세요.");
         }
         else{
-            axios.post('https://uolib.herokuapp.com/login', info)
+            axios.post('https://uolib.herokuapp.com/test', info)
                 .then(res => {
                     setCookies('uolib_token', res.data);
                     //document.cookie = `uolib_token=${res.data}`;
@@ -47,13 +47,19 @@ const LoginPage = () => {
         }
     }
 
+    const downEnter = (e) => {
+        if(e.keycode === 13){
+            login();
+        }
+    }
+
     return(
         <S.Background src="https://t1.daumcdn.net/cfile/tistory/99FEFF455E2112E632">
         <S.BackgroundFilter>
         <S.Body>
             <S.Tittle>로그인</S.Tittle>
             <S.Input placeholder="이메일" onChange={(e)=>setInfo({...info, email: e.target.value})} value={info.email}/>
-            <S.Input placeholder="비밀번호" onChange={(e)=>setInfo({...info, password: e.target.value})} value={info.password} type="password"/>
+            <S.Input placeholder="비밀번호" onChange={(e)=>setInfo({...info, password: e.target.value})} value={info.password} onKeyDown={(e)=>downEnter(e)} type="password"/>
             <S.LButton onClick={()=>login()}>로그인</S.LButton>
             <Link href="/signup">
             <S.SButton>회원가입</S.SButton>
@@ -70,8 +76,16 @@ const LoginPage = () => {
         </S.Background>
     )
 }
-
+/*
+LoginPage.getInitialProps = async function(context){
+    const {id} = context.query;
+    const res = await axios.post(`https://uolib.herokuapp.com/test`)
+    const props = res.data;
+    return {props}
+}
+*/
 export default LoginPage
+
 
 /*            <GoogleLogin
             className='google'
