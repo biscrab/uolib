@@ -33,7 +33,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);*/
 
-function MyApp({ Component, pageProps }/*: AppProps*/) {
+function MyApp({ Component, pageProps}) {
   
   const router = useRouter();
   const pathname = router.pathname;
@@ -75,6 +75,7 @@ function MyApp({ Component, pageProps }/*: AppProps*/) {
 
   return (
     <>
+      <head>
       <title>유라이브</title>
       <link href="https://cdn-icons.flaticon.com/png/512/1722/premium/1722398.png?token=exp=1647265594~hmac=9839c5fb0b6489cb5c39fa0170d6011d" rel="shortcut icon" type="image/x-icon"></link>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -83,12 +84,13 @@ function MyApp({ Component, pageProps }/*: AppProps*/) {
       <script src="https://kit.fontawesome.com/ed23fb601b.js" crossOrigin="anonymous"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css" integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug==" crossOrigin="anonymous" />
       <link rel="manifest" href="../public/manifest.json" />
+      </head>
       {!pathname.includes("viewer") ?
-      <Header {...pageProps}/>
+      <Header/>
       :
       <></>
       }
-      <Component {...pageProps} />
+      <Component {...pageProps}/>
       <Footer />
       <Loading loading={loading}/>
     </>

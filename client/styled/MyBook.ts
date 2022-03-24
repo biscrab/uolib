@@ -28,7 +28,7 @@ interface Props {
 export const Select = styled.div<Props>`
     cursor: pointer;
     font-weight: bold;
-    width: calc(1100px/4);
+    width: 100%;
     height: 50px;
     display: flex;
     justify-content: center;
@@ -41,6 +41,16 @@ export const List = styled.ul`
     padding: 0;
     margin: 0;
     height: 1000px;
+`
+export const Null = styled.div`
+    color: #999;
+    display: flex;
+    width: 100%;
+    height: 600px;
+    font-size: 18px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
 `
 
 export const Support = styled.div`

@@ -8,28 +8,27 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import { getCookie } from 'cookies-next'
 
-const Header = ({props}) => {
+const Header = () => {
 
     //const isMobile = useMediaQuery('( maxWidth: 1240 )')
     //const isMobile = 0;
-        /*
+            
     const token = getCookie("uolib_token");
+
     const [props, setprops] = useState();
 
     useEffect(()=>{
         console.log(token);
         if(token){
-            const res = axios.get(`https://uolib.herokuapp.com/header`, {headers: {Authorization: `Bearer ${token}`}})
-            console.log(res.data);
-            setprops(res.data);
+            axios.get(`https://uolib.herokuapp.com/header`, {headers: {Authorization: `Bearer ${token}`}})
+                .then(res => {
+                    console.log(res);
+                    setprops(res.data);
+                })
         }
         else{
             setprops(false);
         }
-    },[])*/
-
-    useEffect(()=>{
-        console.log(props);
     },[])
 
     const [onMenu, setOnMenu] = useState(false);
@@ -62,7 +61,7 @@ const Header = ({props}) => {
         return(
             <S.PathDiv>
                 <Link href="/free">
-                    <S.Path path={pathname.includes("/free")}>자유연재</S.Path>
+                    <S.Path path={pathname.includes("/free")}>자유연재{}</S.Path>
                 </Link>
                 <Link href="/plus">
                     <S.Path path={pathname.includes("/plus") && pathname !== "/plus_agree"}>플러스</S.Path>
@@ -146,13 +145,13 @@ const Header = ({props}) => {
         </S.Header>
     )
 }
-
+/*
 Header.getInitialProps = async function(context){
     const token = getCookie("uolib_token");
     console.log(token);
     let props;
     
-    if(!token || token === ''){
+    if(token){
         const res = await axios.get(`https://uolib.herokuapp.com/header`, {headers: {Authorization: `Bearer ${token}`}})
         props = await res.data;
     }
@@ -161,7 +160,7 @@ Header.getInitialProps = async function(context){
     }
   
     return {props}
-}
+}*/
 
 export default Header
 /*            {isMobile ?

@@ -24,12 +24,10 @@ const Book = (i) => {
                 :
                 <></>
                 }
-                <Link href="/novel/a">
+                <Link href={`/novel/${i.id}`}>
                     <b>{i.title}</b>
                 </Link>
-                <Link href="/user/1">
-                    <S.Author>{i.author}</S.Author>
-                </Link>
+                <S.Author>{i.author}</S.Author>
                 </S.Title>
                 <S.Explane>{i.explane}</S.Explane>
                 <S.Info>
@@ -41,6 +39,8 @@ const Book = (i) => {
                     <span>{i.like}회</span>
                 </S.Info>
                 <S.TagDiv>
+                    {i.tag ? 
+                    <>
                     {i.tag.map(
                         (tag, index) => {
                             return(
@@ -50,18 +50,11 @@ const Book = (i) => {
                             )
                         }
                     )}
+                    </>
+                    :
+                    <></>
+                    }
                 </S.TagDiv>
-                <S.ButtonDiv>
-                    <Link href={`/write/${1}`}>
-                    <S.Continue>EP.1 이어보기</S.Continue>
-                    </Link>
-                    <Link href={`/write/${1}`}>
-                        <S.Next>다음화 보기</S.Next>
-                    </Link>
-                    <Link href="/write">
-                        <S.Write>회차쓰기</S.Write>
-                    </Link>
-                </S.ButtonDiv>
             </S.BookInfo>
         </S.Book>
     )

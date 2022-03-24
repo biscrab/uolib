@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import * as S from '../styled/Write'
 import $ from 'jquery'
-import { NextPage } from 'next';
+//import { NextPage } from 'next';
 import axios from 'axios';
 import { getCookie } from 'cookies-next';
 

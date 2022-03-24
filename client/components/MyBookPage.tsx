@@ -7,7 +7,7 @@ import {useRouter} from 'next/router'
 import axios from 'axios';
 import { getCookie } from 'cookies-next';*/
 
-const MyBookPage = ({props}: {props: any}) => {
+const MyBookPage = ({props}: {props: any[]}) => {
 
     /*const lists : BookInterface[] = [{id: 1, title: "test", author: "이상운", explane: "123123", image: "https://image.novelpia.com/imagebox/cover/18fc3444c07e1ecadd65072b4bd08e28_47837_ori.thumb",tag: ["1", "2"]}];
 */
@@ -20,7 +20,7 @@ const MyBookPage = ({props}: {props: any}) => {
         <S.Body>
             <S.SelectDiv>
                 <Link href="/mybook/like">
-                    <S.Select selected={type==="like"}>선호작</S.Select>
+                    <S.Select selected={type==="like"||!type}>선호작</S.Select>
                 </Link>
                 <Link href="/mybook/my">
                     <S.Select selected={type==="my"}>내작품</S.Select>
@@ -30,13 +30,15 @@ const MyBookPage = ({props}: {props: any}) => {
                 </Link>
             </S.SelectDiv>
             <S.CountOfBook>
-                총 0개의 작품
+                총 {props.length}개의 작품
             </S.CountOfBook>
             <S.List>
-                {props ?
+                {props.length ?
                 <MyBook lists={props}/>
                 :
-                <></>
+                <S.Null>
+                    작품이 존재하지 않습니다.
+                </S.Null>
                 }
             </S.List>
         </S.Body>
