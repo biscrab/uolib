@@ -9,6 +9,7 @@ import '../styles/App.css'
 import {useRouter} from 'next/router'
 import Loading from '../components/Loading.js'
 import axios from 'axios';
+
 /*
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -38,7 +39,8 @@ function MyApp({ Component, pageProps }/*: AppProps*/) {
   const pathname = router.pathname;
 
   axios.defaults.baseURL = "https://uolib.herokuapp.com";
-  axios.defaults.withCredentials = true;
+  //axios.defaults.headers["Access-Control-Allow-Origin"] = "*";
+  //axios.defaults.withCredentials = true;
 
   useEffect(()=>{
     /*axios.get('/setting')
@@ -82,7 +84,7 @@ function MyApp({ Component, pageProps }/*: AppProps*/) {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css" integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug==" crossOrigin="anonymous" />
       <link rel="manifest" href="../public/manifest.json" />
       {!pathname.includes("viewer") ?
-      <Header />
+      <Header {...pageProps}/>
       :
       <></>
       }

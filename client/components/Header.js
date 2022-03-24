@@ -6,11 +6,32 @@ import { useEffect, useState } from 'react'
 //import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import { getCookie } from 'cookies-next'
 
 const Header = ({props}) => {
 
     //const isMobile = useMediaQuery('( maxWidth: 1240 )')
     //const isMobile = 0;
+        /*
+    const token = getCookie("uolib_token");
+    const [props, setprops] = useState();
+
+    useEffect(()=>{
+        console.log(token);
+        if(token){
+            const res = axios.get(`https://uolib.herokuapp.com/header`, {headers: {Authorization: `Bearer ${token}`}})
+            console.log(res.data);
+            setprops(res.data);
+        }
+        else{
+            setprops(false);
+        }
+    },[])*/
+
+    useEffect(()=>{
+        console.log(props);
+    },[])
+
     const [onMenu, setOnMenu] = useState(false);
     const rotuer = useRouter();
     const pathname = rotuer.pathname
@@ -21,15 +42,14 @@ const Header = ({props}) => {
 
     useEffect(()=>{
         $("html").click(function(e){
-            if(onMenu === true){
-                $(".menumodal").fadeOut(1000);
-                setTimeout(() => setOnMenu(false),1000);   
-            }
-            else{
-                $(".menuicon").click(function(e){
-                    $(".menumodal").fadeIn(1000);
-                    setTimeout(() => setOnMenu(true), 1000);
-                })
+            if(!$('.menuicon').has(e.target).length){
+                if(onMenu === true){
+                    console.log(onMenu);
+                    $(".menumodal").fadeOut(1000);
+                    setTimeout(()=>{
+                        setOnMenu(false);
+                    },1000)  
+                }
             }
         })
     })
@@ -78,8 +98,8 @@ const Header = ({props}) => {
                         <img src="https://image.novelpia.com/img/new/menu/search.png"/>
                     </Link>
                     <S.Menu className='menu'>
-                        <img className='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
-                        <>
+                        <img onClick={()=>{if(!onMenu)setOnMenu(true)}}className='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
+                        {onMenu ?
                         <S.MenuModal className='menumodal'>
                             {props ?
                             <>
@@ -117,7 +137,9 @@ const Header = ({props}) => {
                             </S.MenuWrap>
                             }
                         </S.MenuModal>
-                        </>
+                        :
+                        <></>
+                        }
                     </S.Menu>
                 </S.MenuDiv>
             </S.HeaderDiv>
@@ -126,7 +148,7 @@ const Header = ({props}) => {
 }
 
 Header.getInitialProps = async function(context){
-    const token = await getCookie("uolib_token");
+    const token = getCookie("uolib_token");
     console.log(token);
     let props;
     
@@ -137,12 +159,11 @@ Header.getInitialProps = async function(context){
     else{
         props = false;
     }
-
+  
     return {props}
 }
 
 export default Header
-
 /*            {isMobile ?
                 <S.MobilePathDiv>
                     <Path />

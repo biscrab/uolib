@@ -36,7 +36,7 @@ const LoginPage = () => {
             alert("로그인 정보를 모두 입력해주세요.");
         }
         else{
-            axios.post('https://uolib.herokuapp.com/test', info)
+            axios.post('https://uolib.herokuapp.com/login', info)
                 .then(res => {
                     setCookies('uolib_token', res.data);
                     //document.cookie = `uolib_token=${res.data}`;

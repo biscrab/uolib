@@ -48,7 +48,7 @@ const SearchPage = ({props}) => {
                 </Link>
             </S.SelectDiv>
             <S.Result>
-                <b>총 0개의 작품</b>
+                <b>총 {props.count}개의 작품</b>
                 <div>
                     <Link href={`/search/${type}/date/1/${keyword}`}>
                     <div>

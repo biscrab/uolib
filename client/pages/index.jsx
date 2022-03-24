@@ -53,7 +53,7 @@ const List = ({lists}) => {
 }
 
 const MainPage = ({props}) => {
-
+/*
     const BannerList = [
         {image: "https://novelpia.com/img/new/banner/main_banner_pc_20220104.jpg", color: "#1c0426"},
     ]
@@ -64,7 +64,7 @@ const MainPage = ({props}) => {
 
     const NextBanner = () => {
 
-    }
+    }*/
 
     useEffect(()=>{
 
@@ -80,10 +80,10 @@ const MainPage = ({props}) => {
         <S.Body>
             <S.Title onClick={()=>console.log(props.data)}>플러스 BEST</S.Title>
             <S.Border> 
-              {props.data.plus[0] ?
+              {props.plus[0] ?
                 <>
-                <List lists={props.data.plus.slice(0, 2)}/>
-                <List lists={props.data.plus.slice(3, 5)}/>
+                <List lists={props.plus.slice(0, 2)}/>
+                <List lists={props.plus.slice(3, 5)}/>
                 </>
                 :
                 <S.Null>작품이 존재하지 않습니다.</S.Null>
@@ -91,10 +91,10 @@ const MainPage = ({props}) => {
             </S.Border>
             <S.Title>자유연재 BEST</S.Title>
             <S.Border>
-              {props.data.free[0] ?
+              {props.free[0] ?
                 <>
-                <List lists={props.data.free.slice(0, 2)}/>
-                <List lists={props.data.free.slice(3, 5)}/>
+                <List lists={props.free.slice(0, 2)}/>
+                <List lists={props.free.slice(3, 5)}/>
                 </>
                 :
                 <S.Null>작품이 존재하지 않습니다.</S.Null>
@@ -107,10 +107,8 @@ const MainPage = ({props}) => {
 
 MainPage.getInitialProps = async function(context){
   const res = await axios.get(`https://uolib.herokuapp.com/main`)
-  const data = res.data;
-  return {
-      props : {data}
-  }
+  const props = await res.data;
+  return {props}
 }
 
 export default MainPage

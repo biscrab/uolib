@@ -8,6 +8,8 @@ const NovelPage/*: NextPage*/ = ({props}) => {
     //const [novel, setNovel] = useState({view: "", tag: ["1", "2"], other: [{title: "1", author: "1", image: "https://image.novelpia.com/imagebox/cover/71ef870f96a30146e548d3c75dfe439e_458688_ori.file"}], notice:[], comment:[], explane: "새로운 삶이 이득같은 손해인지 손해같은 이득인지 아직도 장담할 수 없다. 하지만 나는 이 괴랄한 설정의 세계에 적응해야 한다.", user: "1"});
     const [pages, setPages] = useState([]);
     //<Link href={`/user/${props.novel.author}`}>
+
+    const page = 1;
     return(
         <>
         <S.Body>

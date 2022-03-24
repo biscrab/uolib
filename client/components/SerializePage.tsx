@@ -90,7 +90,7 @@ const SerializePage = ({props}: any) => {
                 </Link>
             </S.SelectDiv>
             <S.Result>
-                <b>총 {}개의 작품</b>
+                <b>총 {props.count}개의 작품</b>
                 <div>
                     <Link href={`/${plus ? "plus" : "free"}/${type ? type : "all"}/date/1${tag ? `/${tag}` : ""}`}>
                     <div>
