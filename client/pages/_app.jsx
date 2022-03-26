@@ -9,29 +9,9 @@ import '../styles/App.css'
 import {useRouter} from 'next/router'
 import Loading from '../components/Loading.js'
 import axios from 'axios';
-
-/*
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBg1OlFnO6jcO7l9l_NK0x3kyJICjaglSQ",
-  authDomain: "uolib-337211.firebaseapp.com",
-  projectId: "uolib-337211",
-  storageBucket: "uolib-337211.appspot.com",
-  messagingSenderId: "236232072754",
-  appId: "1:236232072754:web:81e3fb61896ad341d4e62b",
-  measurementId: "G-Q1NR8N7C9J"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);*/
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer  from '../store/rootReducer'
 
 function MyApp({ Component, pageProps}) {
   
@@ -73,6 +53,8 @@ function MyApp({ Component, pageProps}) {
     router.events.on("routeChangeError", handleComplete);
   }, [router]);
 
+  const store = createStore(rootReducer);
+
   return (
     <>
       <head>
@@ -85,12 +67,14 @@ function MyApp({ Component, pageProps}) {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css" integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug==" crossOrigin="anonymous" />
       <link rel="manifest" href="../public/manifest.json" />
       </head>
-      {!pathname.includes("viewer") ?
-      <Header/>
-      :
-      <></>
-      }
-      <Component {...pageProps}/>
+      <Provider store={store}>
+        {!pathname.includes("viewer") ?
+        <Header/>
+        :
+        <></>
+        }
+        <Component {...pageProps}/>
+      </Provider>
       <Footer />
       <Loading loading={loading}/>
     </>
@@ -98,3 +82,26 @@ function MyApp({ Component, pageProps}) {
 }
 
 export default MyApp
+
+/*
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBg1OlFnO6jcO7l9l_NK0x3kyJICjaglSQ",
+  authDomain: "uolib-337211.firebaseapp.com",
+  projectId: "uolib-337211",
+  storageBucket: "uolib-337211.appspot.com",
+  messagingSenderId: "236232072754",
+  appId: "1:236232072754:web:81e3fb61896ad341d4e62b",
+  measurementId: "G-Q1NR8N7C9J"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);*/

@@ -41,15 +41,21 @@ const Book = ({i}) => {
                     <span>{i.like}회</span>
                 </S.Info>
                 <S.TagDiv>
-                    {i.tag.map(
-                        (tag, index) => {
-                            return(
-                                <Link href={`/search/tag/date/1/${tag}`} key={index}>
-                                <span>#{tag}</span>
-                                </Link>
-                            )
-                        }
-                    )}
+                    {i.tag.length ?
+                        <>
+                        {i.tag.map(
+                            (tag, index) => {
+                                return(
+                                    <Link href={`/search/tag/date/1/${tag}`} key={index}>
+                                    <span>#{tag}</span>
+                                    </Link>
+                                )
+                            }
+                        )}
+                        </>
+                        :
+                        <></>
+                    }
                 </S.TagDiv>
             </S.BookInfo>
         </S.Book>

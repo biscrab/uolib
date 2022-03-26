@@ -68,6 +68,10 @@ const NewPage = () => {
     }
 
     const regist = () => {
+        if(!novel.title){
+            alert("제목을 입력해 주세요.");
+        }
+        else{
         axios.post('/novel/new', {...novel, tag: JSON.stringify(novel.tag), day: getDay()})
             .then(res => alert("등록되었습니다."))
             .catch(err => {
@@ -75,6 +79,7 @@ const NewPage = () => {
                     alert("로그인을 먼저 해주십쇼.");
                 }
             })
+        }
     }
 
     const changeTag = (e) => {

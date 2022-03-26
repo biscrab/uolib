@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 //import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 import axios from 'axios'
-import { getCookie } from 'cookies-next'
+import { getCookie, removeCookies } from 'cookies-next'
 
 const Header = () => {
 
@@ -35,7 +35,8 @@ const Header = () => {
     const rotuer = useRouter();
     const pathname = rotuer.pathname
 
-    const logOut = () => {
+    const logout = () => {
+        removeCookies("uolib_token");
         rotuer.push("/");
     }
 
@@ -122,7 +123,7 @@ const Header = () => {
                                 </Link>
                             </S.MenuWrap>
                             <S.Logout>
-                                <button onClick={()=>logOut()}><i className="fas fa-sign-out-alt"></i>로그아웃</button>
+                                <button onClick={()=>logout()}><i className="fas fa-sign-out-alt"></i>로그아웃</button>
                             </S.Logout>
                             </>
                             :

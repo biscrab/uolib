@@ -1,5 +1,5 @@
 import * as S from '../styled/MyBook'
-import MyBook from '../components/MyBook'
+import Book from '../components/Book'
 //import { NextPage } from 'next';
 import Link from 'next/link'
 import {useRouter} from 'next/router'
@@ -34,7 +34,7 @@ const MyBookPage = ({props}: {props: any[]}) => {
             </S.CountOfBook>
             <S.List>
                 {props.length ?
-                <MyBook lists={props}/>
+                <Book lists={props}/>
                 :
                 <S.Null>
                     작품이 존재하지 않습니다.
