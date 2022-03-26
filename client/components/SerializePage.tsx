@@ -5,6 +5,7 @@ import Book from './Book'
 //import { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { getPage } from '../components/getPage'
 
 const SerializePage = ({props}: any) => {
 
@@ -19,26 +20,9 @@ const SerializePage = ({props}: any) => {
     const [plist, setPlist] = useState<number[]>([1]);
     
     useEffect(()=>{
-        const p = Number(page);
-        var l = [];
-
-        if(p >= 3)
-            l.push(p-2);
-        
-        if(p >= 2)
-            l.push(p-1);
-
-        l.push(p);
-
-        if(p <= props.max-1)
-            l.push(p+1);
-
-        if(p <= props.max-2)
-            l.push(p+2);
-        
-        console.log(l);
+        const l = getPage(page);
         setPlist(l);
-    },[page])
+    },[])
 
     const Category = () => {
         return(
@@ -144,7 +128,7 @@ const SerializePage = ({props}: any) => {
                 {plist.map(
                     (i, index) => {
                         return(
-                            <S.Page key={index} selected={Number(page) === i}>{i}</S.Page>
+                            <S.Page key={index} selected={Number(page) === i || !page}>{i}</S.Page>
                         )
                     }
                 )}

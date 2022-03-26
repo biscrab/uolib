@@ -7,11 +7,16 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import { getCookie, removeCookies } from 'cookies-next'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUser } from '../store/rootReducer'
 
 const Header = () => {
 
     //const isMobile = useMediaQuery('( maxWidth: 1240 )')
     //const isMobile = 0;
+
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
             
     const token = getCookie("uolib_token");
 
@@ -19,11 +24,13 @@ const Header = () => {
 
     useEffect(()=>{
         console.log(token);
+        console.log(user);
         if(token){
             axios.get(`https://uolib.herokuapp.com/header`, {headers: {Authorization: `Bearer ${token}`}})
                 .then(res => {
                     console.log(res);
                     setprops(res.data);
+                    dispatch(setUser(res.data));
                 })
         }
         else{
@@ -62,7 +69,7 @@ const Header = () => {
         return(
             <S.PathDiv>
                 <Link href="/free">
-                    <S.Path path={pathname.includes("/free")}>자유연재{}</S.Path>
+                    <S.Path path={pathname.includes("/free")}>자유연재</S.Path>
                 </Link>
                 <Link href="/plus">
                     <S.Path path={pathname.includes("/plus") && pathname !== "/plus_agree"}>플러스</S.Path>

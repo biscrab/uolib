@@ -3,6 +3,7 @@ import Book from '../components/Book'
 //import { NextPage } from 'next';
 import Link from 'next/link'
 import {useRouter} from 'next/router'
+import { useEffect } from 'react'
 /*
 import axios from 'axios';
 import { getCookie } from 'cookies-next';*/

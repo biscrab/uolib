@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
-import { NextPage } from 'next';
+//mport { NextPage } from 'next';
 import * as S from '../styled/New'
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 //import $ from 'jquery'
 /*
 type BookInterface = {
@@ -20,24 +21,6 @@ const NewPage = () => {
     const [novel, setNovel] = useState({title: "", author: "", explane: "", image: "", days: "", tag: ["123"]})
     const [day, setDay] = useState({mon: false, tue: false, wen: false, thu: false, fri: false, sat: false, sun: false});
     //const taglist = ["판타지","라이트노벨","전생","현대","중세","하렘","드라마","일상","로맨스","SF","스포츠","무협"];
-
-    useEffect(()=>{
-        /*
-        $(function() {
-            $("#image").on('change', function(){
-                readURL(this);
-            });
-        });
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                let reader = new FileReader();
-                reader.onload = function (e) {
-                $('#image_container').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }*/
-    },[]);
 
     useCallback(()=>{
         if(!focus && tag){
@@ -112,6 +95,14 @@ const NewPage = () => {
         })
         setNovel({...novel, tag: arr});
     }
+
+    const user = useSelector((state)=> state.user);
+
+    useEffect(()=>{
+        if(!user){
+            alert("로그인을 먼저 해주세요.");
+        } 
+    },[])
 
     return(
         <S.Body>
@@ -204,6 +195,24 @@ const NewPage = () => {
 }
 
 export default NewPage
+
+/*
+    useEffect(()=>{
+        $(function() {
+            $("#image").on('change', function(){
+                readURL(this);
+            });
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                $('#image_container').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    },[]);*/
 
 /*                        {focus ?
                         <S.TagList>

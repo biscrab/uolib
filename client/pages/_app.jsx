@@ -9,7 +9,7 @@ import '../styles/App.css'
 import {useRouter} from 'next/router'
 import Loading from '../components/Loading.js'
 import axios from 'axios';
-import { createStore } from 'redux';
+import { store } from '../store/store'
 import { Provider } from 'react-redux';
 import rootReducer  from '../store/rootReducer'
 
@@ -52,8 +52,6 @@ function MyApp({ Component, pageProps}) {
     router.events.on("routeChangeComplete", handleComplete);
     router.events.on("routeChangeError", handleComplete);
   }, [router]);
-
-  const store = createStore(rootReducer);
 
   return (
     <>
