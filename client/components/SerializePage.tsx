@@ -5,7 +5,7 @@ import Book from './Book'
 //import { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { getPage } from '../components/getPage'
+import PageDiv from './PageDiv'
 
 const SerializePage = ({props}: any) => {
 
@@ -16,13 +16,6 @@ const SerializePage = ({props}: any) => {
     const {type, order, page, tag} = router.query;
 
     const plus = router.pathname === "/plus";
-
-    const [plist, setPlist] = useState<number[]>([1]);
-    
-    useEffect(()=>{
-        const l = getPage(page);
-        setPlist(l);
-    },[])
 
     const Category = () => {
         return(
@@ -47,12 +40,6 @@ const SerializePage = ({props}: any) => {
             <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#5a35cd"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
         )
     }
-
-    useEffect(()=>{ 
-        const {type, order, page, tag} = router.query;
-        console.log(`https://uolib.herokuapp.com${router.pathname.slice(0, 5)}/${type ? type : "all"}/${order ? order : "date"}/${page ? page : "1"}${tag ? `/${tag}` : ""}`);
-        console.log(props);
-    },[])
 
     /*        <S.Banner background="#eee"/> */
 
@@ -123,17 +110,7 @@ const SerializePage = ({props}: any) => {
                 </S.Null>
                 }
             </S.List>
-            <S.PageDiv>
-                <S.Page><i className="fas fa-chevron-left"></i></S.Page>
-                {plist.map(
-                    (i, index) => {
-                        return(
-                            <S.Page key={index} selected={Number(page) === i || !page}>{i}</S.Page>
-                        )
-                    }
-                )}
-                <S.Page><i className="fas fa-chevron-right"></i></S.Page>
-            </S.PageDiv>
+            <PageDiv page={page} max={props.max}/>
     </S.Body>
     </>
     )

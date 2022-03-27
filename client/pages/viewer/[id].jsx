@@ -40,21 +40,24 @@ const ViewerPage = ({props}) => {
 
     useEffect(()=>{
         $('html').click(function(e){if(!$(".interface").has(e.target).length)setOnInterface(!onInterface)})
-
     })
 
     useEffect(()=>{
-        let newElement = document.createElement('div');
-        newElement.innerHTML = props.text;
-        textRef.current.appendChild(newElement);
-    },[])
+        if(status === "text"){
+            let newElement = document.createElement('div');
+            newElement.innerHTML = props.text;
+            textRef.current.appendChild(newElement);
+        }
+    },[status])
 
     const getNextPage = (page) => {
         const round = props.round;
+        let id;
         round.map(i =>{
             if(i.episode+page === props.episode)
-                return i.id
+                id = i.id;
         })
+        return id;
     }
 
     const Body = () => {
@@ -71,7 +74,13 @@ const ViewerPage = ({props}) => {
                 :
                 <></>
                 }
-                <S.NextButton>다음 화</S.NextButton>
+                {props.round.length >= props.episode ?
+                <Link href={`/round/${getNextPage(1)}`}>
+                    <S.NextButton>다음 화</S.NextButton>
+                </Link>
+                :
+                <></>
+                }
             </S.Body>
             )
         }
@@ -150,7 +159,7 @@ const ViewerPage = ({props}) => {
             <S.Bottom className='interface'>
                 <div>
                     {props.episode > 1 ?
-                    <Link href={`/viewer/${getNextPage(1)}`}>
+                    <Link href={`/viewer/${getNextPage(-1)}`}>
                         <span><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
                     </Link>
                     :

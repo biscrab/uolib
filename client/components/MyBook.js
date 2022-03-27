@@ -1,5 +1,6 @@
 import * as S from '../styled/Book'
 import Link from 'next/link'
+import TagDiv from './TagDiv'
 
 const Book = (i) => {
     return(
@@ -38,39 +39,11 @@ const Book = (i) => {
                     <img src="	https://image.novelpia.com/img/new/icon/count_good.png"/>
                     <span>{i.like}회</span>
                 </S.Info>
-                <S.TagDiv>
-                    {i.tag ? 
-                    <>
-                    {i.tag.map(
-                        (tag, index) => {
-                            return(
-                                <Link href={`/search/tag/date/1/${tag}`} key={index}>
-                                <span>#{tag}</span>
-                                </Link>
-                            )
-                        }
-                    )}
-                    </>
-                    :
-                    <></>
-                    }
-                </S.TagDiv>
+                <TagDiv tag={i.tag}/>
             </S.BookInfo>
         </S.Book>
     )
 }
-
-/*           <S.TagDiv>
-            {i.tag.map(
-                tag => {
-                    return(
-                        <Link href="/">
-                        <span>#{tag}</span>
-                        </Link>
-                    )
-                }
-            )}
-            </S.TagDiv> */
 
 const List = ({lists}) => {
     const itemList = lists.map(
@@ -84,3 +57,15 @@ const List = ({lists}) => {
 }
 
 export default List
+
+/*           <S.TagDiv>
+            {i.tag.map(
+                tag => {
+                    return(
+                        <Link href="/">
+                        <span>#{tag}</span>
+                        </Link>
+                    )
+                }
+            )}
+            </S.TagDiv> */

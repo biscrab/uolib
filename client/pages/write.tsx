@@ -6,14 +6,14 @@ import axios from 'axios';
 import { getCookie } from 'cookies-next';
 
 /*: NextPage<{}>  */
-const WritePage = (props: string[]) => {
+const WritePage = ({props}: {props: any}) => {
 
     const text = useRef('');
-
+    /*
     const handleChange = (evt: any) => {
         text.current = evt.target.value;
         localStorage.autosave = "123123";
-    };
+    };*/
     
     const handleBlur = () => {
     };
@@ -53,9 +53,9 @@ const WritePage = (props: string[]) => {
             <S.SelectDiv>
                 <S.NovelSelect>
                     <select>
-                        {props.map((i: string) => {
+                        {props.map((i: any) => {
                             return(
-                                <option>{i}</option>
+                                <option id={props.id}>{i.title}</option>
                             )
                         })}
                     </select>
@@ -90,14 +90,29 @@ const WritePage = (props: string[]) => {
     )
 }
 
-export default WritePage
-
-WritePage.getInitialProps = async function(context: any){
-    const token = getCookie("uolib_token");
-    const res = await axios.get("/users_novel", {headers: {Authorization: `Bearer ${token}`}});
+WritePage.getInitialProps = async function(ctx: any){
+    //const props = ctx.req.headers.cookie;
+    function getCookie(cname: string) {
+        let name = cname + "=";
+        let decodedCookie = ctx.req.headers.cookie;
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+    }
+    const res = await axios.get("/users_novel", {headers: {Authorization: `Bearer ${getCookie("uolib_token")}`}});
     const props = res.data;
     return {props}
 }
+
+export default WritePage
 
     //const [on, setOn] = useState({bold: false, italic: false, underline: false});
     //const [onImage, setOnImage] = useState(false);
