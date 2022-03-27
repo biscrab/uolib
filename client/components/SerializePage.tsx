@@ -1,5 +1,4 @@
 import * as S from '../styled/Search'
-import { useEffect, useState} from 'react';
 import Book from './Book'
 //import axios from 'axios';
 //import { NextPage } from 'next';

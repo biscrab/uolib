@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import * as S from '../../../../../styled/Search'
 import Book from '../../../../../components/Book'
 //import { NextPage } from 'next';
@@ -22,13 +22,6 @@ const SearchPage = ({props}) => {
             <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#5a35cd"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
         )
     }
-
-    const [plist, setPlist] = useState([]);
-
-    useEffect(()=>{
-        const l = getPage(page, props.max);
-        setPlist(l);
-    },[])
 
     return(
         <>

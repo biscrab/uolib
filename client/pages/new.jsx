@@ -35,9 +35,10 @@ const NewPage = () => {
         }
     },[focus])
 
+    const koreanDays = ["월", "화", "수", "목", "금", "토", "일"];
+    
     const getDay = () => {
         let d = "";
-        const koreanDays = ["월", "화", "수", "목", "금", "토", "일"];
         const daysArr = Object.values(day);
         daysArr.map((i, index) => {
             if(i){

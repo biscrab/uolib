@@ -2,6 +2,7 @@ import { useState } from 'react'
 import * as S from '../../styled/Novel'
 import Link from 'next/link'
 import axios from 'axios'
+import Round from '../../components/Round'
 
 const NovelPage/*: NextPage*/ = ({props}) => {
 
@@ -58,35 +59,7 @@ const NovelPage/*: NextPage*/ = ({props}) => {
                 <S.List>
                     <S.ListTittle>회차리스트</S.ListTittle>
                     <S.ListBorder>
-                        {props.round.map((i, index) => {
-                            return(
-                                <Link key={index} href={`/viewer/${i.id}`}>
-                                <S.Round notice={i.type == "notice"}>
-                                    <S.RoundDiv>
-                                        <S.RLeft>
-                                            <S.TittleDiv>
-                                                <S.Episode>EP.{i.episode}</S.Episode>
-                                                {props.novel.plus && index >= 15 ?
-                                                <S.Price color={"#5232dd"}>PLUS</S.Price>
-                                                :
-                                                <S.Price color={"#166d95"}>무료</S.Price>
-                                                }
-                                                <S.RTittle>{i.title}</S.RTittle>
-                                            </S.TittleDiv>
-                                            <S.RInfo>
-                                            {/*
-                                            <span><i className="fas fa-user"></i>{i.view}</span>
-                                            <span><i className="fas fa-comment-alt"></i>{i.comment}</span>
-                                            <span><i className="fas fa-thumbs-up"></i>{i.like}</span>
-                                            */}
-                                            </S.RInfo>
-                                        </S.RLeft>
-                                        <S.RDate>{i.rdate}</S.RDate>
-                                    </S.RoundDiv>
-                                </S.Round>
-                                </Link>
-                            )
-                        })}
+                        <Round lists={props.round}/>
                     </S.ListBorder>
                 </S.List>
                 <S.CommentTittle>댓글</S.CommentTittle>

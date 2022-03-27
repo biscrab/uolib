@@ -40,27 +40,6 @@ export const Explane = styled.div`
     font-size: 14px;
 `
 
-export const TagDiv = styled.div`
-    display: flex;
-    align-items: center;
-    b{
-        margin-right: 10px;
-        color: #333;
-    }
-    span{
-        color: #5032df;
-        border: 2px solid #5032df;
-        border-radius: 20px;
-        padding: 3px 10px;
-        line-height: 20px;
-        user-select: none;
-        font-size: 14px;
-        font-weight: 600;
-        margin-right: 5px;
-        cursor: pointer;
-    }
-`
-
 export const TopInfo = styled.div`
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `
@@ -167,81 +146,6 @@ export const ListBorder = styled.ul`
     padding: 0;
     list-style: none;
 `
-
-interface NoticeProps{
-    notice: boolean
-}
-
-export const Round = styled.li<NoticeProps>`
-    background-color: ${props => props.notice ? "#feffe5" : "white"}
-    width: 100%;
-    cursor: pointer;
-    border-bottom: 1px solid #eee;
-    /*:hover{
-        background: #fafafa
-    }*/
-`
-
-export const RoundDiv = styled.div`
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-`
-
-export const RLeft = styled.div`
-    display: flex;
-    flex-direction: column;
-`
-
-export const TittleDiv = styled.div`
-    display: flex;
-    align-items: flex-end;
-`
-
-export const Price = styled.div`
-    font-size: 11px;
-    background: ${props => props.color};
-    color: white;
-    padding: 2px 5px;
-    border-radius: 5px;
-    text-shadow: 0.5px 0.5px black;
-    margin-right: 5px;
-`
-
-export const Episode = styled.div`
-    margin-right: 10px;
-    color: #555;
-    font-weight: bold;
-    background-color: #eee;
-    padding: 2px 5px;
-    font-size: 11px;
-    border-radius: 5px;
-`
-
-export const RDate = styled.span`
-    font-size: 13px;
-    font-weight: bold;
-`
-
-export const RInfo = styled.div`
-    margin-top: 5px;
-    color: #888;
-    font-size: 11px;
-    i{
-        margin-right: 3px;
-    }
-    span{
-        margin-right: 5px;
-    }
-`
-
-export const RTittle = styled.b`
-    font-size: 18px;
-`
-
 export const AuthorBorder = styled.div`
     display: flex;
     flex-direction: column;

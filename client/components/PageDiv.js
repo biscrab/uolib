@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as S from '../styled/PageDiv'
+import Link from 'next/link';
 
 const PageDiv = (page, max) => {
 
@@ -29,7 +30,7 @@ const PageDiv = (page, max) => {
     const [plist, setPlist] = useState([1]);
     
     useEffect(()=>{
-        const l = getPage(page, max);
+        const l = getPage();
         setPlist(l);
     },[])
 

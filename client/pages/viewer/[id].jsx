@@ -4,6 +4,7 @@ import $ from 'jquery'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios'
+import Round from '../../components/Round'
 /*
 type commentType = {
     userId: number,
@@ -89,27 +90,7 @@ const ViewerPage = ({props}) => {
             <S.ListBody>
                 <h2>회차리스트</h2>
                 <ul>
-                    {props.round.map(i => {
-                        return(
-                            <Link href={`/viewer/${i.id}`}>
-                                <S.Round notice={i.notice}>
-                                    <S.RoundDiv>
-                                        <S.RLeft>
-                                            <S.TittleDiv>
-                                                {i.plus ?
-                                                <S.Price color={"#5232dd"}>PLUS</S.Price>
-                                                :
-                                                <S.Price color={"#166d95"}>무료</S.Price>
-                                                }
-                                                <S.RTittle>{i.title}</S.RTittle>
-                                            </S.TittleDiv>
-                                        </S.RLeft>
-                                        <S.RDate>{props.rdate}</S.RDate>
-                                    </S.RoundDiv>
-                                </S.Round>
-                            </Link>
-                        )
-                    })}
+                    <Round lists={props.round}/>
                 </ul>
             </S.ListBody>
             )
