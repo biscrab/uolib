@@ -9,46 +9,48 @@ const NovelPage/*: NextPage*/ = ({props}) => {
 
     //const [novel, setNovel] = useState({view: "", tag: ["1", "2"], other: [{title: "1", author: "1", image: "https://image.novelpia.com/imagebox/cover/71ef870f96a30146e548d3c75dfe439e_458688_ori.file"}], notice:[], comment:[], explane: "새로운 삶이 이득같은 손해인지 손해같은 이득인지 아직도 장담할 수 없다. 하지만 나는 이 괴랄한 설정의 세계에 적응해야 한다.", user: "1"});
     const [pages, setPages] = useState([]);
-    //<Link href={`/user/${props.novel.author}`}>
+    //<Link href={`/user/${props.author}`}>
     return(
         <>
         <S.Body>
             <S.Info>
-                <S.BookCover src={props.novel.image ? props.novel.image : "https://image.novelpia.com/img/layout/readycover4.png"}/>
+                <S.BookCover src={props.image ? props.image : "https://image.novelpia.com/img/layout/readycover4.png"}/>
                 <S.InfoDiv>
                     <S.TopInfo>
-                        <S.Tittle>{props.novel.title}</S.Tittle>
+                        <S.Tittle>{props.title}</S.Tittle>
                         <S.AuthorDiv>
                             <S.Author>작가</S.Author>
-                            <S.Name>{props.novel.author}</S.Name>
+                            <S.Name>{props.author}</S.Name>
                         </S.AuthorDiv>
                     </S.TopInfo>
                     <S.BottomInfo>
                         <S.BottomInfoDiv>
                             <S.InfoBorder>
-                                <S.Day>{props.novel.days}</S.Day>연재
+                                <S.Day>{props.days}</S.Day>연재
                             </S.InfoBorder>
                             <S.InfoBorder>
                             <img src="https://novelpia.com/img/new/icon/count_view.png" />
-                            <span>{props.novel.view}명</span>
+                            <span>{props.view}명</span>
                             <img src="https://novelpia.com/img/new/icon/count_book.png" />
                             <span>{props.round.length}회차</span>
                             <img src="https://novelpia.com/img/new/icon/count_good.png" />
-                            <span>{props.novel.like}회</span>
+                            <span>{props.like}회</span>
                             </S.InfoBorder>
                         </S.BottomInfoDiv>
-                        <S.Explane>
-                            {props.explane}
-                        </S.Explane>
+                        <S.Explane>{props.explane}</S.Explane>
                         <br/>
                         <S.TagDiv>
-                            <b>태그 : {props.novel.tag.map(i => {
+                            {props.tag ?
+                            <b>태그 : {props.tag.map(i => {
                                 return(
                                     <Link href={`/search/tag/date/1/${encodeURI(i)}`}>
                                         <span>{i}</span>
                                     </Link>
                                 )
                             })}</b>
+                            :
+                            <></>
+                            }
                         </S.TagDiv>
                     </S.BottomInfo>
                 </S.InfoDiv>

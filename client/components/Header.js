@@ -49,14 +49,8 @@ const Header = () => {
 
     useEffect(()=>{
         $("html").click(function(e){
-            if(!$('.menuicon').has(e.target).length){
-                if(onMenu === true){
-                    console.log(onMenu);
-                    $(".menumodal").fadeOut(1000);
-                    setTimeout(()=>{
-                        setOnMenu(false);
-                    },1000)  
-                }
+            if(!$('.menuicon').has(e.target).length && onMenu){
+                setOnMenu(false);
             }
         })
     })
@@ -105,14 +99,14 @@ const Header = () => {
                         <img src="https://image.novelpia.com/img/new/menu/search.png"/>
                     </Link>
                     <S.Menu className='menu'>
-                        <img onClick={()=>{if(!onMenu)setOnMenu(true)}}className='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
+                        <img onClick={()=>{setOnMenu(!onMenu)}}className='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
                         {onMenu ?
                         <S.MenuModal className='menumodal'>
                             {props ?
                             <>
                             <S.MenuWrap>
                                 <S.MenuLi>
-                                    <img src="https://phinf.pstatic.net/contact/20210430_217/1619765233604XypyT_PNG/avatar_profile.png"/>
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ0m-3zyvIHVnOkQXdBKnRGUu0Up5FmeIXFuQeha4ezlD5eFXvMD9mm0Jwkn-pNiWGDJM&usqp=CAU"/>
                                         <b>{props.name}</b>
                                 </S.MenuLi>
                             </S.MenuWrap>
