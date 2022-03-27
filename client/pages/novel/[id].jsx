@@ -3,14 +3,13 @@ import * as S from '../../styled/Novel'
 import Link from 'next/link'
 import axios from 'axios'
 import Round from '../../components/Round'
+import Comment from '../../components/Comment'
 
 const NovelPage/*: NextPage*/ = ({props}) => {
 
     //const [novel, setNovel] = useState({view: "", tag: ["1", "2"], other: [{title: "1", author: "1", image: "https://image.novelpia.com/imagebox/cover/71ef870f96a30146e548d3c75dfe439e_458688_ori.file"}], notice:[], comment:[], explane: "새로운 삶이 이득같은 손해인지 손해같은 이득인지 아직도 장담할 수 없다. 하지만 나는 이 괴랄한 설정의 세계에 적응해야 한다.", user: "1"});
     const [pages, setPages] = useState([]);
     //<Link href={`/user/${props.novel.author}`}>
-
-    const page = 1;
     return(
         <>
         <S.Body>
@@ -59,23 +58,10 @@ const NovelPage/*: NextPage*/ = ({props}) => {
                 <S.List>
                     <S.ListTittle>회차리스트</S.ListTittle>
                     <S.ListBorder>
-                        <Round lists={props.round}/>
+                        <Round props={{lists: props.round, plus: props.plus}}/>
                     </S.ListBorder>
                 </S.List>
-                <S.CommentTittle>댓글</S.CommentTittle>
-                <S.CommentList>
-                    {props.comments.map(
-                        (item, index) => {
-                            return(
-                                <S.Comment key={index}>
-                                    <b>{item.name}</b>
-                                    <span>{item.rdate}</span>
-                                    <div>{item.comment}</div>
-                                </S.Comment>
-                            )
-                        }
-                    )}
-                </S.CommentList>
+                    <Comment lists={props.comment}/>
                 </S.ListDiv>
             </S.Border>
             <S.PDiv>

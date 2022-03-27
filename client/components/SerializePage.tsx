@@ -109,7 +109,7 @@ const SerializePage = ({props}: any) => {
                 </S.Null>
                 }
             </S.List>
-            <PageDiv page={page} max={props.max}/>
+            <PageDiv props={{page: page, max: props.max}}/>
     </S.Body>
     </>
     )

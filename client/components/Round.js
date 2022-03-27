@@ -1,7 +1,7 @@
 import * as S from '../styled/Round'
 import Link from 'next/link'
 
-const Round = (i, index) => {
+const Round = (i, index, plus) => {
     return(
         <Link key={index} href={`/viewer/${i.id}`}>
         <S.Round notice={i.type == "notice"}>
@@ -9,7 +9,7 @@ const Round = (i, index) => {
                 <S.RLeft>
                     <S.TittleDiv>
                         <S.Episode>EP.{i.episode}</S.Episode>
-                        {props.novel.plus && index >= 15 ?
+                        {plus && index >= 15 ?
                         <S.Price color={"#5232dd"}>PLUS</S.Price>
                         :
                         <S.Price color={"#166d95"}>무료</S.Price>
@@ -31,9 +31,9 @@ const Round = (i, index) => {
     )
 }
 
-const List = ({lists}) => {
-    const itemList = lists.map((i, index) => { 
-        return <Round i={i} index={index}/>
+const List = ({props}) => {
+    const itemList = props.lists.map((i, index) => { 
+        return <Round i={i} plus={props.plus} index={index}/>
     })
     return itemList
 }

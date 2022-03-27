@@ -3,7 +3,6 @@ import * as S from '../styled/Write'
 import $ from 'jquery'
 //import { NextPage } from 'next';
 import axios from 'axios';
-import { getCookie } from 'cookies-next';
 
 /*: NextPage<{}>  */
 const WritePage = ({props}: {props: any}) => {
@@ -44,6 +43,8 @@ const WritePage = ({props}: {props: any}) => {
     useEffect(()=>{
         console.log(props);  
     },[])
+
+    const [round, setRound] = useState({novel: null, text: "", notice: 0})
 
     return(
         <>

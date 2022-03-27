@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios'
 import Round from '../../components/Round'
+import Comment from '../../components/Comment'
 /*
 type commentType = {
     userId: number,
@@ -75,7 +76,7 @@ const ViewerPage = ({props}) => {
                 :
                 <></>
                 }
-                {props.round.length >= props.episode ?
+                {props.episode < props.round.length ?
                 <Link href={`/round/${getNextPage(1)}`}>
                     <S.NextButton>다음 화</S.NextButton>
                 </Link>
@@ -90,7 +91,7 @@ const ViewerPage = ({props}) => {
             <S.ListBody>
                 <h2>회차리스트</h2>
                 <ul>
-                    <Round lists={props.round}/>
+                    <Round props={{lists: props.round, plus: props.plus}}/>
                 </ul>
             </S.ListBody>
             )
@@ -115,6 +116,32 @@ const ViewerPage = ({props}) => {
         }
     }
 
+    const Bottom = () => {
+        return(            
+        <S.Bottom className='interface'>
+        <div>
+            {props.episode > 1 ?
+            <Link href={`/viewer/${getNextPage(-1)}`}>
+                <span><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
+            </Link>
+            :
+            <span style={{color: "#ccc"}}><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
+            }
+            <span onClick={()=>{if(status !== "comment"){setStatus("comment")}else{setStatus("text")}}}><i className="far fa-comment-alt" style={{marginRight: "5px"}}></i>댓글</span>
+            <span><i className="far fa-thumbs-up" style={{marginRight: "5px"}}></i>추천</span>
+            <span><i className="far fa-heart" style={{marginRight: "5px"}}></i>선호</span>
+            {props.episode < props.round.length ?
+            <Link href={`/viewer/${getNextPage(1)}`}>
+                <span>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
+            </Link>
+            :
+            <span style={{color: "#ccc"}}>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
+            }
+        </div>
+        </S.Bottom>
+        )
+    }
+
     return(
         <>
             {onInterface ?
@@ -137,27 +164,7 @@ const ViewerPage = ({props}) => {
             }
             <Body />
             {onInterface ?
-            <S.Bottom className='interface'>
-                <div>
-                    {props.episode > 1 ?
-                    <Link href={`/viewer/${getNextPage(-1)}`}>
-                        <span><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
-                    </Link>
-                    :
-                    <span style={{color: "#ccc"}}><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
-                    }
-                    <span onClick={()=>{if(status !== "comment"){setStatus("comment")}else{setStatus("text")}}}><i className="far fa-comment-alt" style={{marginRight: "5px"}}></i>댓글</span>
-                    <span><i className="far fa-thumbs-up" style={{marginRight: "5px"}}></i>추천</span>
-                    <span><i className="far fa-heart" style={{marginRight: "5px"}}></i>선호</span>
-                    {props.round.length >= props.episode ?
-                    <Link href={`/viewer/${getNextPage(1)}`}>
-                        <span>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
-                    </Link>
-                    :
-                    <span style={{color: "#ccc"}}>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
-                    }
-                </div>
-            </S.Bottom>
+            <Bottom/>
             :
             <></>
             }
