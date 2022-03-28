@@ -42,6 +42,7 @@ const LoginPage = () => {
                     //document.cookie = `uolib_token=${res.data}`;
                     alert("로그인 완료");
                     router.push("/");
+                    window.reload();
                 })
                 .catch(err => alert("잘못된 정보 입니다. " + err.status))
         }

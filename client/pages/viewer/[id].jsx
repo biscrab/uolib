@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios'
 import Round from '../../components/Round'
-import Comment from '../../components/Comment'
+import getToken from '../../components/getToken';
+import { getCookie } from 'cookies-next';
 /*
 type commentType = {
     userId: number,
@@ -15,14 +16,15 @@ type commentType = {
 type Readers = {
     authorsword: string,
 }*/
+    //const [darkmode, setDarkmode] = useState(false);
 
 const ViewerPage = ({props}) => {
 
     const [status, setStatus] = useState("text");
-    //const [darkmode, setDarkmode] = useState(false);
     const [onInterface, setOnInterface] = useState(true);
-    const [isPlus, setIsPlus] = useState(true);
+    const [like, setLike] = useState({round: props.isLikedRound, novel: props.isLikedNovel});
     const textRef = useRef();
+    const token = getCookie("uolib_token");
 
     const router = useRouter();
     const {id} = router.query;
@@ -32,6 +34,7 @@ const ViewerPage = ({props}) => {
     })
 
     useEffect(()=>{
+        window.scrollTo(0, 0);
         if(status === "text"){
             let newElement = document.createElement('div');
             newElement.innerHTML = props.text;
@@ -103,26 +106,54 @@ const ViewerPage = ({props}) => {
         }
     }
 
+    const likeRound = () => {
+        axios.post(`/round/like/${id}`, {headers: {Authorization: `Bearer ${token}`}})
+    }
+
+    const likeNovel = () => {
+        axios.post(`/novel/like/${id}`, {headers: {Authorization: `Bearer ${token}`}})
+    }
+
     const Bottom = () => {
         return(            
         <S.Bottom className='interface'>
         <div>
             {props.episode > 1 ?
-            <Link href={`/viewer/${getNextPage(-1)}`}>
-                <span><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
-            </Link>
-            :
-            <span style={{color: "#ccc"}}><i className="fas fa-chevron-left" style={{marginRight: "5px"}}></i>이전화</span>
+                <Link href={`/viewer/${getNextPage(-1)}`}>
+                    <span>
+                        <i className="fas fa-chevron-left" style={{marginRight: "5px"}}/>
+                        이전화
+                    </span>
+                </Link>
+                :
+                <span style={{color: "#ccc"}}><i className="fas fa-chevron-left" style={{marginRight: "5px"}}/>
+                    이전화
+                </span>
             }
-            <span onClick={()=>{if(status !== "comment"){setStatus("comment")}else{setStatus("text")}}}><i className="far fa-comment-alt" style={{marginRight: "5px"}}></i>댓글</span>
-            <span><i className="far fa-thumbs-up" style={{marginRight: "5px"}}></i>추천</span>
-            <span><i className="far fa-heart" style={{marginRight: "5px"}}></i>선호</span>
+            <span onClick={()=>{if(status !== "comment"){setStatus("comment")}else{setStatus("text")}}}>
+                <i className="far fa-comment-alt" style={{marginRight: "5px"}}/>
+                댓글
+            </span>
+            <span onClick={()=>likeRound()}>
+                <i className="far fa-thumbs-up" style={{marginRight: "5px"}}/>
+                추천
+            </span>
+            <span onClick={()=>likeNovel()}>
+                <i className="far fa-heart" style={{marginRight: "5px"}}/>
+                선호
+            </span>
             {props.episode < props.round.length ?
-            <Link href={`/viewer/${getNextPage(1)}`}>
-                <span>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
-            </Link>
-            :
-            <span style={{color: "#ccc"}}>다음화<i className="fas fa-chevron-right" style={{marginLeft: "5px"}}></i></span>
+                <Link href={`/viewer/${getNextPage(1)}`}>
+                    <span>
+                        다음화
+                        <i className="fas fa-chevron-right" style={{marginLeft: "5px"}}/>
+                    </span>
+                </Link>
+                :
+                <span style={{color: "#ccc"}}>
+                    다음화
+                    <i className="fas fa-chevron-right" style={{marginLeft: "5px"}}/>
+                </span>
             }
         </div>
         </S.Bottom>
@@ -132,50 +163,56 @@ const ViewerPage = ({props}) => {
     return(
         <>
             {onInterface ?
-            <S.Header className='interface'>
-                <S.HeaderDiv>
-                    <S.LeftDiv>
-                        <Link href={`/novel/${props.novel}`}>
-                            <i className="fas fa-home fa-lg"></i>
-                        </Link>
-                        <S.Episode>EP.{props.episode}</S.Episode>
-                        <S.Title>{props.title}</S.Title>
-                    </S.LeftDiv>
-                    <S.RightDiv>
-                        <S.ListSpan onClick={()=>{if(status !== "list"){setStatus("list")}else{setStatus("text")}}}><i className="fas fa-bars"/>목록</S.ListSpan>
-                    </S.RightDiv>
-                </S.HeaderDiv>
-            </S.Header>
-            :
-            <></>
+                <S.Header className='interface'>
+                    <S.HeaderDiv>
+                        <S.LeftDiv>
+                            <Link href={`/novel/${props.novel}`}>
+                                <i className="fas fa-home fa-lg"></i>
+                            </Link>
+                            <S.Episode>EP.{props.episode}</S.Episode>
+                            <S.Title>{props.title}</S.Title>
+                        </S.LeftDiv>
+                        <S.RightDiv>
+                            <S.ListSpan onClick={()=>{if(status !== "list"){setStatus("list")}else{setStatus("text")}}}><i className="fas fa-bars"/>목록</S.ListSpan>
+                        </S.RightDiv>
+                    </S.HeaderDiv>
+                </S.Header>
+                :
+                <></>
             }
             <Body />
-            {onInterface ?
-            <Bottom/>
-            :
-            <></>
-            }
-            <>
-            {!isPlus ?
-            <S.Background>
-                <S.PlusModal>
-                    <i className="fas fa-home"></i>홈
-                    <img src={`https://uolib.herokuapp.com/bookcover/${id}`}/>
-                    <span>PLUS 멤버십 가입이<br />필요한 회차 입니다.</span>
-                    <button>PLUS 가입</button>
-                </S.PlusModal>
-            </S.Background>
-            :
-            <></>
-            }
+                {onInterface ?
+                    <Bottom/>
+                    :
+                    <></>
+                }
+                <>
+                {props.plus && props.episode > 15 ?
+                    <S.Background>
+                        <S.PlusModal>
+                            <i className="fas fa-home"></i>홈
+                            <img src={`https://uolib.herokuapp.com/bookcover/${id}`}/>
+                            <span>PLUS 멤버십 가입이<br />필요한 회차 입니다.</span>
+                            <button>PLUS 가입</button>
+                        </S.PlusModal>
+                    </S.Background>
+                    :
+                    <></>
+                }
             </>
         </>
     )
 }
 
-ViewerPage.getInitialProps = async function(context){
-    const {id} = context.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/round/${id}`)
+ViewerPage.getInitialProps = async function(ctx){
+    const {id} = ctx.query;
+    let res;
+    if(ctx.res){
+        res = await axios.get(`https://uolib.herokuapp.com/round/${id}`, {headers: {Authorization: `Bearer ${getToken(ctx)}`}})
+    }
+    else{
+        res = await axios.get(`https://uolib.herokuapp.com/round/${id}`)
+    }
     const props = res.data;
     return {props}
 }

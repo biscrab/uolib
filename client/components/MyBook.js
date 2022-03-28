@@ -11,19 +11,19 @@ const Book = (i) => {
             <S.BookInfo> 
                 <S.Title>
                 {i.plus ?
-                <S.Type color='#5232dd'>PLUS</S.Type>
-                :
-                <S.Type color='#166d95'>자유</S.Type> 
+                    <S.Type color='#5232dd'>PLUS</S.Type>
+                    :
+                    <S.Type color='#166d95'>자유</S.Type> 
                 }
                 {i.monopoly ?
-                <S.Type color='#0d60d1'>독점</S.Type>
-                :
-                <></>
+                    <S.Type color='#0d60d1'>독점</S.Type>
+                    :
+                    <></>
                 }
                 {i.complete ?
-                <S.Type color='black'>완결</S.Type>  
-                :
-                <></>
+                    <S.Type color='black'>완결</S.Type>  
+                    :
+                    <></>
                 }
                 <Link href={`/novel/${i.id}`}>
                     <b>{i.title}</b>

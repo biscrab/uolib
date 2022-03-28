@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as S from '../../../../../styled/Search'
 import Book from '../../../../../components/Book'
 //import { NextPage } from 'next';
@@ -14,6 +14,10 @@ const SearchPage = ({props}) => {
     const {type, order, page, keyword} = router.query;
 
     const [word, setWord] = useState(keyword);
+
+    useEffect(()=>{
+        setWord(keyword);
+    },[router])
 
     //const lists = [{title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag: ["1"]}];
 

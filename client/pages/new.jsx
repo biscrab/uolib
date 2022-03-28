@@ -106,6 +106,11 @@ const NewPage = () => {
         } 
     },[])
 
+    /*                    <S.InputDiv>
+                        <span>작품부제</span>
+                        <S.Input />
+                    </S.InputDiv> */
+
     return(
         <S.Body>
             <b>작품설정</b>
@@ -118,11 +123,7 @@ const NewPage = () => {
                 <S.BodyInput>
                     <S.InputDiv>
                         <span>작품명</span>
-                        <S.Input />
-                    </S.InputDiv>
-                    <S.InputDiv>
-                        <span>작품부제</span>
-                        <S.Input />
+                        <S.Input onChange={(e)=>setNovel({...novel, title: e.target.value})} value={novel.title}/>
                     </S.InputDiv>
                     <S.InputDiv>
                         <span>태그</span>

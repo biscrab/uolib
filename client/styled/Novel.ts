@@ -145,6 +145,7 @@ export const Name = styled.span`
 export const ListTittle = styled.h1`
     width: 100%;
     margin-top: 30px;
+    margin-bottom: 0;
     padding-bottom: 8px;
     font-size: 25px;
     color: #333;
