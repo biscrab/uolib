@@ -18,12 +18,14 @@ export const ButtonDiv = styled.div`
     align-items: end;
     padding-top: 10px;
     button{
-        border: 1px solid #ddd;
+        border: 0;
+        font-weight: bold;
         padding: 5px 12px;
         color: #fff;
         width: 120px;
         font-size: 13px;
         cursor: pointer;
+        margin-right: 8px;
     }
 `
 

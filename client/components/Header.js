@@ -32,8 +32,7 @@ const Header = () => {
 
     const logout = () => {
         removeCookies("uolib_token");
-        rotuer.push("/");
-        window.reload();
+        location.reload();
     }
 
     const Path = () => {

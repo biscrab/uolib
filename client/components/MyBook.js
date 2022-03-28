@@ -2,7 +2,7 @@ import * as S from '../styled/Book'
 import Link from 'next/link'
 import TagDiv from './TagDiv'
 
-const Book = (i) => {
+const Book = ({i}) => {
     return(
         <S.Book>
             <Link href={`/novel/${i.id}`}>
@@ -39,7 +39,29 @@ const Book = (i) => {
                     <img src="	https://image.novelpia.com/img/new/icon/count_good.png"/>
                     <span>{i.like}회</span>
                 </S.Info>
-                <TagDiv tag={i.tag}/>
+                <S.TagDiv>
+                    {i.tag.length ?
+                        <>
+                        {i.tag.map(
+                            (tag, index) => {
+                                return(
+                                    <Link href={`/search/tag/date/1/${tag}`} key={index}>
+                                    <span>#{tag}</span>
+                                    </Link>
+                                )
+                            }
+                        )}
+                        </>
+                        :
+                        <></>
+                    }
+                </S.TagDiv>
+                <S.ButtonDiv>
+                    <Link href={"/write"}>
+                        <button style={{backgroundColor: "black"}}>작품 연재</button>
+                    </Link>
+                    <button onClick={()=>deleteNovel()} style={{backgroundColor: "crimson"}}>작품 삭제</button>
+                </S.ButtonDiv>
             </S.BookInfo>
         </S.Book>
     )

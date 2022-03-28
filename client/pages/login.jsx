@@ -3,11 +3,8 @@ import { useState } from 'react'
 import axios from 'axios';
 import { setCookies } from 'cookies-next';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 const LoginPage = () => {
-
-    const router = useRouter();
 
     const [info, setInfo] = useState({email: "", password: ""});
 
@@ -41,8 +38,7 @@ const LoginPage = () => {
                     setCookies('uolib_token', res.data);
                     //document.cookie = `uolib_token=${res.data}`;
                     alert("로그인 완료");
-                    router.push("/");
-                    window.reload();
+                    location.reload();
                 })
                 .catch(err => alert("잘못된 정보 입니다. " + err.status))
         }

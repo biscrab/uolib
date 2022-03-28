@@ -4,7 +4,7 @@ import Link from 'next/link'
 const Book = ({i}) => {
     return(
         <S.Book>
-            <Link href="/novel/1">
+            <Link href={`/novel/${i.id}`}>
                 <S.BookCover src={i.image ? i.image : "https://image.novelpia.com/img/layout/readycover4.png"}/>
             </Link>
             <S.BookInfo> 
@@ -24,7 +24,7 @@ const Book = ({i}) => {
                     :
                     <></>
                 }
-                <Link href="/novel/1">
+                <Link href={`/novel/${i.id}`}>
                     <b>{i.title}</b>
                 </Link>
                 <Link href="/user/1">

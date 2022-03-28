@@ -1,5 +1,5 @@
 import * as S from '../styled/MyBook'
-import Book from '../components/Book'
+import Book from '../components/MyBook'
 //import { NextPage } from 'next';
 import Link from 'next/link'
 import {useRouter} from 'next/router'
@@ -23,7 +23,7 @@ const MyBookPage = ({props}: {props: any[]}) => {
                     <S.Select selected={type==="like"||!type}>선호작</S.Select>
                 </Link>
                 <Link href="/mybook/my">
-                    <S.Select selected={type==="my"}>내작품</S.Select>
+                    <S.Select selected={type==="my"}>내 작품</S.Select>
                 </Link>
                 <Link href="/mybook/last_view">
                     <S.Select selected={type==="last_view"}>최근 본 작품</S.Select>

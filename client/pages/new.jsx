@@ -19,7 +19,7 @@ const NewPage = () => {
     //const [info, setInfo] = useState();
     const [focus, setFocus] = useState(false);
     const [tag, setTag] = useState("");
-    const [novel, setNovel] = useState({title: "", author: "", explane: "", image: "", days: "", tag: ["123"]})
+    const [novel, setNovel] = useState({title: "", explane: "", image: "", days: "", tag: ["123"]})
     const [day, setDay] = useState({mon: false, tue: false, wen: false, thu: false, fri: false, sat: false, sun: false});
     //const taglist = ["판타지","라이트노벨","전생","현대","중세","하렘","드라마","일상","로맨스","SF","스포츠","무협"];
 
@@ -44,9 +44,9 @@ const NewPage = () => {
         daysArr.map((i, index) => {
             if(i){
                 if(daysArr[index+1])
-                    d.push("/");
+                    d += "/";
 
-                d.push(koreanDays(index));
+                d += koreanDays[index];
             }
         })
         return d;
@@ -57,13 +57,24 @@ const NewPage = () => {
             alert("제목을 입력해 주세요.");
         }
         else{
-        axios.post('/novel/new', {...novel, tag: JSON.stringify(novel.tag), day: getDay()})
-            .then(res => alert("등록되었습니다."))
-            .catch(err => {
-                if(err.status === 401){
-                    alert("로그인을 먼저 해주십쇼.");
+            let t = "";
+            novel.tag.map((i, index) => {
+                if(novel.tag.length-1 === index)
+                    t += i;
+                else{
+                    t += `${i},`
                 }
             })
+            axios.post('/novel', {...novel, tag: t, days: getDay()})
+                .then(res => alert("등록되었습니다."))
+                .catch(err => {
+                    if(err.status === 401){
+                        alert("로그인을 먼저 해주십쇼.");
+                    }
+                    else{
+                        alert("error");
+                    }
+                })
         }
     }
 
@@ -175,11 +186,11 @@ const NewPage = () => {
                     </S.SelectDiv>
                     <S.InputDiv>
                         <span>줄거리</span>
-                        <textarea />
+                        <textarea onChange={(e)=>setNovel({...novel, explane: e.target.value})} value={novel.explane}/>
                     </S.InputDiv>
                     <S.ImgInputDiv>
                         <span>북커버</span>
-                        <S.Input onChange={(e)=>setNovel({...novel, image: e.target.value})}/>
+                        <S.Input onChange={(e)=>setNovel({...novel, image: e.target.value})} value={novel.image}/>
                     </S.ImgInputDiv>
                     <S.SampleBookCover>
                         <span>샘플 북커버 이미지:</span>

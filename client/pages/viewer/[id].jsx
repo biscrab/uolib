@@ -23,6 +23,7 @@ const ViewerPage = ({props}) => {
     const [status, setStatus] = useState("text");
     const [onInterface, setOnInterface] = useState(true);
     const [like, setLike] = useState({round: props.isLikedRound, novel: props.isLikedNovel});
+    const [comment, setComment] = useState("");
     const textRef = useRef();
     const token = getCookie("uolib_token");
 
@@ -30,7 +31,10 @@ const ViewerPage = ({props}) => {
     const {id} = router.query;
 
     useEffect(()=>{
-        $('html').click(function(e){if(!$(".interface").has(e.target).length)setOnInterface(!onInterface)})
+        $('html').click(function(e){
+            if(!$(".interface").has(e.target).length || !$(".commentInput").has(e.target).length)
+                setOnInterface(!onInterface)
+        })
     })
 
     useEffect(()=>{
@@ -50,6 +54,10 @@ const ViewerPage = ({props}) => {
                 id = i.id;
         })
         return id;
+    }
+
+    const registComment = () => {
+        axios.post(`/novel/comment/${id}`)
     }
 
     const Body = () => {
@@ -91,8 +99,8 @@ const ViewerPage = ({props}) => {
                 <S.CommentList>
                     <S.ContentsTitle>댓글 수({props.comment.length})</S.ContentsTitle>
                     <S.CommentInputDiv>
-                        <textarea />
-                        <button>등록</button>
+                        <textarea className='commentInput' onChange={(e)=>setComment(e.target.value)} value={comment}/>
+                        <button onClick={()=>registComment()}>등록</button>
                     </S.CommentInputDiv>
                     {props.comment.map(
                         i => {
