@@ -1,36 +1,24 @@
 import * as S from '../styled/Header'
 import logo from '../images/logo.png'
 import Link from 'next/link'
-import $ from 'jquery'
 import { useEffect, useState } from 'react'
 //import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import { getCookie, removeCookies } from 'cookies-next'
-import { useDispatch, useSelector } from 'react-redux'
-import { setUser } from '../store/rootReducer'
 
 const Header = () => {
-
-    //const isMobile = useMediaQuery('( maxWidth: 1240 )')
-    //const isMobile = 0;
-
-    const dispatch = useDispatch();
-    const user = useSelector((state) => state.user);
             
     const token = getCookie("uolib_token");
 
     const [props, setprops] = useState();
 
     useEffect(()=>{
-        console.log(token);
-        console.log(user);
         if(token){
             axios.get(`https://uolib.herokuapp.com/header`, {headers: {Authorization: `Bearer ${token}`}})
                 .then(res => {
                     console.log(res);
                     setprops(res.data);
-                    dispatch(setUser(res.data));
                 })
         }
         else{
@@ -46,10 +34,6 @@ const Header = () => {
         removeCookies("uolib_token");
         rotuer.push("/");
     }
-
-    /*                <Link href="/readers/all/1">
-                    <S.Path path={pathname.includes("/readers")}>독자마당</S.Path>
-                </Link> */
 
     const Path = () => {
         return(
@@ -139,6 +123,14 @@ const Header = () => {
         </S.Header>
     )
 }
+
+    //const isMobile = useMediaQuery('( maxWidth: 1240 )')
+    //const isMobile = 0;
+
+    /*                <Link href="/readers/all/1">
+                    <S.Path path={pathname.includes("/readers")}>독자마당</S.Path>
+                </Link> */
+
 /*
 Header.getInitialProps = async function(context){
     const token = getCookie("uolib_token");

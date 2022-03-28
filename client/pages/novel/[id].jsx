@@ -65,7 +65,7 @@ const NovelPage/*: NextPage*/ = ({props}) => {
                         <Round props={{lists: props.round, plus: props.plus}}/>
                     </S.ListBorder>
                 </S.List>
-                    <Comment lists={props.comment}/>
+                    <Comment lists={props.comments}/>
                 </S.ListDiv>
             </S.Border>
             <S.PDiv>

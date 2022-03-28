@@ -26,19 +26,6 @@ const ViewerPage = ({props}) => {
 
     const router = useRouter();
     const {id} = router.query;
-/*
-    document.addEventListener('scroll', function() {
-        setOnInterface(false);
-    })*/
-    /*
-    useEffect(()=>{
-        if(darkmode){
-            document.body.style.backgroundColor="black";
-        }
-        else{
-            document.body.style.backgroundColor="white";
-        }
-    },[darkmode])*/
 
     useEffect(()=>{
         $('html').click(function(e){if(!$(".interface").has(e.target).length)setOnInterface(!onInterface)})
@@ -194,6 +181,21 @@ ViewerPage.getInitialProps = async function(context){
 }
 
 export default ViewerPage
+
+/*
+    document.addEventListener('scroll', function() {
+        setOnInterface(false);
+    })*/
+    /*
+    useEffect(()=>{
+        if(darkmode){
+            document.body.style.backgroundColor="black";
+        }
+        else{
+            document.body.style.backgroundColor="white";
+        }
+    },[darkmode])*/
+
 
 /*                    <S.Setting>
                     <span onClick={()=>setOnSetting(!onSetting)}><i className="fas fa-cog"></i>설정</span>

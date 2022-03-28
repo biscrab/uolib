@@ -9,6 +9,7 @@ import '../styles/App.css'
 import {useRouter} from 'next/router'
 import Loading from '../components/Loading.js'
 import axios from 'axios';
+import { getCookie } from 'cookies-next'
 
 function MyApp({ Component, pageProps}) {
   
@@ -47,6 +48,12 @@ function MyApp({ Component, pageProps}) {
     router.events.on("routeChangeComplete", handleComplete);
     router.events.on("routeChangeError", handleComplete);
   }, [router]);
+
+  useEffect(()=>{
+    const token = getCookie("uolib_token");
+    if(token)
+      axios.defaults.headers.common = {'Authorization': `Bearer ${token}`};
+  })
 
   return (
     <>

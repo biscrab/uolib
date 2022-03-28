@@ -11,15 +11,14 @@ const Comment = (i, index) => {
 }
 
 const List = ({lists}) => {
-    const ItemList = lists.map((i, index) => { 
-        return <Comment i={i} index={index}/>
-    })
     return (
         <>
             <S.CommentTittle>댓글({lists.length})</S.CommentTittle>
-            <S.ItemList>
-                <ItemList/>
-            </S.ItemList>
+            <S.CommentList>
+            {lists.map((i, index) => { 
+                return <Comment i={i} index={index}/>
+            })}
+            </S.CommentList>
         </>
     )
 }

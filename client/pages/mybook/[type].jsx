@@ -1,6 +1,7 @@
 import Page from '../../components/MyBookPage'
 import axios from 'axios'
 import getToken from '../../components/getToken'
+import Cookies from 'cookies'
 /*
 type BookInterface = {
     id: number,
@@ -20,7 +21,14 @@ const MyBookPage = ({props}) => {
 MyBookPage.getInitialProps = async function(ctx){
     console.log("ctx");
     const { type } = ctx.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/mybook/${type}`, {headers: {Authorization: `Bearer ${token}`}})
+    //const token = await ctx.req.cookies.uolib_token;
+    let res;
+    if(ctx.res){
+        res = await axios.get(`https://uolib.herokuapp.com/mybook/${type}`, {headers: {Authorization: `Bearer ${getToken(ctx)}`}})
+    }
+    else{
+        res = await axios.get(`https://uolib.herokuapp.com/mybook/${type}`)
+    }
     const props = await res.data;
     return {props}
 }

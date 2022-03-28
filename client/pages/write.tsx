@@ -20,19 +20,6 @@ const WritePage = ({props}: {props: any}) => {
 
     const change = (i: string) => {
         document.execCommand(i, false, "");
-        /*
-        console.log(c);
-        switch(i){
-            case "bold" :
-                setOn({...on, bold: c});
-                break;
-            case "italic" :
-                setOn({...on, italic: c});
-                break;
-            case "underline" :
-                setOn({...on, underline: c});
-                break;
-        }*/
         $(".text").focus();
     }
 
@@ -93,12 +80,32 @@ const WritePage = ({props}: {props: any}) => {
 }
 
 WritePage.getInitialProps = async function(ctx: any){
-    const res = await axios.get("/users_novel", {headers: {Authorization: `Bearer ${getToken(ctx)}`}});
+    let res;
+    if(ctx.res){
+        res = await axios.get(`https://uolib.herokuapp.com/mybook/like`, {headers: {Authorization: `Bearer ${getToken(ctx)}`}})
+    }
+    else{
+        res = await axios.get(`https://uolib.herokuapp.com/mybook/like`)
+    }
     const props = res.data;
     return {props}
 }
 
 export default WritePage
+
+        /*
+        console.log(c);
+        switch(i){
+            case "bold" :
+                setOn({...on, bold: c});
+                break;
+            case "italic" :
+                setOn({...on, italic: c});
+                break;
+            case "underline" :
+                setOn({...on, underline: c});
+                break;
+        }*/
 
     //const [on, setOn] = useState({bold: false, italic: false, underline: false});
     //const [onImage, setOnImage] = useState(false);

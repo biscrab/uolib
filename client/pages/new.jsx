@@ -2,7 +2,8 @@ import { useCallback, useEffect, useState } from 'react';
 //mport { NextPage } from 'next';
 import * as S from '../styled/New'
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { getCookie } from 'cookies-next';
+import { useRouter } from 'next/router';
 //import $ from 'jquery'
 /*
 type BookInterface = {
@@ -97,11 +98,11 @@ const NewPage = () => {
         setNovel({...novel, tag: arr});
     }
 
-    const user = useSelector((state)=> state.user);
+    const router = useRouter();
 
     useEffect(()=>{
-        if(!user){
-            alert("로그인을 먼저 해주세요.");
+        if(!getCookie("uolib_token")){
+            router.push("/401")
         } 
     },[])
 

@@ -296,7 +296,7 @@ export const SettingButton = styled.div`
     display: flex;
     flex-direction: column;
 `
-
+/*
 export const EffectSelectDiv = styled.div`
     background: white;
     display: flex;
@@ -397,7 +397,6 @@ span{
   overflow: hidden;
 }
 `
-/*
 export const Background = styled.div`
     position: fixed;
     width: 100%;
