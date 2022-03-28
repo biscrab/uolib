@@ -18,9 +18,9 @@ const MyBookPage = ({props}) => {
 }
 
 MyBookPage.getInitialProps = async function(ctx){
-    console.log(ctx);
+    console.log("ctx");
     const { type } = ctx.query;
-    const res = await axios.get(`https://uolib.herokuapp.com/mybook/${type}`, {headers: {Authorization: `Bearer ${getToken(ctx)}`}})
+    const res = await axios.get(`https://uolib.herokuapp.com/mybook/${type}`, {headers: {Authorization: `Bearer ${token}`}})
     const props = await res.data;
     return {props}
 }

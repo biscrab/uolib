@@ -47,14 +47,6 @@ const Header = () => {
         rotuer.push("/");
     }
 
-    useEffect(()=>{
-        $("html").click(function(e){
-            if(!$('.menuicon').has(e.target).length && onMenu){
-                setOnMenu(false);
-            }
-        })
-    })
-
     /*                <Link href="/readers/all/1">
                     <S.Path path={pathname.includes("/readers")}>독자마당</S.Path>
                 </Link> */
@@ -99,7 +91,7 @@ const Header = () => {
                         <img src="https://image.novelpia.com/img/new/menu/search.png"/>
                     </Link>
                     <S.Menu className='menu'>
-                        <img onClick={()=>{setOnMenu(!onMenu)}}className='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
+                        <img onClick={()=>{setOnMenu(!onMenu)}} class='menuicon' src="https://image.novelpia.com/img/new/menu/list.png"/>
                         {onMenu ?
                         <S.MenuModal className='menumodal'>
                             {props ?
