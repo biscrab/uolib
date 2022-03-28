@@ -5,11 +5,11 @@ import { useRouter } from 'next/router';
 
 const PageDiv = ({props}) => {
 
-    const rotuer = useRouter();
-    const { page } = rotuer.query;
+    const router = useRouter();
+    const {page, max} = props;
 
     const getPage = () => {
-        let p = Number(props.page);
+        let p = Number(page);
         if(!p)
             p = 1;
         let l = [];
@@ -22,40 +22,61 @@ const PageDiv = ({props}) => {
     
         l.push(p);
     
-        if(p <= props.max-1)
+        if(p <= max-1)
             l.push(p+1);
     
-        if(p <= props.max-2)
+        if(p <= max-2)
             l.push(p+2);
     
         return(l);
     }
 
-    const [plist, setPlist] = useState([1]);
+    const [plist, setPlist] = useState([]);
     
     useEffect(()=>{
         const l = getPage();
         setPlist(l);
-        console.log(router);
+        console.log(router.pathname);
     },[])
+
+    const getQuery = (page) => {
+        const valueArr = Object.values(router.query);
+        const keyArr = Object.keys(router.query);
+        let path = `/${router.pathname.split("/")[1]}`;
+        valueArr.map((i, index) => {
+            if(keyArr[index] !== "page")
+                path += `/${i}`
+            else
+                path += `/${page}`
+        })
+        return path
+    }
 
     return(
         <S.PageDiv>
-            {props.page !== 1 ?
-            <Link href={"/"}>
+            {page !== 1 ?
+            <Link href={getQuery(page-1)}>
                 <S.Page><i className="fas fa-chevron-left"></i></S.Page>
             </Link>
             :
-            <S.Page><i className="fas fa-chevron-left"></i></S.Page>
+            <></>
             }
             {plist.map(
                 (i, index) => {
                     return(
-                        <S.Page key={index} selected={Number(props.page) === i || !props.page}>{i}</S.Page>
+                        <Link href={getQuery(i)}>
+                            <S.Page key={index} selected={Number(page) === i || !page}>{i}</S.Page>
+                        </Link>
                     )
                 }
             )}
-            <S.Page><i className="fas fa-chevron-right"></i></S.Page>
+            {page < max ?
+            <Link href={getQuery(page-1)}>
+                <S.Page><i className="fas fa-chevron-left"></i></S.Page>
+            </Link>
+            :
+            <></>
+            }
         </S.PageDiv>
     )
 }

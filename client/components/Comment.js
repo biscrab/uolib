@@ -16,7 +16,7 @@ const List = ({lists}) => {
     })
     return (
         <>
-            <S.CommentTittle>댓글</S.CommentTittle>
+            <S.CommentTittle>댓글({lists.length})</S.CommentTittle>
             <S.ItemList>
                 <ItemList/>
             </S.ItemList>

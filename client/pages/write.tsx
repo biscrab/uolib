@@ -3,6 +3,7 @@ import * as S from '../styled/Write'
 import $ from 'jquery'
 //import { NextPage } from 'next';
 import axios from 'axios';
+import getToken from '../components/getToken';
 
 /*: NextPage<{}>  */
 const WritePage = ({props}: {props: any}) => {
@@ -92,23 +93,7 @@ const WritePage = ({props}: {props: any}) => {
 }
 
 WritePage.getInitialProps = async function(ctx: any){
-    //const props = ctx.req.headers.cookie;
-    function getCookie(cname: string) {
-        let name = cname + "=";
-        let decodedCookie = ctx.req.headers.cookie;
-        let ca = decodedCookie.split(';');
-        for(let i = 0; i <ca.length; i++) {
-          let c = ca[i];
-          while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-          }
-          if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-          }
-        }
-        return "";
-    }
-    const res = await axios.get("/users_novel", {headers: {Authorization: `Bearer ${getCookie("uolib_token")}`}});
+    const res = await axios.get("/users_novel", {headers: {Authorization: `Bearer ${getToken(ctx)}`}});
     const props = res.data;
     return {props}
 }

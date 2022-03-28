@@ -12,7 +12,7 @@ const ErrorPage = () => {
 
     return(
         <S.Body>
-            <h1>Error 401 - 로그인을 먼저 해주십쇼.</h1>
+            <h1>Error 401 - 로그인을 먼저 해주세요.</h1>
         </S.Body>
     )
 }

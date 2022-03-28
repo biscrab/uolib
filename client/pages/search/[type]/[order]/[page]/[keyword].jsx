@@ -90,7 +90,7 @@ const SearchPage = ({props}) => {
                     <S.Null>등록된 작품이 없습니다.</S.Null>
                 }
             </S.List>
-            <PageDiv page={page} max={props.max}/>
+            <PageDiv props={{page: page, max: props.max}}/>
         </S.Body>
         </>
     )
