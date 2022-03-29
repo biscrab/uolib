@@ -80,14 +80,14 @@ export const List = styled.div<LengthProps>`
     display: flex;
     min-height: 200px;
     width: 100%;
-    justify-content: ${props => props.length === 3 ? "space-between" : ""};
 `
 
 //책
 export const Book = styled.div<LengthProps>`
     display: flex;
     margin-bottom: 50px;
-    width: ${props => props.length === 3 ? "" : "33.3%"};
+    width: auto;
+    width: calc(100%/3);
     @media screen and (max-width: 1200px) {
         width:100%;
     }
@@ -103,7 +103,7 @@ export const BookCover = styled.img`
 
 export const BookInfo = styled.div`
     padding-left: 20px;
-    width: 240px;
+    width: 230px;
     @media screen and (max-width: 1200px) {
         width: 100%;
     }

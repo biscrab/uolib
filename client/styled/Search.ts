@@ -16,7 +16,6 @@ export const Body = styled.div`
     left: 50%;
     transform: translateX(-50%);
     margin-top: 30px;
-    padding-bottom: 60px;
     @media screen and (max-width: 1200px){
         width: 100%;
         padding: 0px 10px;
@@ -128,7 +127,7 @@ export const Result = styled.div`
 export const List  = styled.ul`
     padding: 0;
     margin: 0;
-    height: 1000px;
+    min-height: 1000px;
     list-style: none;
 `
 

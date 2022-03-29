@@ -10,8 +10,10 @@ const PageDiv = ({props}) => {
 
     const getPage = () => {
         let p = Number(page);
-        if(!p)
+        
+        if(!page)
             p = 1;
+
         let l = [];
     
         if(p >= 3)
@@ -54,28 +56,28 @@ const PageDiv = ({props}) => {
 
     return(
         <S.PageDiv>
-            {page !== 1 ?
+            {page > 1 ?
             <Link href={getQuery(page-1)}>
                 <S.Page><i className="fas fa-chevron-left"></i></S.Page>
             </Link>
             :
-            <></>
+            <S.Page><i className="fas fa-chevron-left"></i></S.Page>
             }
             {plist.map(
                 (i, index) => {
                     return(
                         <Link href={getQuery(i)}>
-                            <S.Page key={index} selected={Number(page) === i || !page}>{i}</S.Page>
+                            <S.Page key={index} selected={Number(page) === i || (!page && index === 0) }>{i}</S.Page>
                         </Link>
                     )
                 }
             )}
             {page < max ?
             <Link href={getQuery(page-1)}>
-                <S.Page><i className="fas fa-chevron-left"></i></S.Page>
+                <S.Page><i className="fas fa-chevron-right"></i></S.Page>
             </Link>
             :
-            <></>
+            <S.Page><i className="fas fa-chevron-right"></i></S.Page>
             }
         </S.PageDiv>
     )

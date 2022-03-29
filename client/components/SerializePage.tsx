@@ -23,7 +23,7 @@ const SerializePage = ({props}: any) => {
                 (i, index) => {
                     return(
                         <div key={index}>
-                        <Link href={`/${plus ? "plus" : "free"}/${type? type : "all"}/${order ? order : "date"}/1/${i}`}>
+                        <Link href={`/${plus ? "plus" : "free"}/${type? type : "all"}/${order ? order : "date"}/1/${encodeURI(i)}`}>
                             <S.Category selected={i === tag}>{i}</S.Category>
                         </Link>
                         </div>
@@ -40,7 +40,7 @@ const SerializePage = ({props}: any) => {
         )
     }
 
-    /*        <S.Banner background="#eee"/> */
+    /*<S.Banner background="#eee"/> */
 
     return(
         <>
@@ -60,7 +60,7 @@ const SerializePage = ({props}: any) => {
                 </Link>
             </S.SelectDiv>
             <S.Result>
-                <b>총 {props.count}개의 작품</b>
+                <b>총 {props.count}개의 작품 {tag ? `('${tag}' 검색 결과)`: ""}</b>
                 <div>
                     <Link href={`/${plus ? "plus" : "free"}/${type ? type : "all"}/date/1${tag ? `/${tag}` : ""}`}>
                     <div>

@@ -49,7 +49,6 @@ export const Author = styled.span`
     color: dimgray;
     margin-left: 10px;
     font-weight: bold;
-    cursor: pointer;
 `
 
 export const Explane = styled.span`

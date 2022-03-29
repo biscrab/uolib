@@ -39,7 +39,8 @@ export const Select = styled.div<SelectProps>`
 export const List = styled.div`
     display: flex;
     flex-wrap: wrap;
-    margin: 30px 0px;
+    margin-top: 60px;
+    margin-bottom: 50px;
     width: 100%;
 `
 
@@ -59,14 +60,13 @@ interface BookProps{
 }
 
 export const Book = styled.div<BookProps>`
-    width: 215px;
-    margin-top: 2%;
+    width: 210px;
     border-bottom: 1px solid #eee;
+    margin: 0px 5px;
     padding-bottom: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     display: flex;
     flex-direction: column;
-    margin-right: ${props => (props.key+1)/5 ? "" : "15px"};
     b{
         margin-top: 6px;
     }
@@ -122,9 +122,11 @@ export const Rank = styled.div`
 export const BookImgDiv = styled.div`
     overflow: hidden;
     width: 100%;
-    height: 320px;
+    height: 310px;
     border-radius: 0px 10px 10px 10px;
     img{
+        width: 100%;
+        height: 310px;
         :hover {
             transform: scale(1.1);
             -webkit-transform: scale(1.1);

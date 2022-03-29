@@ -1,7 +1,7 @@
 import Link from "next/link"
 import * as S from '../styled/TagDiv'
 
-const TagDiv = (tag) => {
+const TagDiv = ({tag}) => {
     return(
         <S.TagDiv>
         {tag ? 

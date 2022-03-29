@@ -22,7 +22,7 @@ const NovelPage/*: NextPage*/ = ({props}) => {
                         <S.Tittle>{props.title}</S.Tittle>
                         <S.AuthorDiv>
                             <S.Author>작가</S.Author>
-                            <S.Name>{props.author}</S.Name>
+                            <S.Name>{props.authorsName}</S.Name>
                         </S.AuthorDiv>
                     </S.TopInfo>
                     <S.BottomInfo>

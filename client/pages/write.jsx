@@ -6,9 +6,8 @@ import axios from 'axios';
 import getToken from '../components/getToken';
 
 /*: NextPage<{}>  */
-const WritePage = ({props}: {props: any}) => {
+const WritePage = ({props}) => {
 
-    const text = useRef('');
     /*
     const handleChange = (evt: any) => {
         text.current = evt.target.value;
@@ -18,41 +17,47 @@ const WritePage = ({props}: {props: any}) => {
     const handleBlur = () => {
     };
 
-    const change = (i: string) => {
+    const change = (i) => {
         document.execCommand(i, false, "");
         $(".text").focus();
     }
 
     //회차 등록
     const registRound = () => {
-        axios.post(`/round`, )
+        const text = document.getElementById("text");
+        const textHtml = text?.innerHTML;
+        const notice = document.getElementById("notice").options[select.selectedIndex].value;
+        const novel = document.getElementById("novel").options[select.selectedIndex].value
+        axios.post(`/round`, {novel: novel, notice: notice, ...round, text: textHtml})
+            .then(res => alert("등록 성공"))
+            .catch(err => alert("에러"))
     }
 
     useEffect(()=>{
         console.log(props);  
     },[])
 
-    const [round, setRound] = useState({novel: null, text: "", notice: 0})
+    const [round, setRound] = useState({novel: null, title: "", authorsword: "", notice: 0})
 
     return(
         <>
         <S.Body>
             <S.BTittle>소설연재</S.BTittle>
-            <S.Tittle placeholder='에피소드 제목을 입력해주세요'/>
+            <S.Tittle onChange={(e)=>setRound({...round, title: e.target.value})} value={round.title} placeholder='에피소드 제목을 입력해주세요'/>
             <S.SelectDiv>
                 <S.NovelSelect>
-                    <select>
-                        {props.map((i: any) => {
+                    <select id="select">
+                        {props.map((i) => {
                             return(
-                                <option id={props.id}>{i.title}</option>
+                                <option value={i.id}>{i.title}</option>
                             )
                         })}
                     </select>
                 </S.NovelSelect>
                 <S.Select>
-                    <select>
-                        <option>연재회차</option>
-                        <option>공지사항</option>
+                    <select id="notice">
+                        <option value={0}>연재회차</option>
+                        <option value={1}>공지사항</option>
                     </select>
                 </S.Select>
             </S.SelectDiv>
@@ -64,13 +69,12 @@ const WritePage = ({props}: {props: any}) => {
                     <S.Setting onClick={()=>change("undo")}><i className="fas fa-undo-alt"></i></S.Setting>
                     <S.Setting onClick={()=>change("redo")}><i className="fas fa-redo-alt"></i></S.Setting>  
                 </S.SettingDiv>
-                <div className="text" id="text" role="textbox" aria-multiline="true" spellCheck="true" autoCorrect="true" contentEditable="true" /*html={text.current}*/ onBlur={handleBlur} onInput={(e)=>console.log(e.target)}>
-                </div>
+                <div className="text" id="text" role="textbox" aria-multiline="true" spellCheck="true" autoCorrect="true" contentEditable="true" /*html={text.current}*/ onBlur={handleBlur} onInput={()=>console.log()}/>
             </S.TextDiv>
             <S.RTittle>
                 <b>작가후기</b>
             </S.RTittle>
-            <S.Review />
+            <S.Review onChange={(e)=>setRound({...round, authorsword: e.target.value})} value={round.authorsword}/>
             <S.ButtonDiv>
                 <S.RegistButton onClick={()=>registRound()}><i className="fas fa-pen"></i> 회차 등록</S.RegistButton>
             </S.ButtonDiv>
@@ -79,13 +83,13 @@ const WritePage = ({props}: {props: any}) => {
     )
 }
 
-WritePage.getInitialProps = async function(ctx: any){
+WritePage.getInitialProps = async function(ctx){
     let res;
     if(ctx.res){
-        res = await axios.get(`https://uolib.herokuapp.com/mybook/like`, {headers: {Authorization: `Bearer ${getToken(ctx)}`}})
+        res = await axios.get(`https://uolib.herokuapp.com/users_novel`, {headers: {Authorization: `Bearer ${getToken(ctx)}`}})
     }
     else{
-        res = await axios.get(`https://uolib.herokuapp.com/mybook/like`)
+        res = await axios.get(`https://uolib.herokuapp.com/users_novel`)
     }
     const props = res.data;
     return {props}

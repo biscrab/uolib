@@ -23,8 +23,9 @@ const ViewerPage = ({props}) => {
     const [status, setStatus] = useState("text");
     const [onInterface, setOnInterface] = useState(true);
     const [like, setLike] = useState({round: props.isLikedRound, novel: props.isLikedNovel});
-    const [comment, setComment] = useState("");
+    const [comment, setComment] = useState("123");
     const textRef = useRef();
+    const commentRef = useRef();
     const token = getCookie("uolib_token");
 
     const router = useRouter();
@@ -32,7 +33,7 @@ const ViewerPage = ({props}) => {
 
     useEffect(()=>{
         $('html').click(function(e){
-            if(!$(".interface").has(e.target).length || !$(".commentInput").has(e.target).length)
+            if(!$(".interface").has(e.target).length && !$(".commentInput").has(e.target).length)
                 setOnInterface(!onInterface)
         })
     })
@@ -67,17 +68,17 @@ const ViewerPage = ({props}) => {
                 <img src={0 ? 0 : "https://image.novelpia.com/img/layout/readycover4.png"}/>
                 <S.Text ref={textRef} />
                 {props.authorsword ?
-                <S.AuthorsWords>
-                    <b>작가의 말</b>
-                    {props.authorsword}
-                </S.AuthorsWords>
+                    <S.AuthorsWords>
+                        <b>작가의 말</b>
+                        {props.authorsword}
+                    </S.AuthorsWords>
                 :
                 <></>
                 }
                 {props.episode < props.round.length ?
-                <Link href={`/round/${getNextPage(1)}`}>
-                    <S.NextButton>다음 화</S.NextButton>
-                </Link>
+                    <Link href={`/round/${getNextPage(1)}`}>
+                        <S.NextButton>다음 화</S.NextButton>
+                    </Link>
                 :
                 <></>
                 }
@@ -96,20 +97,7 @@ const ViewerPage = ({props}) => {
         }
         else{
             return(
-                <S.CommentList>
-                    <S.ContentsTitle>댓글 수({props.comment.length})</S.ContentsTitle>
-                    <S.CommentInputDiv>
-                        <textarea className='commentInput' onChange={(e)=>setComment(e.target.value)} value={comment}/>
-                        <button onClick={()=>registComment()}>등록</button>
-                    </S.CommentInputDiv>
-                    {props.comment.map(
-                        i => {
-                            <S.Comment>
-                                <b>{i.user}</b>
-                            </S.Comment>
-                        }
-                    )}
-                </S.CommentList>
+                <></>
             )
         }
     }
@@ -189,24 +177,42 @@ const ViewerPage = ({props}) => {
                 <></>
             }
             <Body />
-                {onInterface ?
-                    <Bottom/>
-                    :
-                    <></>
-                }
-                <>
-                {props.plus && props.episode > 15 ?
-                    <S.Background>
-                        <S.PlusModal>
-                            <i className="fas fa-home"></i>홈
-                            <img src={`https://uolib.herokuapp.com/bookcover/${id}`}/>
-                            <span>PLUS 멤버십 가입이<br />필요한 회차 입니다.</span>
-                            <button>PLUS 가입</button>
-                        </S.PlusModal>
-                    </S.Background>
-                    :
-                    <></>
-                }
+            {status === "comment" ?
+                <S.CommentList>
+                    <S.ContentsTitle>댓글 수({props.comment.length})</S.ContentsTitle>
+                    <S.CommentInputDiv>
+                        <textarea onChange={(e)=>setComment(e.target.value)} value={comment}/>
+                        <button onClick={()=>registComment()}>등록</button>
+                    </S.CommentInputDiv>
+                    {props.comment.map(
+                        i => {
+                            <S.Comment>
+                                <b>{i.user}</b>
+                            </S.Comment>
+                        }
+                    )}
+                </S.CommentList>
+                :
+                <></>
+            }
+            {onInterface ?
+                <Bottom/>
+                :
+                <></>
+            }
+            <>
+            {props.plus && props.episode > 15 ?
+                <S.Background>
+                    <S.PlusModal>
+                        <i className="fas fa-home"></i>홈
+                        <img src={`https://uolib.herokuapp.com/bookcover/${id}`}/>
+                        <span>PLUS 멤버십 가입이<br />필요한 회차 입니다.</span>
+                        <button>PLUS 가입</button>
+                    </S.PlusModal>
+                </S.Background>
+                :
+                <></>
+            }
             </>
         </>
     )

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Link from 'next/link';
 import * as S from '../styled/Main'
 import axios from 'axios';
@@ -30,9 +29,7 @@ const List = ({lists}) => {
                         <Link href={`/novel/${i.id}`}>
                             <S.BookTittle>{i.title}</S.BookTittle>
                         </Link>
-                        <Link href={`/user/1`}>
                           <S.BookAuthor>{i.author}</S.BookAuthor>
-                        </Link>
                     </S.BookInfoDiv>
                     <S.BookTagDiv>
                     {i.tag.map(
@@ -72,8 +69,8 @@ const MainPage = ({props}) => {
             <S.Border>
               {props.free[0] ?
                 <>
-                <List lists={props.free.slice(0, 2)}/>
-                <List lists={props.free.slice(3, 5)}/>
+                <List lists={props.free.slice(0, 3)}/>
+                <List lists={props.free.slice(4, 6)}/>
                 </>
                 :
                 <S.Null>작품이 존재하지 않습니다.</S.Null>

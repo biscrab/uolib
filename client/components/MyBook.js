@@ -10,25 +10,25 @@ const Book = ({i}) => {
             </Link>
             <S.BookInfo> 
                 <S.Title>
-                {i.plus ?
-                    <S.Type color='#5232dd'>PLUS</S.Type>
-                    :
-                    <S.Type color='#166d95'>자유</S.Type> 
-                }
-                {i.monopoly ?
-                    <S.Type color='#0d60d1'>독점</S.Type>
-                    :
-                    <></>
-                }
-                {i.complete ?
-                    <S.Type color='black'>완결</S.Type>  
-                    :
-                    <></>
-                }
-                <Link href={`/novel/${i.id}`}>
-                    <b>{i.title}</b>
-                </Link>
-                <S.Author>{i.author}</S.Author>
+                    {i.plus ?
+                        <S.Type color='#5232dd'>PLUS</S.Type>
+                        :
+                        <S.Type color='#166d95'>자유</S.Type> 
+                    }
+                    {i.monopoly ?
+                        <S.Type color='#0d60d1'>독점</S.Type>
+                        :
+                        <></>
+                    }
+                    {i.complete ?
+                        <S.Type color='black'>완결</S.Type>  
+                        :
+                        <></>
+                    }
+                    <Link href={`/novel/${i.id}`}>
+                        <b>{i.title}</b>
+                    </Link>
+                    <S.Author>{i.authorsName}</S.Author>
                 </S.Title>
                 <S.Explane>{i.explane}</S.Explane>
                 <S.Info>
@@ -39,23 +39,7 @@ const Book = ({i}) => {
                     <img src="	https://image.novelpia.com/img/new/icon/count_good.png"/>
                     <span>{i.like}회</span>
                 </S.Info>
-                <S.TagDiv>
-                    {i.tag.length ?
-                        <>
-                        {i.tag.map(
-                            (tag, index) => {
-                                return(
-                                    <Link href={`/search/tag/date/1/${tag}`} key={index}>
-                                    <span>#{tag}</span>
-                                    </Link>
-                                )
-                            }
-                        )}
-                        </>
-                        :
-                        <></>
-                    }
-                </S.TagDiv>
+                <TagDiv tag={i.tag}/>
                 <S.ButtonDiv>
                     <Link href={"/write"}>
                         <button style={{backgroundColor: "black"}}>작품 연재</button>

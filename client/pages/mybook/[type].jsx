@@ -1,7 +1,6 @@
 import Page from '../../components/MyBookPage'
 import axios from 'axios'
 import getToken from '../../components/getToken'
-import Cookies from 'cookies'
 /*
 type BookInterface = {
     id: number,

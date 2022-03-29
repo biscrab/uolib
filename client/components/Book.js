@@ -27,9 +27,7 @@ const Book = ({i}) => {
                 <Link href={`/novel/${i.id}`}>
                     <b>{i.title}</b>
                 </Link>
-                <Link href="/user/1">
-                    <S.Author>{i.author}</S.Author>
-                </Link>
+                <S.Author>{i.authorsName}</S.Author>
                 </S.Title>
                 <S.Explane>{i.explane}</S.Explane>
                 <S.Info>
