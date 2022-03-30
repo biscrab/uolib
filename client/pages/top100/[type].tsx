@@ -1,5 +1,12 @@
 import axios from 'axios';
 import Page from '../../components/Top100Page'
+/*
+p. meaning props ->
+
+meaning[definition:string]
+meaning: string[definition:string], definition:string
+
+c. meaning[0].definition*/
 
 const Top100Page = ({props}: any) => {
     return <Page props={props}/>

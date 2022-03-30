@@ -1,3 +1,4 @@
+import { type } from 'os'
 import styled from 'styled-components'
 
 type DarkProps = {
@@ -226,6 +227,23 @@ export const Bottom = styled.div<DarkProps>`
         cursor: pointer;
         font-size: 16px;
         font-weight: bold;
+    }
+`
+
+export const LeftSpan = styled.span`
+    i{
+        margin-left: 5px;
+    }
+`
+
+type LikeProps = {
+    like: boolean
+}
+
+export const RightSpan = styled.span<LikeProps>`
+    color: ${props => props.like ? "#5232dd !important" : ""};
+    i{
+        margin-right: 5px;
     }
 `
 

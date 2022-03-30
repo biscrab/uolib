@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import * as S from '../../styled/Viewer'
 import $ from 'jquery'
 import Link from 'next/link';
@@ -20,16 +20,16 @@ type Readers = {
 
 const ViewerPage = ({props}) => {
 
+    const { id, novel, text, title, round, episode, plus, authorsword, comment, isLikedRound, isLikedNovel} = props;
     const [status, setStatus] = useState("text");
     const [onInterface, setOnInterface] = useState(true);
-    const [like, setLike] = useState({round: props.isLikedRound, novel: props.isLikedNovel});
-    const [comment, setComment] = useState("123");
+    const [like, setLike] = useState({round: isLikedRound, novel: isLikedNovel});
+    const [commentText, setCommentText] = useState("123");
     const textRef = useRef();
-    const commentRef = useRef();
+    //const commentRef = useRef();
     const token = getCookie("uolib_token");
 
     const router = useRouter();
-    const {id} = router.query;
 
     useEffect(()=>{
         $('html').click(function(e){
@@ -39,22 +39,25 @@ const ViewerPage = ({props}) => {
     })
 
     useEffect(()=>{
-        window.scrollTo(0, 0);
         if(status === "text"){
             let newElement = document.createElement('div');
-            newElement.innerHTML = props.text;
+            newElement.innerHTML = text;
             textRef.current.appendChild(newElement);
         }
+    },[status, router])
+
+    useCallback(()=>{
+        window.scrollTo(0, 0);
     },[status])
 
-    const getNextPage = (page) => {
-        const round = props.round;
-        let id;
+    const getNextPage = (p) => {
+        let eid;
         round.map(i =>{
-            if(i.episode+page === props.episode)
-                id = i.id;
+            console.log(i);
+            if(i.episode === episode+p)
+                eid = i.id;
         })
-        return id;
+        return eid;
     }
 
     const registComment = () => {
@@ -62,35 +65,12 @@ const ViewerPage = ({props}) => {
     }
 
     const Body = () => {
-        if(status === "text"){
-            return(
-            <S.Body>
-                <img src={0 ? 0 : "https://image.novelpia.com/img/layout/readycover4.png"}/>
-                <S.Text ref={textRef} />
-                {props.authorsword ?
-                    <S.AuthorsWords>
-                        <b>작가의 말</b>
-                        {props.authorsword}
-                    </S.AuthorsWords>
-                :
-                <></>
-                }
-                {props.episode < props.round.length ?
-                    <Link href={`/round/${getNextPage(1)}`}>
-                        <S.NextButton>다음 화</S.NextButton>
-                    </Link>
-                :
-                <></>
-                }
-            </S.Body>
-            )
-        }
-        else if(status === "list"){
+    if(status === "list"){
             return(
             <S.ListBody>
                 <h2>회차리스트</h2>
                 <ul>
-                    <Round props={{lists: props.round, plus: props.plus}}/>
+                    <Round props={{lists: round, plus: plus}}/>
                 </ul>
             </S.ListBody>
             )
@@ -104,54 +84,58 @@ const ViewerPage = ({props}) => {
 
     const likeRound = () => {
         axios.post(`/round/like/${id}`, {headers: {Authorization: `Bearer ${token}`}})
+        .then(res => setLike({...like, round: res.data}))
+        .catch(err => alert("에러"))
     }
 
     const likeNovel = () => {
         axios.post(`/novel/like/${id}`, {headers: {Authorization: `Bearer ${token}`}})
+        .then(res => setLike({...like, novel: res.data}))
+        .catch(err => alert("에러"))
     }
 
     const Bottom = () => {
         return(            
         <S.Bottom className='interface'>
-        <div>
-            {props.episode > 1 ?
-                <Link href={`/viewer/${getNextPage(-1)}`}>
-                    <span>
-                        <i className="fas fa-chevron-left" style={{marginRight: "5px"}}/>
+            <div>
+                {episode > 1 ?
+                    <Link href={`/viewer/${getNextPage(-1)}`}>
+                        <S.RightSpan>
+                            <i className="fas fa-chevron-left"/>
+                            이전화
+                        </S.RightSpan>
+                    </Link>
+                    :
+                    <S.RightSpan style={{color: "#ccc"}}><i className="fas fa-chevron-left"/>
                         이전화
-                    </span>
-                </Link>
-                :
-                <span style={{color: "#ccc"}}><i className="fas fa-chevron-left" style={{marginRight: "5px"}}/>
-                    이전화
-                </span>
-            }
-            <span onClick={()=>{if(status !== "comment"){setStatus("comment")}else{setStatus("text")}}}>
-                <i className="far fa-comment-alt" style={{marginRight: "5px"}}/>
-                댓글
-            </span>
-            <span onClick={()=>likeRound()}>
-                <i className="far fa-thumbs-up" style={{marginRight: "5px"}}/>
-                추천
-            </span>
-            <span onClick={()=>likeNovel()}>
-                <i className="far fa-heart" style={{marginRight: "5px"}}/>
-                선호
-            </span>
-            {props.episode < props.round.length ?
-                <Link href={`/viewer/${getNextPage(1)}`}>
-                    <span>
+                    </S.RightSpan>
+                }
+                <S.RightSpan onClick={()=>{if(status !== "comment"){setStatus("comment")}else{setStatus("text")}}}>
+                    <i className="far fa-comment-alt"/>
+                    댓글
+                </S.RightSpan>
+                <S.RightSpan onClick={()=>likeRound()} like={like.round}>
+                    <i className="far fa-thumbs-up"/>
+                    추천
+                </S.RightSpan>
+                <S.RightSpan onClick={()=>likeNovel()} like={like.novel}>
+                    <i className="far fa-heart"/>
+                    선호
+                </S.RightSpan>
+                {episode < round.length ?
+                    <Link href={`/viewer/${getNextPage(1)}`}>
+                        <S.LeftSpan>
+                            다음화
+                            <i className="fas fa-chevron-right"/>
+                        </S.LeftSpan>
+                    </Link>
+                    :
+                    <S.LeftSpan style={{color: "#ccc"}}>
                         다음화
-                        <i className="fas fa-chevron-right" style={{marginLeft: "5px"}}/>
-                    </span>
-                </Link>
-                :
-                <span style={{color: "#ccc"}}>
-                    다음화
-                    <i className="fas fa-chevron-right" style={{marginLeft: "5px"}}/>
-                </span>
-            }
-        </div>
+                        <i className="fas fa-chevron-right"/>
+                    </S.LeftSpan>
+                }
+            </div>
         </S.Bottom>
         )
     }
@@ -162,11 +146,11 @@ const ViewerPage = ({props}) => {
                 <S.Header className='interface'>
                     <S.HeaderDiv>
                         <S.LeftDiv>
-                            <Link href={`/novel/${props.novel}`}>
+                            <Link href={`/novel/${novel}`}>
                                 <i className="fas fa-home fa-lg"></i>
                             </Link>
-                            <S.Episode>EP.{props.episode}</S.Episode>
-                            <S.Title>{props.title}</S.Title>
+                            <S.Episode>EP.{episode}</S.Episode>
+                            <S.Title>{title}</S.Title>
                         </S.LeftDiv>
                         <S.RightDiv>
                             <S.ListSpan onClick={()=>{if(status !== "list"){setStatus("list")}else{setStatus("text")}}}><i className="fas fa-bars"/>목록</S.ListSpan>
@@ -177,14 +161,37 @@ const ViewerPage = ({props}) => {
                 <></>
             }
             <Body />
+            {status === "text" ?
+            <S.Body>
+                <img src={0 ? 0 : "https://image.novelpia.com/img/layout/readycover4.png"}/>
+                <S.Text ref={textRef} />
+                {authorsword ?
+                    <S.AuthorsWords>
+                        <b>작가의 말</b>
+                        {authorsword}
+                    </S.AuthorsWords>
+                :
+                <></>
+                }
+                {episode < round.length ?
+                    <Link href={`/round/${getNextPage(1)}`}>
+                        <S.NextButton>다음 화</S.NextButton>
+                    </Link>
+                :
+                <></>
+                }
+            </S.Body>
+            :
+            <></>
+            }
             {status === "comment" ?
                 <S.CommentList>
-                    <S.ContentsTitle>댓글 수({props.comment.length})</S.ContentsTitle>
+                    <S.ContentsTitle>댓글 수({comment.length})</S.ContentsTitle>
                     <S.CommentInputDiv>
-                        <textarea onChange={(e)=>setComment(e.target.value)} value={comment}/>
+                        <textarea onChange={(e)=>setCommentText(e.target.value)} value={comment}/>
                         <button onClick={()=>registComment()}>등록</button>
                     </S.CommentInputDiv>
-                    {props.comment.map(
+                    {comment.map(
                         i => {
                             <S.Comment>
                                 <b>{i.user}</b>
@@ -201,7 +208,7 @@ const ViewerPage = ({props}) => {
                 <></>
             }
             <>
-            {props.plus && props.episode > 15 ?
+            {plus && episode > 15 ?
                 <S.Background>
                     <S.PlusModal>
                         <i className="fas fa-home"></i>홈

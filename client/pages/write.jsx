@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import * as S from '../styled/Write'
 import $ from 'jquery'
 //import { NextPage } from 'next';
@@ -25,10 +25,8 @@ const WritePage = ({props}) => {
     //회차 등록
     const registRound = () => {
         const text = document.getElementById("text");
-        const textHtml = text?.innerHTML;
-        const notice = document.getElementById("notice").options[select.selectedIndex].value;
-        const novel = document.getElementById("novel").options[select.selectedIndex].value
-        axios.post(`/round`, {novel: novel, notice: notice, ...round, text: textHtml})
+        const textHtml = text.innerHTML;
+        axios.post(`/round`, {...round, text: textHtml})
             .then(res => alert("등록 성공"))
             .catch(err => alert("에러"))
     }
@@ -37,7 +35,7 @@ const WritePage = ({props}) => {
         console.log(props);  
     },[])
 
-    const [round, setRound] = useState({novel: null, title: "", authorsword: "", notice: 0})
+    const [round, setRound] = useState({novel: 1, notice: 0, title: "", authorsword: "", notice: 0})
 
     return(
         <>
@@ -46,7 +44,7 @@ const WritePage = ({props}) => {
             <S.Tittle onChange={(e)=>setRound({...round, title: e.target.value})} value={round.title} placeholder='에피소드 제목을 입력해주세요'/>
             <S.SelectDiv>
                 <S.NovelSelect>
-                    <select id="select">
+                    <select value={round.novel} onChange={(e)=>{setRound({...round, novel: e.target.value})}}>
                         {props.map((i) => {
                             return(
                                 <option value={i.id}>{i.title}</option>
@@ -55,9 +53,9 @@ const WritePage = ({props}) => {
                     </select>
                 </S.NovelSelect>
                 <S.Select>
-                    <select id="notice">
-                        <option value={0}>연재회차</option>
-                        <option value={1}>공지사항</option>
+                    <select onChange={(e)=>setRound({...round, notice: e.target.value})}>
+                        <option value="0">연재회차</option>
+                        <option value="1">공지사항</option>
                     </select>
                 </S.Select>
             </S.SelectDiv>
