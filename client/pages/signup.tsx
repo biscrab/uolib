@@ -29,13 +29,16 @@ const SignUpPage = () => {
         if(checkEmail){
             axios.post("/certification/request", {email: info.email})
                 .then(res => {
+                    alert("요청 성공");
                     setTime(res.data)
                     setEdit(false);
-                    localStorage.setItem("uolib_email", info.email)
                 })
                 .catch(err => {
                     if(err.status === 400){
                         setTime(err.data);
+                    }
+                    else{
+                        alert("에러");
                     }
                 })
         }
@@ -46,7 +49,7 @@ const SignUpPage = () => {
 
     const checkCertification = () => {
         if(edit){
-            axios.post("/certification/request", {email: info.email, number: check.number})
+            axios.post("/certification/check", {email: info.email, number: check.number})
                 .then(res => {
                     axios.post("/user", info)
                         .then(res => {
@@ -58,6 +61,7 @@ const SignUpPage = () => {
                             }
                         })
                 })
+                .catch(err => alert("에러"))
         }
     }
 
@@ -74,11 +78,12 @@ const SignUpPage = () => {
     }   
 
     const signup = () => {
-        axios.post('/signup')
+        axios.post('https://uolib.herokuapp.com/signup')
             .then(res => {
                 alert("환영합니다.");
                 router.push("/");
             })
+            .catch(err => alert("에러"))
     }
 
     return(
