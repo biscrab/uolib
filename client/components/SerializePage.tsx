@@ -101,7 +101,7 @@ const SerializePage = ({props}: any) => {
                 <Category />
             </S.CategoryDiv>
             <S.List>
-                {props.list !== [] ?
+                {props.list.length ?
                 <Book lists={props.list}/>
                 :
                 <S.Null>
