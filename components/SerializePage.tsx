@@ -5,11 +5,16 @@ import Book from './Book'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PageDiv from './PageDiv'
+import { useEffect } from 'react';
 
 const SerializePage = ({props}: any) => {
 
+    useEffect(()=> {
+        console.log(props);
+    },[])
+
     //const list : BookInterface[] = [{id: 1, title: "123", image: "https://image.novelpia.com/img/layout/readycover4.png", author: "", explane: "설명", tag:["1"]}];
-    const tlist = ["공모전", "판타지", "현대", "라이트노벨", "하렘", "일상", "중세", "TS", "전생", "로맨스", "먼치킨", "아카데미", "SF", "드라마", "코미디", "이세계", "순애", "빙의", "남성향"]
+    const tlist = ["공모전", "판타지", "현대", "일상", "중세", "전생", "로맨스", "SF", "드라마", "코미디"]
 
     const router = useRouter();
     const {type, order, page, tag} = router.query;
